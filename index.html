@@ -70,7 +70,7 @@
         /* 總整理標語：往下移一點，完全不壓到地址按鈕 */
         .section-title {
             position: absolute;
-            top: 62mm; /* 往下移，避開按鈕 */
+            top: 62mm; 
             left: 0;
             width: 100%;
             text-align: center;
@@ -87,7 +87,7 @@
         .grid { 
             display: flex; 
             gap: 10px; 
-            margin-top: 17mm; /* 表格往上收，跟標題更近 */
+            margin-top: 17mm; 
             margin-bottom: 8px; 
         }
         
@@ -128,19 +128,19 @@
         .e-desc { font-size: 7.2pt; color: #555; margin-top: 1.5px; }
         .e-loc { font-size: 7.2pt; color: #0277bd; font-weight: bold; margin-top: 1.5px; }
         
-/* 底部區域統合：拿掉多餘白線與重複框 */
+        /* 底部標語與計數器容器 */
         .footer-container {
-            position: absolute; bottom: 3mm; left: 6mm; right: 6mm; 
+            position: absolute; bottom: 4mm; left: 6mm; right: 6mm; 
             text-align: center;
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 2px;
         }
-        /* 主標語：唯美白框 */
+        /* 原本的標語白框 */
         .footer { 
             width: 100%;
-            font-size: 9.5pt; 
+            font-size: 10pt; 
             font-weight: bold; 
             color: #01579b; 
             background: rgba(255, 255, 255, 0.9); 
@@ -148,7 +148,7 @@
             padding: 4px 0; border-radius: 6px; 
             box-shadow: 0 1px 3px rgba(0,0,0,0.1);
         }
-        /* 瀏覽人次：無底色、淡藍灰色融入背景 */
+        /* 瀏覽次數：無底色、下一行、淡藍灰色融入背景 */
         .footer-counter {
             font-size: 7.5pt; 
             color: rgba(230, 245, 255, 0.85); 
@@ -161,7 +161,7 @@
     <div class="a4-page">
         <!-- 店家資訊區塊 -->
         <div class="header">
-            <div class="h-sub">　♨️ 泡暖湯・穿泳裝・玩台東！</div>
+            <div class="h-sub"> ♨️ 泡暖湯・穿泳裝・玩台東！</div>
             <div class="h-title"><a href="https://maps.app.goo.gl/dDuiHhZ5prwBxA6N9" target="_blank">東泳記泳裝店</a></div>
             <div class="store-info">
                 <div class="button-group">
@@ -229,12 +229,13 @@
                 </div>
             </div>
         </div>
-       <div class="footer">
-<!-- 底部標語與背景計數器 -->
-<div class="footer-container">
-    <div class="footer">#慢下來，感受台東山海與人情的溫度 ❤️</div>
-    <div class="footer-counter">瀏覽人次: <span id="visit-count">1250</span></div>
-</div>
+        
+        <!-- 底部標語與融入背景的瀏覽次數 -->
+        <div class="footer-container">
+            <div class="footer">#慢下來，感受台東山海與人情的溫度 ❤️</div>
+            <div class="footer-counter">瀏覽人次: <span id="visit-count">1250</span></div>
+        </div>
+    </div>
 
     <!-- 自動計數器 JavaScript -->
     <script>
