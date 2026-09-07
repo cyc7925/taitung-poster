@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>東泳記泳裝店 - 活動總整理</title>
+    <style>
+        body { margin: 0; padding: 0; background: #e0f2f1; font-family: 'PingFang TC', 'Microsoft JhengHei', sans-serif; display: flex; justify-content: center; }
+        
+        .a4-page { 
+            width: 210mm; height: 297mm; 
+            background: linear-gradient(180deg, #e1f5fe 0%, #b3e5fc 50%, #ffe082 100%);
+            background-image: url('bg.jpg'); 
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            
+            margin: 5mm auto; 
+            padding: 8mm 6mm 14mm 6mm; 
+            box-sizing: border-box; position: relative;
+            border: 6px solid white; box-shadow: 0 0 15px rgba(0,0,0,0.2); overflow: hidden;
+            display: flex; flex-direction: column;
+        }
+        @media print { body { background: white; } .a4-page { margin: 0; box-shadow: none; border: none; } @page { size: A4; margin: 0; } }
+        
+        /* 店家資訊區塊 */
+        .header { 
+            text-align: left; 
+            margin-top: 1mm;
+            margin-bottom: 0mm; 
+            background: transparent; 
+            padding: 0 4px; 
+            flex-shrink: 0; 
+        }
+        
+        /* 副標題：紅色、加粗 */
+        .h-sub { 
+            color: #d32f2f; 
+            font-size: 15pt; 
+            font-weight: bold; 
+            letter-spacing: 1.2px; 
+            margin-bottom: 4px; 
+            text-shadow: 1px 1px 2px rgba(255,255,255,0.9); 
+        }
+        
+        /* 店名：書法體與粗體 */
+        .h-title { 
+            font-family: 'STKaiti', 'KaiTi', 'BiauKai', '標楷體', serif !important; 
+            font-size: 40pt !important; 
+            font-weight: bold !important; 
+            margin: 2px 0; 
+        }
+        .h-title a { color: #01579b; text-decoration: none; transition: 0.2s; text-shadow: 2px 2px 0px rgba(255,255,255,0.9); }
+        .h-title a:hover { opacity: 0.8; }
+        
+        .store-info { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; margin-top: 10px; }
+        
+        .button-group { display: flex; gap: 12px; align-items: center; }
+
+        /* 按鈕：藍綠色、無框線、具備點擊互動，電話文字加粗 */
+        .phone, .address { 
+            background: #02bdb4; color: white; padding: 6px 18px; border-radius: 20px; 
+            font-size: 12pt; font-weight: bold; border: none; 
+            transition: 0.2s; box-shadow: 0 2px 5px rgba(0,0,0,0.25); 
+        }
+        .phone a, .address a { color: inherit; text-decoration: none; display: block; font-weight: bold; }
+        .phone:hover, .address:hover { background: #01579b; transform: scale(1.03); }
+
+        .address-row { font-size: 11pt; font-weight: bold; }
+        
+        /* 總整理標語：往下移一點，完全不壓到地址按鈕 */
+        .section-title {
+            position: absolute;
+            top: 62mm; /* 往下移，避開按鈕 */
+            left: 0;
+            width: 100%;
+            text-align: center;
+            font-family: 'STKaiti', 'KaiTi', 'BiauKai', '標楷體', serif;
+            font-size: 22pt;
+            font-weight: bold;
+            color: #002147;
+            background: transparent;
+            text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.9);
+            letter-spacing: 1px;
+        }
+
+        /* 活動表格區塊：往上收一點，讓表格跟標語更靠近 */
+        .grid { 
+            display: flex; 
+            gap: 10px; 
+            margin-top: 17mm; /* 表格往上收，跟標題更近 */
+            margin-bottom: 8px; 
+        }
+        
+        .col { flex: 1; display: flex; flex-direction: column; gap: 6px; }
+        
+        /* 活動訊息方塊：微透明白背景 */
+        .month-box { 
+            background: rgba(255, 255, 255, 0.38); 
+            backdrop-filter: blur(2px);
+            border: 2.5px solid; 
+            border-radius: 8px; 
+            padding: 7px 9px; 
+            box-sizing: border-box; 
+            display: flex; 
+            flex-direction: column; 
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08); 
+        }
+
+        .m-sep { border-color: #0277bd; } 
+        .m-oct { border-color: #ef6c00; }
+        .m-nov { border-color: #2e7d32; }
+        .m-dec { border-color: #6a1b9a; }
+        .m-ongoing { border-color: #00796b; } 
+        
+        .m-head { color: white; font-weight: bold; font-size: 10.5pt; padding: 3px; border-radius: 4px; text-align: center; margin-bottom: 5px; letter-spacing: 1px; flex-shrink: 0; }
+        .m-sep .m-head { background: #0277bd; }
+        .m-oct .m-head { background: #ef6c00; }
+        .m-nov .m-head { background: #2e7d32; }
+        .m-dec .m-head { background: #6a1b9a; }
+        .m-ongoing .m-head { background: #00796b; }
+        
+        .event { display: flex; margin-bottom: 5px; border-bottom: 1px dashed rgba(0,0,0,0.15); padding-bottom: 5px; line-height: 1.35; }
+        .event:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        
+        .e-date { width: 58px; font-size: 8pt; font-weight: bold; color: #333; flex-shrink: 0; margin-right: 4px; }
+        .e-info { flex: 1; }
+        .e-name { font-size: 8.5pt; font-weight: bold; color: #111; }
+        .e-desc { font-size: 7.2pt; color: #555; margin-top: 1.5px; }
+        .e-loc { font-size: 7.2pt; color: #0277bd; font-weight: bold; margin-top: 1.5px; }
+        
+        /* 底部標語 */
+        .footer { 
+            position: absolute; bottom: 4mm; left: 6mm; right: 6mm; 
+            text-align: center; font-size: 10pt; font-weight: bold; color: #01579b; 
+            background: rgba(255, 255, 255, 0.9); 
+            backdrop-filter: blur(2px);
+            padding: 4px 0; border-radius: 6px; 
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="a4-page">
+        <!-- 店家資訊區塊 -->
+        <div class="header">
+            <div class="h-sub">　♨️ 泡暖湯・穿泳裝・玩台東！</div>
+            <div class="h-title"><a href="https://maps.app.goo.gl/dDuiHhZ5prwBxA6N9" target="_blank">東泳記泳裝店</a></div>
+            <div class="store-info">
+                <div class="button-group">
+                    <div class="phone"><a href="tel:0910557998">☎️ 0910-557-998</a></div>
+                </div>
+                <div class="button-group">
+                    <div class="address"><a href="https://maps.app.goo.gl/dDuiHhZ5prwBxA6N9" target="_blank">📍 臺東縣卑南鄉溫泉路370號</a></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 總整理標語 -->
+        <div class="section-title">2026年9月～12月台東活動總整理</div>
+
+        <!-- 活動表格區塊 -->
+        <div class="grid">
+            <!-- 左欄：9月區塊 -->
+            <div class="col">
+                <div class="month-box m-sep">
+                    <div class="m-head">9月 September</div>
+                    <div class="event"><div class="e-date">9/12</div><div class="e-info"><div class="e-name">我是保健達人</div><div class="e-loc">📍蛋糕公園</div></div></div>
+                    <div class="event"><div class="e-date">9/12~13</div><div class="e-info"><div class="e-name">2026《東！帶我走》演唱會</div><div class="e-loc">📍台東國際地標／海濱公園</div></div></div>
+                    <div class="event"><div class="e-date">9/18~19</div><div class="e-info"><div class="e-name">2026臺東藝術節—《時光驛事～台東線物語～》</div><div class="e-loc">📍台東舊站／台東線</div></div></div>
+                    <div class="event"><div class="e-date">9/18~20</div><div class="e-info"><div class="e-name">2026綠島巷海行・海島巡福祭</div><div class="e-desc">※ 9/18 晚間於免稅商店前舉辦平安宴</div><div class="e-loc">📍綠島鄉</div></div></div>
+                    <div class="event"><div class="e-date">9/18~20</div><div class="e-info"><div class="e-name">太平溪環境改善及水資源宣導活動</div><div class="e-loc">📍臺東市太平溪左岸人工濕地</div></div></div>
+                    <div class="event"><div class="e-date">9/19</div><div class="e-info"><div class="e-name">2026年全國古蹟日活動地方特展</div><div class="e-loc">📍北町日式建築宿舍群3號</div></div></div>
+                    <div class="event"><div class="e-date">9/19</div><div class="e-info"><div class="e-name">租稅柑仔店</div><div class="e-loc">📍台東就藝會</div></div></div>
+                    <div class="event"><div class="e-date">9/19</div><div class="e-info"><div class="e-name">外國人多元文化同樂會－移起烤肉趣</div><div class="e-loc">📍東遊季溫泉渡假村</div></div></div>
+                    <div class="event"><div class="e-date">9/19</div><div class="e-info"><div class="e-name">2026成功海宴－海洋慢食 × 月光晚宴</div><div class="e-loc">📍臺東縣成功鎮海濱公園</div></div></div>
+                    <div class="event"><div class="e-date">9/25</div><div class="e-info"><div class="e-name">《跳進部落的孩子》×映後座談 (14:00~16:00)</div><div class="e-loc">📍台東就藝會</div></div></div>
+                    <div class="event"><div class="e-date">9/26</div><div class="e-info"><div class="e-name">海宴美食嘉年華 (16:00~20:00)</div><div class="e-loc">📍成功海濱公園</div></div></div>
+                    <div class="event"><div class="e-date">9/28</div><div class="e-info"><div class="e-name">《跳進部落的孩子》 (15:00~16:30)</div><div class="e-loc">📍東管處都歷遊客中心星空劇場</div></div></div>
+                    <div class="event"><div class="e-date">9/28</div><div class="e-info"><div class="e-name">月光海音樂會①「海海的人生」</div><div class="e-desc">🎵十鼓擊樂團, YASH余耀祖, 李英宏, 陳竹昇, 美秀集團</div><div class="e-loc">📍都歷遊客中心</div></div></div>
+                    <div class="event"><div class="e-date">9/29</div><div class="e-info"><div class="e-name">月光海音樂會②「海是開始與歸處」</div><div class="e-desc">🎵安懂, 鳳小岳, 戴曉君, 黃韻玲＆浪漫里樂團, 舒米恩</div><div class="e-loc">📍都歷遊客中心</div></div></div>
+                </div>
+            </div>
+            
+            <!-- 右欄：跨月活動與10到12月區塊 -->
+            <div class="col">
+                <div class="month-box m-ongoing">
+                    <div class="m-head">🌟 持續展開 (跨月活動)</div>
+                    <div class="event"><div class="e-date" style="color:#00796b;">6/27~9/27</div><div class="e-info"><div class="e-name">2026泛太平洋國際駐村交流展</div><div class="e-loc" style="color:#00796b;">📍臺東美術館</div></div></div>
+                    <div class="event"><div class="e-date" style="color:#00796b;">7/1~10/31</div><div class="e-info"><div class="e-name">2026南迴藝術季—山徑之流</div><div class="e-loc" style="color:#00796b;">📍南迴公路</div></div></div>
+                    <div class="event"><div class="e-date" style="color:#00796b;">9/1~9/27</div><div class="e-info"><div class="e-name">《2026聯邦藝術巡迴展》</div><div class="e-loc" style="color:#00796b;">📍臺東藝文中心</div></div></div>
+                </div>
+
+                <div class="month-box m-oct">
+                    <div class="m-head">10月 October</div>
+                    <div class="event"><div class="e-date">10/10</div><div class="e-info"><div class="e-name">國慶煙火秀</div><div class="e-desc">活動內容及地點待公布</div><div class="e-loc">📍台東市</div></div></div>
+                    <div class="event"><div class="e-date">10/24~25</div><div class="e-info"><div class="e-name">2026南島咖啡節市集 (11:00~18:00)</div><div class="e-loc">📍台東波浪屋前廣場及方形廣場</div></div></div>
+                    <div class="event"><div class="e-date">10/24~25</div><div class="e-info"><div class="e-name">臺東慢食節《夜食餐桌》 (17:00~22:00)</div><div class="e-loc">📍臺東新生公園廣場</div></div></div>
+                    <div class="event"><div class="e-date">10/31~11/1</div><div class="e-info"><div class="e-name">Taiwan PASIWALI Festival</div><div class="e-loc">📍臺東森林公園</div></div></div>
+                </div>
+                
+                <div class="month-box m-nov">
+                    <div class="m-head">11月 November</div>
+                    <div class="event"><div class="e-date">11/1</div><div class="e-info"><div class="e-name">知本溫泉公益馬拉松 & 特色市集 (06:00~14:30)</div><div class="e-loc">📍知本龍泉路第二停車場</div></div></div>
+                    <div class="event"><div class="e-date">11/1</div><div class="e-info"><div class="e-name">Taiwan PASIWALI Festival</div><div class="e-desc">※承接10/31活動</div><div class="e-loc">📍臺東森林公園</div></div></div>
+                    <div class="event"><div class="e-date">11月暫定</div><div class="e-info"><div class="e-name">2026臺灣國際衝浪公開賽</div><div class="e-loc">📍東河鄉金樽漁港</div></div></div>
+                </div>
+                
+                <div class="month-box m-dec">
+                    <div class="m-head">12月 December</div>
+                    <div class="event"><div class="e-date">12/31</div><div class="e-info"><div class="e-name">阿妹跨年</div><div class="e-loc">📍台東市</div></div></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">#慢下來，感受台東山海與人情的溫度 ❤️</div>
+    </div>
+</body>
+</html>
