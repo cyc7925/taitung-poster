@@ -212,21 +212,18 @@
             </div>
         </div>
        <div class="footer">
-<!-- 底部標語與計數器：改為乾淨清晰的文字排版 -->
+<!-- 底部標語與極低調隱藏式計數器 -->
         <div class="footer">
-            <span>#慢下來，感受台東山海與人情的溫度 ❤️</span>
-            <span style="font-size: 8.5pt; color: #01579b; font-weight: bold;">
-                👁️ 瀏覽人次：<span id="visit-count" style="color: #d32f2f; background: #fff; padding: 2px 6px; border-radius: 4px; border: 1px solid #b3e5fc;">讀取中...</span>
-            </span>
+            <div class="footer-main">#慢下來，感受台東山海與人情的溫度 ❤️</div>
+            <div class="footer-counter">瀏覽人次: <span id="visit-count">1250</span></div>
         </div>
     </div>
 
-    <!-- 簡單的自動計數器 JavaScript -->
+    <!-- 自動計數器 JavaScript -->
     <script>
-        // 計算並顯示訪問人數（使用瀏覽器紀錄，每個人獨立計算或使用公開API）
         let views = localStorage.getItem('dzj_views');
         if (!views) {
-            views = 1250; // 起始基本人氣數
+            views = 1250;
         } else {
             views = parseInt(views) + 1;
         }
