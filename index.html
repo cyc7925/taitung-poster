@@ -150,13 +150,13 @@ font-family: 'Iansui', cursive !important; /* 強制使用雲端芫荽手寫體 
             gap: 4px; /* <-- 把原本的間距縮小，讓方塊更緊湊 */
         }
 
-                /* 月份方塊：外框保持圓角與大小不變，但取消內部左右邊距 */
+        /* 月份方塊：外框保持圓角與大小不變，但取消內部左右邊距 */
         .month-box { 
             background: rgba(255, 255, 255, 0.48); 
             backdrop-filter: blur(2px);
             border: 2.5px solid; 
             border-radius: 20px 25px 22px 24px / 24px 22px 25px 20px; 
-            padding: 0px 0px 8px 0px;    /* <-- 把左右 padding 改為 0，讓標題可以完美滿版貼齊外框 */
+            padding: 0px 10px 8px 0px;    /* <-- 把左右 padding 改為 0，讓標題可以完美滿版貼齊外框 */
             box-sizing: border-box; 
             display: flex; 
             flex-direction: column; 
@@ -169,7 +169,7 @@ font-family: 'Iansui', cursive !important; /* 強制使用雲端芫荽手寫體 
         .m-head { 
             color: white; 
             font-weight: bold; 
-            font-size: 12pt;         
+            font-size: 16pt;         
             padding: 6px 12px; 
             margin: 0 0 8px 0;           /* <-- 歸零左右 margin，讓它直接貼滿整個方塊寬度 */
             border-top-left-radius: 17px; /* 貼合外框的圓角弧度 */
