@@ -64,7 +64,7 @@
             margin-bottom: 2px; 
             text-shadow: 1px 1px 2px rgba(255,255,255,0.9); 
             display: inline-block;     /* <-- 關鍵：讓內距生效並可以自由位移 */
-            padding-left: 40px;        /* <-- 數字越大會越往右退，您可以改成 35px 或 45px 試試看！ */    
+            padding-left: 41px;        /* <-- 數字越大會越往右退，您可以改成 35px 或 45px 試試看！ */    
 font-family: 'Iansui', cursive !important; /* 強制使用雲端芫荽手寫體 */
         }
 
@@ -108,7 +108,7 @@ font-family: 'Iansui', cursive !important; /* 強制使用雲端芫荽手寫體 
             transition: 0.2s; 
             box-shadow: 0 2px 5px rgba(0,0,0,0.25); 
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4); /* <-- 確保白字清晰的陰影 */
-        /* 指定官方方正、極度清晰的思源黑體粗體 */
+        /* 指定思源黑體粗體 */
             font-family: 'Noto Sans TC', sans-serif !important; 
             font-weight: 700 !important;
         }
@@ -117,10 +117,10 @@ font-family: 'Iansui', cursive !important; /* 強制使用雲端芫荽手寫體 
 
         .address-row { font-size: 11pt; font-weight: bold; }
         
-        /* 總整理標語：往下移一點，完全不壓到地址按鈕 */
+        /* 總整理標語 */
             .section-title {
             position: absolute;
-            top: 52mm; 
+            top: 52mm;  /*上下調整*/
             left: 0;
             width: 100%;
             text-align: center;
@@ -134,11 +134,11 @@ font-family: 'Iansui', cursive !important; /* 強制使用雲端芫荽手寫體 
         }
 
 
-        /* 活動表格區塊：往上收一點，讓表格跟標語更靠近 */
+        /* 活動表格區塊 */
         .grid { 
             display: flex; 
             gap: 10px; 
-            margin-top: 12mm; /*整體往上收一點，讓表格跟標語更靠近*/
+            margin-top: 14mm; /*整體往上或下調整，讓表格跟標語保持適當距離*/
             margin-bottom: 8px; 
         }
         
