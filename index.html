@@ -12,19 +12,26 @@
         body { margin: 0; padding: 0; background: #e0f2f1; font-family: 'PingFang TC', 'Microsoft JhengHei', sans-serif; display: flex; justify-content: center; }
         
         .a4-page { 
-            width: 210mm; height: 297mm; 
+            width: 210mm; 
+            min-height: 297mm; /* 內容少時維持 A4，內容多時自動長高 */
+            height: auto;      
+            
             background: linear-gradient(180deg, #e1f5fe 0%, #b3e5fc 50%, #ffe082 100%);
             background-image: url('IMG_3540.png'); 
-            background-size: 100% 100%;
+            background-size: cover; 
             background-position: center;
             background-repeat: no-repeat;
             
             margin: 5mm auto; 
             padding: 8mm 8mm 14mm 8mm; 
-            box-sizing: border-box; position: relative;
-            border: 6px solid white; box-shadow: 0 0 15px rgba(0,0,0,0.2); overflow: hidden;
-            display: flex; flex-direction: column;
+            box-sizing: border-box; 
+            position: relative;
+            border: 6px solid white; 
+            box-shadow: 0 0 15px rgba(0,0,0,0.2); 
+            display: flex; 
+            flex-direction: column;
         }
+
         @media print { body { background: white; } .a4-page { margin: 0; box-shadow: none; border: none; } @page { size: A4; margin: 0; } }
         
         /* 店家資訊區塊 */
@@ -37,15 +44,17 @@
             flex-shrink: 0; 
         }
         
-        /* 副標題：深海洋藍色、加粗、帶立體感 */
+        /* 副標題：深海洋藍色、加粗、帶立體感與精準左距 */
         .h-sub { 
-            color: #01579b; /* <-- 改成深藍色 */
+            color: #01579b; 
             font-size: 15pt; 
             font-weight: bold; 
             letter-spacing: 1.2px; 
             margin-bottom: 4px; 
             text-shadow: 1px 1px 2px rgba(255,255,255,0.9); 
+            padding-left: 15px; /* <-- 這裡可以直接控制往後退多少！數字越大退越多（例如改成 20px 或 25px） */
         }
+
 
         
         /* 店名：書法體與粗體 */
@@ -164,7 +173,7 @@
     <div class="a4-page">
         <!-- 店家資訊區塊 -->
         <div class="header">
-        <div class="h-sub"><span class="sub-text">    ♨️ 泡暖湯・穿泳裝・玩台東！</span></div>
+        <div class="h-sub">♨️ 泡暖湯・穿泳裝・玩台東！</div>
             <div class="h-title"><a href="https://maps.app.goo.gl/YkHK24qn1kZsfBn38?g_st=ic" target="_blank">東泳記泳裝店</a></div>
             <div class="store-info">
                 <div class="button-group">
