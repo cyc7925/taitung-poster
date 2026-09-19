@@ -116,18 +116,23 @@
         
         .col { flex: 1; display: flex; flex-direction: column; gap: 6px; }
         
-        /* 活動訊息方塊：微透明白背景 */
+
+        
+                /* 讓每個月的活動方塊變成不規則的柔和手繪邊框 */
         .month-box { 
-            background: rgba(255, 255, 255, 0.38); 
+            background: rgba(255, 255, 255, 0.45); /* 稍微調亮一點點，讓文字在手機上更清晰 */
             backdrop-filter: blur(2px);
             border: 2.5px solid; 
-            border-radius: 8px; 
-            padding: 7px 9px; 
+            /* 運用不規則的圓角數值，讓四個角落呈現自然、不死板的手繪感 */
+            border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px; 
+            padding: 8px 10px; 
             box-sizing: border-box; 
             display: flex; 
             flex-direction: column; 
             box-shadow: 0 2px 6px rgba(0,0,0,0.08); 
+            margin-bottom: 8px; /* 讓方塊之間保持一點呼吸空間 */
         }
+
 
         .m-sep { border-color: #0277bd; } 
         .m-oct { border-color: #ef6c00; }
