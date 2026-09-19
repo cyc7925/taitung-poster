@@ -13,17 +13,17 @@
         
         .a4-page { 
             width: 210mm; 
-            min-height: 297mm; /* 內容少時維持 A4，內容多時自動長高 */
+            min-height: 297mm; 
             height: auto;      
             
             background: linear-gradient(180deg, #e1f5fe 0%, #b3e5fc 50%, #ffe082 100%);
             background-image: url('IMG_3540.png'); 
-            background-size: cover; 
+            background-size: 100% 100%; 
             background-position: center;
             background-repeat: no-repeat;
             
             margin: 5mm auto; 
-            padding: 8mm 8mm 14mm 8mm; 
+            padding: 8mm 8mm 16mm 8mm; 
             box-sizing: border-box; 
             position: relative;
             border: 6px solid white; 
@@ -116,13 +116,11 @@
         
         .col { flex: 1; display: flex; flex-direction: column; gap: 6px; }
         
-        /* 端正中帶有柔和手感的活動方塊 */
         .month-box { 
             background: rgba(255, 255, 255, 0.48); 
             backdrop-filter: blur(2px);
             border: 2.5px solid; 
-            /* 改回四角對稱、微圓弧的舒適矩形，不再過度扭曲 */
-            border-radius: 14px; 
+            border-radius: 200px 18px 190px 22px / 18px 190px 22px 200px; 
             padding: 0px 10px 10px 10px; 
             box-sizing: border-box; 
             display: flex; 
@@ -132,16 +130,14 @@
             overflow: hidden; 
         }
 
-        /* 月份標題橫幅：上方跟著方塊做平滑圓角，完美貼頂 */
         .m-head { 
             color: white; 
             font-weight: bold; 
             font-size: 10.5pt; 
             padding: 7px 10px; 
-            margin: 0 -10px 8px -10px; /* 左右貼齊外框 */
-            /* 讓標題上方兩角跟外框的圓角完美吻合 */
-            border-top-left-radius: 11px;
-            border-top-right-radius: 11px;
+            margin: 0 -10px 8px -10px; 
+            border-top-left-radius: 18px;
+            border-top-right-radius: 18px;
             border-bottom-left-radius: 0px;
             border-bottom-right-radius: 0px;
             text-align: center; 
