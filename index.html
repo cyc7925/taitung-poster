@@ -2,6 +2,7 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Iansui&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
 
     <title>東泳記泳裝店 - 2026台東活動總整理</title>
     <!-- 設定 LINE 分享時專屬的預覽標題與描述 -->
@@ -68,12 +69,14 @@
 
         /* 店名：書法體、粗體、收緊上下多餘行高 */
         .h-title { 
-            font-family: 'STKaiti', 'KaiTi', 'BiauKai', '標楷體', serif !important; 
+            font-family: 'Iansui', serif !important; /* 優先顯示芫荽手寫體 */
+            /*font-family: 'STKaiti', 'KaiTi', 'BiauKai', '標楷體', serif !important; */
             font-size: 42pt !important; 
             font-weight: bold !important; 
             line-height: 1;            /* <-- 關鍵：把上下多餘的行高空白收緊 */
             margin: 2px 0 2px 0;      /* <-- 微調上下外距，讓它跟上下區塊更緊密 */
         }
+
         /*店名：東泳記泳裝店，立體顏色*/
         .h-title a { 
             color: #01579b;                /* 正中間的深藍色主字體 */
