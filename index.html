@@ -143,16 +143,16 @@
         .m-head { 
             color: white; 
             font-weight: bold; 
-            font-size: 10.5pt; 
-            padding: 5px; 
-            border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px; 
+            font-size: 9.5pt;          /* <-- 把字體從 10.5pt 微調成 9.5pt，讓文字更容易塞入單行 */
+            padding: 4px 6px;          /* <-- 減少上下與左右的內距，爭取更多橫向空間 */
+            border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px; /* 保留不規則手繪弧度 */
             text-align: center; 
             margin-bottom: 5px; 
-            letter-spacing: 1px; 
+            letter-spacing: 0.5pt;     /* <-- 字與字的間距稍微收緊一點點 */
             flex-shrink: 0; 
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); 
         }
-
+        
         .m-sep .m-head { background: #0277bd; }
         .m-oct .m-head { background: #ef6c00; }
         .m-nov .m-head { background: #2e7d32; }
