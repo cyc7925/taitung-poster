@@ -140,7 +140,19 @@
         .m-dec { border-color: #6a1b9a; }
         .m-ongoing { border-color: #00796b; } 
         
-        .m-head { color: white; font-weight: bold; font-size: 10.5pt; padding: 3px; border-radius: 4px; text-align: center; margin-bottom: 5px; letter-spacing: 1px; flex-shrink: 0; }
+        .m-head { 
+            color: white; 
+            font-weight: bold; 
+            font-size: 10.5pt; 
+            padding: 5px; 
+            border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px; 
+            text-align: center; 
+            margin-bottom: 5px; 
+            letter-spacing: 1px; 
+            flex-shrink: 0; 
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); 
+        }
+
         .m-sep .m-head { background: #0277bd; }
         .m-oct .m-head { background: #ef6c00; }
         .m-nov .m-head { background: #2e7d32; }
@@ -263,12 +275,13 @@
     <script>
         let views = localStorage.getItem('dzj_views');
         if (!views) {
-            views = 1688;
+            views = 1680; // 確保起始值是 1680
         } else {
             views = parseInt(views) + 1;
         }
         localStorage.setItem('dzj_views', views);
         document.getElementById('visit-count').innerText = views.toLocaleString();
     </script>
+
 </body>
 </html>
