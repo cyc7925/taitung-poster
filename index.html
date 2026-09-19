@@ -16,10 +16,13 @@
             min-height: 297mm; 
             height: auto;      
             
+            /* 底層先鋪好漂亮的漸層色，確保圖片還沒讀完時版面完全不變形 */
             background: linear-gradient(180deg, #e1f5fe 0%, #b3e5fc 50%, #ffe082 100%);
+            
+            /* 改用 100% auto 或 contain，確保整張圖完整顯示、絕對不被裁切 */
             background-image: url('IMG_3578.png'); 
-            background-size: 100% 100%; 
-            background-position: center;
+            background-size: 100% auto; /* 寬度剛好貼齊，高度依比例自動延伸，不硬拉伸 */
+            background-position: top center;
             background-repeat: no-repeat;
             
             margin: 5mm auto; 
@@ -31,6 +34,7 @@
             display: flex; 
             flex-direction: column;
         }
+
 
         @media print { body { background: white; } .a4-page { margin: 0; box-shadow: none; border: none; } @page { size: A4; margin: 0; } }
         
