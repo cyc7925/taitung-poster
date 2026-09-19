@@ -64,16 +64,20 @@
             line-height: 1;            /* <-- 關鍵：把上下多餘的行高空白收緊 */
             margin: 2px 0 2px 0;      /* <-- 微調上下外距，讓它跟上下區塊更緊密 */
         }
-        /*陰影字體*/
+        /*店名：東泳記泳裝店，立體顏色*/
         .h-title a { 
-            color: #01579b; 
+            color: #01579b;                /* 最上層正中間的深藍色主字體 */
             text-decoration: none; 
             transition: 0.2s; 
+            
+            /* 利用多層文字陰影：讓白色厚度往左上方偏移，右下角製造深色立體感 */
             text-shadow: 
-                2px 2px 0px #ffffff, 
-                4px 4px 0px rgba(1, 87, 155, 0.3), 
-                0px 4px 8px rgba(0, 0, 0, 0.25); 
+                -2px -2px 0px #ffffff,     /* 往左上方的白色立體厚度，解決「東」字融入背景的問題 */
+                -2px  2px 0px #ffffff,     /* 左下方的白色厚度補強 */
+                 2px -2px 0px #ffffff,     /* 右上方的白色厚度補強 */
+                 3px  3px 6px rgba(0, 0, 0, 0.3); /* 右下方的柔和立體陰影，增加浮動感 */
         }
+
      
         .store-info { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; margin-top: 10px; }
         
