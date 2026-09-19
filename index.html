@@ -116,15 +116,14 @@
         
         .col { flex: 1; display: flex; flex-direction: column; gap: 6px; }
         
-        
-        /* 月份外框：創造出手繪感、帶點不規則起伏的自然弧度 */
+        /* 端正中帶有柔和手感的活動方塊 */
         .month-box { 
-            background: rgba(255, 255, 255, 0.45); 
+            background: rgba(255, 255, 255, 0.48); 
             backdrop-filter: blur(2px);
             border: 2.5px solid; 
-            /* 調整為非對稱的圓角數值，呈現手繪鉛筆框不規則的生動感 */
-            border-radius: 255px 25px 225px 25px / 25px 225px 25px 255px; 
-            padding: 0px 10px 8px 10px; /* 恢復左右內距，讓內文保持安全距離 */
+            /* 改回四角對稱、微圓弧的舒適矩形，不再過度扭曲 */
+            border-radius: 14px; 
+            padding: 0px 10px 10px 10px; 
             box-sizing: border-box; 
             display: flex; 
             flex-direction: column; 
@@ -133,14 +132,18 @@
             overflow: hidden; 
         }
 
-        /* 標題橫幅：完美貼合手繪外框的頂部 */
+        /* 月份標題橫幅：上方跟著方塊做平滑圓角，完美貼頂 */
         .m-head { 
             color: white; 
             font-weight: bold; 
             font-size: 10.5pt; 
             padding: 7px 10px; 
-            /* 利用左右負邊距讓標題橫幅完美頂到手繪框的最外側，不留白邊 */
-            margin: 0 -10px 8px -10px; 
+            margin: 0 -10px 8px -10px; /* 左右貼齊外框 */
+            /* 讓標題上方兩角跟外框的圓角完美吻合 */
+            border-top-left-radius: 11px;
+            border-top-right-radius: 11px;
+            border-bottom-left-radius: 0px;
+            border-bottom-right-radius: 0px;
             text-align: center; 
             letter-spacing: 0.5px; 
             flex-shrink: 0; 
