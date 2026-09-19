@@ -119,18 +119,19 @@
         
         /* 讓每個月的活動方塊變成不規則的柔和手繪邊框 */
         .month-box { 
-            background: rgba(255, 255, 255, 0.45); /* 稍微調亮一點點，讓文字在手機上更清晰 */
+            background: rgba(255, 255, 255, 0.45); 
             backdrop-filter: blur(2px);
             border: 2.5px solid; 
-            /* 運用不規則的圓角數值，讓四個角落呈現自然、不死板的手繪感 */
             border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px; 
-            padding: 8px 10px; 
+            padding: 0px 10px 8px 10px; /* <-- 注意：把最上面的 padding 改成 0px，讓標題完美貼齊頂部 */
             box-sizing: border-box; 
             display: flex; 
             flex-direction: column; 
             box-shadow: 0 2px 6px rgba(0,0,0,0.08); 
-            margin-bottom: 8px; /* 讓方塊之間保持一點呼吸空間 */
+            margin-bottom: 8px; 
+            overflow: hidden; /* <-- 關鍵：把超出圓角的邊緣自動切齊 */
         }
+
 
         .m-sep { border-color: #0277bd; } 
         .m-oct { border-color: #ef6c00; }
@@ -143,16 +144,7 @@
             font-weight: bold; 
             font-size: 10pt; 
             padding: 6px 10px; 
-            
-            /* 讓標題左右與上方「貼平」外框邊緣，消除縫隙 */
-            margin: -8px -10px 8px -10px; 
-            
-            /* 只有上方左右兩個角維持圓角，下方保持直角或配合外框 */
-            border-top-left-radius: 255px 15px; 
-            border-top-right-radius: 15px 225px; 
-            border-bottom-left-radius: 0px; 
-            border-bottom-right-radius: 0px; 
-            
+            margin: 0 -10px 6px -10px; /* <-- 左右外距剛好等於方塊的左右內距，完美填滿寬度 */
             text-align: center; 
             letter-spacing: 0.5px; 
             flex-shrink: 0; 
