@@ -150,36 +150,37 @@ font-family: 'Iansui', cursive !important; /* 強制使用雲端芫荽手寫體 
             gap: 4px; /* <-- 把原本的間距縮小，讓方塊更緊湊 */
         }
 
+                /* 月份方塊：外框保持圓角與大小不變，但取消內部左右邊距 */
         .month-box { 
             background: rgba(255, 255, 255, 0.48); 
             backdrop-filter: blur(2px);
             border: 2.5px solid; 
             border-radius: 20px 25px 22px 24px / 24px 22px 25px 20px; 
-            padding: 0px 10px 8px 10px; 
+            padding: 0px 0px 8px 0px;    /* <-- 把左右 padding 改為 0，讓標題可以完美滿版貼齊外框 */
             box-sizing: border-box; 
             display: flex; 
             flex-direction: column; 
             box-shadow: 0 2px 6px rgba(0,0,0,0.08); 
-            margin-bottom: 5px; /* <-- 把原本的 10px 改成 5px，讓上下方塊貼得更近 */
-            overflow: hidden; 
+            margin-bottom: 5px; 
+            overflow: hidden;            /* <-- 確保超出邊框的背景會被完美裁切成圓角 */
         }
 
+        /* 月份標題：滿版貼齊外框滿版標題帶 */
         .m-head { 
             color: white; 
             font-weight: bold; 
-            font-size: 12pt;         /* <-- 恢復最剛好的字體大小，避免過大或換行 */
-            padding: 6px 10px; 
-            margin: 0 -10px 8px -10px; 
-            border-top-left-radius: 18px;
-            border-top-right-radius: 18px;
+            font-size: 12pt;         
+            padding: 6px 12px; 
+            margin: 0 0 8px 0;           /* <-- 歸零左右 margin，讓它直接貼滿整個方塊寬度 */
+            border-top-left-radius: 17px; /* 貼合外框的圓角弧度 */
+            border-top-right-radius: 22px;
             border-bottom-left-radius: 0px;
             border-bottom-right-radius: 0px;
             text-align: center; 
-            letter-spacing: 0.3px;     /* <-- 收緊間距，確保文字一定能一行顯示完畢 */
+            letter-spacing: 0.3px;     
             flex-shrink: 0; 
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); 
         }
-
 
         .m-sep { border-color: #0277bd; } 
         .m-oct { border-color: #ef6c00; }
