@@ -117,39 +117,41 @@
         .col { flex: 1; display: flex; flex-direction: column; gap: 6px; }
         
         
-        /* 讓每個月的活動方塊變成不規則的柔和手繪邊框 */
+        /* 月份外框：創造出手繪感、帶點不規則起伏的自然弧度 */
         .month-box { 
             background: rgba(255, 255, 255, 0.45); 
             backdrop-filter: blur(2px);
             border: 2.5px solid; 
-            border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px; 
-            padding: 0px 10px 8px 10px; /* <-- 注意：把最上面的 padding 改成 0px，讓標題完美貼齊頂部 */
+            /* 調整為非對稱的圓角數值，呈現手繪鉛筆框不規則的生動感 */
+            border-radius: 255px 25px 225px 25px / 25px 225px 25px 255px; 
+            padding: 0px 10px 8px 10px; /* 恢復左右內距，讓內文保持安全距離 */
             box-sizing: border-box; 
             display: flex; 
             flex-direction: column; 
             box-shadow: 0 2px 6px rgba(0,0,0,0.08); 
-            margin-bottom: 8px; 
-            overflow: hidden; /* <-- 關鍵：把超出圓角的邊緣自動切齊 */
+            margin-bottom: 10px; 
+            overflow: hidden; 
         }
 
+        /* 標題橫幅：完美貼合手繪外框的頂部 */
+        .m-head { 
+            color: white; 
+            font-weight: bold; 
+            font-size: 10.5pt; 
+            padding: 7px 10px; 
+            /* 利用左右負邊距讓標題橫幅完美頂到手繪框的最外側，不留白邊 */
+            margin: 0 -10px 8px -10px; 
+            text-align: center; 
+            letter-spacing: 0.5px; 
+            flex-shrink: 0; 
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); 
+        }
 
         .m-sep { border-color: #0277bd; } 
         .m-oct { border-color: #ef6c00; }
         .m-nov { border-color: #2e7d32; }
         .m-dec { border-color: #6a1b9a; }
         .m-ongoing { border-color: #00796b; } 
-        
-        .m-head { 
-            color: white; 
-            font-weight: bold; 
-            font-size: 10pt; 
-            padding: 6px 10px; 
-            margin: 0 -10px 6px -10px; /* <-- 左右外距剛好等於方塊的左右內距，完美填滿寬度 */
-            text-align: center; 
-            letter-spacing: 0.5px; 
-            flex-shrink: 0; 
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); 
-        }
         
         .m-sep .m-head { background: #0277bd; }
         .m-oct .m-head { background: #ef6c00; }
