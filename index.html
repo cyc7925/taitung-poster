@@ -64,10 +64,17 @@
             line-height: 1;            /* <-- 關鍵：把上下多餘的行高空白收緊 */
             margin: 2px 0 2px 0;      /* <-- 微調上下外距，讓它跟上下區塊更緊密 */
         }
-
-        .h-title a { color: #01579b; text-decoration: none; transition: 0.2s; text-shadow: 2px 2px 0px rgba(255,255,255,0.9); }
-        .h-title a:hover { opacity: 0.8; }
-        
+        /*陰影字體*/
+        .h-title a { 
+            color: #01579b; 
+            text-decoration: none; 
+            transition: 0.2s; 
+            text-shadow: 
+                2px 2px 0px #ffffff, 
+                4px 4px 0px rgba(1, 87, 155, 0.3), 
+                0px 4px 8px rgba(0, 0, 0, 0.25); 
+        }
+     
         .store-info { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; margin-top: 10px; }
         
         .button-group { display: flex; gap: 12px; align-items: center; }
