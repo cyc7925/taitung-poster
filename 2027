@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>2027台東活動總整理 - 東泳記泳裝店</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/justfont/open-huninn-font/font.css">
+    
+    <style>
+        :root {
+            --bg-color: #FFFCF6;   --ink-color: #3E3A39;
+            --coral: #F2A497;      --yamabuki: #F6D27A;
+            --water: #A8D3E6;      --bamboo: #B9DAA5;
+        }
+
+        body {
+            background-color: var(--bg-color); color: var(--ink-color);
+            font-family: 'jf-openhuninn-1.1', sans-serif;
+            margin: 0; padding: 15px; -webkit-text-size-adjust: 100%;
+        }
+
+        .container { max-width: 500px; margin: 0 auto; }
+
+        /* 店家卡片 (移到最上方) */
+        .store-card {
+            background: var(--water); border: 3px solid var(--ink-color);
+            border-radius: 20px; padding: 15px; margin-bottom: 25px; margin-top: 10px;
+            display: flex; align-items: center; justify-content: space-between;
+            box-shadow: 4px 4px 0px var(--ink-color);
+        }
+        
+        .store-loc {
+            background: white; border: 2px solid var(--ink-color); border-radius: 12px;
+            padding: 4px 8px; font-size: 12px; color: var(--ink-color);
+            text-decoration: none; display: inline-block; font-weight: bold;
+        }
+
+        .btn {
+            background: white; border: 3px solid var(--ink-color); border-radius: 15px;
+            padding: 5px 10px; font-size: 12px; font-weight: bold; color: var(--ink-color);
+            text-decoration: none; box-shadow: 2px 2px 0px var(--ink-color); transition: 0.2s;
+        }
+        .btn:active { transform: translate(2px, 2px); box-shadow: 0px 0px 0px var(--ink-color); }
+
+        /* 標題與可愛插畫 */
+        .header { text-align: center; margin-bottom: 30px; }
+        .title-box {
+            background: white; border: 3px solid var(--ink-color); border-radius: 25px;
+            padding: 15px 20px; box-shadow: 4px 4px 0px var(--ink-color);
+            display: inline-block; position: relative; z-index: 2; margin-top: -15px;
+        }
+        .title-box h1 { margin: 0; font-size: 22px; letter-spacing: 1px; }
+        .title-box p { margin: 5px 0 0 0; font-size: 14px; color: #666; }
+
+        /* 時間軸設計 */
+        .month-header { font-size: 20px; font-weight: bold; display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
+        .month-header::after { content: ""; flex: 1; height: 3px; background: var(--ink-color); border-radius: 3px; }
+        .timeline { border-left: 4px dashed var(--ink-color); margin-left: 20px; padding-left: 25px; padding-bottom: 20px; }
+        .event { position: relative; margin-bottom: 25px; }
+        .event::before {
+            content: ''; position: absolute; left: -35px; top: 15px; width: 12px; height: 12px;
+            background: var(--bg-color); border: 4px solid var(--ink-color); border-radius: 50%;
+        }
+        .event-card {
+            background: white; border: 3px solid var(--ink-color); border-radius: 20px;
+            padding: 15px; box-shadow: 3px 3px 0px var(--ink-color);
+        }
+        .event-date { font-weight: bold; font-size: 18px; margin-bottom: 8px; display: flex; align-items: center; gap: 10px; }
+        .tag { font-size: 12px; padding: 3px 10px; border: 2px solid var(--ink-color); border-radius: 12px; }
+        .tag-must { background: var(--coral); }
+        .tag-music { background: var(--yamabuki); }
+        .tag-sport { background: var(--bamboo); }
+        .event-title { font-size: 16px; font-weight: bold; margin-bottom: 8px; }
+        .event-desc { font-size: 14px; color: #555; margin-bottom: 8px; line-height: 1.4; }
+        .event-loc { font-size: 13px; font-weight: bold; color: #333; background: var(--bg-color); padding: 4px 8px; border-radius: 8px; display: inline-block; border: 2px solid var(--ink-color); }
+        .cancelled { background: #f0f0f0; color: #999; border-style: dashed; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- 店家資訊卡片 (第一順位) -->
+    <div class="store-card">
+        <div>
+            <div style="font-size: 20px; font-weight: bold; margin-bottom: 10px;">東泳記泳裝店</div>
+            <!-- 加回正確的地圖連結 -->
+            <a href="https://maps.app.goo.gl/qaywzMaHnHRe98AF8?g_st=ic" target="_blank" class="store-loc">📍 卑南鄉溫泉路370號</a>
+        </div>
+        <a href="tel:0910557998" class="btn">☎️ 撥打</a>
+    </div>
+
+    <!-- 標題與全新可愛插畫 (第二順位) -->
+    <div class="header">
+        <!-- 全新設計：台東暖陽與海浪 -->
+        <svg width="120" height="85" viewBox="0 0 120 85" xmlns="http://www.w3.org/2000/svg">
+            <!-- 太陽 -->
+            <circle cx="60" cy="35" r="16" fill="#F6D27A" stroke="#3E3A39" stroke-width="3"/>
+            <!-- 雲朵 -->
+            <path d="M 25 45 Q 35 30 50 45 Q 65 35 80 50 Q 95 45 105 60 L 20 60 Q 15 55 25 45 Z" fill="#FFF" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/>
+            <!-- 雙層海浪 -->
+            <path d="M 10 70 Q 25 60 40 70 T 70 70 T 100 70 T 120 70" fill="none" stroke="#A8D3E6" stroke-width="5" stroke-linecap="round"/>
+            <path d="M 10 80 Q 25 70 40 80 T 70 80 T 100 80 T 120 80" fill="none" stroke="#B9DAA5" stroke-width="5" stroke-linecap="round"/>
+        </svg>
+
+        <div class="title-box">
+            <h1>2027台東活動總整理</h1>
+            <p>♨️泡暖湯・穿泳裝・玩台東</p>
+        </div>
+    </div>
+
+    <!-- 10月行程時間軸 -->
+    <div class="month-header">10月上旬 October</div>
+    <div class="timeline">
+        <div class="event">
+            <div class="event-card">
+                <div class="event-date">
+                    10/2 - 10/3 <span class="tag tag-music">音樂</span>
+                </div>
+                <div class="event-title">《那年，我們一起聽的歌》</div>
+                <div class="event-desc">咱的歌·咱的年代 / 跨世代·唱青春<br>🎵洪榮宏, 沈文程, 陳昇&新寶島樂隊等</div>
+                <div class="event-loc">📍北町日式建築宿舍群 ⏰19:00~21:00</div>
+            </div>
+        </div>
+        <div class="event">
+            <div class="event-card">
+                <div class="event-date">
+                    10/4 <span class="tag tag-sport">路跑</span> <span class="tag tag-must">必去</span>
+                </div>
+                <div class="event-title">2027火燒島馬拉松</div>
+                <div class="event-loc">📍綠島人權紀念公園 ⏰05:00~13:00</div>
+            </div>
+        </div>
+        <div class="event">
+            <div class="event-card">
+                <div class="event-date">10/10</div>
+                <div class="event-title">世界的方舟・南島台灣・國慶焰火晚會</div>
+                <div class="event-loc">📍台東市國際地標 ⏰19:00~20:30</div>
+            </div>
+        </div>
+        <!-- 延期活動示範 -->
+        <div class="event">
+            <div class="event-card cancelled">
+                <div class="event-date">延期公告</div>
+                <div class="event-title">2027 台東香草生活節</div>
+                <div class="event-desc">⚠️因颱風延期辦理，新日期將另行公告通知</div>
+                <div class="event-loc">📍臺東縣客家文化園區</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 10月下旬行程時間軸 -->
+    <div class="month-header">10月下旬 October</div>
+    <div class="timeline">
+        <div class="event">
+            <div class="event-card">
+                <div class="event-date">
+                    10/24 - 10/25 <span class="tag tag-must">市集</span>
+                </div>
+                <div class="event-title">南島咖啡節市集</div>
+                <div class="event-loc">📍台東波浪屋前廣場 ⏰11:00~19:00</div>
+            </div>
+        </div>
+        <div class="event">
+            <div class="event-card">
+                <div class="event-date">
+                    10/31 - 11/1 <span class="tag tag-music">免費入場</span> <span class="tag tag-must">必去</span>
+                </div>
+                <div class="event-title">☼𝟮𝟬𝟮𝟳 𝗧𝗮𝗶𝘄𝗮𝗻 𝗣𝗔𝗦𝗜𝗪𝗔𝗟𝗜 ☾ 國際原住民音樂節</div>
+                <div class="event-loc">📍臺東森林公園 ⏰13:00 開始</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 11月行程時間軸 -->
+    <div class="month-header">11月 November</div>
+    <div class="timeline">
+        <div class="event">
+            <div class="event-card">
+                <div class="event-date">
+                    11/1 <span class="tag tag-sport">路跑</span>
+                </div>
+                <div class="event-title">跑吧！孩子 2027知本溫泉公益馬拉松</div>
+                <div class="event-loc">📍知本龍泉路第二停車場 ⏰06:00~14:30</div>
+            </div>
+        </div>
+        <div class="event">
+            <div class="event-card">
+                <div class="event-date">
+                    11/6 - 11/22 <span class="tag tag-sport">衝浪</span> <span class="tag tag-must">國際賽事</span>
+                </div>
+                <div class="event-title">2027臺灣國際衝浪公開賽</div>
+                <div class="event-desc">🏄短版世界積分巡迴賽 INTL 6,000 / 衝浪市集</div>
+                <div class="event-loc">📍臺東金樽漁港</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 頁尾回首頁按鈕 -->
+    <div style="text-align: center; margin-top: 30px; margin-bottom: 40px;">
+        <a href="index.html" class="btn" style="padding: 10px 20px; font-size: 16px;">🏠 回到活動首頁</a>
+    </div>
+
+</div>
+
+</body>
+</html>
