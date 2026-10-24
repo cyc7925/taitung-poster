@@ -92,20 +92,17 @@
         }
 
         /* --- 動畫區 --- */
-        @keyframes pulse-sun { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.04); } }
         @keyframes float-steam { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
         @keyframes wave-move { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(-4px); } }
         @keyframes twinkle { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.3; transform: scale(0.8); } }
         @keyframes float-emoji { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
         
-        .anim-sun { animation: pulse-sun 3s ease-in-out infinite; transform-origin: 70px 35px; }
         .anim-steam-1 { animation: float-steam 2.5s ease-in-out infinite; }
         .anim-steam-2 { animation: float-steam 2.5s ease-in-out infinite 1.2s; }
         .anim-wave-1 { animation: wave-move 3s ease-in-out infinite; }
         .anim-wave-2 { animation: wave-move 3s ease-in-out infinite 1.5s; }
         .anim-sparkle { animation: twinkle 2s ease-in-out infinite; transform-origin: center; }
         
-        /* 替不同的泳具設定不同的漂浮頻率與延遲，看起來更自然 */
         .anim-float-1 { animation: float-emoji 3s ease-in-out infinite; }
         .anim-float-2 { animation: float-emoji 3.5s ease-in-out infinite 0.5s; }
         .anim-float-3 { animation: float-emoji 4s ease-in-out infinite 1s; }
@@ -120,25 +117,15 @@
     <!-- 1. 置中的店家主體資訊 -->
     <div class="shop-section">
         
-        <!-- 全新設計：豐富但不雜亂的「漂浮泳具群」 -->
+        <!-- 頂部：錯落有致的漂浮泳具群 -->
         <svg width="130" height="95" viewBox="0 0 130 100" xmlns="http://www.w3.org/2000/svg">
-            <!-- 閃爍星星維持質感 -->
             <path d="M 25 25 Q 30 25 30 20 Q 30 25 35 25 Q 30 25 30 30 Q 30 25 25 25" fill="#FFE66D" class="anim-sparkle"/>
             <path d="M 105 15 Q 110 15 110 10 Q 110 15 115 15 Q 110 15 110 20 Q 110 15 105 15" fill="#FFE66D" class="anim-sparkle" style="animation-delay: 1s;"/>
             
-            <!-- 錯落有致的動畫泳具 -->
-            <g class="anim-float-1">
-                <text x="65" y="70" font-size="48" text-anchor="middle">👙</text>
-            </g>
-            <g class="anim-float-2">
-                <text x="25" y="55" font-size="28" text-anchor="middle" transform="rotate(-15 25 55)">🛟</text>
-            </g>
-            <g class="anim-float-3">
-                <text x="105" y="45" font-size="26" text-anchor="middle" transform="rotate(15 105 45)">🥽</text>
-            </g>
-            <g class="anim-float-4">
-                <text x="100" y="85" font-size="26" text-anchor="middle" transform="rotate(-15 100 85)">🩱</text>
-            </g>
+            <g class="anim-float-1"><text x="65" y="70" font-size="48" text-anchor="middle">👙</text></g>
+            <g class="anim-float-2"><text x="25" y="55" font-size="28" text-anchor="middle" transform="rotate(-15 25 55)">🛟</text></g>
+            <g class="anim-float-3"><text x="105" y="45" font-size="26" text-anchor="middle" transform="rotate(15 105 45)">🥽</text></g>
+            <g class="anim-float-4"><text x="100" y="85" font-size="26" text-anchor="middle" transform="rotate(-15 100 85)">🩱</text></g>
         </svg>
 
         <h1 class="shop-name">東泳記泳裝店</h1>
@@ -163,15 +150,22 @@
 
     <!-- 2. 近期活動區塊 -->
     <div class="event-section">
-        <svg width="100" height="65" viewBox="0 0 140 90" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="70" cy="35" r="18" fill="#FFE66D" stroke="#2C3E50" stroke-width="3" class="anim-sun"/>
-            <path d="M 10 70 L 40 30 L 70 70 Z" fill="#A8E6CF" stroke="#2C3E50" stroke-width="3" stroke-linejoin="round"/>
-            <path d="M 50 70 L 90 20 L 130 70 Z" fill="#4ECDC4" stroke="#2C3E50" stroke-width="3" stroke-linejoin="round"/>
-            <path d="M 60 50 Q 55 40 60 30" fill="none" stroke="#FF6B6B" stroke-width="4" stroke-linecap="round" class="anim-steam-1"/>
-            <path d="M 75 45 Q 70 35 75 25" fill="none" stroke="#FF6B6B" stroke-width="4" stroke-linecap="round" class="anim-steam-2"/>
-            <path d="M 10 75 Q 35 65 70 75 T 130 75" fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" class="anim-wave-1"/>
-            <path d="M 10 85 Q 35 75 70 85 T 130 85" fill="none" stroke="#4ECDC4" stroke-width="6" stroke-linecap="round" class="anim-wave-2"/>
+        
+        <!-- 全新設計：帶有海浪波動特效的專屬 ♨️ 溫泉浴池 -->
+        <svg width="100" height="70" viewBox="0 0 140 90" xmlns="http://www.w3.org/2000/svg">
+            <!-- 溫泉熱氣 (帶有上下漂浮動畫) -->
+            <path d="M 40 45 Q 30 25 45 5" fill="none" stroke="#FF6B6B" stroke-width="5" stroke-linecap="round" class="anim-steam-1"/>
+            <path d="M 70 50 Q 60 30 75 10" fill="none" stroke="#FF6B6B" stroke-width="5" stroke-linecap="round" class="anim-steam-2"/>
+            <path d="M 100 45 Q 90 25 105 5" fill="none" stroke="#FF6B6B" stroke-width="5" stroke-linecap="round" class="anim-steam-1"/>
+            
+            <!-- 溫泉浴池 (經典半圓造型) -->
+            <path d="M 20 55 Q 20 85 70 85 Q 120 85 120 55" fill="#FFE66D" stroke="#2C3E50" stroke-width="4" stroke-linecap="round"/>
+            
+            <!-- 你最喜歡的動態波浪 (完美覆蓋在浴池邊緣) -->
+            <path d="M 5 65 Q 35 55 70 65 T 135 65" fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" class="anim-wave-1"/>
+            <path d="M 5 75 Q 35 65 70 75 T 135 75" fill="none" stroke="#4ECDC4" stroke-width="6" stroke-linecap="round" class="anim-wave-2"/>
         </svg>
+
         <h2 class="hero-title">臺東近期活動</h2>
         <p class="hero-subtitle">♨️ 泡暖湯・穿泳裝・玩台東</p>
         
