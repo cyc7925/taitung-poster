@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>2026近期活動整理 - 東泳記泳裝店</title>
+    <title>2026臺東縣近期活動資訊 - 東泳記泳裝店</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/justfont/open-huninn-font/font.css">
     
     <style>
@@ -46,10 +46,14 @@
         }
         .btn-call:active { transform: translate(2px,2px); box-shadow: 0px 0px 0px var(--ink-dark); }
 
-        /* === 標題與插畫 (無框自然版) === */
-        .hero-section { text-align: center; padding: 25px 15px 15px 15px; }
-        .hero-title { font-size: 24px; font-weight: bold; color: var(--ink-dark); margin: 15px 0 5px 0; letter-spacing: 1px; }
-        .hero-subtitle { font-size: 14px; color: #666; font-weight: bold; margin: 0; }
+        /* === 標題與插畫 (左右並排設計) === */
+        .hero-section { 
+            display: flex; align-items: center; justify-content: center; gap: 12px;
+            padding: 25px 15px 15px 15px; 
+        }
+        .hero-text { text-align: left; }
+        .hero-title { font-size: 21px; font-weight: bold; color: var(--ink-dark); margin: 0 0 6px 0; letter-spacing: 0.5px; }
+        .hero-subtitle { font-size: 13px; color: #666; font-weight: bold; margin: 0; }
 
         /* --- SVG 動畫區 --- */
         @keyframes pulse-sun { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.04); } }
@@ -126,9 +130,10 @@
 </div>
 
 <div class="container">
-    <!-- 首圖 -->
+    <!-- 首圖：改為左右並排 -->
     <div class="hero-section">
-        <svg width="120" height="75" viewBox="0 0 140 90" xmlns="http://www.w3.org/2000/svg">
+        <!-- 插畫稍微縮小以配合並排寬度 -->
+        <svg width="95" height="60" viewBox="0 0 140 90" xmlns="http://www.w3.org/2000/svg">
             <circle cx="70" cy="35" r="18" fill="#FFE66D" stroke="#2C3E50" stroke-width="3" class="anim-sun"/>
             <path d="M 10 70 L 40 30 L 70 70 Z" fill="#A8E6CF" stroke="#2C3E50" stroke-width="3" stroke-linejoin="round"/>
             <path d="M 50 70 L 90 20 L 130 70 Z" fill="#4ECDC4" stroke="#2C3E50" stroke-width="3" stroke-linejoin="round"/>
@@ -137,8 +142,10 @@
             <path d="M 10 75 Q 35 65 70 75 T 130 75" fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" class="anim-wave-1"/>
             <path d="M 10 85 Q 35 75 70 85 T 130 85" fill="none" stroke="#4ECDC4" stroke-width="6" stroke-linecap="round" class="anim-wave-2"/>
         </svg>
-        <h1 class="hero-title">2026近期活動整理</h1>
-        <p class="hero-subtitle">♨️泡暖湯・穿泳裝・玩台東</p>
+        <div class="hero-text">
+            <h1 class="hero-title">2026臺東縣近期活動資訊</h1>
+            <p class="hero-subtitle">♨️泡暖湯・穿泳裝・玩台東</p>
+        </div>
     </div>
 
     <!-- 內容區 -->
@@ -150,7 +157,7 @@
             <div class="month-title">持續展開 (跨月活動)</div>
         </div>
         <div class="timeline">
-            <!-- 常態活動不加入 data-end 標籤，避免被當作定位點 -->
+            <!-- 常態活動不加入 data-end 標籤 -->
             <div class="event">
                 <div class="event-card">
                     <div class="event-date">7/1 - 10/31 <span class="tag tag-art">藝術</span></div>
@@ -182,7 +189,6 @@
             <div class="month-title">10月 October</div>
         </div>
         <div class="timeline">
-            <!-- 加入 data-end="MMDD" 讓腳本知道這是幾號的活動 -->
             <div class="event" data-end="1002">
                 <div class="event-card">
                     <div class="event-date">10/2 <span class="tag tag-music">音樂</span></div>
@@ -366,20 +372,17 @@
     </div>
 </div>
 
-<!-- 精準跳轉至「最靠近今天的活動」腳本 -->
+<!-- 精準跳轉腳本 -->
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const today = new Date();
-        // 將今天日期轉換為 MMDD 格式，例如 10 月 25 日 = 1025
         const currentMonthDay = (today.getMonth() + 1) * 100 + today.getDate(); 
         
-        // 只尋找帶有 data-end 標籤的「特定日期活動」
         const events = document.querySelectorAll('.event[data-end]');
         let targetEvent = null;
         
         for (let i = 0; i < events.length; i++) {
             const eventEnd = parseInt(events[i].getAttribute('data-end'));
-            // 找到結束日期大於或等於今天的「第一個活動」就停止尋找
             if (eventEnd >= currentMonthDay) {
                 targetEvent = events[i];
                 break;
@@ -388,18 +391,14 @@
         
         if (targetEvent) {
             setTimeout(function() {
-                // 扣掉店家導覽列高度(80px) + 雙層月份標題(約55px) + 緩衝區(10px) = 145px
                 const y = targetEvent.getBoundingClientRect().top + window.scrollY - 145;
                 window.scrollTo({top: y, behavior: 'smooth'});
                 
-                // ✨ 重點：讓目標活動卡片發出粉紅光，提示客人「從這裡開始看」
                 const card = targetEvent.querySelector('.event-card');
                 if(card) {
-                    // 先亮起光暈
                     card.style.boxShadow = '0 0 0 4px var(--pop-pink)';
                     card.style.borderColor = 'var(--pop-pink)';
                     
-                    // 1.5秒後恢復原狀，避免干擾畫面
                     setTimeout(() => {
                         card.style.boxShadow = '4px 4px 0px rgba(44, 62, 80, 0.15)';
                         card.style.borderColor = 'var(--ink-dark)';
