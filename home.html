@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>台東活動總整理 - 東泳記泳裝店</title>
+    <title>臺東活動總整理 - 東泳記泳裝店</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/justfont/open-huninn-font/font.css">
     
     <style>
@@ -15,49 +15,52 @@
             --pop-yellow: #FFE66D;   
         }
 
+        /* 讓漸層背景自然延伸 */
         body {
-            background-color: var(--bg-yellow); color: var(--ink-dark);
+            background-color: var(--bg-yellow); 
+            background-image: linear-gradient(180deg, #E0F7FA 0%, var(--bg-yellow) 60vh);
+            background-repeat: no-repeat;
+            color: var(--ink-dark);
             font-family: 'jf-openhuninn-1.1', sans-serif;
             margin: 0; padding: 0; -webkit-text-size-adjust: 100%;
             min-height: 100vh;
+            display: flex; flex-direction: column;
         }
 
         .container { max-width: 400px; margin: 0 auto; padding: 0 20px; width: 100%; box-sizing: border-box; }
 
-        /* === 頂部設計 === */
-        .top-section {
-            background: linear-gradient(180deg, #E0F7FA 0%, var(--bg-yellow) 100%);
-            padding: 25px 0 20px 0;
-            text-align: center;
+        /* === 1. 一致的店家導覽列 (滿版無框) === */
+        .sticky-navbar {
+            background: white; border-bottom: 3px solid var(--ink-dark);
+            padding: 0 15px; display: flex; align-items: center; justify-content: space-between;
+            height: 80px; box-sizing: border-box;
+            /* 讓首頁導覽列也有一樣的精緻陰影 */
+            box-shadow: 0 4px 0px rgba(0,0,0,0.05);
         }
-
-        /* 移回上方的店家卡片 (無 emoji) */
-        .store-card {
-            background: white; border: 3px solid var(--ink-dark); border-radius: 20px;
-            padding: 16px 20px; margin: 0 auto 30px auto; display: flex; align-items: center; justify-content: space-between;
-            box-shadow: 5px 5px 0px var(--pop-blue);
-            text-align: left;
-        }
-        .store-info { display: flex; flex-direction: column; gap: 6px; }
-        .store-name { font-size: 21px; font-weight: bold; color: var(--pop-pink); }
-        .store-loc { color: var(--ink-dark); text-decoration: none; font-size: 13px; letter-spacing: 0.5px; font-weight: bold; border-bottom: 1px solid var(--ink-dark); padding-bottom: 2px; display: inline-block;}
+        .nav-info { display: flex; flex-direction: column; gap: 4px; }
+        
+        .nav-store { font-size: 28px; font-weight: bold; color: var(--pop-pink); letter-spacing: 1px; line-height: 1.1; }
+        .nav-loc { color: var(--ink-dark); text-decoration: none; font-size: 13px; font-weight: bold; border-bottom: 1px solid var(--ink-dark); display: inline-block; padding-bottom: 1px;}
         
         .btn-call {
-            background: var(--pop-yellow); border: 3px solid var(--ink-dark); border-radius: 12px;
-            padding: 8px 12px; font-size: 13px; font-weight: bold; color: var(--ink-dark);
-            text-decoration: none; transition: 0.2s; white-space: nowrap; flex-shrink: 0;
-            box-shadow: 2px 2px 0px var(--ink-dark);
+            background: var(--pop-yellow); border: 3px solid var(--ink-dark); border-radius: 12px; padding: 8px 12px; 
+            font-size: 13px; font-weight: bold; color: var(--ink-dark); text-decoration: none; transition: 0.2s;
+            white-space: nowrap; flex-shrink: 0; box-shadow: 2px 2px 0px var(--ink-dark);
         }
         .btn-call:active { transform: translate(2px,2px); box-shadow: 0px 0px 0px var(--ink-dark); }
 
-        /* 標題與動畫設定 (無 emoji) */
-        .header { text-align: center; margin-bottom: 10px; }
-        .title-box {
-            background: white; border: 3px solid var(--ink-dark); border-radius: 20px; padding: 15px 20px; 
-            box-shadow: 5px 5px 0px var(--pop-pink); display: inline-block; position: relative; z-index: 2; margin-top: -10px;
+        /* === 2. 標題與動畫 (無框自然融入背景) === */
+        .hero-section {
+            padding: 40px 0 30px 0;
+            text-align: center;
+            display: flex; flex-direction: column; align-items: center; gap: 10px;
         }
-        .title-box h1 { margin: 0; font-size: 24px; letter-spacing: 1px; color: var(--ink-dark); }
-        .title-box p { margin: 5px 0 0 0; font-size: 15px; color: #666; font-weight: bold; }
+        .hero-title { 
+            margin: 0; font-size: 26px; letter-spacing: 2px; color: var(--ink-dark); font-weight: bold;
+        }
+        .hero-subtitle { 
+            margin: 5px 0 0 0; font-size: 15px; color: #666; font-weight: bold; 
+        }
 
         /* --- SVG 動畫區 --- */
         @keyframes pulse-sun { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.04); } }
@@ -70,70 +73,69 @@
         .anim-wave-1 { animation: wave-move 3s ease-in-out infinite; }
         .anim-wave-2 { animation: wave-move 3s ease-in-out infinite 1.5s; }
 
-        /* === 按鈕導覽區 === */
-        .nav-section { padding: 10px 0 40px 0; text-align: center; }
+        /* === 3. 質感導覽按鈕區 === */
+        .nav-section { padding: 20px 0 40px 0; text-align: center; flex: 1; }
         
-        .nav-hint { font-size: 18px; font-weight: bold; margin-bottom: 20px; color: var(--ink-dark); }
-        .nav-hint::before, .nav-hint::after { content: " ✦ "; color: var(--pop-pink); }
+        .nav-hint { 
+            font-size: 16px; font-weight: bold; margin-bottom: 25px; color: var(--ink-dark); 
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+        }
+        .nav-hint::before, .nav-hint::after { content: ""; width: 20px; height: 3px; background: var(--pop-pink); border-radius: 2px; opacity: 0.5;}
         
         .year-btn {
-            display: block; width: 100%; box-sizing: border-box;
-            padding: 18px; margin-bottom: 20px; font-size: 18px; font-weight: bold;
-            border-radius: 18px; text-decoration: none; transition: 0.2s;
+            display: block; width: 100%; max-width: 320px; margin: 0 auto 20px auto; box-sizing: border-box;
+            padding: 18px; font-size: 18px; font-weight: bold;
+            border-radius: 20px; text-decoration: none; transition: 0.2s;
             border: 3px solid var(--ink-dark);
         }
         
         .btn-2026 { 
             background: var(--pop-yellow); color: var(--ink-dark); 
-            box-shadow: 5px 5px 0px var(--ink-dark); 
+            box-shadow: 4px 4px 0px var(--ink-dark); 
         }
         .btn-2026:active { transform: translate(3px, 3px); box-shadow: 0px 0px 0px var(--ink-dark); }
 
         .btn-2027 { 
             background: white; color: #999; border-color: #CCC;
-            box-shadow: 5px 5px 0px #EEE; pointer-events: none;
+            box-shadow: 4px 4px 0px #EEE; pointer-events: none;
         }
+
     </style>
 </head>
 <body>
 
-<div class="top-section">
-    <div class="container">
-        <!-- 店家卡片回到頂部，移除 Emoji -->
-        <div class="store-card">
-            <div class="store-info">
-                <div class="store-name">東泳記泳裝店</div>
-                <a href="https://maps.app.goo.gl/qaywzMaHnHRe98AF8?g_st=ic" target="_blank" class="store-loc">卑南鄉溫泉路370號 (點擊導航)</a>
-            </div>
-            <a href="tel:0910557998" class="btn-call">撥打電話</a>
-        </div>
+<!-- 全新升級：與 2026 頁面完全一致的店家導覽列 -->
+<div class="sticky-navbar">
+    <div class="nav-info">
+        <div class="nav-store">東泳記泳裝店</div>
+        <a href="https://maps.app.goo.gl/qaywzMaHnHRe98AF8?g_st=ic" target="_blank" class="nav-loc">卑南鄉溫泉路370號🚗導航</a>
+    </div>
+    <a href="tel:0910557998" class="btn-call">撥打電話</a>
+</div>
 
-        <div class="header">
-            <svg width="140" height="90" viewBox="0 0 140 90" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="70" cy="35" r="18" fill="#FFE66D" stroke="#2C3E50" stroke-width="3" class="anim-sun"/>
-                <path d="M 10 70 L 40 30 L 70 70 Z" fill="#A8E6CF" stroke="#2C3E50" stroke-width="3" stroke-linejoin="round"/>
-                <path d="M 50 70 L 90 20 L 130 70 Z" fill="#4ECDC4" stroke="#2C3E50" stroke-width="3" stroke-linejoin="round"/>
-                <path d="M 60 50 Q 55 40 60 30" fill="none" stroke="#FF6B6B" stroke-width="4" stroke-linecap="round" class="anim-steam-1"/>
-                <path d="M 75 45 Q 70 35 75 25" fill="none" stroke="#FF6B6B" stroke-width="4" stroke-linecap="round" class="anim-steam-2"/>
-                <path d="M 10 75 Q 35 65 70 75 T 130 75" fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" class="anim-wave-1"/>
-                <path d="M 10 85 Q 35 75 70 85 T 130 85" fill="none" stroke="#4ECDC4" stroke-width="6" stroke-linecap="round" class="anim-wave-2"/>
-            </svg>
-            <div class="title-box">
-                <h1>台東活動總整理</h1>
-                <p>泡暖湯・穿泳裝・玩台東</p>
-            </div>
-        </div>
+<!-- 無框化自然排版：插畫與標題融入漸層背景 -->
+<div class="hero-section">
+    <svg width="130" height="85" viewBox="0 0 140 90" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="70" cy="35" r="18" fill="#FFE66D" stroke="#2C3E50" stroke-width="3" class="anim-sun"/>
+        <path d="M 10 70 L 40 30 L 70 70 Z" fill="#A8E6CF" stroke="#2C3E50" stroke-width="3" stroke-linejoin="round"/>
+        <path d="M 50 70 L 90 20 L 130 70 Z" fill="#4ECDC4" stroke="#2C3E50" stroke-width="3" stroke-linejoin="round"/>
+        <path d="M 60 50 Q 55 40 60 30" fill="none" stroke="#FF6B6B" stroke-width="4" stroke-linecap="round" class="anim-steam-1"/>
+        <path d="M 75 45 Q 70 35 75 25" fill="none" stroke="#FF6B6B" stroke-width="4" stroke-linecap="round" class="anim-steam-2"/>
+        <path d="M 10 75 Q 35 65 70 75 T 130 75" fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" class="anim-wave-1"/>
+        <path d="M 10 85 Q 35 75 70 85 T 130 85" fill="none" stroke="#4ECDC4" stroke-width="6" stroke-linecap="round" class="anim-wave-2"/>
+    </svg>
+    <div>
+        <h1 class="hero-title">臺東活動總整理</h1>
+        <p class="hero-subtitle">♨️泡暖湯・穿泳裝・玩台東</p>
     </div>
 </div>
 
+<!-- 精緻按鈕區 -->
 <div class="nav-section">
     <div class="container">
         <div class="nav-hint">請選擇活動時間</div>
         
-        <!-- 連接到 2026，文字改為秋冬季 -->
         <a href="2026.html" class="year-btn btn-2026">2026 秋冬季活動</a>
-        
-        <!-- 2027 保持敬請期待 -->
         <a href="#" class="year-btn btn-2027">2027 最新活動 (敬請期待)</a>
     </div>
 </div>
