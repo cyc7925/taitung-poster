@@ -29,9 +29,8 @@
 
         .container { 
             max-width: 400px; width: 100%; box-sizing: border-box; 
-            padding: max(20px, env(safe-area-inset-top)) 20px 20px 20px; 
-            display: flex; flex-direction: column; 
-            gap: 15px; /* 整體間距微調，確保放得下 */
+            padding: max(20px, env(safe-area-inset-top)) 20px 25px 20px; 
+            display: flex; flex-direction: column; gap: 20px; 
         }
 
         /* === 1. 店家主體資訊 === */
@@ -39,20 +38,18 @@
         
         .shop-name { 
             font-size: 38px; font-weight: bold; color: var(--pop-pink); 
-            margin: 0 0 12px 0; 
+            margin: 5px 0 15px 0; 
             letter-spacing: 2px; line-height: 1.1;
         }
         
         .info-list {
             display: flex; flex-direction: column; gap: 8px; 
-            width: 100%; max-width: 300px; 
-            margin: 0 auto; 
+            width: 100%; max-width: 300px; margin: 0 auto; 
         }
         
         .info-row {
             display: flex; align-items: center; justify-content: space-between;
-            padding: 10px 4px; 
-            border-bottom: 2px dashed rgba(44, 62, 80, 0.15); 
+            padding: 10px 4px; border-bottom: 2px dashed rgba(44, 62, 80, 0.15); 
         }
         .info-row:last-child { border-bottom: none; }
         
@@ -63,8 +60,7 @@
         .force-black-text { color: var(--ink-dark) !important; text-decoration: none !important; }
 
         .row-btn {
-            border: 2px solid var(--ink-dark); 
-            border-radius: 20px; 
+            border: 2px solid var(--ink-dark); border-radius: 20px; 
             padding: 6px 16px; font-size: 13px; font-weight: bold; color: var(--ink-dark); text-decoration: none;
             box-shadow: 2px 2px 0px var(--ink-dark); flex-shrink: 0; transition: 0.2s;
         }
@@ -73,31 +69,25 @@
         .row-btn:active { transform: translate(2px, 2px); box-shadow: 0px 0px 0px var(--ink-dark); }
 
         /* === 2. 近期活動區塊 === */
-        .event-section { text-align: center; display: flex; flex-direction: column; align-items: center; margin-top: 10px;}
+        .event-section { text-align: center; display: flex; flex-direction: column; align-items: center;}
         
-        .hero-title { margin: 10px 0 6px 0; font-size: 24px; letter-spacing: 2px; color: var(--ink-dark); font-weight: bold; }
-        .hero-subtitle { margin: 0 0 15px 0; font-size: 14px; color: #666; font-weight: bold; }
+        .hero-title { margin: 10px 0 6px 0; font-size: 26px; letter-spacing: 2px; color: var(--ink-dark); font-weight: bold; }
+        .hero-subtitle { margin: 0 0 18px 0; font-size: 15px; color: #666; font-weight: bold; }
 
-        /* 修改這裡：按鈕大幅瘦身，不再喧賓奪主 */
         .year-btn {
-            display: block; 
-            width: 100%; max-width: 260px; /* 寬度縮窄 */
-            box-sizing: border-box;
-            margin: 0 auto 12px auto; 
-            padding: 14px; /* 高度壓扁 */
-            font-size: 18px; /* 字體調小 */
-            font-weight: bold;
-            border-radius: 16px; text-decoration: none; transition: 0.2s;
-            border: 3px solid var(--ink-dark); 
+            display: block; width: 100%; box-sizing: border-box;
+            padding: 18px; font-size: 20px; font-weight: bold;
+            border-radius: 20px; text-decoration: none; transition: 0.2s;
+            border: 3px solid var(--ink-dark); margin-bottom: 12px;
         }
         .btn-2026 { background: var(--pop-yellow); color: var(--ink-dark); box-shadow: 4px 4px 0px var(--ink-dark); }
         .btn-2026:active { transform: translate(3px, 3px); box-shadow: 0px 0px 0px var(--ink-dark); }
         .btn-2027 { background: white; color: #999; border-color: #CCC; box-shadow: 4px 4px 0px #EEE; pointer-events: none; margin-bottom: 0;}
 
         /* === 3. 頁尾暖心標語 === */
-        .slogan-footer { margin-top: 10px; display: flex; flex-direction: column; align-items: center; gap: 6px; }
+        .slogan-footer { margin-top: 5px; display: flex; flex-direction: column; align-items: center; gap: 6px; }
         .slogan-text {
-            font-size: 13px; font-weight: bold; color: var(--ink-dark); letter-spacing: 1px;
+            font-size: 14px; font-weight: bold; color: var(--ink-dark); letter-spacing: 1px;
             display: flex; align-items: center; gap: 4px;
         }
 
@@ -106,16 +96,20 @@
         @keyframes float-steam { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
         @keyframes wave-move { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(-4px); } }
         @keyframes twinkle { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.3; transform: scale(0.8); } }
-        @keyframes float-emoji { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+        @keyframes float-emoji { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
         
         .anim-sun { animation: pulse-sun 3s ease-in-out infinite; transform-origin: 70px 35px; }
         .anim-steam-1 { animation: float-steam 2.5s ease-in-out infinite; }
         .anim-steam-2 { animation: float-steam 2.5s ease-in-out infinite 1.2s; }
         .anim-wave-1 { animation: wave-move 3s ease-in-out infinite; }
         .anim-wave-2 { animation: wave-move 3s ease-in-out infinite 1.5s; }
-        
         .anim-sparkle { animation: twinkle 2s ease-in-out infinite; transform-origin: center; }
-        .anim-bikini { animation: float-emoji 3s ease-in-out infinite; }
+        
+        /* 替不同的泳具設定不同的漂浮頻率與延遲，看起來更自然 */
+        .anim-float-1 { animation: float-emoji 3s ease-in-out infinite; }
+        .anim-float-2 { animation: float-emoji 3.5s ease-in-out infinite 0.5s; }
+        .anim-float-3 { animation: float-emoji 4s ease-in-out infinite 1s; }
+        .anim-float-4 { animation: float-emoji 3.2s ease-in-out infinite 1.5s; }
 
     </style>
 </head>
@@ -126,14 +120,24 @@
     <!-- 1. 置中的店家主體資訊 -->
     <div class="shop-section">
         
-        <!-- 修改這裡：畫布與字體放大，讓比基尼更明顯 -->
-        <svg width="120" height="90" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-            <path d="M 10 30 Q 15 30 15 25 Q 15 30 20 30 Q 15 30 15 35 Q 15 30 10 30" fill="#FFE66D" class="anim-sparkle"/>
-            <path d="M 80 15 Q 85 15 85 10 Q 85 15 90 15 Q 85 15 85 20 Q 85 15 80 15" fill="#FFE66D" class="anim-sparkle" style="animation-delay: 1s;"/>
-            <path d="M 75 75 Q 80 75 80 70 Q 80 75 85 75 Q 80 75 80 80 Q 80 75 75 75" fill="#FFE66D" class="anim-sparkle" style="animation-delay: 0.5s;"/>
+        <!-- 全新設計：豐富但不雜亂的「漂浮泳具群」 -->
+        <svg width="130" height="95" viewBox="0 0 130 100" xmlns="http://www.w3.org/2000/svg">
+            <!-- 閃爍星星維持質感 -->
+            <path d="M 25 25 Q 30 25 30 20 Q 30 25 35 25 Q 30 25 30 30 Q 30 25 25 25" fill="#FFE66D" class="anim-sparkle"/>
+            <path d="M 105 15 Q 110 15 110 10 Q 110 15 115 15 Q 110 15 110 20 Q 110 15 105 15" fill="#FFE66D" class="anim-sparkle" style="animation-delay: 1s;"/>
             
-            <g class="anim-bikini">
-                <text x="50" y="75" font-size="70" text-anchor="middle">👙</text>
+            <!-- 錯落有致的動畫泳具 -->
+            <g class="anim-float-1">
+                <text x="65" y="70" font-size="48" text-anchor="middle">👙</text>
+            </g>
+            <g class="anim-float-2">
+                <text x="25" y="55" font-size="28" text-anchor="middle" transform="rotate(-15 25 55)">🛟</text>
+            </g>
+            <g class="anim-float-3">
+                <text x="105" y="45" font-size="26" text-anchor="middle" transform="rotate(15 105 45)">🥽</text>
+            </g>
+            <g class="anim-float-4">
+                <text x="100" y="85" font-size="26" text-anchor="middle" transform="rotate(-15 100 85)">🩱</text>
             </g>
         </svg>
 
@@ -159,7 +163,7 @@
 
     <!-- 2. 近期活動區塊 -->
     <div class="event-section">
-        <svg width="90" height="60" viewBox="0 0 140 90" xmlns="http://www.w3.org/2000/svg">
+        <svg width="100" height="65" viewBox="0 0 140 90" xmlns="http://www.w3.org/2000/svg">
             <circle cx="70" cy="35" r="18" fill="#FFE66D" stroke="#2C3E50" stroke-width="3" class="anim-sun"/>
             <path d="M 10 70 L 40 30 L 70 70 Z" fill="#A8E6CF" stroke="#2C3E50" stroke-width="3" stroke-linejoin="round"/>
             <path d="M 50 70 L 90 20 L 130 70 Z" fill="#4ECDC4" stroke="#2C3E50" stroke-width="3" stroke-linejoin="round"/>
