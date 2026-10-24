@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <!-- 阻止 iPhone 自動把電話變成藍色醜連結 -->
+    <meta name="format-detection" content="telephone=no">
     <title>東泳記泳裝店 - 近期活動</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/justfont/open-huninn-font/font.css">
     
@@ -29,49 +31,50 @@
         .container { 
             max-width: 400px; width: 100%; box-sizing: border-box; 
             padding: 20px;
-            display: flex; flex-direction: column; gap: 30px; 
+            display: flex; flex-direction: column; gap: 25px; 
         }
 
         /* === 1. 店家主體資訊 === */
-        .shop-section { text-align: center; display: flex; flex-direction: column; align-items: center; }
+        .shop-section { text-align: center; display: flex; flex-direction: column; align-items: center; width: 100%; }
         
         .shop-name { 
-            font-size: 42px; font-weight: bold; color: var(--pop-pink); 
-            margin: 0 0 18px 0; letter-spacing: 2px; line-height: 1.1;
+            font-size: 38px; font-weight: bold; color: var(--pop-pink); 
+            margin: 5px 0 15px 0; letter-spacing: 2px; line-height: 1.1;
         }
         
-        .shop-info-box {
-            display: flex; flex-direction: column; gap: 8px; margin-bottom: 25px;
+        /* 全新：單行列表卡片設計 */
+        .info-list {
+            display: flex; flex-direction: column; gap: 12px; width: 100%; margin-bottom: 10px;
         }
-        .info-line {
-            font-size: 16px; font-weight: bold; color: var(--ink-dark); margin: 0; letter-spacing: 1px;
-            display: flex; align-items: center; justify-content: center; gap: 6px;
+        .info-row {
+            display: flex; align-items: center; justify-content: space-between;
+            background: white; border: 3px solid var(--ink-dark); border-radius: 16px;
+            padding: 12px 16px; box-shadow: 4px 4px 0px rgba(44, 62, 80, 0.1);
         }
+        
+        /* 左側文字與圖示 */
+        .info-text {
+            display: flex; align-items: center; gap: 8px; font-size: 15px; font-weight: bold; color: var(--ink-dark);
+            text-align: left; line-height: 1.3;
+        }
+        /* 強制清除蘋果預設藍色連結 */
+        .force-black-text { color: var(--ink-dark) !important; text-decoration: none !important; }
 
-        .action-row { display: flex; gap: 15px; justify-content: center; width: 100%; }
-        
-        .btn-action {
-            flex: 1; padding: 15px 0; border-radius: 18px; border: 3px solid var(--ink-dark);
-            font-size: 16px; font-weight: bold; color: var(--ink-dark); text-decoration: none;
-            box-shadow: 4px 4px 0px var(--ink-dark); transition: 0.2s;
-            display: flex; align-items: center; justify-content: center; gap: 8px;
+        /* 右側動作按鈕 */
+        .row-btn {
+            border: 2px solid var(--ink-dark); border-radius: 10px;
+            padding: 8px 12px; font-size: 13px; font-weight: bold; color: var(--ink-dark); text-decoration: none;
+            box-shadow: 2px 2px 0px var(--ink-dark); flex-shrink: 0; transition: 0.2s;
         }
         .btn-call { background: var(--pop-yellow); }
         .btn-map { background: white; }
-        .btn-action:active { transform: translate(3px,3px); box-shadow: 0px 0px 0px var(--ink-dark); }
+        .row-btn:active { transform: translate(2px, 2px); box-shadow: 0px 0px 0px var(--ink-dark); }
 
         /* === 2. 近期活動區塊 === */
         .event-section { text-align: center; display: flex; flex-direction: column; align-items: center;}
         
-        .hero-title { 
-            margin: 15px 0 5px 0; font-size: 26px; letter-spacing: 2px; color: var(--ink-dark); font-weight: bold;
-        }
-        
-        /* 副標題與向量溫泉 Icon */
-        .hero-subtitle { 
-            margin: 0 0 25px 0; font-size: 15px; color: #666; font-weight: bold; 
-            display: flex; align-items: center; justify-content: center; gap: 4px;
-        }
+        .hero-title { margin: 15px 0 5px 0; font-size: 26px; letter-spacing: 2px; color: var(--ink-dark); font-weight: bold; }
+        .hero-subtitle { margin: 0 0 20px 0; font-size: 15px; color: #666; font-weight: bold; }
 
         .year-btn {
             display: block; width: 100%; box-sizing: border-box;
@@ -84,10 +87,7 @@
         .btn-2027 { background: white; color: #999; border-color: #CCC; box-shadow: 4px 4px 0px #EEE; pointer-events: none; margin-bottom: 0;}
 
         /* === 3. 頁尾暖心標語 === */
-        .slogan-footer {
-            margin-top: 10px;
-            display: flex; flex-direction: column; align-items: center; gap: 6px;
-        }
+        .slogan-footer { margin-top: 5px; display: flex; flex-direction: column; align-items: center; gap: 6px; }
         .slogan-text {
             font-size: 15px; font-weight: bold; color: var(--ink-dark); letter-spacing: 1.5px;
             display: flex; align-items: center; gap: 4px;
@@ -97,12 +97,16 @@
         @keyframes pulse-sun { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.04); } }
         @keyframes float-steam { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
         @keyframes wave-move { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(-4px); } }
+        @keyframes float-bikini { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+        @keyframes twinkle { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.3; transform: scale(0.8); } }
         
         .anim-sun { animation: pulse-sun 3s ease-in-out infinite; transform-origin: 70px 35px; }
         .anim-steam-1 { animation: float-steam 2.5s ease-in-out infinite; }
         .anim-steam-2 { animation: float-steam 2.5s ease-in-out infinite 1.2s; }
         .anim-wave-1 { animation: wave-move 3s ease-in-out infinite; }
         .anim-wave-2 { animation: wave-move 3s ease-in-out infinite 1.5s; }
+        .anim-bikini { animation: float-bikini 3s ease-in-out infinite; }
+        .anim-sparkle { animation: twinkle 2s ease-in-out infinite; transform-origin: center; }
 
     </style>
 </head>
@@ -112,23 +116,41 @@
     
     <!-- 1. 置中的店家主體資訊 -->
     <div class="shop-section">
+        
+        <!-- 復古連身泳衣 SVG -->
+        <svg width="80" height="75" viewBox="0 0 100 90" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 15 20 Q 20 20 20 15 Q 20 20 25 20 Q 20 20 20 25 Q 20 20 15 20" fill="#FFE66D" class="anim-sparkle"/>
+            <path d="M 80 30 Q 85 30 85 25 Q 85 30 90 30 Q 85 30 85 35 Q 85 30 80 30" fill="#FFE66D" class="anim-sparkle" style="animation-delay: 1s;"/>
+            <g class="anim-bikini">
+                <path d="M 35 30 L 35 15 Q 35 10 40 10" fill="none" stroke="#2C3E50" stroke-width="3" stroke-linecap="round"/>
+                <path d="M 65 30 L 65 15 Q 65 10 60 10" fill="none" stroke="#2C3E50" stroke-width="3" stroke-linecap="round"/>
+                <path d="M 30 30 Q 50 40 70 30 L 75 55 C 75 70 68 80 60 85 Q 50 78 40 85 C 32 80 25 70 25 55 Z" fill="#FF6B6B" stroke="#2C3E50" stroke-width="3" stroke-linejoin="round"/>
+                <path d="M 26 55 L 74 55" fill="none" stroke="#2C3E50" stroke-width="3"/>
+                <circle cx="50" cy="55" r="4" fill="#FFE66D" stroke="#2C3E50" stroke-width="2"/>
+            </g>
+        </svg>
+
         <h1 class="shop-name">東泳記泳裝店</h1>
         
-        <!-- 明確顯示地址與電話 (向量圖) -->
-        <div class="shop-info-box">
-            <p class="info-line">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                台東縣卑南鄉溫泉路370號
-            </p>
-            <p class="info-line">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-                0910-557-998
-            </p>
-        </div>
-
-        <div class="action-row">
-            <a href="tel:0910557998" class="btn-action btn-call">撥打電話</a>
-            <a href="https://maps.app.goo.gl/qaywzMaHnHRe98AF8?g_st=ic" target="_blank" class="btn-action btn-map">開啟導航</a>
+        <!-- 全新設計：單行列表式按鈕，資訊與動作結合 -->
+        <div class="info-list">
+            <!-- 地址列 -->
+            <div class="info-row">
+                <div class="info-text">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                    <span>卑南鄉溫泉路370號</span>
+                </div>
+                <a href="https://maps.app.goo.gl/qaywzMaHnHRe98AF8?g_st=ic" target="_blank" class="row-btn btn-map">導航</a>
+            </div>
+            <!-- 電話列 -->
+            <div class="info-row">
+                <div class="info-text">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                    <!-- 加入 force-black-text 強制解除藍色底線 -->
+                    <span class="force-black-text">0910-557-998</span>
+                </div>
+                <a href="tel:0910557998" class="row-btn btn-call">撥打</a>
+            </div>
         </div>
     </div>
 
@@ -144,17 +166,7 @@
             <path d="M 10 85 Q 35 75 70 85 T 130 85" fill="none" stroke="#4ECDC4" stroke-width="6" stroke-linecap="round" class="anim-wave-2"/>
         </svg>
         <h2 class="hero-title">臺東近期活動</h2>
-        
-        <!-- 全新 SVG 溫泉 Icon 替換 Emoji -->
-        <p class="hero-subtitle">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--pop-pink)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M4 15a8 8 0 0 0 16 0H4z"></path>
-                <path d="M8 11c0-2-1.5-2.5-1.5-4"></path>
-                <path d="M12 11c0-2-1.5-2.5-1.5-4"></path>
-                <path d="M16 11c0-2-1.5-2.5-1.5-4"></path>
-            </svg>
-            泡暖湯・穿泳裝・玩台東
-        </p>
+        <p class="hero-subtitle">♨️ 泡暖湯・穿泳裝・玩台東</p>
         
         <a href="2026.html" class="year-btn btn-2026">2026 秋冬季活動</a>
         <a href="#" class="year-btn btn-2027">2027 最新活動 (敬請期待)</a>
@@ -164,10 +176,16 @@
     <div class="slogan-footer">
         <div class="slogan-text">
             慢下來，感受台東山海與人情的溫度
-            <!-- 向量小愛心 -->
             <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--pop-pink)" stroke="none">
                 <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
             </svg>
         </div>
-        <!-- 向量波浪底線 -->
-        <svg width="120" height="12"
+        <svg width="120" height="12" viewBox="0 0 120 12">
+            <path d="M0 6 Q 15 0 30 6 T 60 6 T 90 6 T 120 6" fill="none" stroke="var(--pop-blue)" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>
+    </div>
+
+</div>
+
+</body>
+</html>
