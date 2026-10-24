@@ -20,7 +20,6 @@
             font-family: 'jf-openhuninn-1.1', sans-serif;
             margin: 0; padding: 0; -webkit-text-size-adjust: 100%;
             min-height: 100vh;
-            display: flex; flex-direction: column;
         }
 
         .container { max-width: 400px; margin: 0 auto; padding: 0 20px; width: 100%; box-sizing: border-box; }
@@ -28,12 +27,30 @@
         /* === 頂部設計 === */
         .top-section {
             background: linear-gradient(180deg, #E0F7FA 0%, var(--bg-yellow) 100%);
-            padding: 30px 0;
-            border-bottom: 3px dashed var(--pop-blue);
+            padding: 25px 0 20px 0;
             text-align: center;
         }
 
-        /* 標題與動畫設定 */
+        /* 移回上方的店家卡片 (無 emoji) */
+        .store-card {
+            background: white; border: 3px solid var(--ink-dark); border-radius: 20px;
+            padding: 16px 20px; margin: 0 auto 30px auto; display: flex; align-items: center; justify-content: space-between;
+            box-shadow: 5px 5px 0px var(--pop-blue);
+            text-align: left;
+        }
+        .store-info { display: flex; flex-direction: column; gap: 6px; }
+        .store-name { font-size: 21px; font-weight: bold; color: var(--pop-pink); }
+        .store-loc { color: var(--ink-dark); text-decoration: none; font-size: 13px; letter-spacing: 0.5px; font-weight: bold; border-bottom: 1px solid var(--ink-dark); padding-bottom: 2px; display: inline-block;}
+        
+        .btn-call {
+            background: var(--pop-yellow); border: 3px solid var(--ink-dark); border-radius: 12px;
+            padding: 8px 12px; font-size: 13px; font-weight: bold; color: var(--ink-dark);
+            text-decoration: none; transition: 0.2s; white-space: nowrap; flex-shrink: 0;
+            box-shadow: 2px 2px 0px var(--ink-dark);
+        }
+        .btn-call:active { transform: translate(2px,2px); box-shadow: 0px 0px 0px var(--ink-dark); }
+
+        /* 標題與動畫設定 (無 emoji) */
         .header { text-align: center; margin-bottom: 10px; }
         .title-box {
             background: white; border: 3px solid var(--ink-dark); border-radius: 20px; padding: 15px 20px; 
@@ -54,9 +71,10 @@
         .anim-wave-2 { animation: wave-move 3s ease-in-out infinite 1.5s; }
 
         /* === 按鈕導覽區 === */
-        .nav-section { padding: 40px 0; text-align: center; }
+        .nav-section { padding: 10px 0 40px 0; text-align: center; }
         
-        .nav-hint { font-size: 18px; font-weight: bold; margin-bottom: 25px; color: var(--ink-dark); }
+        .nav-hint { font-size: 18px; font-weight: bold; margin-bottom: 20px; color: var(--ink-dark); }
+        .nav-hint::before, .nav-hint::after { content: " ✦ "; color: var(--pop-pink); }
         
         .year-btn {
             display: block; width: 100%; box-sizing: border-box;
@@ -75,17 +93,21 @@
             background: white; color: #999; border-color: #CCC;
             box-shadow: 5px 5px 0px #EEE; pointer-events: none;
         }
-
-        /* 店家資訊 */
-        .footer-info { margin-top: 20px; text-align: center; padding-bottom: 30px; }
-        .store-name { font-size: 18px; font-weight: bold; color: var(--pop-pink); margin-bottom: 10px; }
-        .store-loc { color: var(--ink-dark); text-decoration: none; font-size: 14px; font-weight: bold; }
     </style>
 </head>
 <body>
 
 <div class="top-section">
     <div class="container">
+        <!-- 店家卡片回到頂部，移除 Emoji -->
+        <div class="store-card">
+            <div class="store-info">
+                <div class="store-name">東泳記泳裝店</div>
+                <a href="https://maps.app.goo.gl/qaywzMaHnHRe98AF8?g_st=ic" target="_blank" class="store-loc">卑南鄉溫泉路370號 (點擊導航)</a>
+            </div>
+            <a href="tel:0910557998" class="btn-call">撥打電話</a>
+        </div>
+
         <div class="header">
             <svg width="140" height="90" viewBox="0 0 140 90" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="70" cy="35" r="18" fill="#FFE66D" stroke="#2C3E50" stroke-width="3" class="anim-sun"/>
@@ -98,7 +120,7 @@
             </svg>
             <div class="title-box">
                 <h1>台東活動總整理</h1>
-                <p>♨️泡暖湯・穿泳裝・玩台東</p>
+                <p>泡暖湯・穿泳裝・玩台東</p>
             </div>
         </div>
     </div>
@@ -106,18 +128,13 @@
 
 <div class="nav-section">
     <div class="container">
-        <div class="nav-hint">👇 請選擇活動年份 👇</div>
+        <div class="nav-hint">請選擇活動時間</div>
         
-        <!-- 連接到你剛剛做好的 2026 網頁 -->
-        <a href="2026.html" class="year-btn btn-2026">📅 2026 全年活動 (點我觀看)</a>
+        <!-- 連接到 2026，文字改為秋冬季 -->
+        <a href="2026.html" class="year-btn btn-2026">2026 秋冬季活動</a>
         
-        <!-- 2027 目前設定為灰色不可點擊，等你明年做好了再來打開 -->
-        <a href="#" class="year-btn btn-2027">✨ 2027 最新活動 (敬請期待)</a>
-        
-        <div class="footer-info">
-            <div class="store-name">東泳記泳裝店</div>
-            <a href="https://maps.app.goo.gl/qaywzMaHnHRe98AF8?g_st=ic" target="_blank" class="store-loc">📍 台東縣卑南鄉溫泉路370號</a>
-        </div>
+        <!-- 2027 保持敬請期待 -->
+        <a href="#" class="year-btn btn-2027">2027 最新活動 (敬請期待)</a>
     </div>
 </div>
 
