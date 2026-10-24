@@ -35,7 +35,7 @@
         }
         .nav-info { display: flex; flex-direction: column; gap: 4px; }
         
-        /* 店名字體放大至 28px，與地址齊寬 */
+        /* 店名字體放大，與地址齊寬 */
         .nav-store { font-size: 28px; font-weight: bold; color: var(--pop-pink); letter-spacing: 1px; line-height: 1.1; }
         .nav-loc { color: var(--ink-dark); text-decoration: none; font-size: 13px; font-weight: bold; border-bottom: 1px solid var(--ink-dark); display: inline-block; padding-bottom: 1px;}
         
@@ -62,14 +62,21 @@
         .anim-wave-1 { animation: wave-move 3s ease-in-out infinite; }
         .anim-wave-2 { animation: wave-move 3s ease-in-out infinite 1.5s; }
 
-        /* === 月份子標題接力置頂 === */
+        /* === 雙層月份子標題接力置頂 === */
         .month-header { 
             position: sticky; top: 80px; z-index: 90; 
             background: var(--bg-yellow); 
-            padding: 15px; margin: 0 -15px; 
-            font-size: 19px; font-weight: bold; display: flex; align-items: center; gap: 10px; color: var(--ink-dark);
+            padding: 12px 15px; margin: 0 -15px; 
+            display: flex; flex-direction: column; gap: 4px;
         }
-        .month-header::after { content: ""; flex: 1; height: 4px; background: var(--pop-pink); border-radius: 2px; opacity: 0.5;}
+        .month-context {
+            font-size: 13px; color: var(--pop-pink); font-weight: bold; letter-spacing: 0.5px;
+        }
+        .month-title {
+            font-size: 19px; font-weight: bold; color: var(--ink-dark);
+            display: flex; align-items: center; gap: 10px; width: 100%;
+        }
+        .month-title::after { content: ""; flex: 1; height: 4px; background: var(--pop-pink); border-radius: 2px; opacity: 0.5;}
         
         /* 內容區塊 */
         .content-section { padding-bottom: 40px; }
@@ -138,7 +145,10 @@
     <div class="content-section">
         
         <!-- 跨月活動 -->
-        <div class="month-header" id="month-all">持續展開 (跨月活動)</div>
+        <div class="month-header" id="month-all">
+            <div class="month-context">2026臺東縣近期活動資訊</div>
+            <div class="month-title">持續展開 (跨月活動)</div>
+        </div>
         <div class="timeline">
             <div class="event">
                 <div class="event-card">
@@ -166,7 +176,10 @@
         </div>
 
         <!-- 10月 -->
-        <div class="month-header" id="month-10">10月 October</div>
+        <div class="month-header" id="month-10">
+            <div class="month-context">2026臺東縣近期活動資訊</div>
+            <div class="month-title">10月 October</div>
+        </div>
         <div class="timeline">
             <div class="event">
                 <div class="event-card">
@@ -275,7 +288,10 @@
         </div>
 
         <!-- 11月 -->
-        <div class="month-header" id="month-11">11月 November</div>
+        <div class="month-header" id="month-11">
+            <div class="month-context">2026臺東縣近期活動資訊</div>
+            <div class="month-title">11月 November</div>
+        </div>
         <div class="timeline">
             <div class="event">
                 <div class="event-card">
@@ -327,7 +343,10 @@
         </div>
 
         <!-- 12月 -->
-        <div class="month-header" id="month-12">12月 December</div>
+        <div class="month-header" id="month-12">
+            <div class="month-context">2026臺東縣近期活動資訊</div>
+            <div class="month-title">12月 December</div>
+        </div>
         <div class="timeline">
             <div class="event">
                 <div class="event-card">
@@ -348,14 +367,13 @@
 <!-- 自動跳轉當月腳本 -->
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        const currentMonth = new Date().getMonth() + 1; // 取得現在的月份 (1-12)
+        const currentMonth = new Date().getMonth() + 1; 
         const targetElement = document.getElementById('month-' + currentMonth);
         
         if (targetElement) {
-            // 延遲一點點執行，確保網頁已經完全載入並排版完成
             setTimeout(function() {
-                // 86px 是保留給頂部導覽列的高度，避免跳轉後標題被蓋住
-                const y = targetElement.getBoundingClientRect().top + window.scrollY - 86;
+                // 扣掉頂部選單高度 (80px)，再加上 5px 緩衝，讓版面停在最完美的位置
+                const y = targetElement.getBoundingClientRect().top + window.scrollY - 85;
                 window.scrollTo({top: y, behavior: 'smooth'});
             }, 300);
         }
