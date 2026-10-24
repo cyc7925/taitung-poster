@@ -42,16 +42,18 @@
             letter-spacing: 2px; line-height: 1.1;
         }
         
+        /* 修正：間距歸零，讓上下更緊湊 */
         .info-list {
-            display: flex; flex-direction: column; gap: 8px; 
+            display: flex; flex-direction: column; gap: 0px; 
             width: 100%; max-width: 300px; margin: 0 auto; 
         }
         
         .info-row {
             display: flex; align-items: center; justify-content: space-between;
-            padding: 10px 4px; border-bottom: 2px dashed rgba(44, 62, 80, 0.15); 
+            padding: 14px 4px; 
+            border-bottom: 2px dashed rgba(44, 62, 80, 0.15); 
         }
-        .info-row:last-child { border-bottom: none; }
+        /* 移除原本取消最後一行底線的設定，讓電話也有虛線 */
         
         .info-text {
             display: flex; align-items: center; gap: 8px; font-size: 15px; font-weight: bold; color: var(--ink-dark);
@@ -69,16 +71,22 @@
         .row-btn:active { transform: translate(2px, 2px); box-shadow: 0px 0px 0px var(--ink-dark); }
 
         /* === 2. 近期活動區塊 === */
-        .event-section { text-align: center; display: flex; flex-direction: column; align-items: center;}
+        .event-section { text-align: center; display: flex; flex-direction: column; align-items: center; margin-top: 15px;}
         
+        /* 漂浮溫泉 Emoji 設定 */
+        .hotspring-icon { font-size: 55px; margin-bottom: 5px; }
+
         .hero-title { margin: 10px 0 6px 0; font-size: 26px; letter-spacing: 2px; color: var(--ink-dark); font-weight: bold; }
         .hero-subtitle { margin: 0 0 18px 0; font-size: 15px; color: #666; font-weight: bold; }
 
+        /* 修正：按鈕重新瘦身 (變窄、變扁) */
         .year-btn {
-            display: block; width: 100%; box-sizing: border-box;
-            padding: 18px; font-size: 20px; font-weight: bold;
-            border-radius: 20px; text-decoration: none; transition: 0.2s;
-            border: 3px solid var(--ink-dark); margin-bottom: 12px;
+            display: block; width: 100%; max-width: 260px; /* 寬度縮窄 */
+            box-sizing: border-box; margin: 0 auto 12px auto;
+            padding: 14px; font-size: 18px; /* 高度變扁、字體變小 */
+            font-weight: bold;
+            border-radius: 16px; text-decoration: none; transition: 0.2s;
+            border: 3px solid var(--ink-dark); 
         }
         .btn-2026 { background: var(--pop-yellow); color: var(--ink-dark); box-shadow: 4px 4px 0px var(--ink-dark); }
         .btn-2026:active { transform: translate(3px, 3px); box-shadow: 0px 0px 0px var(--ink-dark); }
@@ -92,17 +100,10 @@
         }
 
         /* --- 動畫區 --- */
-        @keyframes float-steam { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
-        @keyframes wave-move { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(-4px); } }
         @keyframes twinkle { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.3; transform: scale(0.8); } }
         @keyframes float-emoji { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
         
-        .anim-steam-1 { animation: float-steam 2.5s ease-in-out infinite; }
-        .anim-steam-2 { animation: float-steam 2.5s ease-in-out infinite 1.2s; }
-        .anim-wave-1 { animation: wave-move 3s ease-in-out infinite; }
-        .anim-wave-2 { animation: wave-move 3s ease-in-out infinite 1.5s; }
         .anim-sparkle { animation: twinkle 2s ease-in-out infinite; transform-origin: center; }
-        
         .anim-float-1 { animation: float-emoji 3s ease-in-out infinite; }
         .anim-float-2 { animation: float-emoji 3.5s ease-in-out infinite 0.5s; }
         .anim-float-3 { animation: float-emoji 4s ease-in-out infinite 1s; }
@@ -138,6 +139,7 @@
                 </div>
                 <a href="https://maps.app.goo.gl/qaywzMaHnHRe98AF8?g_st=ic" target="_blank" class="row-btn btn-map">導航</a>
             </div>
+            <!-- 電話下方補回虛線，間距完美統一 -->
             <div class="info-row">
                 <div class="info-text">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
@@ -151,24 +153,14 @@
     <!-- 2. 近期活動區塊 -->
     <div class="event-section">
         
-        <!-- 全新設計：帶有海浪波動特效的專屬 ♨️ 溫泉浴池 -->
-        <svg width="100" height="70" viewBox="0 0 140 90" xmlns="http://www.w3.org/2000/svg">
-            <!-- 溫泉熱氣 (帶有上下漂浮動畫) -->
-            <path d="M 40 45 Q 30 25 45 5" fill="none" stroke="#FF6B6B" stroke-width="5" stroke-linecap="round" class="anim-steam-1"/>
-            <path d="M 70 50 Q 60 30 75 10" fill="none" stroke="#FF6B6B" stroke-width="5" stroke-linecap="round" class="anim-steam-2"/>
-            <path d="M 100 45 Q 90 25 105 5" fill="none" stroke="#FF6B6B" stroke-width="5" stroke-linecap="round" class="anim-steam-1"/>
-            
-            <!-- 溫泉浴池 (經典半圓造型) -->
-            <path d="M 20 55 Q 20 85 70 85 Q 120 85 120 55" fill="#FFE66D" stroke="#2C3E50" stroke-width="4" stroke-linecap="round"/>
-            
-            <!-- 你最喜歡的動態波浪 (完美覆蓋在浴池邊緣) -->
-            <path d="M 5 65 Q 35 55 70 65 T 135 65" fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" class="anim-wave-1"/>
-            <path d="M 5 75 Q 35 65 70 75 T 135 75" fill="none" stroke="#4ECDC4" stroke-width="6" stroke-linecap="round" class="anim-wave-2"/>
-        </svg>
+        <!-- 全新設計：純粹的漂浮溫泉 Emoji (消滅拉麵碗) -->
+        <div class="hotspring-icon anim-float-1">♨️</div>
 
         <h2 class="hero-title">臺東近期活動</h2>
-        <p class="hero-subtitle">♨️ 泡暖湯・穿泳裝・玩台東</p>
+        <!-- 移除了這裡重複的 ♨️，保持畫面乾淨 -->
+        <p class="hero-subtitle">泡暖湯・穿泳裝・玩台東</p>
         
+        <!-- 重新瘦身的按鈕 -->
         <a href="2026.html" class="year-btn btn-2026">2026 秋冬季活動</a>
         <a href="#" class="year-btn btn-2027">2027 最新活動 (敬請期待)</a>
     </div>
