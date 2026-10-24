@@ -25,42 +25,29 @@
 
         .container { max-width: 500px; margin: 0 auto; padding: 0 15px; }
 
-        /* === 頂部置頂區塊 (縮小邊距以節省螢幕空間) === */
-        .top-section {
-            background: linear-gradient(180deg, #E0F7FA 0%, var(--bg-yellow) 100%);
-            padding: 15px 0 15px 0;
-            border-bottom: 3px dashed var(--pop-blue);
-            /* 置頂關鍵語法 */
-            position: sticky;
-            top: 0;
-            z-index: 100;
+        /* === 1. 全新：專屬店家導覽列 (永遠置頂) === */
+        .sticky-navbar {
+            position: sticky; top: 0; z-index: 100;
+            height: 76px; box-sizing: border-box; /* 固定高度確保置頂完美銜接 */
+            background: white; border-bottom: 3px solid var(--ink-dark);
+            padding: 0 15px; display: flex; align-items: center; justify-content: space-between;
+            box-shadow: 0 4px 0px rgba(0,0,0,0.05);
         }
-
-        /* 店家卡片 (無 emoji、變緊湊) */
-        .store-card {
-            background: white; border: 3px solid var(--ink-dark); border-radius: 16px; 
-            padding: 12px 16px; margin-bottom: 10px; display: flex; align-items: center; justify-content: space-between;
-            box-shadow: 4px 4px 0px var(--pop-blue);
-        }
-        .store-info { display: flex; flex-direction: column; gap: 4px; }
-        .store-name { font-size: 18px; font-weight: bold; color: var(--pop-pink); }
-        .store-loc { color: var(--ink-dark); text-decoration: none; font-size: 12px; font-weight: bold; border-bottom: 1px solid var(--ink-dark); display: inline-block; padding-bottom: 1px;}
+        .nav-info { display: flex; flex-direction: column; gap: 4px; }
+        .nav-store { font-size: 22px; font-weight: bold; color: var(--pop-pink); letter-spacing: 1px; }
+        .nav-loc { color: var(--ink-dark); text-decoration: none; font-size: 13px; font-weight: bold; border-bottom: 1px solid var(--ink-dark); display: inline-block; padding-bottom: 1px;}
         
         .btn-call {
-            background: var(--pop-yellow); border: 3px solid var(--ink-dark); border-radius: 10px; padding: 6px 10px; 
-            font-size: 12px; font-weight: bold; color: var(--ink-dark); text-decoration: none; transition: 0.2s;
+            background: var(--pop-yellow); border: 3px solid var(--ink-dark); border-radius: 12px; padding: 8px 12px; 
+            font-size: 13px; font-weight: bold; color: var(--ink-dark); text-decoration: none; transition: 0.2s;
             white-space: nowrap; flex-shrink: 0; box-shadow: 2px 2px 0px var(--ink-dark);
         }
         .btn-call:active { transform: translate(2px,2px); box-shadow: 0px 0px 0px var(--ink-dark); }
 
-        /* 標題與動畫設定 (縮小以節省空間) */
-        .header { text-align: center; margin-top: 5px; }
-        .title-box {
-            background: white; border: 3px solid var(--ink-dark); border-radius: 16px; padding: 10px 15px; 
-            box-shadow: 4px 4px 0px var(--pop-pink); display: inline-block; position: relative; z-index: 2; margin-top: -10px;
-        }
-        .title-box h1 { margin: 0; font-size: 20px; letter-spacing: 1px; color: var(--ink-dark); }
-        .title-box p { margin: 4px 0 0 0; font-size: 13px; color: #666; font-weight: bold;}
+        /* === 2. 標題與插畫 (無框自然版，隨螢幕滑走) === */
+        .hero-section { text-align: center; padding: 25px 15px 15px 15px; }
+        .hero-title { font-size: 24px; font-weight: bold; color: var(--ink-dark); margin: 15px 0 5px 0; letter-spacing: 1px; }
+        .hero-subtitle { font-size: 14px; color: #666; font-weight: bold; margin: 0; }
 
         /* --- SVG 動畫區 --- */
         @keyframes pulse-sun { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.04); } }
@@ -73,11 +60,18 @@
         .anim-wave-1 { animation: wave-move 3s ease-in-out infinite; }
         .anim-wave-2 { animation: wave-move 3s ease-in-out infinite 1.5s; }
 
-        /* === 內容區塊 === */
-        .content-section { padding: 10px 0 40px 0; }
-        .month-header { font-size: 18px; font-weight: bold; display: flex; align-items: center; gap: 10px; margin-bottom: 20px; margin-top: 20px; color: var(--ink-dark);}
+        /* === 3. 月份子標題接力置頂 (神級 UX) === */
+        .month-header { 
+            position: sticky; top: 76px; z-index: 90; /* 剛好接在導覽列 76px 下方 */
+            background: var(--bg-yellow); /* 阻擋下方捲動的文字 */
+            padding: 15px; margin: 0 -15px; /* 撐滿螢幕寬度 */
+            font-size: 19px; font-weight: bold; display: flex; align-items: center; gap: 10px; color: var(--ink-dark);
+        }
         .month-header::after { content: ""; flex: 1; height: 4px; background: var(--pop-pink); border-radius: 2px; opacity: 0.5;}
-        .timeline { border-left: 4px dotted var(--pop-blue); margin-left: 20px; padding-left: 25px; padding-bottom: 10px; }
+        
+        /* 內容區塊 */
+        .content-section { padding-bottom: 40px; }
+        .timeline { border-left: 4px dotted var(--pop-blue); margin-left: 20px; padding-left: 25px; padding-bottom: 15px; padding-top: 5px;}
         .event { position: relative; margin-bottom: 25px; }
         .event::before {
             content: ''; position: absolute; left: -35px; top: 15px; width: 14px; height: 14px;
@@ -103,7 +97,6 @@
         .cancelled .event-title { color: #888; text-decoration: line-through; }
         .cancelled .event-desc { color: var(--pop-pink); font-weight: bold; }
 
-        /* 返回按鈕 (無 emoji) */
         .home-btn {
             display: inline-block; background: white; border: 3px solid var(--ink-dark); border-radius: 15px;
             padding: 10px 20px; font-size: 16px; font-weight: bold; color: var(--ink-dark);
@@ -114,39 +107,34 @@
 </head>
 <body>
 
-<div class="top-section">
-    <div class="container">
-        <!-- 移除 Emoji，並縮小卡片高度以利置頂 -->
-        <div class="store-card">
-            <div class="store-info">
-                <div class="store-name">東泳記泳裝店</div>
-                <a href="https://maps.app.goo.gl/qaywzMaHnHRe98AF8?g_st=ic" target="_blank" class="store-loc">卑南鄉溫泉路370號 (點擊導航)</a>
-            </div>
-            <a href="tel:0910557998" class="btn-call">撥打電話</a>
-        </div>
-
-        <div class="header">
-            <!-- 將插畫稍微縮小 (width=110, height=70) 以節省上方空間 -->
-            <svg width="110" height="70" viewBox="0 0 140 90" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="70" cy="35" r="18" fill="#FFE66D" stroke="#2C3E50" stroke-width="3" class="anim-sun"/>
-                <path d="M 10 70 L 40 30 L 70 70 Z" fill="#A8E6CF" stroke="#2C3E50" stroke-width="3" stroke-linejoin="round"/>
-                <path d="M 50 70 L 90 20 L 130 70 Z" fill="#4ECDC4" stroke="#2C3E50" stroke-width="3" stroke-linejoin="round"/>
-                <path d="M 60 50 Q 55 40 60 30" fill="none" stroke="#FF6B6B" stroke-width="4" stroke-linecap="round" class="anim-steam-1"/>
-                <path d="M 75 45 Q 70 35 75 25" fill="none" stroke="#FF6B6B" stroke-width="4" stroke-linecap="round" class="anim-steam-2"/>
-                <path d="M 10 75 Q 35 65 70 75 T 130 75" fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" class="anim-wave-1"/>
-                <path d="M 10 85 Q 35 75 70 85 T 130 85" fill="none" stroke="#4ECDC4" stroke-width="6" stroke-linecap="round" class="anim-wave-2"/>
-            </svg>
-            <div class="title-box">
-                <h1>2026近期活動整理</h1>
-                <p>泡暖湯・穿泳裝・玩台東</p>
-            </div>
-        </div>
+<!-- 1. 永遠置頂的店家導覽列 (店名變大) -->
+<div class="sticky-navbar">
+    <div class="nav-info">
+        <div class="nav-store">東泳記泳裝店</div>
+        <a href="https://maps.app.goo.gl/qaywzMaHnHRe98AF8?g_st=ic" target="_blank" class="nav-loc">卑南鄉溫泉路370號 (點擊導航)</a>
     </div>
+    <a href="tel:0910557998" class="btn-call">撥打電話</a>
 </div>
 
-<div class="content-section">
-    <div class="container">
-        <!-- 跨月活動 -->
+<div class="container">
+    <!-- 2. 無框自然版首圖 (隨螢幕滾動) -->
+    <div class="hero-section">
+        <svg width="120" height="75" viewBox="0 0 140 90" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="70" cy="35" r="18" fill="#FFE66D" stroke="#2C3E50" stroke-width="3" class="anim-sun"/>
+            <path d="M 10 70 L 40 30 L 70 70 Z" fill="#A8E6CF" stroke="#2C3E50" stroke-width="3" stroke-linejoin="round"/>
+            <path d="M 50 70 L 90 20 L 130 70 Z" fill="#4ECDC4" stroke="#2C3E50" stroke-width="3" stroke-linejoin="round"/>
+            <path d="M 60 50 Q 55 40 60 30" fill="none" stroke="#FF6B6B" stroke-width="4" stroke-linecap="round" class="anim-steam-1"/>
+            <path d="M 75 45 Q 70 35 75 25" fill="none" stroke="#FF6B6B" stroke-width="4" stroke-linecap="round" class="anim-steam-2"/>
+            <path d="M 10 75 Q 35 65 70 75 T 130 75" fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" class="anim-wave-1"/>
+            <path d="M 10 85 Q 35 75 70 85 T 130 85" fill="none" stroke="#4ECDC4" stroke-width="6" stroke-linecap="round" class="anim-wave-2"/>
+        </svg>
+        <h1 class="hero-title">2026近期活動整理</h1>
+        <p class="hero-subtitle">泡暖湯・穿泳裝・玩台東</p>
+    </div>
+
+    <!-- 3. 內容區與接力置頂的月份標題 -->
+    <div class="content-section">
+        
         <div class="month-header">持續展開 (跨月活動)</div>
         <div class="timeline">
             <div class="event">
@@ -174,7 +162,6 @@
             </div>
         </div>
 
-        <!-- 10月上旬 -->
         <div class="month-header">10月上旬 October</div>
         <div class="timeline">
             <div class="event">
@@ -239,7 +226,6 @@
             </div>
         </div>
 
-        <!-- 10月下旬 -->
         <div class="month-header">10月下旬 October</div>
         <div class="timeline">
             <div class="event">
@@ -288,7 +274,6 @@
             </div>
         </div>
 
-        <!-- 11月 -->
         <div class="month-header">11月 November</div>
         <div class="timeline">
             <div class="event">
@@ -340,7 +325,6 @@
             </div>
         </div>
 
-        <!-- 12月 -->
         <div class="month-header">12月 December</div>
         <div class="timeline">
             <div class="event">
@@ -353,7 +337,6 @@
             </div>
         </div>
 
-        <!-- 頁尾回首頁按鈕 -->
         <div style="text-align: center; margin-top: 40px;">
             <a href="home.html" class="home-btn">回到活動首頁</a>
         </div>
