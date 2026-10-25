@@ -77,7 +77,9 @@
         .month-header { 
             position: sticky; top: max(80px, calc(60px + env(safe-area-inset-top))); z-index: 90; 
             background: var(--bg-yellow); 
-            padding: 12px 15px; margin: 0 -15px; 
+            /* 縮小月份標題區塊的 padding */
+            padding: 10px 15px 5px 15px; 
+            margin: 0 -15px; 
             display: flex; flex-direction: column; gap: 4px;
         }
         .month-context { font-size: 13px; color: var(--pop-pink); font-weight: bold; letter-spacing: 0.5px; }
@@ -87,7 +89,8 @@
         /* 內容區塊 */
         .content-section { padding-bottom: 80px; }
         
-        .timeline { border-left: 4px dotted var(--pop-blue); margin-left: 20px; padding-left: 25px; padding-bottom: 15px; padding-top: 5px;}
+        /* 縮小活動列表區塊底部的 padding */
+        .timeline { border-left: 4px dotted var(--pop-blue); margin-left: 20px; padding-left: 25px; padding-bottom: 5px; padding-top: 5px;}
         .event { position: relative; margin-bottom: 25px; }
         .event::before {
             content: ''; position: absolute; left: -35px; top: 15px; width: 14px; height: 14px;
@@ -102,7 +105,6 @@
             gap: 8px; 
         }
         
-        /* 嚴格的排序區塊：日期 -> 標籤 -> 時間 */
         .card-header {
             margin-bottom: 2px; 
             line-height: 1.8; 
@@ -137,13 +139,11 @@
         }
         .event-loc:active { background: #dce4ec; transform: scale(0.97); }
 
-        /* 延期活動專屬樣式 (橘色) */
         .postponed { background: #FFFBF0; border: 3px dashed #F39C12; box-shadow: 2px 2px 0px rgba(243, 156, 18, 0.2); }
         .postponed .event-title { color: var(--ink-dark); text-decoration: none; }
         .postponed .event-desc { color: #D35400; font-weight: bold; }
         .postponed .event-loc { opacity: 0.8; pointer-events: none; } 
 
-        /* === 全新：取消活動專屬樣式 (紅色) === */
         .cancelled { background: #FFF0F0; border: 3px dashed #E74C3C; box-shadow: 2px 2px 0px rgba(231, 76, 60, 0.2); }
         .cancelled .event-title { color: var(--ink-dark); text-decoration: none; }
         .cancelled .event-desc { color: #C0392B; font-weight: bold; }
@@ -323,7 +323,6 @@
                 </div>
             </div>
             
-            <!-- 新增：因颱風直接取消的活動 (紅色樣式) -->
             <div class="event" data-end="1231">
                 <div class="event-card cancelled">
                     <div class="card-header">
@@ -336,7 +335,6 @@
                 </div>
             </div>
             
-            <!-- 延期活動補上「薔琵颱風」字眼 -->
             <div class="event" data-end="1231">
                 <div class="event-card postponed">
                     <div class="card-header">
@@ -537,8 +535,9 @@
             </div>
         </div>
 
+        <!-- 移除「※」符號 -->
         <div class="disclaimer">
-            ※ 溫馨提醒：本網頁整理之活動資訊僅供旅客參考，實際活動時間、地點與收費標準，請依各主辦單位最新公告為準。
+            溫馨提醒：本網頁整理之活動資訊僅供旅客參考，實際活動時間、地點與收費標準，請依各主辦單位最新公告為準。
         </div>
 
         <div style="text-align: center; margin-top: 25px;">
@@ -567,8 +566,6 @@
         
         for (let i = 0; i < events.length; i++) {
             const eventEnd = parseInt(events[i].getAttribute('data-end'));
-            
-            /* 新增：將取消(cancelled)的活動也排除，讓畫面自動跳轉到「下一個會發生的活動」 */
             const isPostponed = events[i].querySelector('.postponed') !== null;
             const isCancelled = events[i].querySelector('.cancelled') !== null;
             
