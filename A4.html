@@ -61,8 +61,8 @@
             letter-spacing: 1.2px; 
             margin-bottom: 2px; 
             text-shadow: 1px 1px 2px rgba(255,255,255,0.9); 
-            display: inline-block;     /* <-- 關鍵：讓內距生效並可以自由位移 */
-            padding-left: 41px;        /* <-- 數字越大會越往右退，您可以改成 35px 或 45px 試試看！ */    
+            display: inline-block;     
+            padding-left: 41px;        
             font-family: 'Iansui', cursive !important; /* 強制使用雲端芫荽手寫體 */
         }
 
@@ -71,13 +71,13 @@
             font-family: 'Noto Sans TC', sans-serif !important; 
             font-size: 40pt !important; 
             font-weight: 900 !important;                       
-            line-height: 1;            /* <-- 關鍵：把上下多餘的行高空白收緊 */
-            margin: 2px 0 2px 0;      /* <-- 微調上下外距，讓它跟上下區塊更緊密 */
+            line-height: 1;            
+            margin: 2px 0 2px 0;      
         }
 
         /*店名：東泳記泳裝店，立體顏色*/
         .h-title a { 
-            color: #01579b;                /* 正中間的深藍色主字體 */
+            color: #01579b;                
             text-decoration: none; 
             transition: 0.2s; 
             
@@ -87,7 +87,7 @@
                  1.5px -1.5px 1px rgba(255, 255, 255, 0.8), 
                 -1.5px  1.5px 1px rgba(255, 255, 255, 0.8), 
                  1.5px  1.5px 1px rgba(255, 255, 255, 0.8), 
-                 0px 4px 8px rgba(0, 0, 0, 0.25);   /* 右下方的立體浮動陰影 */
+                 0px 4px 8px rgba(0, 0, 0, 0.25);   
         }
 
         .store-info { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; margin-top: 10px; }
@@ -96,16 +96,16 @@
 
         /* 按鈕：半透明藍綠色、小巧、帶文字陰影確保清晰 */
         .phone, .address { 
-            background: rgba(2, 189, 180, 0.7); /* <-- 調整按鈕透明度（數字 0.7 越小越透明） */
+            background: rgba(2, 189, 180, 0.7); 
             color: white; 
-            padding: 4px 12px;                  /* <-- 調整按鈕大小與胖瘦（前為上下，後為左右） */
+            padding: 4px 12px;                  
             border-radius: 20px; 
             font-size: 12pt; 
             font-weight: bold; 
             border: none; 
             transition: 0.2s; 
             box-shadow: 0 2px 5px rgba(0,0,0,0.25); 
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4); /* <-- 確保白字清晰的陰影 */
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4); 
             /* 指定思源黑體粗體 */
             font-family: 'Noto Sans TC', sans-serif !important; 
             font-weight: 700 !important;
@@ -118,7 +118,7 @@
         /* 總整理標語 */
         .section-title {
             position: absolute;
-            top: 52mm;  /*上下調整*/
+            top: 52mm;  
             left: 0;
             width: 100%;
             text-align: center;
@@ -140,7 +140,7 @@
         .grid { 
             display: flex; 
             gap: 10px; 
-            margin-top: 14mm; /*整體往上或下調整，讓表格跟標語保持適當距離*/
+            margin-top: 14mm; 
             margin-bottom: 8px; 
         }
         
@@ -149,7 +149,7 @@
             flex: 1; 
             display: flex; 
             flex-direction: column; 
-            gap: 4px; /* <-- 把原本的間距縮小，讓方塊更緊湊 */
+            gap: 4px; 
         }
 
         /* 月份方塊：外框保持圓角與大小不變，但取消內部左右邊距 */
@@ -158,7 +158,7 @@
             backdrop-filter: blur(2px);
             border: 2.5px solid; 
             border-radius: 20px 25px 22px 24px / 24px 22px 25px 20px; 
-            padding: 0px 10px 8px 10px;    /* <-- 左右保持 10px，讓日期和內文有安全距離 */
+            padding: 0px 10px 8px 10px;    
             box-sizing: border-box; 
             display: flex; 
             flex-direction: column; 
@@ -173,7 +173,7 @@
             font-weight: bold; 
             font-size: 12pt;         
             padding: 6px 10px; 
-            margin: 0 -10px 8px -10px;    /* <-- 左右設為 -10px，剛好把方塊的 padding 蓋過去、完美滿版貼齊！ */
+            margin: 0 -10px 8px -10px;    
             border-top-left-radius: 17px; 
             border-top-right-radius: 22px;
             border-bottom-left-radius: 0px;
@@ -199,8 +199,7 @@
         .event { display: flex; margin-bottom: 5px; border-bottom: 1px dashed rgba(0,0,0,0.15); padding-bottom: 5px; line-height: 1.35; }
         .event:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
         
-        /* 調整日期寬度以容納「延期/取消」等字樣 */
-        .e-date { width: 62px; font-size: 8pt; font-weight: bold; color: #333; flex-shrink: 0; margin-right: 4px; }
+        .e-date { width: 58px; font-size: 8pt; font-weight: bold; color: #333; flex-shrink: 0; margin-right: 4px; }
         .e-info { flex: 1; }
         .e-name { font-size: 8.5pt; font-weight: bold; color: #111; }
         .e-desc { font-size: 7.2pt; color: #555; margin-top: 1.5px; }
@@ -246,8 +245,9 @@
 
         <!-- 活動表格區塊 -->
         <div class="grid">
-            <!-- 左欄：跨月活動與 10月上旬區塊 -->
+            <!-- ====== 左欄：持續展開 ＋ 統一合併的 10月 ====== -->
             <div class="col">
+                <!-- 持續展開 -->
                 <div class="month-box m-ongoing">
                     <div class="m-head">🌟 持續展開 (跨月活動)</div>
                     <div class="event"><div class="e-date" style="color:#00796b;">7/1~10/31</div><div class="e-info"><div class="e-name">2026南迴藝術季—山徑之流</div><div class="e-loc" style="color:#00796b;">📍南迴公路</div></div></div>
@@ -255,50 +255,40 @@
                     <div class="event"><div class="e-date" style="color:#00796b;">即日起~11/28</div><div class="e-info"><div class="e-name">永續方舟館桌遊大挑戰</div><div class="e-desc">每週六 09:30卡坦島 / 14:30循環之邦</div><div class="e-loc" style="color:#00796b;">📍永續方舟館</div></div></div>
                 </div>
 
-                <div class="month-box m-sep">
-                    <div class="m-head">10月上 October</div>
+                <!-- 完美合併的 10月 October -->
+                <div class="month-box m-oct">
+                    <div class="m-head">10月 October</div>
                     <div class="event"><div class="e-date">10/2</div><div class="e-info"><div class="e-name">《那年，我們一起聽的歌》① 咱的歌·咱的年代</div><div class="e-desc">🎵洪榮宏, 沈文程, 荒山亮, 高欣欣, 吳淑敏</div><div class="e-loc">📍北町日式建築宿舍群 ⏰19:00~21:00</div></div></div>
                     <div class="event"><div class="e-date">10/3</div><div class="e-info"><div class="e-name">《那年，我們一起聽的歌》② 跨世代·唱青春</div><div class="e-desc">🎵陳昇&新寶島樂隊, 周蕙, 賴銘偉, 緯美雙雄</div><div class="e-loc">📍北町日式建築宿舍群 ⏰19:00~21:00</div></div></div>
                     <div class="event"><div class="e-date">10/4</div><div class="e-info"><div class="e-name">2026火燒島馬拉松</div><div class="e-loc">📍綠島人權紀念公園 ⏰05:00~13:00</div></div></div>
                     <div class="event"><div class="e-date">10/10</div><div class="e-info"><div class="e-name">世界的方舟・南島台灣・國慶焰火晚會</div><div class="e-loc">📍台東市國際地標 ⏰19:00~20:30</div></div></div>
                     <div class="event"><div class="e-date">10/17</div><div class="e-info"><div class="e-name">雲端發票向前行 森林健走好心情</div><div class="e-loc">📍臺東森林公園 ⏰14:00~17:00</div></div></div>
                     <div class="event"><div class="e-date">10/18</div><div class="e-info"><div class="e-name">達仁鄉縫迴山海祭路跑、市集音樂會</div><div class="e-loc">📍南田海岸親水公園 ⏰06:00~14:00</div></div></div>
-                    
-                    <!-- 延期與取消資訊：補上颱風原因 -->
                     <div class="event"><div class="e-date" style="color:red;">延期</div><div class="e-info"><div class="e-name" style="color:gray;">2026 台東香草生活節</div><div class="e-desc" style="color:red;">⚠️因薔琵颱風延期辦理，新日期將另行公告</div><div class="e-loc">📍臺東縣客家文化園區</div></div></div>
                     <div class="event"><div class="e-date" style="color:red;">延期</div><div class="e-info"><div class="e-name" style="color:gray;">我在太麻里好解憂＿好解憂散策市集</div><div class="e-desc" style="color:red;">⚠️因薔琵颱風延期辦理，新日期將另行公告</div><div class="e-loc">📍太麻里福興宮及泰和村活動中心前</div></div></div>
-                </div>
-            </div>
-
-            <!-- ====== 右欄：10月(下旬)、11月、12月 ====== -->
-            <div class="col">
-                <div class="month-box m-oct">
-                    <div class="m-head">10月下 October </div>
                     
-                    <!-- 取消活動：紅色強調 -->
+                    <!-- 原本10月下的內容接續 -->
                     <div class="event"><div class="e-date">10/24~25<br><span style="color:red; font-size:7pt; border:1px solid red; padding:0 2px;">取消</span></div><div class="e-info"><div class="e-name" style="text-decoration: line-through; color:gray;">2026池上秋收稻穗藝術節</div><div class="e-desc" style="color:red; font-weight:bold;">⚠️因薔琵颱風影響，全數取消演出。</div><div class="e-loc">📍台東縣池上鄉萬安社區天堂路稻田區</div></div></div>
-
                     <div class="event"><div class="e-date">10/24<br><span style="color:red; font-size:7pt;">延期更新</span></div><div class="e-info"><div class="e-name">南島咖啡節市集</div><div class="e-loc">📍台東波浪屋前廣場 ⏰13:00~19:00</div></div></div>
                     <div class="event"><div class="e-date">10/25</div><div class="e-info"><div class="e-name">南島咖啡節市集</div><div class="e-loc">📍台東波浪屋前廣場 ⏰11:00~18:00</div></div></div>
                     <div class="event"><div class="e-date">10/25~26<br><span style="color:red; font-size:7pt;">延期更新</span></div><div class="e-info"><div class="e-name">2026臺東慢食節《夜食餐桌》</div><div class="e-loc">📍臺東新生公園廣場 ⏰15:00~20:00</div></div></div>
                     <div class="event"><div class="e-date">10/31</div><div class="e-info"><div class="e-name">2026漫遊知森(全齡森呼吸療癒)</div><div class="e-desc">🏃26攤知森市集 (部分體驗需事前付費報名)</div><div class="e-loc">📍知本國家森林遊樂區 ⏰09:30~16:00</div></div></div>
                     <div class="event"><div class="e-date">10/31</div><div class="e-info"><div class="e-name">知本溫泉路跑嘉年華音樂會</div><div class="e-desc">🎵達魯瑪克古謠班, 卑南族青春歌隊, 思奈樂團, 孔亞明, 桑梅絹</div><div class="e-loc">📍東遊季星星草原 ⏰16:00~21:00</div></div></div>
-                    
-                    <!-- PASIWALI 拆分：10/31 卡司 -->
                     <div class="event"><div class="e-date">10/31</div><div class="e-info"><div class="e-name">☼ 𝟮𝟬𝟮𝟲 𝗧𝗮𝗶𝘄𝗮𝗻 𝗣𝗔𝗦𝗜𝗪𝗔𝗟𝗜 ☾</div><div class="e-desc">🎵卡司：范文凱, 高金龍, 呂薔, Parsha cluB (JP), Saya張惠春, Andrew Gurruwiwi Band (AU)</div><div class="e-loc">📍臺東森林公園 ⏰13:00 開始進場 (免費)</div></div></div>
                 </div>
-                
+            </div>
+
+            <!-- ====== 右欄：11月、12月 ====== -->
+            <div class="col">
                 <div class="month-box m-nov">
                     <div class="m-head">11月 November</div>
                     
-                    <!-- PASIWALI 拆分：11/1 卡司 -->
                     <div class="event"><div class="e-date">11/1</div><div class="e-info"><div class="e-name">☼ 𝟮𝟬𝟮𝟲 𝗧𝗮𝗶𝘄𝗮𝗻 𝗣𝗔𝗦𝗜𝗪𝗔𝗟𝗜 ☾</div><div class="e-desc">🎵卡司：巴燕庭, 鄒女在Party, 范逸臣, RHYTHM REBELS (Bali), 葛西瓦, Shepherds Reign (NZ)</div><div class="e-loc">📍臺東森林公園 ⏰13:00 開始進場 (免費)</div></div></div>
                     
                     <div class="event"><div class="e-date">11/1</div><div class="e-info"><div class="e-name">跑吧！孩子 2026知本溫泉公益馬拉松</div><div class="e-loc">📍知本龍泉路第二停車場 ⏰06:00~14:30</div></div></div>
                     
                     <div class="event"><div class="e-date">11/5</div><div class="e-info"><div class="e-name">留一天給海洋：淨灘活動</div><div class="e-desc">提供餐點及UV100防曬巾，為海洋減負擔</div><div class="e-loc">📍臺東金樽漁港 ⏰09:30~11:00</div></div></div>
                     
-                    <!-- 衝浪系列大整合 -->
                     <div class="event"><div class="e-date">11/6~8</div><div class="e-info"><div class="e-name">2026臺灣國際衝浪公開賽 (國內賽)</div><div class="e-desc">🏄男女短板/長板/青少年短板(報名延長至10/29)</div><div class="e-loc">📍臺東金樽漁港 ⏰免費觀賽</div></div></div>
                     
                     <div class="event"><div class="e-date">11/6~8<br>11/14~22</div><div class="e-info"><div class="e-name">衝浪小旅行 / 市集 / 攝影比賽</div><div class="e-desc">🎒新港職人見學 / 山海獵人足跡 (需付費)<br>🛍️海洋市集 (※11/9-13休賽暫停)<br>📷衝浪攝影比賽</div><div class="e-loc">📍臺東金樽漁港</div></div></div>
