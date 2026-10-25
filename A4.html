@@ -184,12 +184,14 @@
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); 
         }
 
+        .m-alert { border-color: #d32f2f; }
         .m-sep { border-color: #0277bd; } 
         .m-oct { border-color: #ef6c00; }
         .m-nov { border-color: #2e7d32; }
         .m-dec { border-color: #6a1b9a; }
         .m-ongoing { border-color: #00796b; } 
         
+        .m-alert .m-head { background: #d32f2f; }
         .m-sep .m-head { background: #0277bd; }
         .m-oct .m-head { background: #ef6c00; }
         .m-nov .m-head { background: #2e7d32; }
@@ -199,7 +201,8 @@
         .event { display: flex; margin-bottom: 5px; border-bottom: 1px dashed rgba(0,0,0,0.15); padding-bottom: 5px; line-height: 1.35; }
         .event:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
         
-        .e-date { width: 58px; font-size: 8pt; font-weight: bold; color: #333; flex-shrink: 0; margin-right: 4px; }
+        /* 調整日期寬度以容納「延期/取消」等字樣 */
+        .e-date { width: 62px; font-size: 8pt; font-weight: bold; color: #333; flex-shrink: 0; margin-right: 4px; }
         .e-info { flex: 1; }
         .e-name { font-size: 8.5pt; font-weight: bold; color: #111; }
         .e-desc { font-size: 7.2pt; color: #555; margin-top: 1.5px; }
@@ -245,7 +248,7 @@
 
         <!-- 活動表格區塊 -->
         <div class="grid">
-            <!-- ====== 左欄：持續展開 ＋ 統一合併的 10月 ====== -->
+            <!-- ====== 左欄：持續展開 ＋ 扣除異動後的 10月 ====== -->
             <div class="col">
                 <!-- 持續展開 -->
                 <div class="month-box m-ongoing">
@@ -255,7 +258,7 @@
                     <div class="event"><div class="e-date" style="color:#00796b;">即日起~11/28</div><div class="e-info"><div class="e-name">永續方舟館桌遊大挑戰</div><div class="e-desc">每週六 09:30卡坦島 / 14:30循環之邦</div><div class="e-loc" style="color:#00796b;">📍永續方舟館</div></div></div>
                 </div>
 
-                <!-- 完美合併的 10月 October -->
+                <!-- 10月 October (扣除取消/延期活動) -->
                 <div class="month-box m-oct">
                     <div class="m-head">10月 October</div>
                     <div class="event"><div class="e-date">10/2</div><div class="e-info"><div class="e-name">《那年，我們一起聽的歌》① 咱的歌·咱的年代</div><div class="e-desc">🎵洪榮宏, 沈文程, 荒山亮, 高欣欣, 吳淑敏</div><div class="e-loc">📍北町日式建築宿舍群 ⏰19:00~21:00</div></div></div>
@@ -264,22 +267,27 @@
                     <div class="event"><div class="e-date">10/10</div><div class="e-info"><div class="e-name">世界的方舟・南島台灣・國慶焰火晚會</div><div class="e-loc">📍台東市國際地標 ⏰19:00~20:30</div></div></div>
                     <div class="event"><div class="e-date">10/17</div><div class="e-info"><div class="e-name">雲端發票向前行 森林健走好心情</div><div class="e-loc">📍臺東森林公園 ⏰14:00~17:00</div></div></div>
                     <div class="event"><div class="e-date">10/18</div><div class="e-info"><div class="e-name">達仁鄉縫迴山海祭路跑、市集音樂會</div><div class="e-loc">📍南田海岸親水公園 ⏰06:00~14:00</div></div></div>
-                    <div class="event"><div class="e-date" style="color:red;">延期</div><div class="e-info"><div class="e-name" style="color:gray;">2026 台東香草生活節</div><div class="e-desc" style="color:red;">⚠️因薔琵颱風延期辦理，新日期將另行公告</div><div class="e-loc">📍臺東縣客家文化園區</div></div></div>
-                    <div class="event"><div class="e-date" style="color:red;">延期</div><div class="e-info"><div class="e-name" style="color:gray;">我在太麻里好解憂＿好解憂散策市集</div><div class="e-desc" style="color:red;">⚠️因薔琵颱風延期辦理，新日期將另行公告</div><div class="e-loc">📍太麻里福興宮及泰和村活動中心前</div></div></div>
                     
-                    <!-- 原本10月下的內容接續 -->
-                    <div class="event"><div class="e-date">10/24~25<br><span style="color:red; font-size:7pt; border:1px solid red; padding:0 2px;">取消</span></div><div class="e-info"><div class="e-name" style="text-decoration: line-through; color:gray;">2026池上秋收稻穗藝術節</div><div class="e-desc" style="color:red; font-weight:bold;">⚠️因薔琵颱風影響，全數取消演出。</div><div class="e-loc">📍台東縣池上鄉萬安社區天堂路稻田區</div></div></div>
                     <div class="event"><div class="e-date">10/24<br><span style="color:red; font-size:7pt;">延期更新</span></div><div class="e-info"><div class="e-name">南島咖啡節市集</div><div class="e-loc">📍台東波浪屋前廣場 ⏰13:00~19:00</div></div></div>
                     <div class="event"><div class="e-date">10/25</div><div class="e-info"><div class="e-name">南島咖啡節市集</div><div class="e-loc">📍台東波浪屋前廣場 ⏰11:00~18:00</div></div></div>
                     <div class="event"><div class="e-date">10/25~26<br><span style="color:red; font-size:7pt;">延期更新</span></div><div class="e-info"><div class="e-name">2026臺東慢食節《夜食餐桌》</div><div class="e-loc">📍臺東新生公園廣場 ⏰15:00~20:00</div></div></div>
                     <div class="event"><div class="e-date">10/31</div><div class="e-info"><div class="e-name">2026漫遊知森(全齡森呼吸療癒)</div><div class="e-desc">🏃26攤知森市集 (部分體驗需事前付費報名)</div><div class="e-loc">📍知本國家森林遊樂區 ⏰09:30~16:00</div></div></div>
                     <div class="event"><div class="e-date">10/31</div><div class="e-info"><div class="e-name">知本溫泉路跑嘉年華音樂會</div><div class="e-desc">🎵達魯瑪克古謠班, 卑南族青春歌隊, 思奈樂團, 孔亞明, 桑梅絹</div><div class="e-loc">📍東遊季星星草原 ⏰16:00~21:00</div></div></div>
+                    
                     <div class="event"><div class="e-date">10/31</div><div class="e-info"><div class="e-name">☼ 𝟮𝟬𝟮𝟲 𝗧𝗮𝗶𝘄𝗮𝗻 𝗣𝗔𝗦𝗜𝗪𝗔𝗟𝗜 ☾</div><div class="e-desc">🎵卡司：范文凱, 高金龍, 呂薔, Parsha cluB (JP), Saya張惠春, Andrew Gurruwiwi Band (AU)</div><div class="e-loc">📍臺東森林公園 ⏰13:00 開始進場 (免費)</div></div></div>
                 </div>
             </div>
 
-            <!-- ====== 右欄：11月、12月 ====== -->
+            <!-- ====== 右欄：異動公告 ＋ 11月 ＋ 12月 ====== -->
             <div class="col">
+                <!-- 獨立的異動公告區塊 -->
+                <div class="month-box m-alert">
+                    <div class="m-head">⚠️ 異動公告 (取消 / 延期)</div>
+                    <div class="event"><div class="e-date">10/24~25<br><span style="color:red; font-size:7pt; border:1px solid red; padding:0 2px;">取消</span></div><div class="e-info"><div class="e-name" style="text-decoration: line-through; color:gray;">2026池上秋收稻穗藝術節</div><div class="e-desc" style="color:red; font-weight:bold;">⚠️因薔琵颱風影響，全數取消演出。</div><div class="e-loc">📍台東縣池上鄉萬安社區天堂路稻田區</div></div></div>
+                    <div class="event"><div class="e-date" style="color:red;">延期</div><div class="e-info"><div class="e-name" style="color:gray;">2026 台東香草生活節</div><div class="e-desc" style="color:red;">⚠️因薔琵颱風延期辦理，新日期將另行公告</div><div class="e-loc">📍臺東縣客家文化園區</div></div></div>
+                    <div class="event"><div class="e-date" style="color:red;">延期</div><div class="e-info"><div class="e-name" style="color:gray;">我在太麻里好解憂＿好解憂散策市集</div><div class="e-desc" style="color:red;">⚠️因薔琵颱風延期辦理，新日期將另行公告</div><div class="e-loc">📍太麻里福興宮及泰和村活動中心前</div></div></div>
+                </div>
+
                 <div class="month-box m-nov">
                     <div class="m-head">11月 November</div>
                     
