@@ -35,11 +35,15 @@
         }
         .nav-info { display: flex; flex-direction: column; gap: 4px; }
         
-        .nav-store { font-size: 28px; font-weight: bold; color: var(--pop-pink); letter-spacing: 1px; line-height: 1.1; }
-        .nav-loc { color: var(--ink-dark); text-decoration: none; font-size: 13px; font-weight: bold; border-bottom: 1px solid var(--ink-dark); display: inline-block; padding-bottom: 1px;}
+        /* 微調店名字體大小，確保右邊放得下長長的電話號碼 */
+        .nav-store { font-size: 24px; font-weight: bold; color: var(--pop-pink); letter-spacing: 1px; line-height: 1.1; }
         
+        /* 移除地址底下的線 */
+        .nav-loc { color: var(--ink-dark); text-decoration: none; font-size: 13px; font-weight: bold; display: inline-block; padding-bottom: 1px;}
+        
+        /* 直接顯示電話號碼的按鈕 */
         .btn-call {
-            background: var(--pop-yellow); border: 3px solid var(--ink-dark); border-radius: 12px; padding: 8px 12px; 
+            background: var(--pop-yellow); border: 3px solid var(--ink-dark); border-radius: 12px; padding: 8px 10px; 
             font-size: 13px; font-weight: bold; color: var(--ink-dark); text-decoration: none; transition: 0.2s;
             white-space: nowrap; flex-shrink: 0; box-shadow: 2px 2px 0px var(--ink-dark);
         }
@@ -84,8 +88,9 @@
         .month-title { font-size: 19px; font-weight: bold; color: var(--ink-dark); display: flex; align-items: center; gap: 10px; width: 100%; }
         .month-title::after { content: ""; flex: 1; height: 4px; background: var(--pop-pink); border-radius: 2px; opacity: 0.5;}
         
-        /* 內容區塊 */
-        .content-section { padding-bottom: 20px; }
+        /* 內容區塊 (增加底部 padding 避免被浮動標語擋住) */
+        .content-section { padding-bottom: 80px; }
+        
         .timeline { border-left: 4px dotted var(--pop-blue); margin-left: 20px; padding-left: 25px; padding-bottom: 15px; padding-top: 5px;}
         .event { position: relative; margin-bottom: 25px; }
         .event::before {
@@ -124,24 +129,13 @@
         }
         .event-link:active { transform: scale(0.97); }
 
-        /* 全新：延期活動專屬樣式 (不再像被取消) */
+        /* 延期活動專屬樣式 */
         .postponed { 
-            background: #FFFBF0; /* 溫暖的淡黃底色 */
-            border: 3px dashed #F39C12; /* 橘色虛線框代表待定 */
-            box-shadow: 2px 2px 0px rgba(243, 156, 18, 0.2); 
+            background: #FFFBF0; border: 3px dashed #F39C12; box-shadow: 2px 2px 0px rgba(243, 156, 18, 0.2); 
         }
-        .postponed .event-title { 
-            color: var(--ink-dark); /* 絕對不要刪除線，保持深色字體 */
-            text-decoration: none; 
-        }
-        .postponed .event-desc { 
-            color: #D35400; /* 顯眼的橘紅色提示字 */
-            font-weight: bold; 
-        }
-        .postponed .event-loc { 
-            opacity: 0.8; 
-            pointer-events: none; /* 延期暫時不能點擊導航 */
-        } 
+        .postponed .event-title { color: var(--ink-dark); text-decoration: none; }
+        .postponed .event-desc { color: #D35400; font-weight: bold; }
+        .postponed .event-loc { opacity: 0.8; pointer-events: none; } 
 
         .home-btn {
             display: inline-block; background: white; border: 3px solid var(--ink-dark); border-radius: 15px;
@@ -151,10 +145,20 @@
         }
         .home-btn:active { transform: translate(2px, 2px); box-shadow: 0px 0px 0px var(--ink-dark); }
         
-        /* === 頁尾暖心標語 === */
+        /* === 浮動頁尾暖心標語 (加上毛玻璃特效) === */
         .slogan-footer {
-            display: flex; flex-direction: column; align-items: center; gap: 6px;
-            padding-bottom: max(30px, env(safe-area-inset-bottom));
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 249, 230, 0.85); /* 半透明背景 */
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px); /* 支援蘋果手機毛玻璃 */
+            border-top: 2px solid rgba(44, 62, 80, 0.1);
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            padding: 12px 0 max(12px, env(safe-area-inset-bottom));
+            z-index: 100;
+            box-shadow: 0 -4px 10px rgba(0,0,0,0.05);
         }
         .slogan-text {
             font-size: 14px; font-weight: bold; color: var(--ink-dark); letter-spacing: 1px;
@@ -169,7 +173,8 @@
         <div class="nav-store">東泳記泳裝店</div>
         <a href="https://maps.app.goo.gl/qaywzMaHnHRe98AF8?g_st=ic" target="_blank" class="nav-loc">卑南鄉溫泉路370號🚗導航</a>
     </div>
-    <a href="tel:0910557998" class="btn-call">撥打電話</a>
+    <!-- 按鈕直接顯示電話號碼 -->
+    <a href="tel:0910557998" class="btn-call">📞 0910-557-998</a>
 </div>
 
 <div class="container">
@@ -276,7 +281,6 @@
                 </div>
             </div>
             
-            <!-- 重做：充滿期待感的延期樣式 (無刪除線) -->
             <div class="event" data-end="1231">
                 <div class="event-card postponed">
                     <div class="event-date">延期公告 <span class="tag" style="background:#F39C12; color:white; border-color:#F39C12;">待定</span></div>
@@ -421,15 +425,16 @@
         <div style="text-align: center; margin-top: 40px;">
             <a href="home.html" class="home-btn">回到活動首頁</a>
         </div>
-        
-        <div class="slogan-footer">
-            <div class="slogan-text">
-                慢下來，感受台東山海與人情的溫度
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--pop-pink)" stroke="none">
-                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-                </svg>
-            </div>
-        </div>
+    </div>
+</div>
+
+<!-- 浮動頁尾暖心標語 (加上毛玻璃特效) -->
+<div class="slogan-footer">
+    <div class="slogan-text">
+        慢下來，感受台東山海與人情的溫度
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--pop-pink)" stroke="none">
+            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+        </svg>
     </div>
 </div>
 
@@ -444,7 +449,6 @@
         
         for (let i = 0; i < events.length; i++) {
             const eventEnd = parseInt(events[i].getAttribute('data-end'));
-            // 讓系統知道，遇到「延期 (postponed)」的活動要跳過，繼續往下找真正快到的活動
             const isPostponed = events[i].querySelector('.postponed') !== null;
             
             if (eventEnd >= currentMonthDay && !isPostponed) {
