@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>2026臺東活動海報 - 東泳記泳裝店</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/justfont/open-huninn-font/font.css">
+    
+    <style>
+        /* === A4 海報與列印設定 === */
+        @page { size: A4; margin: 0; }
+        body { 
+            background: #e0e5ec; font-family: 'jf-openhuninn-1.1', sans-serif; 
+            display: flex; justify-content: center; padding: 20px; margin: 0; 
+        }
+        
+        /* 模擬 A4 紙張大小 */
+        .a4-page { 
+            width: 210mm; min-height: 297mm; background: white; 
+            padding: 15mm; box-sizing: border-box; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2); 
+        }
+        
+        /* 列印時隱藏多餘元素 */
+        @media print { 
+            body { padding: 0; background: white; } 
+            .a4-page { box-shadow: none; width: 100%; height: auto;} 
+            .no-print { display: none !important; } 
+        }
+        
+        /* === 海報專屬標頭 === */
+        .header { 
+            text-align: center; border-bottom: 3px solid #2C3E50; 
+            padding-bottom: 12px; margin-bottom: 15px; 
+        }
+        .header h1 { margin: 0; font-size: 26px; color: #2C3E50; }
+        .header h2 { margin: 5px 0 0 0; font-size: 16px; color: #FF6B6B; letter-spacing: 1px; }
+        .header p { margin: 6px 0 0 0; font-size: 14px; font-weight: bold; color: #555; }
+
+        /* === 雙欄排版網格 === */
+        .event-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        
+        /* 單一活動卡片樣式 (改為適合黑白或彩色列印的簡約版) */
+        .event-item { 
+            border: 2px solid #2C3E50; border-radius: 8px; padding: 10px; 
+            break-inside: avoid; /* 避免列印時活動被切成兩半 */
+            display: flex; flex-direction: column; gap: 4px;
+        }
+        
+        /* 繼承並微調 2026.html 的樣式結構 */
+        .card-header { margin-bottom: 2px; line-height: 1.5; }
+        .event-date { font-weight: bold; font-size: 13px; color: #2C3E50; margin-right: 4px; }
+        .e-time { font-size: 11px; color: #555; font-weight: bold; margin-left: 2px;} 
+        
+        .tag { 
+            font-size: 10px; padding: 2px 6px; border-radius: 6px; font-weight: bold; 
+            border: 1.5px solid #2C3E50; display: inline-block; vertical-align: middle; 
+            margin-right: 2px; margin-bottom: 2px;
+        }
+        .tag-music { background: #FFE66D; color: #2C3E50; } 
+        .tag-market { background: #FF6B6B; color: white; }   
+        .tag-sport { background: #4ECDC4; color: white; }   
+        .tag-free { background: white; color: #FF6B6B; }     
+        .tag-fee { background: #CBAACB; color: white; }     
+        .tag-art { background: #A8E6CF; color: #2C3E50; }
+
+        .event-title { font-size: 14px; font-weight: bold; line-height: 1.3;}
+        .event-desc { font-size: 11px; color: #555; line-height: 1.4; margin-bottom: 2px;}
+        
+        /* 列印版地點 (拔除按鈕樣式) */
+        .event-loc { font-size: 11px; font-weight: bold; color: #2C3E50; margin-top: auto; }
+
+        /* 特殊狀態 */
+        .cancelled { border-style: dashed; border-color: #E74C3C; background: #FFF0F0; }
+        .cancelled .event-desc { color: #C0392B; }
+        .postponed { border-style: dashed; border-color: #F39C12; background: #FFFBF0; }
+        .postponed .event-desc { color: #D35400; }
+        
+        .print-btn {
+            background: #FFE66D; border: 3px solid #2C3E50; border-radius: 8px;
+            padding: 10px 20px; font-size: 16px; font-weight: bold; cursor: pointer;
+            margin-bottom: 15px; box-shadow: 2px 2px 0 #2C3E50;
+        }
+        .print-btn:active { transform: translate(2px,2px); box-shadow: none; }
+    </style>
+</head>
+<body>
+
+    <div class="a4-page">
+        <!-- 這是網頁上顯示的按鈕，列印時會自動隱藏 -->
+        <div class="no-print" style="text-align: center;">
+            <button class="print-btn" onclick="window.print()">🖨️ 點擊列印 / 存成 PDF 海報</button>
+        </div>
+
+        <div class="header">
+            <h1>2026臺東縣近期活動資訊</h1>
+            <h2>♨️ 東泳記泳裝店 為您整理 ♨️</h2>
+            <p>📞0910-557-998 ｜ 📍台東縣卑南鄉溫泉路370號</p>
+        </div>
+
+        <!-- 抓取來的活動會自動塞進這個網格裡 -->
+        <div class="event-grid" id="poster-content">
+            <p style="text-align: center; width: 100%; grid-column: span 2;">
+                ⏳ 正在從 2026.html 讀取最新活動資料...<br>
+                <span style="font-size: 12px; color: red;">※注意：自動抓取功能需上傳至 GitHub Pages 後才會生效。若在電腦直接點開檔案可能會顯示空白。</span>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // 核心「串聯」程式碼：去抓 2026.html 的內容
+        fetch('2026.html')
+            .then(response => {
+                if (!response.ok) throw new Error('Network response was not ok');
+                return response.text();
+            })
+            .then(html => {
+                // 將抓到的文字轉換成可以操作的網頁元素
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+                
+                // 找出 2026.html 裡面所有的活動卡片
+                const events = doc.querySelectorAll('.event-card');
+                const container = document.getElementById('poster-content');
+                
+                container.innerHTML = ''; // 清除載入中的文字
+                
+                // 逐一把活動卡片複製過來
+                events.forEach(event => {
+                    const clone = event.cloneNode(true);
+                    
+                    // 針對列印版進行改造：把導航按鈕(a標籤)變成純文字(div標籤)，這樣印出來就不會有奇怪的藍色底線
+                    const locBtn = clone.querySelector('.event-loc');
+                    if (locBtn) {
+                        const locDiv = document.createElement('div');
+                        locDiv.className = 'event-loc';
+                        locDiv.innerHTML = locBtn.innerHTML;
+                        locBtn.parentNode.replaceChild(locDiv, locBtn);
+                    }
+                    
+                    // 重新套用列印版的卡片樣式
+                    clone.className = 'event-item';
+                    if (event.classList.contains('postponed')) clone.classList.add('postponed');
+                    if (event.classList.contains('cancelled')) clone.classList.add('cancelled');
+                    
+                    container.appendChild(clone);
+                });
+            })
+            .catch(err => {
+                document.getElementById('poster-content').innerHTML = 
+                    '<p style="color:red; text-align:center; grid-column: span 2;">資料抓取失敗！<br>如果是直接在電腦點開檔案，瀏覽器安全設定會阻擋抓取功能。<br>請將檔案上傳至 GitHub Pages 後再打開，就會完美運作囉！</p>';
+            });
+    </script>
+</body>
+</html>
