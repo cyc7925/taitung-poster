@@ -121,10 +121,11 @@
         .postponed .event-desc { color: #D35400; font-weight: bold; }
         .postponed .event-loc { opacity: 0.8; pointer-events: none; } 
 
-        /* === 溫馨提醒免責聲明 === */
+        /* === 溫馨提醒免責聲明 (修正版) === */
         .disclaimer {
             font-size: 13px; color: #888; font-weight: bold; line-height: 1.5;
-            text-align: center; margin: 25px 15px; padding-top: 20px;
+            text-align: left; /* 改為靠左對齊 */
+            margin: 25px 15px; padding-top: 20px;
             border-top: 1px dashed #CCC;
         }
 
@@ -396,7 +397,7 @@
 
         <!-- 免責聲明 -->
         <div class="disclaimer">
-            ※ 溫馨提醒：本網頁整理之活動資訊僅供旅客參考，<br>實際活動時間、地點與收費標準，請依各主辦單位最新公告為準。
+            ※ 溫馨提醒：本網頁整理之活動資訊僅供旅客參考，實際活動時間、地點與收費標準，請依各主辦單位最新公告為準。
         </div>
 
         <div style="text-align: center; margin-top: 25px;">
@@ -446,4 +447,24 @@
         if (targetEvents.length > 0) {
             setTimeout(function() {
                 const y = targetEvents[0].getBoundingClientRect().top + window.scrollY - 145;
+                window.scrollTo({top: y, behavior: 'smooth'});
                 
+                targetEvents.forEach(function(event) {
+                    const card = event.querySelector('.event-card');
+                    if(card) {
+                        card.style.boxShadow = '0 0 0 4px var(--pop-pink)';
+                        card.style.borderColor = 'var(--pop-pink)';
+                        
+                        setTimeout(() => {
+                            card.style.boxShadow = '4px 4px 0px rgba(44, 62, 80, 0.15)';
+                            card.style.borderColor = 'var(--ink-dark)';
+                        }, 1500);
+                    }
+                });
+            }, 300);
+        }
+    });
+</script>
+
+</body>
+</html>
