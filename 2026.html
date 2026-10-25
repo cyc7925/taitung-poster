@@ -2,7 +2,7 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>2026臺東縣近期活動資訊 - 東泳記泳裝店</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/justfont/open-huninn-font/font.css">
     
@@ -28,9 +28,9 @@
         /* === 店家導覽列 === */
         .sticky-navbar {
             position: sticky; top: 0; z-index: 100;
-            height: 80px; box-sizing: border-box; 
+            height: max(80px, calc(60px + env(safe-area-inset-top))); box-sizing: border-box; 
             background: white; border-bottom: 3px solid var(--ink-dark);
-            padding: 0 15px; display: flex; align-items: center; justify-content: space-between;
+            padding: max(10px, env(safe-area-inset-top)) 15px 10px 15px; display: flex; align-items: center; justify-content: space-between;
             box-shadow: 0 4px 0px rgba(0,0,0,0.05);
         }
         .nav-info { display: flex; flex-direction: column; gap: 4px; }
@@ -45,7 +45,7 @@
         }
         .btn-call:active { transform: translate(2px,2px); box-shadow: 0px 0px 0px var(--ink-dark); }
 
-        /* === 標題與插畫 (左右並排，解決空白) === */
+        /* === 標題與插畫 === */
         .hero-section { 
             display: flex; align-items: center; justify-content: center; gap: 15px; 
             padding: 25px 10px 15px 10px; 
@@ -56,11 +56,9 @@
         .hero-title { 
             font-weight: bold; color: var(--ink-dark); 
             margin: 0 0 4px 0; line-height: 1.1; 
-            white-space: nowrap; /* 強制不換行 */
+            white-space: nowrap;
         }
-        .title-year {
-            font-size: 32px; color: var(--pop-pink); letter-spacing: 1px; display: block;
-        }
+        .title-year { font-size: 32px; color: var(--pop-pink); letter-spacing: 1px; display: block; }
         .title-text { font-size: 17px; display: block; margin-top: 2px;}
         .hero-subtitle { font-size: 13px; color: #666; font-weight: bold; margin: 0; }
 
@@ -75,9 +73,9 @@
         .anim-wave-1 { animation: wave-move 3s ease-in-out infinite; }
         .anim-wave-2 { animation: wave-move 3s ease-in-out infinite 1.5s; }
 
-        /* === 雙層月份子標題接力置頂 === */
+        /* === 雙層月份子標題 === */
         .month-header { 
-            position: sticky; top: 80px; z-index: 90; 
+            position: sticky; top: max(80px, calc(60px + env(safe-area-inset-top))); z-index: 90; 
             background: var(--bg-yellow); 
             padding: 12px 15px; margin: 0 -15px; 
             display: flex; flex-direction: column; gap: 4px;
@@ -87,7 +85,7 @@
         .month-title::after { content: ""; flex: 1; height: 4px; background: var(--pop-pink); border-radius: 2px; opacity: 0.5;}
         
         /* 內容區塊 */
-        .content-section { padding-bottom: 40px; }
+        .content-section { padding-bottom: 20px; }
         .timeline { border-left: 4px dotted var(--pop-blue); margin-left: 20px; padding-left: 25px; padding-bottom: 15px; padding-top: 5px;}
         .event { position: relative; margin-bottom: 25px; }
         .event::before {
@@ -105,30 +103,63 @@
         .tag-free { background: white; color: var(--pop-pink); }     
         .tag-fee { background: var(--pop-purple); color: white; }     
         .tag-art { background: var(--pop-green); color: var(--ink-dark); }
+        .tag-alert { background: #FF4757; color: white; border-color: #FF4757;}
 
-        .event-title { font-size: 16px; font-weight: bold; margin-bottom: 8px; }
-        .event-desc { font-size: 14px; color: #555; margin-bottom: 10px; line-height: 1.4; }
+        .event-title { font-size: 16px; font-weight: bold; margin-bottom: 8px; line-height: 1.3;}
+        .event-desc { font-size: 14px; color: #555; margin-bottom: 10px; line-height: 1.5; }
         
-        /* === 地點標籤改為可點擊超連結 === */
         .event-loc { 
             font-size: 13px; font-weight: bold; color: var(--ink-dark); 
             background: #f0f4f8; padding: 6px 12px; border-radius: 8px; 
             display: inline-block; text-decoration: none; border: 1px solid #d1d9e6;
-            transition: 0.2s;
+            transition: 0.2s; margin-top: 5px;
         }
         .event-loc:active { background: #dce4ec; transform: scale(0.97); }
         
-        .cancelled { background: #f8f9fa; border-style: dashed; box-shadow: none; opacity: 0.8; }
-        .cancelled .event-title { color: #888; text-decoration: line-through; }
-        .cancelled .event-desc { color: var(--pop-pink); font-weight: bold; }
-        .cancelled .event-loc { pointer-events: none; opacity: 0.6; } /* 延期的活動不提供導航點擊 */
+        .event-link {
+            font-size: 13px; font-weight: bold; color: white; 
+            background: var(--ink-dark); padding: 6px 12px; border-radius: 8px; 
+            display: inline-block; text-decoration: none; border: 1px solid var(--ink-dark);
+            transition: 0.2s; margin-top: 5px; margin-left: 5px;
+        }
+        .event-link:active { transform: scale(0.97); }
+
+        /* 全新：延期活動專屬樣式 (不再像被取消) */
+        .postponed { 
+            background: #FFFBF0; /* 溫暖的淡黃底色 */
+            border: 3px dashed #F39C12; /* 橘色虛線框代表待定 */
+            box-shadow: 2px 2px 0px rgba(243, 156, 18, 0.2); 
+        }
+        .postponed .event-title { 
+            color: var(--ink-dark); /* 絕對不要刪除線，保持深色字體 */
+            text-decoration: none; 
+        }
+        .postponed .event-desc { 
+            color: #D35400; /* 顯眼的橘紅色提示字 */
+            font-weight: bold; 
+        }
+        .postponed .event-loc { 
+            opacity: 0.8; 
+            pointer-events: none; /* 延期暫時不能點擊導航 */
+        } 
 
         .home-btn {
             display: inline-block; background: white; border: 3px solid var(--ink-dark); border-radius: 15px;
             padding: 10px 20px; font-size: 16px; font-weight: bold; color: var(--ink-dark);
             text-decoration: none; box-shadow: 3px 3px 0px var(--ink-dark); transition: 0.2s;
+            margin-bottom: 20px;
         }
         .home-btn:active { transform: translate(2px, 2px); box-shadow: 0px 0px 0px var(--ink-dark); }
+        
+        /* === 頁尾暖心標語 === */
+        .slogan-footer {
+            display: flex; flex-direction: column; align-items: center; gap: 6px;
+            padding-bottom: max(30px, env(safe-area-inset-bottom));
+        }
+        .slogan-text {
+            font-size: 14px; font-weight: bold; color: var(--ink-dark); letter-spacing: 1px;
+            display: flex; align-items: center; gap: 4px;
+        }
     </style>
 </head>
 <body>
@@ -142,7 +173,7 @@
 </div>
 
 <div class="container">
-    <!-- 首圖：精緻左右並排 -->
+    <!-- 首圖 -->
     <div class="hero-section">
         <svg width="80" height="50" viewBox="0 0 140 90" xmlns="http://www.w3.org/2000/svg">
             <circle cx="70" cy="35" r="18" fill="#FFE66D" stroke="#2C3E50" stroke-width="3" class="anim-sun"/>
@@ -174,7 +205,6 @@
                 <div class="event-card">
                     <div class="event-date">7/1 - 10/31 <span class="tag tag-art">藝術</span></div>
                     <div class="event-title">2026南迴藝術季—山徑之流</div>
-                    <!-- 地點改為 a 標籤超連結，會開啟 Google Maps 搜尋 -->
                     <a href="https://www.google.com/maps/search/?api=1&query=南迴公路" target="_blank" class="event-loc">📍 南迴公路</a>
                 </div>
             </div>
@@ -245,25 +275,28 @@
                     <a href="https://www.google.com/maps/search/?api=1&query=南田海岸親水公園" target="_blank" class="event-loc">📍 南田海岸親水公園 06:00~14:00</a>
                 </div>
             </div>
-            <div class="event" data-end="1031">
-                <div class="event-card cancelled">
-                    <div class="event-date">延期公告</div>
+            
+            <!-- 重做：充滿期待感的延期樣式 (無刪除線) -->
+            <div class="event" data-end="1231">
+                <div class="event-card postponed">
+                    <div class="event-date">延期公告 <span class="tag" style="background:#F39C12; color:white; border-color:#F39C12;">待定</span></div>
                     <div class="event-title">2026 台東香草生活節</div>
                     <div class="event-desc">因颱風延期辦理，新日期將另行公告通知</div>
-                    <div class="event-loc">臺東縣客家文化園區</div>
+                    <div class="event-loc">📍 臺東縣客家文化園區</div>
                 </div>
             </div>
-            <div class="event" data-end="1031">
-                <div class="event-card cancelled">
-                    <div class="event-date">延期公告</div>
+            <div class="event" data-end="1231">
+                <div class="event-card postponed">
+                    <div class="event-date">延期公告 <span class="tag" style="background:#F39C12; color:white; border-color:#F39C12;">待定</span></div>
                     <div class="event-title">我在太麻里好解憂＿好解憂散策市集</div>
                     <div class="event-desc">因颱風延期辦理，新日期將另行公告通知</div>
-                    <div class="event-loc">太麻里福興宮及泰和村活動中心前</div>
+                    <div class="event-loc">📍 太麻里福興宮及泰和村活動中心前</div>
                 </div>
             </div>
+            
             <div class="event" data-end="1024">
                 <div class="event-card">
-                    <div class="event-date">10/24 <span class="tag tag-market">市集</span><span class="tag tag-free">延期更新</span></div>
+                    <div class="event-date">10/24 <span class="tag tag-market">市集</span><span class="tag tag-free" style="color:#F39C12; border-color:#F39C12;">延期更新</span></div>
                     <div class="event-title">南島咖啡節市集</div>
                     <a href="https://www.google.com/maps/search/?api=1&query=台東波浪屋" target="_blank" class="event-loc">📍 台東波浪屋前廣場 13:00~19:00</a>
                 </div>
@@ -277,19 +310,28 @@
             </div>
             <div class="event" data-end="1026">
                 <div class="event-card">
-                    <div class="event-date">10/25 - 10/26 <span class="tag tag-market">美食</span><span class="tag tag-free">延期更新</span></div>
+                    <div class="event-date">10/25 - 10/26 <span class="tag tag-market">美食</span><span class="tag tag-free" style="color:#F39C12; border-color:#F39C12;">延期更新</span></div>
                     <div class="event-title">2026臺東慢食節《夜食餐桌》</div>
                     <a href="https://www.google.com/maps/search/?api=1&query=臺東新生公園" target="_blank" class="event-loc">📍 臺東新生公園廣場 15:00~20:00</a>
                 </div>
             </div>
+            
             <div class="event" data-end="1031">
                 <div class="event-card">
-                    <div class="event-date">10/31 <span class="tag tag-sport">療癒</span></div>
+                    <div class="event-date">10/31 <span class="tag tag-sport">療癒</span><span class="tag tag-market">市集</span></div>
                     <div class="event-title">2026漫遊知森(全齡森呼吸療癒)</div>
-                    <div class="event-desc">活動串聯知本溫泉公益馬拉松</div>
-                    <a href="https://www.google.com/maps/search/?api=1&query=知本國家森林遊樂區" target="_blank" class="event-loc">📍 知本國家森林遊樂區</a>
+                    <div class="event-desc">
+                        當日門票半價優惠 50 元；知本馬跑者 10 元<br>
+                        ✅ <span style="font-weight:bold;">26攤知森市集：</span>免預約，自由逛！09:30-16:00<br>
+                        <span class="tag tag-alert" style="margin: 5px 0; display:inline-block;">⚠️ 六大森林體驗需事先付費報名</span>
+                    </div>
+                    <div>
+                        <a href="https://www.google.com/maps/search/?api=1&query=知本國家森林遊樂區" target="_blank" class="event-loc">📍 知本國家森林遊樂區</a>
+                        <a href="https://www.accupass.com/event/2609030405111074285722" target="_blank" class="event-link">📝 體驗報名連結</a>
+                    </div>
                 </div>
             </div>
+
             <div class="event" data-end="1031">
                 <div class="event-card">
                     <div class="event-date">10/31 <span class="tag tag-music">音樂</span></div>
@@ -379,10 +421,18 @@
         <div style="text-align: center; margin-top: 40px;">
             <a href="home.html" class="home-btn">回到活動首頁</a>
         </div>
+        
+        <div class="slogan-footer">
+            <div class="slogan-text">
+                慢下來，感受台東山海與人情的溫度
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--pop-pink)" stroke="none">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                </svg>
+            </div>
+        </div>
     </div>
 </div>
 
-<!-- 徹底修復：精準跳轉並「標示多個活動」的腳本 -->
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const today = new Date();
@@ -392,36 +442,32 @@
         let targetEvents = [];
         let targetEndDate = null;
         
-        // 1. 尋找最靠近今天的有效活動日期
         for (let i = 0; i < events.length; i++) {
             const eventEnd = parseInt(events[i].getAttribute('data-end'));
-            const isCancelled = events[i].querySelector('.cancelled') !== null;
+            // 讓系統知道，遇到「延期 (postponed)」的活動要跳過，繼續往下找真正快到的活動
+            const isPostponed = events[i].querySelector('.postponed') !== null;
             
-            if (eventEnd >= currentMonthDay && !isCancelled) {
+            if (eventEnd >= currentMonthDay && !isPostponed) {
                 targetEndDate = eventEnd;
                 break;
             }
         }
         
-        // 2. 收集所有結束日期等於目標日期的活動 (完美處理同日多活動)
         if (targetEndDate !== null) {
             for (let i = 0; i < events.length; i++) {
                 const checkEnd = parseInt(events[i].getAttribute('data-end'));
-                const checkCancelled = events[i].querySelector('.cancelled') !== null;
-                if (checkEnd === targetEndDate && !checkCancelled) {
+                const checkPostponed = events[i].querySelector('.postponed') !== null;
+                if (checkEnd === targetEndDate && !checkPostponed) {
                     targetEvents.push(events[i]);
                 }
             }
         }
         
-        // 3. 執行捲動與閃爍效果
         if (targetEvents.length > 0) {
             setTimeout(function() {
-                // 捲動到第一個目標活動
                 const y = targetEvents[0].getBoundingClientRect().top + window.scrollY - 145;
                 window.scrollTo({top: y, behavior: 'smooth'});
                 
-                // 讓所有符合條件的卡片一起閃爍
                 targetEvents.forEach(function(event) {
                     const card = event.querySelector('.event-card');
                     if(card) {
