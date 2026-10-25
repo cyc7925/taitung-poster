@@ -95,7 +95,11 @@
         }
         
         .event-card { background: white; border: 3px solid var(--ink-dark); border-radius: 16px; padding: 15px; box-shadow: 4px 4px 0px rgba(44, 62, 80, 0.15); transition: 0.4s ease-out; }
+        
+        /* 日期與時間合併排版 */
         .event-date { font-weight: bold; font-size: 16px; margin-bottom: 10px; display: flex; align-items: center; flex-wrap: wrap; gap: 6px; }
+        .e-time { font-size: 14px; color: #555; } /* 時間稍微調小一點，增加層次 */
+        
         .tag { font-size: 12px; padding: 3px 8px; border-radius: 8px; font-weight: bold; letter-spacing: 0.5px; border: 2px solid var(--ink-dark); }
         
         .tag-music { background: var(--pop-yellow); color: var(--ink-dark); } 
@@ -108,6 +112,7 @@
         .event-title { font-size: 16px; font-weight: bold; margin-bottom: 8px; line-height: 1.3;}
         .event-desc { font-size: 14px; color: #555; margin-bottom: 10px; line-height: 1.5; }
         
+        /* 地點按鈕恢復精簡 */
         .event-loc { 
             font-size: 13px; font-weight: bold; color: var(--ink-dark); 
             background: #f0f4f8; padding: 6px 12px; border-radius: 8px; 
@@ -121,11 +126,10 @@
         .postponed .event-desc { color: #D35400; font-weight: bold; }
         .postponed .event-loc { opacity: 0.8; pointer-events: none; } 
 
-        /* === 溫馨提醒免責聲明 (修正版) === */
+        /* === 溫馨提醒免責聲明 === */
         .disclaimer {
             font-size: 13px; color: #888; font-weight: bold; line-height: 1.5;
-            text-align: left; /* 改為靠左對齊 */
-            margin: 25px 15px; padding-top: 20px;
+            text-align: left; margin: 25px 15px; padding-top: 20px;
             border-top: 1px dashed #CCC;
         }
 
@@ -157,314 +161,4 @@
 <div class="sticky-navbar">
     <div class="nav-info">
         <div class="nav-store">東泳記泳裝店</div>
-        <a href="https://maps.app.goo.gl/qaywzMaHnHRe98AF8?g_st=ic" target="_blank" class="nav-loc">卑南鄉溫泉路370號🚗導航</a>
-    </div>
-    <a href="tel:0910557998" class="btn-call">📞 0910-557-998</a>
-</div>
-
-<div class="container">
-    <div class="hero-section">
-        <svg width="80" height="50" viewBox="0 0 140 90" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="70" cy="35" r="18" fill="#FFE66D" stroke="#2C3E50" stroke-width="3" class="anim-sun"/>
-            <path d="M 10 70 L 40 30 L 70 70 Z" fill="#A8E6CF" stroke="#2C3E50" stroke-width="3" stroke-linejoin="round"/>
-            <path d="M 50 70 L 90 20 L 130 70 Z" fill="#4ECDC4" stroke="#2C3E50" stroke-width="3" stroke-linejoin="round"/>
-            <path d="M 60 50 Q 55 40 60 30" fill="none" stroke="#FF6B6B" stroke-width="4" stroke-linecap="round" class="anim-steam-1"/>
-            <path d="M 75 45 Q 70 35 75 25" fill="none" stroke="#FF6B6B" stroke-width="4" stroke-linecap="round" class="anim-steam-2"/>
-            <path d="M 10 75 Q 35 65 70 75 T 130 75" fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" class="anim-wave-1"/>
-            <path d="M 10 85 Q 35 75 70 85 T 130 85" fill="none" stroke="#4ECDC4" stroke-width="6" stroke-linecap="round" class="anim-wave-2"/>
-        </svg>
-        <div class="hero-text">
-            <h1 class="hero-title"><span class="title-year">2026</span><span class="title-text">臺東縣近期活動資訊</span></h1>
-            <p class="hero-subtitle">♨️泡暖湯・穿泳裝・玩台東</p>
-        </div>
-    </div>
-
-    <div class="content-section">
-        
-        <div class="month-header">
-            <div class="month-context">2026臺東縣近期活動資訊</div>
-            <div class="month-title">持續展開 (跨月活動)</div>
-        </div>
-        <div class="timeline">
-            <div class="event">
-                <div class="event-card">
-                    <div class="event-date">7/1 - 10/31 <span class="tag tag-art">藝術</span></div>
-                    <div class="event-title">2026南迴藝術季—山徑之流</div>
-                    <a href="https://www.google.com/maps/search/?api=1&query=南迴公路" target="_blank" class="event-loc">📍 南迴公路</a>
-                </div>
-            </div>
-            <div class="event">
-                <div class="event-card">
-                    <div class="event-date">4/1 - 10/31 <span class="tag tag-art">生態導覽</span></div>
-                    <div class="event-title">2026夜訪小野柳</div>
-                    <div class="event-desc">分為18:30場及19:00場</div>
-                    <a href="https://www.google.com/maps/search/?api=1&query=富岡地質公園小野柳遊憩區" target="_blank" class="event-loc">📍 富岡地質公園小野柳遊憩區</a>
-                </div>
-            </div>
-            <div class="event">
-                <div class="event-card">
-                    <div class="event-date">即日起 - 11/28 <span class="tag tag-art">桌遊</span></div>
-                    <div class="event-title">永續方舟館桌遊大挑戰</div>
-                    <div class="event-desc">每週六 09:30卡坦島 / 14:30循環之邦</div>
-                    <a href="https://www.google.com/maps/search/?api=1&query=永續方舟館" target="_blank" class="event-loc">📍 永續方舟館</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="month-header">
-            <div class="month-context">2026臺東縣近期活動資訊</div>
-            <div class="month-title">10月 October</div>
-        </div>
-        <div class="timeline">
-            <div class="event" data-end="1002">
-                <div class="event-card">
-                    <div class="event-date">10/2 <span class="tag tag-music">音樂</span></div>
-                    <div class="event-title">《那年，我們一起聽的歌》①</div>
-                    <div class="event-desc">咱的歌·咱的年代<br>洪榮宏, 沈文程, 荒山亮, 高欣欣, 吳淑敏</div>
-                    <a href="https://www.google.com/maps/search/?api=1&query=北町日式建築宿舍群" target="_blank" class="event-loc">📍 北町日式建築宿舍群 19:00~21:00</a>
-                </div>
-            </div>
-            <div class="event" data-end="1003">
-                <div class="event-card">
-                    <div class="event-date">10/3 <span class="tag tag-music">音樂</span></div>
-                    <div class="event-title">《那年，我們一起聽的歌》②</div>
-                    <div class="event-desc">跨世代·唱青春<br>陳昇&新寶島樂隊, 周蕙, 賴銘偉, 緯美雙雄</div>
-                    <a href="https://www.google.com/maps/search/?api=1&query=北町日式建築宿舍群" target="_blank" class="event-loc">📍 北町日式建築宿舍群 19:00~21:00</a>
-                </div>
-            </div>
-            <div class="event" data-end="1004">
-                <div class="event-card">
-                    <div class="event-date">10/4 <span class="tag tag-sport">路跑</span><span class="tag tag-fee">需報名</span></div>
-                    <div class="event-title">2026火燒島馬拉松</div>
-                    <a href="https://www.google.com/maps/search/?api=1&query=綠島人權紀念公園" target="_blank" class="event-loc">📍 綠島人權紀念公園 05:00~13:00</a>
-                </div>
-            </div>
-            <div class="event" data-end="1010">
-                <div class="event-card">
-                    <div class="event-date">10/10 <span class="tag tag-free">免費觀賞</span></div>
-                    <div class="event-title">世界的方舟・南島台灣・國慶焰火晚會</div>
-                    <a href="https://www.google.com/maps/search/?api=1&query=台東市國際地標" target="_blank" class="event-loc">📍 台東市國際地標 19:00~20:30</a>
-                </div>
-            </div>
-            <div class="event" data-end="1017">
-                <div class="event-card">
-                    <div class="event-date">10/17 <span class="tag tag-sport">健走</span></div>
-                    <div class="event-title">雲端發票向前行 森林健走好心情</div>
-                    <a href="https://www.google.com/maps/search/?api=1&query=臺東森林公園" target="_blank" class="event-loc">📍 臺東森林公園 14:00~17:00</a>
-                </div>
-            </div>
-            <div class="event" data-end="1018">
-                <div class="event-card">
-                    <div class="event-date">10/18 <span class="tag tag-sport">路跑</span><span class="tag tag-market">市集</span></div>
-                    <div class="event-title">達仁鄉縫迴山海祭路跑、市集音樂會</div>
-                    <a href="https://www.google.com/maps/search/?api=1&query=南田海岸親水公園" target="_blank" class="event-loc">📍 南田海岸親水公園 06:00~14:00</a>
-                </div>
-            </div>
-            
-            <div class="event" data-end="1231">
-                <div class="event-card postponed">
-                    <div class="event-date">延期公告 <span class="tag" style="background:#F39C12; color:white; border-color:#F39C12;">待定</span></div>
-                    <div class="event-title">2026 台東香草生活節</div>
-                    <div class="event-desc">因颱風延期辦理，新日期將另行公告通知</div>
-                    <div class="event-loc">📍 臺東縣客家文化園區</div>
-                </div>
-            </div>
-            <div class="event" data-end="1231">
-                <div class="event-card postponed">
-                    <div class="event-date">延期公告 <span class="tag" style="background:#F39C12; color:white; border-color:#F39C12;">待定</span></div>
-                    <div class="event-title">我在太麻里好解憂＿好解憂散策市集</div>
-                    <div class="event-desc">因颱風延期辦理，新日期將另行公告通知</div>
-                    <div class="event-loc">📍 太麻里福興宮及泰和村活動中心前</div>
-                </div>
-            </div>
-            
-            <div class="event" data-end="1024">
-                <div class="event-card">
-                    <div class="event-date">10/24 <span class="tag tag-market">市集</span><span class="tag tag-free" style="color:#F39C12; border-color:#F39C12;">延期更新</span></div>
-                    <div class="event-title">南島咖啡節市集</div>
-                    <a href="https://www.google.com/maps/search/?api=1&query=台東波浪屋" target="_blank" class="event-loc">📍 台東波浪屋前廣場 13:00~19:00</a>
-                </div>
-            </div>
-            <div class="event" data-end="1025">
-                <div class="event-card">
-                    <div class="event-date">10/25 <span class="tag tag-market">市集</span></div>
-                    <div class="event-title">南島咖啡節市集</div>
-                    <a href="https://www.google.com/maps/search/?api=1&query=台東波浪屋" target="_blank" class="event-loc">📍 台東波浪屋前廣場 11:00~18:00</a>
-                </div>
-            </div>
-            <div class="event" data-end="1026">
-                <div class="event-card">
-                    <div class="event-date">10/25 - 10/26 <span class="tag tag-market">美食</span><span class="tag tag-free" style="color:#F39C12; border-color:#F39C12;">延期更新</span></div>
-                    <div class="event-title">2026臺東慢食節《夜食餐桌》</div>
-                    <a href="https://www.google.com/maps/search/?api=1&query=臺東新生公園" target="_blank" class="event-loc">📍 臺東新生公園廣場 15:00~20:00</a>
-                </div>
-            </div>
-            
-            <div class="event" data-end="1031">
-                <div class="event-card">
-                    <div class="event-date">10/31 <span class="tag tag-sport">療癒</span><span class="tag tag-market">市集</span></div>
-                    <div class="event-title">2026漫遊知森(全齡森呼吸療癒)</div>
-                    <div class="event-desc">26攤知森市集 (部分體驗需事前付費報名)</div>
-                    <a href="https://www.google.com/maps/search/?api=1&query=知本國家森林遊樂區" target="_blank" class="event-loc">📍 知本國家森林遊樂區 09:30~16:00</a>
-                </div>
-            </div>
-
-            <div class="event" data-end="1031">
-                <div class="event-card">
-                    <div class="event-date">10/31 <span class="tag tag-music">音樂</span></div>
-                    <div class="event-title">知本溫泉路跑嘉年華音樂會</div>
-                    <div class="event-desc">達魯瑪克古謠班, 卑南族青春歌隊, 思奈樂團, 孔亞明, 桑梅絹</div>
-                    <a href="https://www.google.com/maps/search/?api=1&query=東遊季溫泉渡假村" target="_blank" class="event-loc">📍 東遊季星星草原 16:00~21:00</a>
-                </div>
-            </div>
-            <div class="event" data-end="1101">
-                <div class="event-card">
-                    <div class="event-date">10/31 - 11/1 <span class="tag tag-music">音樂</span><span class="tag tag-free">免費入場</span></div>
-                    <div class="event-title">𝟮𝟬𝟮𝟲 𝗧𝗮𝗶𝘄𝗮𝗻 𝗣𝗔𝗦𝗜𝗪𝗔𝗟𝗜 國際原住民音樂節</div>
-                    <a href="https://www.google.com/maps/search/?api=1&query=臺東森林公園" target="_blank" class="event-loc">📍 臺東森林公園 13:00 開始</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="month-header">
-            <div class="month-context">2026臺東縣近期活動資訊</div>
-            <div class="month-title">11月 November</div>
-        </div>
-        <div class="timeline">
-            <div class="event" data-end="1101">
-                <div class="event-card">
-                    <div class="event-date">11/1 <span class="tag tag-music">音樂</span><span class="tag tag-free">免費入場</span></div>
-                    <div class="event-title">𝟮𝟬𝟮𝟲 𝗧𝗮𝗶𝘄𝗮𝗻 𝗣𝗔𝗦𝗜𝗪𝗔𝗟𝗜 國際原住民音樂節</div>
-                    <div class="event-desc">(承接10/31活動)</div>
-                    <a href="https://www.google.com/maps/search/?api=1&query=臺東森林公園" target="_blank" class="event-loc">📍 臺東森林公園 13:00 開始</a>
-                </div>
-            </div>
-            <div class="event" data-end="1101">
-                <div class="event-card">
-                    <div class="event-date">11/1 <span class="tag tag-sport">路跑</span><span class="tag tag-fee">需報名</span></div>
-                    <div class="event-title">跑吧！孩子 2026知本溫泉公益馬拉松</div>
-                    <a href="https://www.google.com/maps/search/?api=1&query=知本龍泉路" target="_blank" class="event-loc">📍 知本龍泉路第二停車場 06:00~14:30</a>
-                </div>
-            </div>
-            <div class="event" data-end="1122">
-                <div class="event-card">
-                    <div class="event-date">11/6 - 11/22 <span class="tag tag-market">市集</span></div>
-                    <div class="event-title">臺灣國際衝浪公開賽－衝浪市集</div>
-                    <div class="event-desc">※11/9-13依據賽程休賽暫停營業</div>
-                    <a href="https://www.google.com/maps/search/?api=1&query=臺東金樽漁港" target="_blank" class="event-loc">📍 臺東金樽漁港 12:00~17:00</a>
-                </div>
-            </div>
-            <div class="event" data-end="1108">
-                <div class="event-card">
-                    <div class="event-date">11/6 - 11/8 <span class="tag tag-sport">衝浪</span><span class="tag tag-free">免費觀賽</span></div>
-                    <div class="event-title">2026臺灣國際衝浪公開賽</div>
-                    <div class="event-desc">國內賽</div>
-                    <a href="https://www.google.com/maps/search/?api=1&query=臺東金樽漁港" target="_blank" class="event-loc">📍 臺東金樽漁港</a>
-                </div>
-            </div>
-            <div class="event" data-end="1122">
-                <div class="event-card">
-                    <div class="event-date">11/14 - 11/22 <span class="tag tag-sport">衝浪</span><span class="tag tag-free">免費觀賽</span></div>
-                    <div class="event-title">2026臺灣國際衝浪公開賽</div>
-                    <div class="event-desc">短版世界積分巡迴賽 INTL 6,000</div>
-                    <a href="https://www.google.com/maps/search/?api=1&query=臺東金樽漁港" target="_blank" class="event-loc">📍 臺東金樽漁港</a>
-                </div>
-            </div>
-            <div class="event" data-end="1114">
-                <div class="event-card">
-                    <div class="event-date">11/14 <span class="tag tag-music">嘉年華</span></div>
-                    <div class="event-title">2026東海岸旗魚季｜旗享東岸嘉年華</div>
-                    <div class="event-desc">葉璦菱, 曾心梅, 江志豐, 晨悠, 張芮菲</div>
-                    <a href="https://www.google.com/maps/search/?api=1&query=成功鎮海濱公園" target="_blank" class="event-loc">📍 成功鎮海濱公園</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="month-header">
-            <div class="month-context">2026臺東縣近期活動資訊</div>
-            <div class="month-title">12月 December</div>
-        </div>
-        <div class="timeline">
-            <div class="event" data-end="1231">
-                <div class="event-card">
-                    <div class="event-date">12/31 <span class="tag tag-music">跨年</span><span class="tag tag-free">免費入場</span></div>
-                    <div class="event-title">台東跨年活動</div>
-                    <div class="event-desc">※活動訊息尚未公開</div>
-                    <a href="https://www.google.com/maps/search/?api=1&query=台東市" target="_blank" class="event-loc">📍 台東市</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- 免責聲明 -->
-        <div class="disclaimer">
-            ※ 溫馨提醒：本網頁整理之活動資訊僅供旅客參考，實際活動時間、地點與收費標準，請依各主辦單位最新公告為準。
-        </div>
-
-        <div style="text-align: center; margin-top: 25px;">
-            <a href="home.html" class="home-btn">回到活動首頁</a>
-        </div>
-    </div>
-</div>
-
-<div class="slogan-footer">
-    <div class="slogan-text">
-        慢下來，感受台東山海與人情的溫度
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--pop-pink)" stroke="none">
-            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-        </svg>
-    </div>
-</div>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const today = new Date();
-        const currentMonthDay = (today.getMonth() + 1) * 100 + today.getDate(); 
-        
-        const events = document.querySelectorAll('.event[data-end]');
-        let targetEvents = [];
-        let targetEndDate = null;
-        
-        for (let i = 0; i < events.length; i++) {
-            const eventEnd = parseInt(events[i].getAttribute('data-end'));
-            const isPostponed = events[i].querySelector('.postponed') !== null;
-            
-            if (eventEnd >= currentMonthDay && !isPostponed) {
-                targetEndDate = eventEnd;
-                break;
-            }
-        }
-        
-        if (targetEndDate !== null) {
-            for (let i = 0; i < events.length; i++) {
-                const checkEnd = parseInt(events[i].getAttribute('data-end'));
-                const checkPostponed = events[i].querySelector('.postponed') !== null;
-                if (checkEnd === targetEndDate && !checkPostponed) {
-                    targetEvents.push(events[i]);
-                }
-            }
-        }
-        
-        if (targetEvents.length > 0) {
-            setTimeout(function() {
-                const y = targetEvents[0].getBoundingClientRect().top + window.scrollY - 145;
-                window.scrollTo({top: y, behavior: 'smooth'});
-                
-                targetEvents.forEach(function(event) {
-                    const card = event.querySelector('.event-card');
-                    if(card) {
-                        card.style.boxShadow = '0 0 0 4px var(--pop-pink)';
-                        card.style.borderColor = 'var(--pop-pink)';
-                        
-                        setTimeout(() => {
-                            card.style.boxShadow = '4px 4px 0px rgba(44, 62, 80, 0.15)';
-                            card.style.borderColor = 'var(--ink-dark)';
-                        }, 1500);
-                    }
-                });
-            }, 300);
-        }
-    });
-</script>
-
-</body>
-</html>
+        <a href="
