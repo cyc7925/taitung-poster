@@ -17,7 +17,7 @@
             font-family: 'PingFang TC', 'Microsoft JhengHei', sans-serif; 
             display: flex; 
             justify-content: center; 
-            -webkit-text-size-adjust: 100%; /* 鎖定字體，徹底解決 Safari 重新整理時忽大忽小問題 */
+            -webkit-text-size-adjust: 100%; 
         }
         
         .a4-page { 
@@ -27,12 +27,13 @@
             
             background: linear-gradient(180deg, #e1f5fe 0%, #b3e5fc 50%, #ffe082 100%);
             background-image: url('IMG_3578.png'); 
-            background-size: 100% 100%;    /* 百分之百完美填滿整個 A4 頁面 */
+            background-size: 100% 100%;    
             background-position: center;
-            background-repeat: no-repeat; /* 絕對不重複拼貼 */
+            background-repeat: no-repeat; 
             
             margin: 5mm auto; 
-            padding: 8mm 8mm 16mm 8mm; 
+            /* 修正：加大底部的 padding-bottom，從 16mm 增加到 24mm，保護底部標語 */
+            padding: 8mm 8mm 24mm 8mm; 
             box-sizing: border-box; 
             position: relative;
             border: 6px solid white; 
@@ -53,7 +54,7 @@
             flex-shrink: 0; 
         }
         
-        /* 副標題：深海洋藍色、加粗、精準向右推 */
+        /* 副標題 */
         .h-sub { 
             color: #01579b; 
             font-size: 15pt; 
@@ -63,10 +64,10 @@
             text-shadow: 1px 1px 2px rgba(255,255,255,0.9); 
             display: inline-block;     
             padding-left: 41px;        
-            font-family: 'Iansui', cursive !important; /* 強制使用雲端芫荽手寫體 */
+            font-family: 'Iansui', cursive !important; 
         }
 
-        /* 店名：極粗POP黑體（900粗細）、收緊上下多餘行高 */
+        /* 店名 */
         .h-title { 
             font-family: 'Noto Sans TC', sans-serif !important; 
             font-size: 40pt !important; 
@@ -75,13 +76,10 @@
             margin: 2px 0 2px 0;      
         }
 
-        /*店名：東泳記泳裝店，立體顏色*/
         .h-title a { 
             color: #01579b;                
             text-decoration: none; 
             transition: 0.2s; 
-            
-            /* 改用半透明的白色柔和暈染，讓字體立體且自然融入背景，不再死板 */
             text-shadow: 
                 -1.5px -1.5px 1px rgba(255, 255, 255, 0.8), 
                  1.5px -1.5px 1px rgba(255, 255, 255, 0.8), 
@@ -91,10 +89,9 @@
         }
 
         .store-info { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; margin-top: 10px; }
-        
         .button-group { display: flex; gap: 12px; align-items: center; }
 
-        /* 按鈕：半透明藍綠色、小巧、帶文字陰影確保清晰 */
+        /* 按鈕 */
         .phone, .address { 
             background: rgba(2, 189, 180, 0.7); 
             color: white; 
@@ -106,7 +103,6 @@
             transition: 0.2s; 
             box-shadow: 0 2px 5px rgba(0,0,0,0.25); 
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4); 
-            /* 指定思源黑體粗體 */
             font-family: 'Noto Sans TC', sans-serif !important; 
             font-weight: 700 !important;
         }
@@ -140,11 +136,11 @@
         .grid { 
             display: flex; 
             gap: 10px; 
-            margin-top: 14mm; 
-            margin-bottom: 8px; 
+            /* 稍微把表格往上提 1mm */
+            margin-top: 13mm; 
+            margin-bottom: 0px; 
         }
         
-        /* 縮短每一欄裡面方塊與方塊的距離 */
         .col { 
             flex: 1; 
             display: flex; 
@@ -152,28 +148,28 @@
             gap: 4px; 
         }
 
-        /* 月份方塊：外框保持圓角與大小不變，但取消內部左右邊距 */
         .month-box { 
             background: rgba(255, 255, 255, 0.48); 
             backdrop-filter: blur(2px);
             border: 2.5px solid; 
             border-radius: 20px 25px 22px 24px / 24px 22px 25px 20px; 
-            padding: 0px 10px 8px 10px;    
+            /* 稍微縮緊下方 padding */
+            padding: 0px 10px 6px 10px;    
             box-sizing: border-box; 
             display: flex; 
             flex-direction: column; 
             box-shadow: 0 2px 6px rgba(0,0,0,0.08); 
-            margin-bottom: 5px; 
+            /* 稍微縮緊區塊間距 */
+            margin-bottom: 3px; 
             overflow: hidden;            
         }
 
-        /* 月份標題：用負邊距剛好貼滿外框圓角，不再凸出去 */
         .m-head { 
             color: white; 
             font-weight: bold; 
             font-size: 12pt;         
             padding: 6px 10px; 
-            margin: 0 -10px 8px -10px;    
+            margin: 0 -10px 6px -10px;    
             border-top-left-radius: 17px; 
             border-top-right-radius: 22px;
             border-bottom-left-radius: 0px;
@@ -198,19 +194,19 @@
         .m-dec .m-head { background: #6a1b9a; }
         .m-ongoing .m-head { background: #00796b; }
         
-        .event { display: flex; margin-bottom: 5px; border-bottom: 1px dashed rgba(0,0,0,0.15); padding-bottom: 5px; line-height: 1.35; }
+        /* 稍微收緊各行活動的上下間距與行高 */
+        .event { display: flex; margin-bottom: 4px; border-bottom: 1px dashed rgba(0,0,0,0.15); padding-bottom: 4px; line-height: 1.25; }
         .event:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
         
-        /* 調整日期寬度以容納「延期/取消」等字樣 */
         .e-date { width: 62px; font-size: 8pt; font-weight: bold; color: #333; flex-shrink: 0; margin-right: 4px; }
         .e-info { flex: 1; }
         .e-name { font-size: 8.5pt; font-weight: bold; color: #111; }
         .e-desc { font-size: 7.2pt; color: #555; margin-top: 1.5px; }
         .e-loc { font-size: 7.2pt; color: #0277bd; font-weight: bold; margin-top: 1.5px; }
         
-        /* 底部標語與計數器容器 */
+        /* 底部計數器容器往上提一點 */
         .footer-container {
-            position: absolute; bottom: 4mm; left: 6mm; right: 6mm; 
+            position: absolute; bottom: 6mm; left: 6mm; right: 6mm; 
             text-align: center;
             display: flex;
             flex-direction: column;
@@ -218,7 +214,6 @@
             gap: 2px;
         }
 
-        /* 瀏覽次數：無底色、下一行、淡藍灰色融入背景 */
         .footer-counter {
             font-size: 7.5pt; 
             color: rgba(230, 245, 255, 0.9); 
@@ -229,7 +224,6 @@
 </head>
 <body>
     <div class="a4-page">
-        <!-- 店家資訊區塊 -->
         <div class="header">
             <div class="h-sub">♨️泡暖湯・穿泳裝・玩台東!</div>
             <div class="h-title"><a href="https://maps.app.goo.gl/YkHK24qn1kZsfBn38?g_st=ic" target="_blank">東泳記泳裝店</a></div>
@@ -243,14 +237,11 @@
             </div>
         </div>
         
-        <!-- 總整理標語 -->
         <div class="section-title">2026年10月～12月台東活動總整理</div>
 
-        <!-- 活動表格區塊 -->
         <div class="grid">
-            <!-- ====== 左欄：持續展開 ＋ 扣除異動後的 10月 ====== -->
+            <!-- ====== 左欄 ====== -->
             <div class="col">
-                <!-- 持續展開 -->
                 <div class="month-box m-ongoing">
                     <div class="m-head">🌟 持續展開 (跨月活動)</div>
                     <div class="event"><div class="e-date" style="color:#00796b;">7/1~10/31</div><div class="e-info"><div class="e-name">2026南迴藝術季—山徑之流</div><div class="e-loc" style="color:#00796b;">📍南迴公路</div></div></div>
@@ -258,7 +249,6 @@
                     <div class="event"><div class="e-date" style="color:#00796b;">即日起~11/28</div><div class="e-info"><div class="e-name">永續方舟館桌遊大挑戰</div><div class="e-desc">每週六 09:30卡坦島 / 14:30循環之邦</div><div class="e-loc" style="color:#00796b;">📍永續方舟館</div></div></div>
                 </div>
 
-                <!-- 10月 October (扣除取消/延期活動) -->
                 <div class="month-box m-oct">
                     <div class="m-head">10月 October</div>
                     <div class="event"><div class="e-date">10/2</div><div class="e-info"><div class="e-name">《那年，我們一起聽的歌》① 咱的歌·咱的年代</div><div class="e-desc">🎵洪榮宏, 沈文程, 荒山亮, 高欣欣, 吳淑敏</div><div class="e-loc">📍北町日式建築宿舍群 ⏰19:00~21:00</div></div></div>
@@ -278,14 +268,14 @@
                 </div>
             </div>
 
-            <!-- ====== 右欄：異動公告 ＋ 11月 ＋ 12月 ====== -->
+            <!-- ====== 右欄 ====== -->
             <div class="col">
-                <!-- 獨立的異動公告區塊 -->
                 <div class="month-box m-alert">
                     <div class="m-head">⚠️ 異動公告 (取消 / 延期)</div>
-                    <div class="event"><div class="e-date">10/24~25<br><span style="color:red; font-size:7pt; border:1px solid red; padding:0 2px;">取消</span></div><div class="e-info"><div class="e-name" style="text-decoration: line-through; color:gray;">2026池上秋收稻穗藝術節</div><div class="e-desc" style="color:red; font-weight:bold;">⚠️因薔琵颱風影響，全數取消演出。</div><div class="e-loc">📍台東縣池上鄉萬安社區天堂路稻田區</div></div></div>
-                    <div class="event"><div class="e-date" style="color:red;">延期</div><div class="e-info"><div class="e-name" style="color:gray;">2026 台東香草生活節</div><div class="e-desc" style="color:red;">⚠️因薔琵颱風延期辦理，新日期將另行公告</div><div class="e-loc">📍臺東縣客家文化園區</div></div></div>
-                    <div class="event"><div class="e-date" style="color:red;">延期</div><div class="e-info"><div class="e-name" style="color:gray;">我在太麻里好解憂＿好解憂散策市集</div><div class="e-desc" style="color:red;">⚠️因薔琵颱風延期辦理，新日期將另行公告</div><div class="e-loc">📍太麻里福興宮及泰和村活動中心前</div></div></div>
+                    <!-- 修正：移除刪除線與灰色，讓字體恢復清晰 -->
+                    <div class="event"><div class="e-date">10/24~25<br><span style="color:red; font-size:7pt; border:1px solid red; padding:0 2px;">取消</span></div><div class="e-info"><div class="e-name">2026池上秋收稻穗藝術節</div><div class="e-desc" style="color:red; font-weight:bold;">⚠️因薔琵颱風影響，全數取消演出。</div><div class="e-loc">📍台東縣池上鄉萬安社區天堂路稻田區</div></div></div>
+                    <div class="event"><div class="e-date" style="color:red;">延期</div><div class="e-info"><div class="e-name">2026 台東香草生活節</div><div class="e-desc" style="color:red;">⚠️因薔琵颱風延期辦理，新日期將另行公告</div><div class="e-loc">📍臺東縣客家文化園區</div></div></div>
+                    <div class="event"><div class="e-date" style="color:red;">延期</div><div class="e-info"><div class="e-name">我在太麻里好解憂＿好解憂散策市集</div><div class="e-desc" style="color:red;">⚠️因薔琵颱風延期辦理，新日期將另行公告</div><div class="e-loc">📍太麻里福興宮及泰和村活動中心前</div></div></div>
                 </div>
 
                 <div class="month-box m-nov">
@@ -319,17 +309,15 @@
             </div>
         </div>
 
-        <!-- 底部標語與計數器 -->
         <div class="footer-container">
             <div class="footer-counter"><span id="visit-count">1688</span></div>
         </div>
     </div>
 
-    <!-- 自動計數器 JavaScript -->
     <script>
         let views = localStorage.getItem('dzj_views');
         if (!views) {
-            views = 1680; // 確保起始值是 1680
+            views = 1680;
         } else {
             views = parseInt(views) + 1;
         }
