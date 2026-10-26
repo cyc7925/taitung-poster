@@ -8,7 +8,6 @@
     
     <style>
         :root {
-            --bg-yellow: #FFF9E6;    
             --ink-dark: #2C3E50;     
             --pop-blue: #4ECDC4;     
             --pop-pink: #FF6B6B;     
@@ -16,34 +15,56 @@
         }
 
         body {
-            background-color: var(--bg-yellow); color: var(--ink-dark);
+            /* 還原你截圖中最溫柔的微漸層背景 */
+            background: linear-gradient(180deg, #e0f7fa 0%, #fffde7 100%);
+            color: var(--ink-dark);
             font-family: 'jf-openhuninn-1.1', sans-serif;
             margin: 0; padding: 0; -webkit-text-size-adjust: 100%;
+            min-height: 100vh;
         }
 
-        .container { max-width: 500px; margin: 0 auto; padding: 10px 15px 40px 15px; }
+        .container { max-width: 500px; margin: 0 auto; padding: 10px 20px 40px 20px; }
 
-        /* === 1. 頂部店家資訊 (置中極簡版) === */
-        .hero-section { 
-            display: flex; flex-direction: column; align-items: center; justify-content: center; 
-            padding: 20px 10px 25px 10px; text-align: center;
+        /* === 1. 漂浮 Emoji 區塊 === */
+        .emoji-header {
+            position: relative;
+            height: 70px;
+            margin-top: 20px;
         }
-        .hero-title { font-size: 32px; font-weight: bold; color: var(--pop-pink); margin: 0 0 8px 0; line-height: 1.1; letter-spacing: 2px;}
-        .hero-subtitle { font-size: 15px; color: #555; font-weight: bold; margin: 0; }
+        .emo { position: absolute; display: inline-block; animation: float 3s ease-in-out infinite; }
+        .emo-1 { left: 28%; top: 20px; font-size: 28px; animation-delay: 0s; transform: rotate(-15deg); }
+        .emo-2 { left: 45%; top: 5px; font-size: 38px; animation-delay: 0.5s; }
+        .emo-3 { right: 28%; top: 15px; font-size: 24px; animation-delay: 1s; transform: rotate(15deg); }
+        .emo-4 { right: 42%; top: 40px; font-size: 26px; animation-delay: 1.5s; transform: rotate(10deg); }
 
-        /* === 聯絡與導航按鈕 === */
-        .main-btn-group { display: flex; gap: 10px; justify-content: center; margin-bottom: 25px; }
-        .btn-action { 
-            flex: 1; background: var(--pop-yellow); border: 3px solid var(--ink-dark); border-radius: 12px; 
-            padding: 12px 10px; font-size: 15px; font-weight: bold; color: var(--ink-dark); 
-            text-decoration: none; display: flex; justify-content: center; align-items: center; gap: 6px;
-            box-shadow: 3px 3px 0px var(--ink-dark); transition: 0.2s;
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+
+        /* === 2. 店名標題 === */
+        .store-name { 
+            text-align: center; font-size: 36px; font-weight: bold; 
+            color: var(--pop-pink); letter-spacing: 2px; 
+            margin-bottom: 25px;
         }
-        .btn-action:active { transform: translate(2px,2px); box-shadow: 0px 0px 0px var(--ink-dark); }
-        .btn-nav { background: white; }
 
-        /* === 2. 泡湯 SPA 推薦區塊 === */
-        .section-title { font-size: 18px; font-weight: bold; color: var(--ink-dark); margin: 30px 0 15px 0; border-bottom: 2px dashed #CCC; padding-bottom: 8px; }
+        /* === 3. 聯絡與導航資訊列 (還原截圖的優雅排版) === */
+        .info-card { margin-bottom: 40px; padding: 0 5px;}
+        .info-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; }
+        .info-left { font-size: 15px; font-weight: bold; color: var(--ink-dark); display: flex; align-items: center; gap: 10px;}
+        .info-icon { font-size: 18px; }
+        .info-divider { border-bottom: 2px dashed #b0bec5; margin: 0; opacity: 0.6; }
+        
+        .info-btn { 
+            padding: 8px 18px; border: 2px solid var(--ink-dark); border-radius: 20px; 
+            font-size: 14px; font-weight: bold; color: var(--ink-dark); text-decoration: none;
+            box-shadow: 2px 2px 0px var(--ink-dark); transition: 0.2s;
+        }
+        .info-btn:active { transform: translate(2px, 2px); box-shadow: 0 0 0 var(--ink-dark); }
+        .btn-white { background: white; }
+        .btn-yellow { background: var(--pop-yellow); }
+
+
+        /* === 4. 泡湯 SPA 推薦區塊 === */
+        .section-title { font-size: 17px; font-weight: bold; color: var(--ink-dark); margin: 30px 0 15px 0; border-bottom: 2px dashed #CCC; padding-bottom: 8px; display: flex; align-items: center; gap: 6px;}
 
         .spa-card { background: white; border: 3px solid var(--ink-dark); border-radius: 12px; padding: 12px; margin-bottom: 12px; box-shadow: 3px 3px 0px rgba(44,62,80,0.1); }
         .spa-top { display: flex; justify-content: space-between; align-items: center; }
@@ -60,7 +81,7 @@
         .info-list li { margin-bottom: 6px; display: flex; }
         .info-label { font-weight: bold; color: var(--ink-dark); width: 45px; flex-shrink: 0; }
 
-        /* === 3. 附近景點四宮格 === */
+        /* === 5. 附近景點四宮格 === */
         .spot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 30px; }
         .spot-card { background: white; border: 2px solid var(--pop-blue); border-radius: 12px; padding: 12px 10px; text-align: center; text-decoration: none; display: block; transition: 0.2s; box-shadow: 3px 3px 0px rgba(78, 205, 196, 0.2); }
         .spot-card:active { transform: scale(0.96); background: #f0fbf9; box-shadow: none; }
@@ -68,41 +89,63 @@
         .spot-name { font-size: 14px; font-weight: bold; color: var(--ink-dark); margin-bottom: 4px;}
         .spot-desc { font-size: 11px; color: #666; }
 
-        /* === 4. 跳轉近期活動的大按鈕 === */
+        /* === 6. 跳轉近期活動的大按鈕 === */
         .event-link-card {
-            background: var(--pop-pink);
+            background: var(--ink-dark);
             border: 3px solid var(--ink-dark);
             border-radius: 16px;
             padding: 20px;
             text-align: center;
             text-decoration: none;
             display: block;
-            box-shadow: 4px 4px 0px var(--ink-dark);
+            box-shadow: 4px 4px 0px rgba(0,0,0,0.2);
             transition: 0.2s;
             margin-top: 10px;
         }
-        .event-link-card:active { transform: translate(3px,3px); box-shadow: 0px 0px 0px var(--ink-dark); }
-        .event-link-title { color: white; font-size: 20px; font-weight: bold; margin-bottom: 6px; display: flex; align-items: center; justify-content: center; gap: 8px;}
-        .event-link-desc { color: #FFF0F0; font-size: 13px; font-weight: bold;}
+        .event-link-card:active { transform: translate(3px,3px); box-shadow: 0px 0px 0px transparent; }
+        .event-link-title { color: var(--pop-yellow); font-size: 20px; font-weight: bold; margin-bottom: 6px; display: flex; align-items: center; justify-content: center; gap: 8px;}
+        .event-link-desc { color: white; font-size: 13px; font-weight: bold;}
     </style>
 </head>
 <body>
 
 <div class="container">
     
-    <!-- 1. 頂部店家資訊 (置中極簡版) -->
-    <div class="hero-section">
-        <h1 class="hero-title">東泳記泳裝店</h1>
-        <p class="hero-subtitle">♨️ 泡暖湯・穿泳裝・玩台東</p>
+    <!-- 1. 漂浮圖案 -->
+    <div class="emoji-header">
+        <span class="emo emo-1">🛟</span>
+        <span class="emo emo-2">👙</span>
+        <span class="emo emo-3">🥽</span>
+        <span class="emo emo-4">🩱</span>
     </div>
 
-    <!-- 聯絡與導航按鈕 -->
-    <div class="main-btn-group">
-        <a href="tel:0910557998" class="btn-action">☎️ 0910-557-998</a>
-        <a href="https://maps.app.goo.gl/YkHK24qn1kZsfBn38?g_st=ic" target="_blank" class="btn-action btn-nav">📍 店面一鍵導航</a>
+    <!-- 2. 店名 -->
+    <div class="store-name">東泳記泳裝店</div>
+
+    <!-- 3. 聯絡資訊列表 (完美還原截圖) -->
+    <div class="info-card">
+        <!-- 導航行 -->
+        <div class="info-row">
+            <div class="info-left">
+                <span class="info-icon">◎</span> 卑南鄉溫泉路370號
+            </div>
+            <a href="https://maps.app.goo.gl/YkHK24qn1kZsfBn38?g_st=ic" target="_blank" class="info-btn btn-white">導航</a>
+        </div>
+        
+        <!-- 虛線分隔 -->
+        <div class="info-divider"></div>
+        
+        <!-- 撥打行 -->
+        <div class="info-row">
+            <div class="info-left">
+                <span class="info-icon">📞</span> 0910-557-998
+            </div>
+            <a href="tel:0910557998" class="info-btn btn-yellow">撥打</a>
+        </div>
     </div>
 
-    <!-- 2. 泡湯 SPA 精選 -->
+
+    <!-- 4. 泡湯 SPA 精選 -->
     <div class="section-title">♨️ 知本在地 SPA 溫泉精選</div>
     
     <div class="spa-card">
@@ -177,7 +220,7 @@
         </details>
     </div>
 
-    <!-- 3. 附近順遊景點 -->
+    <!-- 5. 附近順遊景點 -->
     <div class="section-title">🌲 附近順遊景點推薦</div>
     <div class="spot-grid">
         <a href="https://maps.google.com/?q=知本國家森林遊樂區" target="_blank" class="spot-card">
@@ -202,7 +245,7 @@
         </a>
     </div>
 
-    <!-- 4. 跳轉近期活動 (連結至 2026.html) -->
+    <!-- 6. 跳轉近期活動 (連結至 2026.html) -->
     <a href="2026.html" class="event-link-card">
         <div class="event-link-title">📅 臺東近期活動總整理 ➔</div>
         <div class="event-link-desc">點擊查看 10-12月 衝浪賽、音樂節資訊</div>
