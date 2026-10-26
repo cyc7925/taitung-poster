@@ -27,8 +27,8 @@
         /* === 1. 漂浮 Emoji 區塊 === */
         .emoji-cluster {
             text-align: center;
-            margin-top: 20px; /* 稍微縮小頂部距離 */
-            margin-bottom: 5px; /* 稍微縮小底部距離 */
+            margin-top: 15px; 
+            margin-bottom: 0px; 
             user-select: none;
         }
         .emo-group { display: inline-block; position: relative; }
@@ -44,78 +44,83 @@
         @keyframes float3 { 0%, 100% { transform: rotate(15deg) translate(5px, -10px); } 50% { transform: rotate(15deg) translate(5px, -15px); } }
         @keyframes float4 { 0%, 100% { transform: rotate(15deg) translate(25px, -15px); } 50% { transform: rotate(15deg) translate(25px, -20px); } }
 
-        /* === 2. 店名標題 === */
+        /* === 2. 店名標題 (稍微縮小) === */
         .store-name { 
-            text-align: center; font-size: 38px; font-weight: bold; 
+            text-align: center; font-size: 34px; font-weight: bold; 
             color: var(--pop-pink); letter-spacing: 2px; 
-            margin-top: 5px; margin-bottom: 20px; /* 收緊標題上下距離 */
+            margin-top: 5px; margin-bottom: 15px; 
         }
 
-        /* === 3. 聯絡與導航資訊列 === */
-        .info-card { margin-bottom: 30px; padding: 0 10px; }
+        /* === 3. 聯絡與導航資訊列 (收緊行高、縮小字體) === */
+        .info-card { margin-bottom: 25px; padding: 0 5px; }
         .info-row { 
             display: flex; justify-content: space-between; align-items: center; 
-            padding: 12px 0; /* 縮減 padding，讓行高變小 */
+            padding: 10px 0; /* 收緊上下空間 */
             border-bottom: 2px dashed #b0bec5; 
         }
         
-        .info-left { font-size: 16px; font-weight: bold; color: var(--ink-dark); display: flex; align-items: center; gap: 12px; }
-        .info-icon { font-size: 22px; display: inline-block; width: 28px; text-align: center; color: #555; }
-        .phone-text { color: #0000EE; text-decoration: underline; font-weight: bold; font-family: sans-serif; letter-spacing: 0.5px; font-size: 17px; }
+        .info-left { font-size: 14.5px; font-weight: bold; color: var(--ink-dark); display: flex; align-items: center; gap: 8px; }
+        .info-icon { font-size: 18px; display: inline-block; width: 22px; text-align: center; color: #555; }
+        .phone-text { color: #0000EE; text-decoration: underline; font-weight: bold; font-family: sans-serif; letter-spacing: 0.5px; font-size: 16px; }
 
         .info-btn { 
-            padding: 6px 18px; /* 稍微縮小按鈕 */
-            border: 2.5px solid var(--ink-dark); border-radius: 25px; 
-            font-size: 14px; font-weight: bold; color: var(--ink-dark); text-decoration: none;
+            padding: 6px 16px; 
+            border: 2px solid var(--ink-dark); border-radius: 20px; 
+            font-size: 13px; font-weight: bold; color: var(--ink-dark); text-decoration: none;
             box-shadow: 2px 2px 0px var(--ink-dark); transition: 0.2s; display: inline-block; text-align: center;
         }
-        .info-btn:active { transform: translate(2px, 2px); box-shadow: 0 0 0 var(--ink-dark); }
+        .info-btn:active { transform: translate(1px, 1px); box-shadow: 0 0 0 var(--ink-dark); }
         .btn-white { background: white; }
         .btn-yellow { background: var(--pop-yellow); }
 
 
-        /* === 4. 泡湯 SPA 推薦區塊 === */
-        .section-title { font-size: 17px; font-weight: bold; color: var(--ink-dark); margin: 25px 0 12px 0; border-bottom: 2px dashed #CCC; padding-bottom: 6px; display: flex; align-items: center; gap: 6px; }
+        /* === 4. 泡湯 SPA 推薦區塊 (整體收緊、字體縮小) === */
+        .section-title { font-size: 16px; font-weight: bold; color: var(--ink-dark); margin: 20px 0 10px 0; border-bottom: 2px dashed #CCC; padding-bottom: 6px; display: flex; align-items: center; gap: 6px; }
 
-        .spa-card { background: white; border: 2.5px solid var(--ink-dark); border-radius: 12px; padding: 10px; margin-bottom: 10px; box-shadow: 3px 3px 0px rgba(44,62,80,0.1); } /* 縮減 padding 和 margin */
+        .spa-card { background: white; border: 2px solid var(--ink-dark); border-radius: 12px; padding: 10px; margin-bottom: 10px; box-shadow: 2px 2px 0px rgba(44,62,80,0.1); } 
         .spa-top { display: flex; justify-content: space-between; align-items: center; }
-        .spa-title-area { flex: 1; padding-right: 10px; }
-        .spa-name { font-size: 16px; font-weight: bold; color: var(--ink-dark); line-height: 1.1; margin-bottom: 4px; } /* 縮緊行高 */
-        .spa-short { font-size: 12px; color: #666; margin-top: 0; line-height: 1.3; } /* 縮緊行高 */
+        .spa-title-area { flex: 1; padding-right: 8px; }
+        .spa-name { font-size: 15px; font-weight: bold; color: var(--ink-dark); line-height: 1.1; margin-bottom: 3px; } 
+        .spa-short { font-size: 11.5px; color: #666; margin-top: 0; line-height: 1.3; } 
         
-        .spa-nav-btn { background: var(--pop-yellow); color: var(--ink-dark); text-decoration: none; padding: 6px 10px; border-radius: 10px; font-size: 12px; font-weight: bold; border: 2px solid var(--ink-dark); white-space: nowrap; box-shadow: 2px 2px 0px var(--ink-dark); transition: 0.2s; display: flex; align-items: center; gap: 4px; }
-        .spa-nav-btn:active { transform: translate(2px,2px); box-shadow: none; }
+        .spa-nav-btn { background: var(--pop-yellow); color: var(--ink-dark); text-decoration: none; padding: 5px 10px; border-radius: 8px; font-size: 11.5px; font-weight: bold; border: 2px solid var(--ink-dark); white-space: nowrap; box-shadow: 2px 2px 0px var(--ink-dark); transition: 0.2s; display: flex; align-items: center; gap: 4px; }
+        .spa-nav-btn:active { transform: translate(1px,1px); box-shadow: none; }
         
-        details { margin-top: 8px; border-top: 1px dashed #CCC; padding-top: 8px; } /* 縮減間距 */
-        summary { font-size: 13px; font-weight: bold; color: var(--pop-pink); cursor: pointer; outline: none; margin-bottom: 4px; display: flex; align-items: center; gap: 4px; }
-        .info-list { list-style: none; padding: 0; margin: 0; font-size: 12px; line-height: 1.4; color: #444; } /* 縮緊行高 */
+        details { margin-top: 6px; border-top: 1px dashed #CCC; padding-top: 8px; }
+        
+        /* 隱藏瀏覽器預設的黑色三角箭頭 */
+        details summary { list-style: none; }
+        details summary::-webkit-details-marker { display: none; }
+        
+        summary { font-size: 12.5px; font-weight: bold; color: var(--pop-pink); cursor: pointer; outline: none; margin-bottom: 4px; display: flex; align-items: center; gap: 4px; }
+        .info-list { list-style: none; padding: 0; margin: 0; font-size: 11.5px; line-height: 1.35; color: #444; } 
         .info-list li { margin-bottom: 4px; display: flex; }
-        .info-label { font-weight: bold; color: var(--ink-dark); width: 45px; flex-shrink: 0; }
+        .info-label { font-weight: bold; color: var(--ink-dark); width: 40px; flex-shrink: 0; }
 
-        /* === 5. 附近景點四宮格 === */
-        .spot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 30px; }
-        .spot-card { background: white; border: 2.5px solid var(--pop-blue); border-radius: 12px; padding: 12px 10px; text-align: center; text-decoration: none; display: block; transition: 0.2s; box-shadow: 3px 3px 0px rgba(78, 205, 196, 0.2); }
+        /* === 5. 附近景點四宮格 (縮小字體與間距) === */
+        .spot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 25px; }
+        .spot-card { background: white; border: 2px solid var(--pop-blue); border-radius: 12px; padding: 10px 8px; text-align: center; text-decoration: none; display: block; transition: 0.2s; box-shadow: 2px 2px 0px rgba(78, 205, 196, 0.2); }
         .spot-card:active { transform: scale(0.96); background: #f0fbf9; box-shadow: none; }
-        .spot-icon { font-size: 24px; margin-bottom: 4px; }
-        .spot-name { font-size: 14px; font-weight: bold; color: var(--ink-dark); margin-bottom: 4px; }
-        .spot-desc { font-size: 11px; color: #666; }
+        .spot-icon { font-size: 22px; margin-bottom: 3px; }
+        .spot-name { font-size: 13.5px; font-weight: bold; color: var(--ink-dark); margin-bottom: 3px; }
+        .spot-desc { font-size: 10.5px; color: #666; }
 
         /* === 6. 近期活動區塊 === */
-        .events-header { text-align: center; margin-bottom: 15px; }
-        .events-header h2 { font-size: 22px; font-weight: bold; color: var(--ink-dark); margin: 0 0 8px 0; letter-spacing: 1px; }
-        .events-header p { font-size: 14px; font-weight: bold; color: #555; margin: 0; display: flex; align-items: center; justify-content: center; gap: 6px; }
+        .events-header { text-align: center; margin-bottom: 12px; }
+        .events-header h2 { font-size: 20px; font-weight: bold; color: var(--ink-dark); margin: 0 0 6px 0; letter-spacing: 1px; }
+        .events-header p { font-size: 13px; font-weight: bold; color: #555; margin: 0; display: flex; align-items: center; justify-content: center; gap: 6px; }
 
         .event-btn { 
             display: block; width: 100%; box-sizing: border-box; text-align: center;
-            padding: 16px; border-radius: 16px; font-size: 18px; font-weight: bold;
-            border: 2.5px solid var(--ink-dark); margin-bottom: 15px; text-decoration: none;
+            padding: 14px; border-radius: 12px; font-size: 16px; font-weight: bold;
+            border: 2px solid var(--ink-dark); margin-bottom: 12px; text-decoration: none;
         }
         .yellow-btn { background: var(--pop-yellow); color: var(--ink-dark); box-shadow: 3px 3px 0px var(--ink-dark); transition: 0.2s; }
-        .yellow-btn:active { transform: translate(3px,3px); box-shadow: 0px 0px 0px transparent; }
+        .yellow-btn:active { transform: translate(2px,2px); box-shadow: 0px 0px 0px transparent; }
         .gray-btn { background: rgba(255,255,255,0.7); color: #888; border-color: #CCC; box-shadow: none; }
 
         /* 底部標語 */
-        .footer-text { text-align: center; font-size: 13px; font-weight: bold; color: var(--ink-dark); margin-top: 30px; }
+        .footer-text { text-align: center; font-size: 12px; font-weight: bold; color: var(--ink-dark); margin-top: 25px; }
     </style>
 </head>
 <body>
@@ -139,13 +144,15 @@
     <div class="info-card">
         <div style="border-top: 2px dashed #b0bec5;"></div>
         
+        <!-- 導航行 (修改為車子圖案) -->
         <div class="info-row">
             <div class="info-left">
-                <span class="info-icon">◎</span> 卑南鄉溫泉路370號
+                <span class="info-icon">🚗</span> 卑南鄉溫泉路370號
             </div>
-            <a href="https://maps.app.goo.gl/YkHK24qn1kZsfBn38?g_st=ic" target="_blank" class="info-btn btn-white">導航</a>
+            <a href="https://maps.app.goo.gl/YkHK24qn1kZsfBn38?g_st=ic" target="_blank" class="info-btn btn-white">🚗 導航</a>
         </div>
         
+        <!-- 撥打行 -->
         <div class="info-row">
             <div class="info-left">
                 <span class="info-icon">📞</span> <span class="phone-text">0910-557-998</span>
@@ -166,9 +173,9 @@
             <a href="https://maps.google.com/?q=東遊季溫泉渡假村" target="_blank" class="spa-nav-btn">🚗導航</a>
         </div>
         <details>
-            <summary>▶ ▼ 交通與詳細資訊</summary>
+            <!-- 拿掉預設的黑箭頭，只保留 ▼ -->
+            <summary>▼ 交通與詳細資訊</summary>
             <ul class="info-list">
-                <!-- 移除重複的特色介紹 -->
                 <li><span class="info-label">停車：</span><span>園區內附設超大型免費露天停車場。</span></li>
                 <li><span class="info-label">公車：</span><span>搭乘客運 8129路線於「東遊季」站下車。</span></li>
             </ul>
@@ -184,9 +191,8 @@
             <a href="https://maps.google.com/?q=知本老爺酒店" target="_blank" class="spa-nav-btn">🚗導航</a>
         </div>
         <details>
-            <summary>▶ ▼ 交通與詳細資訊</summary>
+            <summary>▼ 交通與詳細資訊</summary>
             <ul class="info-list">
-                <!-- 移除重複的特色介紹 -->
                 <li><span class="info-label">停車：</span><span>飯店專屬免費停車場（含地下及戶外）。</span></li>
                 <li><span class="info-label">公車：</span><span>搭乘客運 8129路線終點「知本老爺」站。</span></li>
             </ul>
@@ -196,16 +202,14 @@
     <div class="spa-card">
         <div class="spa-top">
             <div class="spa-title-area">
-                <!-- 名稱更正為 ㄚㄧㄚ旺溫泉渡假村 -->
                 <div class="spa-name">ㄚㄧㄚ旺溫泉渡假村</div>
                 <div class="spa-short">原民風紅磚建築，群山環繞的純湯秘境</div>
             </div>
             <a href="https://maps.google.com/?q=ㄚㄧㄚ旺溫泉渡假村" target="_blank" class="spa-nav-btn">🚗導航</a>
         </div>
         <details>
-            <summary>▶ ▼ 交通與詳細資訊</summary>
+            <summary>▼ 交通與詳細資訊</summary>
             <ul class="info-list">
-                <!-- 移除重複的特色介紹 -->
                 <li><span class="info-label">停車：</span><span>大門口及周邊皆有附設免費專屬停車場。</span></li>
                 <li><span class="info-label">公車：</span><span>搭乘客運 8129路線於「ㄚㄧㄚ旺」站下車。</span></li>
             </ul>
@@ -221,9 +225,8 @@
             <a href="https://maps.google.com/?q=東台溫泉飯店" target="_blank" class="spa-nav-btn">🚗導航</a>
         </div>
         <details>
-            <summary>▶ ▼ 交通與詳細資訊</summary>
+            <summary>▼ 交通與詳細資訊</summary>
             <ul class="info-list">
-                <!-- 移除重複的特色介紹 -->
                 <li><span class="info-label">停車：</span><span>飯店對面及周邊備有專屬免費停車場。</span></li>
                 <li><span class="info-label">公車：</span><span>搭乘客運 8129路線於「東台飯店」站下車。</span></li>
             </ul>
