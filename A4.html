@@ -32,8 +32,7 @@
             background-repeat: no-repeat; 
             
             margin: 5mm auto; 
-            /* 修正：加大底部的 padding-bottom，從 16mm 增加到 24mm，保護底部標語 */
-            padding: 8mm 8mm 24mm 8mm; 
+            padding: 8mm 8mm 18mm 8mm; 
             box-sizing: border-box; 
             position: relative;
             border: 6px solid white; 
@@ -44,7 +43,6 @@
 
         @media print { body { background: white; } .a4-page { margin: 0; box-shadow: none; border: none; } @page { size: A4; margin: 0; } }
         
-        /* 店家資訊區塊 */
         .header { 
             text-align: left; 
             margin-top: 0mm;
@@ -54,7 +52,6 @@
             flex-shrink: 0; 
         }
         
-        /* 副標題 */
         .h-sub { 
             color: #01579b; 
             font-size: 15pt; 
@@ -67,7 +64,6 @@
             font-family: 'Iansui', cursive !important; 
         }
 
-        /* 店名 */
         .h-title { 
             font-family: 'Noto Sans TC', sans-serif !important; 
             font-size: 40pt !important; 
@@ -91,7 +87,6 @@
         .store-info { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; margin-top: 10px; }
         .button-group { display: flex; gap: 12px; align-items: center; }
 
-        /* 按鈕 */
         .phone, .address { 
             background: rgba(2, 189, 180, 0.7); 
             color: white; 
@@ -111,10 +106,9 @@
 
         .address-row { font-size: 11pt; font-weight: bold; }
         
-        /* 總整理標語 */
         .section-title {
             position: absolute;
-            top: 52mm;  
+            top: 48mm;  /* 再往上拉提，爭取空間 */
             left: 0;
             width: 100%;
             text-align: center;
@@ -132,12 +126,10 @@
             letter-spacing: 1px;
         }
 
-        /* 活動表格區塊 */
         .grid { 
             display: flex; 
             gap: 10px; 
-            /* 稍微把表格往上提 1mm */
-            margin-top: 13mm; 
+            margin-top: 10.5mm; /* 配合標題上移，擠出下方空間給新活動 */
             margin-bottom: 0px; 
         }
         
@@ -145,7 +137,7 @@
             flex: 1; 
             display: flex; 
             flex-direction: column; 
-            gap: 4px; 
+            gap: 3px; 
         }
 
         .month-box { 
@@ -153,23 +145,21 @@
             backdrop-filter: blur(2px);
             border: 2.5px solid; 
             border-radius: 20px 25px 22px 24px / 24px 22px 25px 20px; 
-            /* 稍微縮緊下方 padding */
-            padding: 0px 10px 6px 10px;    
+            padding: 0px 8px 4px 8px;    
             box-sizing: border-box; 
             display: flex; 
             flex-direction: column; 
             box-shadow: 0 2px 6px rgba(0,0,0,0.08); 
-            /* 稍微縮緊區塊間距 */
-            margin-bottom: 3px; 
+            margin-bottom: 2px; 
             overflow: hidden;            
         }
 
         .m-head { 
             color: white; 
             font-weight: bold; 
-            font-size: 12pt;         
-            padding: 6px 10px; 
-            margin: 0 -10px 6px -10px;    
+            font-size: 11.5pt;         
+            padding: 4px 10px; 
+            margin: 0 -8px 4px -8px;    
             border-top-left-radius: 17px; 
             border-top-right-radius: 22px;
             border-bottom-left-radius: 0px;
@@ -194,19 +184,18 @@
         .m-dec .m-head { background: #6a1b9a; }
         .m-ongoing .m-head { background: #00796b; }
         
-        /* 稍微收緊各行活動的上下間距與行高 */
-        .event { display: flex; margin-bottom: 4px; border-bottom: 1px dashed rgba(0,0,0,0.15); padding-bottom: 4px; line-height: 1.25; }
+        /* 極致收緊活動間距與行高，確保所有活動塞得下 */
+        .event { display: flex; margin-bottom: 2.5px; border-bottom: 1px dashed rgba(0,0,0,0.15); padding-bottom: 2.5px; line-height: 1.15; }
         .event:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
         
-        .e-date { width: 62px; font-size: 8pt; font-weight: bold; color: #333; flex-shrink: 0; margin-right: 4px; }
+        .e-date { width: 62px; font-size: 7.8pt; font-weight: bold; color: #333; flex-shrink: 0; margin-right: 4px; }
         .e-info { flex: 1; }
-        .e-name { font-size: 8.5pt; font-weight: bold; color: #111; }
-        .e-desc { font-size: 7.2pt; color: #555; margin-top: 1.5px; }
-        .e-loc { font-size: 7.2pt; color: #0277bd; font-weight: bold; margin-top: 1.5px; }
+        .e-name { font-size: 8.3pt; font-weight: bold; color: #111; }
+        .e-desc { font-size: 7pt; color: #555; margin-top: 1px; }
+        .e-loc { font-size: 7pt; color: #0277bd; font-weight: bold; margin-top: 1px; }
         
-        /* 底部計數器容器往上提一點 */
         .footer-container {
-            position: absolute; bottom: 6mm; left: 6mm; right: 6mm; 
+            position: absolute; bottom: 5mm; left: 6mm; right: 6mm; 
             text-align: center;
             display: flex;
             flex-direction: column;
@@ -258,9 +247,17 @@
                     <div class="event"><div class="e-date">10/17</div><div class="e-info"><div class="e-name">雲端發票向前行 森林健走好心情</div><div class="e-loc">📍臺東森林公園 ⏰14:00~17:00</div></div></div>
                     <div class="event"><div class="e-date">10/18</div><div class="e-info"><div class="e-name">達仁鄉縫迴山海祭路跑、市集音樂會</div><div class="e-loc">📍南田海岸親水公園 ⏰06:00~14:00</div></div></div>
                     
-                    <div class="event"><div class="e-date">10/24<br><span style="color:red; font-size:7pt;">延期更新</span></div><div class="e-info"><div class="e-name">南島咖啡節市集</div><div class="e-loc">📍台東波浪屋前廣場 ⏰13:00~19:00</div></div></div>
-                    <div class="event"><div class="e-date">10/25</div><div class="e-info"><div class="e-name">南島咖啡節市集</div><div class="e-loc">📍台東波浪屋前廣場 ⏰11:00~18:00</div></div></div>
+                    <!-- 將南島咖啡節兩天合併以節省空間 -->
+                    <div class="event"><div class="e-date">10/24~25<br><span style="color:red; font-size:7pt;">延期更新</span></div><div class="e-info"><div class="e-name">南島咖啡節市集</div><div class="e-desc">⏰24日13:00~19:00 / 25日11:00~18:00</div><div class="e-loc">📍台東波浪屋前廣場</div></div></div>
+                    
                     <div class="event"><div class="e-date">10/25~26<br><span style="color:red; font-size:7pt;">延期更新</span></div><div class="e-info"><div class="e-name">2026臺東慢食節《夜食餐桌》</div><div class="e-loc">📍臺東新生公園廣場 ⏰15:00~20:00</div></div></div>
+                    
+                    <!-- 新增活動 -->
+                    <div class="event"><div class="e-date">10/30</div><div class="e-info"><div class="e-name">微光集・卡K開麥拉</div><div class="e-desc">🎵玩樂樂團, 思奈, 阿法, 巴大雄</div><div class="e-loc">📍微光集(鐵花路371號) ⏰19:00~22:00</div></div></div>
+                    <div class="event"><div class="e-date">10/31</div><div class="e-info"><div class="e-name">台東純素市集 Taitung Vegan Market</div><div class="e-loc">📍南京路市民廣場 ⏰15:00~19:00</div></div></div>
+                    <div class="event"><div class="e-date">10/31</div><div class="e-info"><div class="e-name">臺東市觀光夜市・精彩好市券</div><div class="e-desc">🛍️自備環保用品100元換200元好市券(限量405份)</div><div class="e-loc">📍正氣路×五權街口(桂田旁) ⏰18:00起</div></div></div>
+                    <!-- 新增活動結束 -->
+
                     <div class="event"><div class="e-date">10/31</div><div class="e-info"><div class="e-name">2026漫遊知森(全齡森呼吸療癒)</div><div class="e-desc">🏃26攤知森市集 (部分體驗需事前付費報名)</div><div class="e-loc">📍知本國家森林遊樂區 ⏰09:30~16:00</div></div></div>
                     <div class="event"><div class="e-date">10/31</div><div class="e-info"><div class="e-name">知本溫泉路跑嘉年華音樂會</div><div class="e-desc">🎵達魯瑪克古謠班, 卑南族青春歌隊, 思奈樂團, 孔亞明, 桑梅絹</div><div class="e-loc">📍東遊季星星草原 ⏰16:00~21:00</div></div></div>
                     
@@ -272,7 +269,6 @@
             <div class="col">
                 <div class="month-box m-alert">
                     <div class="m-head">⚠️ 異動公告 (取消 / 延期)</div>
-                    <!-- 修正：移除刪除線與灰色，讓字體恢復清晰 -->
                     <div class="event"><div class="e-date">10/24~25<br><span style="color:red; font-size:7pt; border:1px solid red; padding:0 2px;">取消</span></div><div class="e-info"><div class="e-name">2026池上秋收稻穗藝術節</div><div class="e-desc" style="color:red; font-weight:bold;">⚠️因薔琵颱風影響，全數取消演出。</div><div class="e-loc">📍台東縣池上鄉萬安社區天堂路稻田區</div></div></div>
                     <div class="event"><div class="e-date" style="color:red;">延期</div><div class="e-info"><div class="e-name">2026 台東香草生活節</div><div class="e-desc" style="color:red;">⚠️因薔琵颱風延期辦理，新日期將另行公告</div><div class="e-loc">📍臺東縣客家文化園區</div></div></div>
                     <div class="event"><div class="e-date" style="color:red;">延期</div><div class="e-info"><div class="e-name">我在太麻里好解憂＿好解憂散策市集</div><div class="e-desc" style="color:red;">⚠️因薔琵颱風延期辦理，新日期將另行公告</div><div class="e-loc">📍太麻里福興宮及泰和村活動中心前</div></div></div>
@@ -291,6 +287,9 @@
                     
                     <div class="event"><div class="e-date">11/6~8<br>11/14~22</div><div class="e-info"><div class="e-name">衝浪小旅行 / 市集 / 攝影比賽</div><div class="e-desc">🎒新港職人見學 / 山海獵人足跡 (需付費)<br>🛍️海洋市集 (※11/9-13休賽暫停)<br>📷衝浪攝影比賽</div><div class="e-loc">📍臺東金樽漁港</div></div></div>
                     
+                    <!-- 新增 11/7 好市券 -->
+                    <div class="event"><div class="e-date">11/7</div><div class="e-info"><div class="e-name">臺東市觀光夜市・精彩好市券</div><div class="e-desc">🛍️自備環保用品100元換200元好市券(限量405份)</div><div class="e-loc">📍正氣路×五權街口(桂田旁) ⏰18:00起</div></div></div>
+
                     <div class="event"><div class="e-date">11/7</div><div class="e-info"><div class="e-name">滑板賽 Skate Jam (衝浪賽周邊)</div><div class="e-desc">🛹現場有滑板體驗，新手也能同樂！</div><div class="e-loc">📍臺東金樽漁港 ⏰13:00~18:30</div></div></div>
                     
                     <div class="event"><div class="e-date">11/8</div><div class="e-info"><div class="e-name">太平洋體能挑戰賽 (衝浪賽周邊)</div><div class="e-loc">📍臺東金樽漁港</div></div></div>
