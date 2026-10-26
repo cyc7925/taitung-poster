@@ -60,10 +60,8 @@
         .info-row { 
             display: flex; justify-content: space-between; align-items: center; 
             padding: 6px 0; 
-            border-bottom: 2px dashed #b0bec5; 
+            border-bottom: 2px dashed #b0bec5; /* 保留虛線 */
         }
-        /* 移除最後一行的虛線，讓資訊列與下方區塊更乾淨的銜接 */
-        .info-row:last-child { border-bottom: none; }
         
         .info-left { font-size: 13.5px; font-weight: bold; color: var(--ink-dark); display: flex; align-items: center; gap: 6px; }
         .info-icon { font-size: 16px; display: inline-block; width: 20px; text-align: center; color: #555; }
@@ -79,10 +77,12 @@
         .btn-white { background: white; }
         .btn-yellow { background: var(--pop-yellow); }
 
-        /* === 全局標題樣式 (統一靠左、移除下方虛線) === */
+        /* === 全局標題樣式 (統一靠左，補回下方虛線) === */
         .section-title { 
             font-size: 15px; font-weight: bold; color: var(--ink-dark); 
-            margin: 15px 0 10px 0; 
+            margin: 20px 0 10px 0; 
+            border-bottom: 2px dashed #CCC; /* 完美補回虛線 */
+            padding-bottom: 6px; 
             display: flex; align-items: center; gap: 6px; 
         }
         
@@ -118,7 +118,6 @@
         .info-label { font-weight: bold; color: var(--ink-dark); width: 40px; flex-shrink: 0; }
 
         /* === 6. 附近景點四宮格 === */
-        /* 加大一點點底部 margin 以隔開下一個標題 */
         .spot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 25px; }
         .spot-card { background: white; border: 2px solid var(--pop-blue); border-radius: 12px; padding: 8px; text-align: center; text-decoration: none; display: block; transition: 0.2s; box-shadow: 2px 2px 0px rgba(78, 205, 196, 0.2); }
         .spot-card:active { transform: scale(0.96); background: #f0fbf9; box-shadow: none; }
@@ -161,6 +160,7 @@
 
     <!-- 3. 聯絡資訊列表 -->
     <div class="info-card">
+        <!-- 頂部虛線 -->
         <div style="border-top: 2px dashed #b0bec5;"></div>
         
         <div class="info-row">
@@ -170,6 +170,7 @@
             <a href="https://maps.app.goo.gl/YkHK24qn1kZsfBn38?g_st=ic" target="_blank" class="info-btn btn-white">導航</a>
         </div>
         
+        <!-- 底部也保有虛線，框住整個聯絡資訊 -->
         <div class="info-row">
             <div class="info-left">
                 <span class="info-icon">📞</span> <span class="phone-text">0910-557-998</span>
@@ -309,7 +310,7 @@
         </a>
     </div>
 
-    <!-- 7. 臺東近期活動 (標題統一靠左) -->
+    <!-- 7. 臺東近期活動 (完美對齊上面的虛線樣式) -->
     <div class="section-title"><span style="color:var(--pop-pink);">📅</span> 臺東近期活動總整理</div>
 
     <a href="2026.html" class="event-btn yellow-btn">2026 秋冬季活動</a>
