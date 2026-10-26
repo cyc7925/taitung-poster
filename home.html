@@ -51,11 +51,11 @@
             margin-top: 5px; margin-bottom: 12px; 
         }
 
-        /* === 3. 聯絡與導航資訊列 (極致收緊間距) === */
-        .info-card { margin-bottom: 15px; padding: 0 5px; } /* 縮小底部留白 */
+        /* === 3. 聯絡與導航資訊列 === */
+        .info-card { margin-bottom: 15px; padding: 0 5px; }
         .info-row { 
             display: flex; justify-content: space-between; align-items: center; 
-            padding: 6px 0; /* 極致收緊上下空間 */
+            padding: 6px 0; 
             border-bottom: 2px dashed #b0bec5; 
         }
         
@@ -63,7 +63,6 @@
         .info-icon { font-size: 16px; display: inline-block; width: 20px; text-align: center; color: #555; }
         .phone-text { color: #0000EE; text-decoration: underline; font-weight: bold; font-family: sans-serif; letter-spacing: 0.5px; font-size: 15px; }
 
-        /* 移除固定寬度，靠 padding 自然撐開對稱比例 */
         .info-btn { 
             padding: 6px 20px; 
             border: 2px solid var(--ink-dark); border-radius: 20px; 
@@ -74,10 +73,22 @@
         .btn-white { background: white; }
         .btn-yellow { background: var(--pop-yellow); }
 
-
-        /* === 4. 泡湯 SPA 推薦區塊 === */
+        /* === 4. 熱門商品六宮格 (新增) === */
         .section-title { font-size: 15px; font-weight: bold; color: var(--ink-dark); margin: 15px 0 8px 0; border-bottom: 2px dashed #CCC; padding-bottom: 6px; display: flex; align-items: center; gap: 6px; }
+        
+        .product-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 20px; }
+        .product-card { 
+            background: white; border: 2px solid var(--pop-pink); border-radius: 12px; 
+            padding: 10px 5px; text-align: center; display: flex; flex-direction: column; 
+            align-items: center; justify-content: center;
+            box-shadow: 2px 2px 0px rgba(255, 107, 107, 0.2); transition: 0.2s;
+        }
+        .product-icon { font-size: 24px; margin-bottom: 3px; line-height: 1; }
+        .product-name { font-size: 12.5px; font-weight: bold; color: var(--ink-dark); margin-bottom: 2px; }
+        .product-desc { font-size: 10px; color: #666; line-height: 1.2; }
 
+
+        /* === 5. 泡湯 SPA 推薦區塊 === */
         .spa-card { background: white; border: 2px solid var(--ink-dark); border-radius: 12px; padding: 8px; margin-bottom: 8px; box-shadow: 2px 2px 0px rgba(44,62,80,0.1); } 
         .spa-top { display: flex; justify-content: space-between; align-items: center; }
         .spa-title-area { flex: 1; padding-right: 8px; }
@@ -88,17 +99,14 @@
         .spa-nav-btn:active { transform: translate(1px,1px); box-shadow: none; }
         
         details { margin-top: 6px; border-top: 1px dashed #CCC; padding-top: 6px; }
-        
-        /* 隱藏瀏覽器預設的黑色三角箭頭 */
         details summary { list-style: none; }
         details summary::-webkit-details-marker { display: none; }
-        
         summary { font-size: 12px; font-weight: bold; color: var(--pop-pink); cursor: pointer; outline: none; margin-bottom: 4px; display: flex; align-items: center; gap: 4px; }
         .info-list { list-style: none; padding: 0; margin: 0; font-size: 11px; line-height: 1.35; color: #444; } 
         .info-list li { margin-bottom: 4px; display: flex; }
         .info-label { font-weight: bold; color: var(--ink-dark); width: 40px; flex-shrink: 0; }
 
-        /* === 5. 附近景點四宮格 === */
+        /* === 6. 附近景點四宮格 === */
         .spot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 20px; }
         .spot-card { background: white; border: 2px solid var(--pop-blue); border-radius: 12px; padding: 8px; text-align: center; text-decoration: none; display: block; transition: 0.2s; box-shadow: 2px 2px 0px rgba(78, 205, 196, 0.2); }
         .spot-card:active { transform: scale(0.96); background: #f0fbf9; box-shadow: none; }
@@ -106,7 +114,7 @@
         .spot-name { font-size: 13px; font-weight: bold; color: var(--ink-dark); margin-bottom: 2px; }
         .spot-desc { font-size: 10px; color: #666; }
 
-        /* === 6. 近期活動區塊 === */
+        /* === 7. 近期活動區塊 === */
         .events-header { text-align: center; margin-bottom: 10px; }
         .events-header h2 { font-size: 18px; font-weight: bold; color: var(--ink-dark); margin: 0 0 4px 0; letter-spacing: 1px; }
         .events-header p { font-size: 12px; font-weight: bold; color: #555; margin: 0; display: flex; align-items: center; justify-content: center; gap: 6px; }
@@ -141,11 +149,10 @@
     <!-- 2. 店名 -->
     <div class="store-name">東泳記泳裝店</div>
 
-    <!-- 3. 聯絡資訊列表 (移除按鈕內的圖案，維持完美對稱) -->
+    <!-- 3. 聯絡資訊列表 -->
     <div class="info-card">
         <div style="border-top: 2px dashed #b0bec5;"></div>
         
-        <!-- 導航行 -->
         <div class="info-row">
             <div class="info-left">
                 <span class="info-icon">🚗</span> 卑南鄉溫泉路370號
@@ -153,7 +160,6 @@
             <a href="https://maps.app.goo.gl/YkHK24qn1kZsfBn38?g_st=ic" target="_blank" class="info-btn btn-white">導航</a>
         </div>
         
-        <!-- 撥打行 -->
         <div class="info-row">
             <div class="info-left">
                 <span class="info-icon">📞</span> <span class="phone-text">0910-557-998</span>
@@ -162,7 +168,42 @@
         </div>
     </div>
 
-    <!-- 4. 泡湯 SPA 精選 -->
+    <!-- 4. 本店熱門商品 (新增) -->
+    <div class="section-title"><span style="color:var(--pop-pink);">🛍️</span> 本店熱賣商品</div>
+    <div class="product-grid">
+        <div class="product-card">
+            <div class="product-icon">🎟️</div>
+            <div class="product-name">優惠溫泉券</div>
+            <div class="product-desc">知本泡湯必備</div>
+        </div>
+        <div class="product-card">
+            <div class="product-icon">👙</div>
+            <div class="product-name">平價泳裝</div>
+            <div class="product-desc">男女童款式</div>
+        </div>
+        <div class="product-card">
+            <div class="product-icon">🥽</div>
+            <div class="product-name">專業泳具</div>
+            <div class="product-desc">泳鏡與泳帽</div>
+        </div>
+        <div class="product-card">
+            <div class="product-icon">🛟</div>
+            <div class="product-name">各式泳圈</div>
+            <div class="product-desc">大人小孩尺寸</div>
+        </div>
+        <div class="product-card">
+            <div class="product-icon">👶</div>
+            <div class="product-name">游泳尿布</div>
+            <div class="product-desc">嬰幼兒專用</div>
+        </div>
+        <div class="product-card">
+            <div class="product-icon">🩴</div>
+            <div class="product-name">玩水配件</div>
+            <div class="product-desc">拖鞋與防水袋</div>
+        </div>
+    </div>
+
+    <!-- 5. 泡湯 SPA 精選 -->
     <div class="section-title"><span style="color:var(--pop-pink);">♨️</span> 知本在地 SPA 溫泉精選</div>
     
     <div class="spa-card">
@@ -233,7 +274,7 @@
         </details>
     </div>
 
-    <!-- 5. 附近順遊景點 -->
+    <!-- 6. 附近順遊景點 -->
     <div class="section-title">🌲 附近順遊景點推薦</div>
     <div class="spot-grid">
         <a href="https://maps.google.com/?q=知本國家森林遊樂區" target="_blank" class="spot-card">
@@ -258,7 +299,7 @@
         </a>
     </div>
 
-    <!-- 6. 臺東近期活動 -->
+    <!-- 7. 臺東近期活動 -->
     <div class="events-header">
         <h2>臺東近期活動</h2>
         <p><span style="color:var(--pop-pink);">♨️</span> 泡暖湯・穿泳裝・玩台東</p>
