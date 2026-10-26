@@ -6,6 +6,7 @@
     <title>東泳記泳裝店 - 旅遊導覽首頁</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/justfont/open-huninn-font/font.css">
     
+    <!-- 補上現代標準的 SEO 隱藏標籤 (Meta Tags) -->
     <meta name="description" content="東泳記泳裝店位於台東知本，提供平價泳裝、優惠溫泉券、專業泳具與各式泳圈。為您整理知本溫泉SPA推薦與台東近期活動總整理，來台東泡湯玩水必備導覽！">
     <meta name="keywords" content="東泳記泳裝店, 台東泳裝, 知本溫泉, 溫泉券, 泳具, 泳圈, 台東活動, 旅遊導覽, 丫ㄧㄚ旺, 東遊季, 知本老爺, 東台溫泉">
     
@@ -54,21 +55,30 @@
             margin-top: 5px; margin-bottom: 12px; 
         }
 
+        /* === 統一的區塊分隔虛線 (放在每個區塊的最上方) === */
+        .section-divider {
+            border-top: 2px dashed rgba(176, 190, 197, 0.6); /* 淡淡的虛線裝飾 */
+            margin: 25px 5px 15px 5px; /* 留出呼吸空間 */
+        }
+        
+        /* 針對第一個聯絡區塊的分隔線，上距小一點 */
+        .first-divider {
+            margin-top: 5px;
+        }
+
         /* === 3. 聯絡與導航資訊列 === */
         .info-card { margin-bottom: 15px; padding: 0 5px; }
         
-        /* 統一區塊分隔線樣式 */
-        .section-divider {
-            border-top: 2px dashed #b0bec5;
-            margin: 0 5px;
-        }
-
         .info-row { 
             display: flex; justify-content: space-between; align-items: center; 
             padding: 6px 0; 
-            border-bottom: 2px dashed #b0bec5; 
         }
         
+        /* 移除之前錯誤的電話底部虛線，改為完全無底線 */
+        .info-row:last-child {
+            border-bottom: none;
+        }
+
         .info-left { font-size: 13.5px; font-weight: bold; color: var(--ink-dark); display: flex; align-items: center; gap: 6px; }
         .info-icon { font-size: 16px; display: inline-block; width: 20px; text-align: center; color: #555; }
         .phone-text { color: #0000EE; text-decoration: underline; font-weight: bold; font-family: sans-serif; letter-spacing: 0.5px; font-size: 15px; }
@@ -83,17 +93,15 @@
         .btn-white { background: white; }
         .btn-yellow { background: var(--pop-yellow); }
 
-        /* === 全局標題樣式 (統一靠左，包含下方虛線) === */
+        /* === 全局標題樣式 (統一靠左，無下劃線) === */
         .section-title { 
             font-size: 15px; font-weight: bold; color: var(--ink-dark); 
-            margin: 20px 0 10px 0; 
-            border-bottom: 2px dashed #CCC; 
-            padding-bottom: 6px; 
+            margin: 0 0 10px 0; /* 移除 padding-bottom 和 border-bottom */
             display: flex; align-items: center; gap: 6px; 
         }
         
         /* === 4. 熱門商品六宮格 === */
-        .product-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 25px; }
+        .product-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 5px; }
         .product-card { 
             background: white; border: 2px solid var(--pop-pink); border-radius: 12px; 
             padding: 10px 5px; text-align: center; display: flex; flex-direction: column; 
@@ -124,7 +132,7 @@
         .info-label { font-weight: bold; color: var(--ink-dark); width: 40px; flex-shrink: 0; }
 
         /* === 6. 附近景點四宮格 === */
-        .spot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 25px; }
+        .spot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 5px; }
         .spot-card { background: white; border: 2px solid var(--pop-blue); border-radius: 12px; padding: 8px; text-align: center; text-decoration: none; display: block; transition: 0.2s; box-shadow: 2px 2px 0px rgba(78, 205, 196, 0.2); }
         .spot-card:active { transform: scale(0.96); background: #f0fbf9; box-shadow: none; }
         .spot-icon { font-size: 20px; margin-bottom: 3px; }
@@ -166,9 +174,10 @@
 
     <!-- 3. 聯絡資訊列表 -->
     <div class="info-card">
-        <div class="section-divider"></div>
+        <!-- 區塊頂部淡淡分隔線 -->
+        <div class="section-divider first-divider"></div>
         
-        <div class="info-row">
+        <div class="info-row" style="border-bottom: 1px dashed rgba(176, 190, 197, 0.4); margin-bottom: 4px; padding-bottom: 10px;">
             <div class="info-left">
                 <span class="info-icon">🚗</span> 卑南鄉溫泉路370號
             </div>
@@ -184,6 +193,7 @@
     </div>
 
     <!-- 4. 本店熱門商品 -->
+    <div class="section-divider"></div>
     <div class="section-title"><span style="color:var(--pop-pink);">🛍️</span> 本店熱賣商品</div>
     <div class="product-grid">
         <div class="product-card">
@@ -219,6 +229,7 @@
     </div>
 
     <!-- 5. 泡湯 SPA 精選 -->
+    <div class="section-divider"></div>
     <div class="section-title"><span style="color:var(--pop-pink);">♨️</span> 知本在地 SPA 溫泉精選</div>
     
     <div class="spa-card">
@@ -290,6 +301,7 @@
     </div>
 
     <!-- 6. 附近順遊景點 -->
+    <div class="section-divider"></div>
     <div class="section-title"><span style="color:var(--pop-pink);">🌲</span> 附近順遊景點推薦</div>
     <div class="spot-grid">
         <a href="https://maps.google.com/?q=知本國家森林遊樂區" target="_blank" class="spot-card">
@@ -315,6 +327,7 @@
     </div>
 
     <!-- 7. 臺東近期活動 -->
+    <div class="section-divider"></div>
     <div class="section-title"><span style="color:var(--pop-pink);">📅</span> 臺東近期活動總整理</div>
 
     <a href="2026.html" class="event-btn yellow-btn">2026 秋冬季活動</a>
