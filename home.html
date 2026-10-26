@@ -73,7 +73,7 @@
         .btn-white { background: white; }
         .btn-yellow { background: var(--pop-yellow); }
 
-        /* === 4. 熱門商品六宮格 === */
+        /* === 4. 熱門商品六宮格 (文案精簡，防止折行) === */
         .section-title { font-size: 15px; font-weight: bold; color: var(--ink-dark); margin: 15px 0 8px 0; border-bottom: 2px dashed #CCC; padding-bottom: 6px; display: flex; align-items: center; gap: 6px; }
         
         .product-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 20px; }
@@ -85,7 +85,8 @@
         }
         .product-icon { font-size: 24px; margin-bottom: 3px; line-height: 1; }
         .product-name { font-size: 12.5px; font-weight: bold; color: var(--ink-dark); margin-bottom: 2px; }
-        .product-desc { font-size: 10px; color: #666; line-height: 1.2; }
+        /* 縮小說明文字，並確保不換行 */
+        .product-desc { font-size: 9.5px; color: #666; line-height: 1.2; white-space: nowrap;}
 
 
         /* === 5. 泡湯 SPA 推薦區塊 === */
@@ -168,7 +169,7 @@
         </div>
     </div>
 
-    <!-- 4. 本店熱門商品 (文案更新) -->
+    <!-- 4. 本店熱門商品 (防止折行版) -->
     <div class="section-title"><span style="color:var(--pop-pink);">🛍️</span> 本店熱賣商品</div>
     <div class="product-grid">
         <div class="product-card">
@@ -189,17 +190,17 @@
         <div class="product-card">
             <div class="product-icon">🛟</div>
             <div class="product-name">各式泳圈</div>
-            <div class="product-desc">大中小・造型・坐圈</div>
+            <div class="product-desc">大中小與造型款</div>
         </div>
         <div class="product-card">
             <div class="product-icon">👶</div>
             <div class="product-name">嬰幼兒童</div>
-            <div class="product-desc">游泳尿布與臂圈</div>
+            <div class="product-desc">游泳尿布與坐圈</div>
         </div>
         <div class="product-card">
             <div class="product-icon">🏖️</div>
             <div class="product-name">玩水周邊</div>
-            <div class="product-desc">充氣沙灘球與拖鞋</div>
+            <div class="product-desc">充氣球與拖鞋</div>
         </div>
     </div>
 
