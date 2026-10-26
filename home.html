@@ -51,11 +51,11 @@
             margin-top: 5px; margin-bottom: 12px; 
         }
 
-        /* === 3. 聯絡與導航資訊列 === */
-        .info-card { margin-bottom: 20px; padding: 0 5px; }
+        /* === 3. 聯絡與導航資訊列 (極致收緊間距) === */
+        .info-card { margin-bottom: 15px; padding: 0 5px; } /* 縮小底部留白 */
         .info-row { 
             display: flex; justify-content: space-between; align-items: center; 
-            padding: 8px 0; 
+            padding: 6px 0; /* 極致收緊上下空間 */
             border-bottom: 2px dashed #b0bec5; 
         }
         
@@ -63,14 +63,12 @@
         .info-icon { font-size: 16px; display: inline-block; width: 20px; text-align: center; color: #555; }
         .phone-text { color: #0000EE; text-decoration: underline; font-weight: bold; font-family: sans-serif; letter-spacing: 0.5px; font-size: 15px; }
 
+        /* 移除固定寬度，靠 padding 自然撐開對稱比例 */
         .info-btn { 
-            width: 78px; 
-            box-sizing: border-box;
-            display: inline-flex; justify-content: center; align-items: center;
-            padding: 6px 0; 
+            padding: 6px 20px; 
             border: 2px solid var(--ink-dark); border-radius: 20px; 
             font-size: 12.5px; font-weight: bold; color: var(--ink-dark); text-decoration: none;
-            box-shadow: 2px 2px 0px var(--ink-dark); transition: 0.2s;
+            box-shadow: 2px 2px 0px var(--ink-dark); transition: 0.2s; display: inline-block; text-align: center;
         }
         .info-btn:active { transform: translate(1px, 1px); box-shadow: 0 0 0 var(--ink-dark); }
         .btn-white { background: white; }
@@ -90,6 +88,8 @@
         .spa-nav-btn:active { transform: translate(1px,1px); box-shadow: none; }
         
         details { margin-top: 6px; border-top: 1px dashed #CCC; padding-top: 6px; }
+        
+        /* 隱藏瀏覽器預設的黑色三角箭頭 */
         details summary { list-style: none; }
         details summary::-webkit-details-marker { display: none; }
         
@@ -141,17 +141,19 @@
     <!-- 2. 店名 -->
     <div class="store-name">東泳記泳裝店</div>
 
-    <!-- 3. 聯絡資訊列表 -->
+    <!-- 3. 聯絡資訊列表 (移除按鈕內的圖案，維持完美對稱) -->
     <div class="info-card">
         <div style="border-top: 2px dashed #b0bec5;"></div>
         
+        <!-- 導航行 -->
         <div class="info-row">
             <div class="info-left">
                 <span class="info-icon">🚗</span> 卑南鄉溫泉路370號
             </div>
-            <a href="https://maps.app.goo.gl/YkHK24qn1kZsfBn38?g_st=ic" target="_blank" class="info-btn btn-white">🚗 導航</a>
+            <a href="https://maps.app.goo.gl/YkHK24qn1kZsfBn38?g_st=ic" target="_blank" class="info-btn btn-white">導航</a>
         </div>
         
+        <!-- 撥打行 -->
         <div class="info-row">
             <div class="info-left">
                 <span class="info-icon">📞</span> <span class="phone-text">0910-557-998</span>
@@ -192,7 +194,6 @@
             <summary>▼ 交通與詳細資訊</summary>
             <ul class="info-list">
                 <li><span class="info-label">停車：</span><span>飯店專屬免費停車場（含地下及戶外）。</span></li>
-                <!-- 修正：更新知本老爺正確的公車站名 -->
                 <li><span class="info-label">公車：</span><span>搭乘客運 8129路線於「清覺寺」站下車。</span></li>
             </ul>
         </details>
@@ -210,7 +211,6 @@
             <summary>▼ 交通與詳細資訊</summary>
             <ul class="info-list">
                 <li><span class="info-label">停車：</span><span>大門口及周邊皆有附設免費專屬停車場。</span></li>
-                <!-- 修正：更新ㄚㄧㄚ旺正確的公車站名 -->
                 <li><span class="info-label">公車：</span><span>搭乘客運 8129路線於「泓泉飯店」站下車。</span></li>
             </ul>
         </details>
