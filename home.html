@@ -15,7 +15,7 @@
         }
 
         body {
-            /* 還原你截圖中最溫柔的微漸層背景 */
+            /* 還原漸層背景 */
             background: linear-gradient(180deg, #e0f7fa 0%, #fffde7 100%);
             color: var(--ink-dark);
             font-family: 'jf-openhuninn-1.1', sans-serif;
@@ -25,45 +25,98 @@
 
         .container { max-width: 500px; margin: 0 auto; padding: 10px 20px 40px 20px; }
 
-        /* === 1. 漂浮 Emoji 區塊 === */
+        /* === 1. 漂浮 Emoji 區塊 (精準還原截圖的亂序與大小) === */
         .emoji-header {
             position: relative;
-            height: 70px;
-            margin-top: 20px;
+            height: 90px; /* 加高空間讓圖示飄浮 */
+            margin-top: 10px;
         }
-        .emo { position: absolute; display: inline-block; animation: float 3s ease-in-out infinite; }
-        .emo-1 { left: 28%; top: 20px; font-size: 28px; animation-delay: 0s; transform: rotate(-15deg); }
-        .emo-2 { left: 45%; top: 5px; font-size: 38px; animation-delay: 0.5s; }
-        .emo-3 { right: 28%; top: 15px; font-size: 24px; animation-delay: 1s; transform: rotate(15deg); }
-        .emo-4 { right: 42%; top: 40px; font-size: 26px; animation-delay: 1.5s; transform: rotate(10deg); }
+        .emo { position: absolute; display: inline-block; animation: float 3s ease-in-out infinite; line-height: 1; }
+        
+        /* 救生圈 (左中) */
+        .emo-1 { left: 25%; top: 35px; font-size: 32px; animation-delay: 0s; transform: rotate(-10deg); }
+        /* 比基尼 (正中偏上，最大) */
+        .emo-2 { left: 43%; top: 15px; font-size: 42px; animation-delay: 0.5s; z-index: 2; }
+        /* 蛙鏡 (右上) */
+        .emo-3 { right: 22%; top: 25px; font-size: 30px; animation-delay: 1s; transform: rotate(15deg); }
+        /* 亮晶晶 (蛙鏡旁邊) */
+        .emo-sparkle { right: 28%; top: 15px; font-size: 16px; animation-delay: 1.2s; color: #FFD700; text-shadow: 0 0 5px rgba(255,215,0,0.8); }
+        /* 連身泳衣 (正中偏下) */
+        .emo-4 { left: 48%; top: 55px; font-size: 30px; animation-delay: 1.5s; transform: rotate(5deg); z-index: 1;}
 
         @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
 
         /* === 2. 店名標題 === */
         .store-name { 
-            text-align: center; font-size: 36px; font-weight: bold; 
+            text-align: center; font-size: 38px; font-weight: bold; 
             color: var(--pop-pink); letter-spacing: 2px; 
-            margin-bottom: 25px;
+            margin-top: 10px; margin-bottom: 25px;
         }
 
-        /* === 3. 聯絡與導航資訊列 (還原截圖的優雅排版) === */
-        .info-card { margin-bottom: 40px; padding: 0 5px;}
-        .info-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; }
-        .info-left { font-size: 15px; font-weight: bold; color: var(--ink-dark); display: flex; align-items: center; gap: 10px;}
-        .info-icon { font-size: 18px; }
-        .info-divider { border-bottom: 2px dashed #b0bec5; margin: 0; opacity: 0.6; }
+        /* === 3. 聯絡與導航資訊列 === */
+        .info-card { margin-bottom: 30px; padding: 0 10px;}
+        .info-row { 
+            display: flex; justify-content: space-between; align-items: center; 
+            padding: 15px 0; 
+            /* 關鍵：在每一行的下方加上虛線 */
+            border-bottom: 2px dashed #b0bec5; 
+        }
+        /* 為了美觀，最後一行的虛線如果不需要可以取消，但依照截圖，電話下方也有一條虛線 */
         
+        .info-left { font-size: 16px; font-weight: bold; color: var(--ink-dark); display: flex; align-items: center; gap: 12px;}
+        
+        /* 修正：使用更貼近截圖的符號或 Emoji */
+        .info-icon { font-size: 20px; display: inline-block; width: 24px; text-align: center; color: #555;}
+        
+        /* 針對電話號碼的樣式：加粗、藍色、帶底線 (模擬截圖效果) */
+        .phone-text { color: #0000EE; text-decoration: underline; font-weight: bold; font-family: sans-serif; letter-spacing: 0.5px;}
+
+        /* 膠囊狀導航/撥打按鈕 */
         .info-btn { 
-            padding: 8px 18px; border: 2px solid var(--ink-dark); border-radius: 20px; 
-            font-size: 14px; font-weight: bold; color: var(--ink-dark); text-decoration: none;
+            padding: 8px 20px; 
+            border: 2px solid var(--ink-dark); 
+            border-radius: 25px; /* 膠囊形狀 */
+            font-size: 15px; font-weight: bold; color: var(--ink-dark); text-decoration: none;
             box-shadow: 2px 2px 0px var(--ink-dark); transition: 0.2s;
+            display: inline-block; text-align: center;
         }
         .info-btn:active { transform: translate(2px, 2px); box-shadow: 0 0 0 var(--ink-dark); }
         .btn-white { background: white; }
         .btn-yellow { background: var(--pop-yellow); }
 
 
-        /* === 4. 泡湯 SPA 推薦區塊 === */
+        /* === 4. 溫泉碗圖案與副標題 === */
+        .onsen-bowl-wrapper { text-align: center; margin: 30px 0 15px 0;}
+        .onsen-bowl {
+            display: inline-block;
+            position: relative;
+        }
+        /* 用 CSS 畫一個可愛的溫泉碗 */
+        .bowl {
+            width: 80px; height: 30px;
+            background: #FFE66D;
+            border: 3px solid #2C3E50;
+            border-bottom-left-radius: 40px;
+            border-bottom-right-radius: 40px;
+            position: relative;
+            margin: 0 auto;
+            border-top: none; /* 碗口沒有上框線 */
+        }
+        /* 碗口的水波紋 */
+        .bowl::before {
+            content: ''; position: absolute; top: -5px; left: -10px; right: -10px; height: 8px;
+            background: #4ECDC4; border-radius: 10px;
+        }
+        /* 熱氣 */
+        .steam {
+            color: #FF6B6B; font-size: 32px; font-weight: bold; letter-spacing: 4px;
+            display: block; margin-bottom: -5px;
+        }
+
+        .guide-title { font-size: 20px; font-weight: bold; color: var(--ink-dark); text-align: center; margin-top: 15px;}
+        .guide-subtitle { font-size: 14px; font-weight: bold; color: #555; text-align: center; margin-top: 5px; display: flex; align-items: center; justify-content: center; gap: 6px;}
+
+        /* === 5. 泡湯 SPA 推薦區塊 === */
         .section-title { font-size: 17px; font-weight: bold; color: var(--ink-dark); margin: 30px 0 15px 0; border-bottom: 2px dashed #CCC; padding-bottom: 8px; display: flex; align-items: center; gap: 6px;}
 
         .spa-card { background: white; border: 3px solid var(--ink-dark); border-radius: 12px; padding: 12px; margin-bottom: 12px; box-shadow: 3px 3px 0px rgba(44,62,80,0.1); }
@@ -72,16 +125,16 @@
         .spa-name { font-size: 16px; font-weight: bold; color: var(--ink-dark); line-height: 1.2; }
         .spa-short { font-size: 12px; color: #666; margin-top: 4px; line-height: 1.4; }
         
-        .spa-nav-btn { background: var(--pop-yellow); color: var(--ink-dark); text-decoration: none; padding: 8px 12px; border-radius: 12px; font-size: 13px; font-weight: bold; border: 2px solid var(--ink-dark); white-space: nowrap; box-shadow: 2px 2px 0px var(--ink-dark); transition: 0.2s; }
+        .spa-nav-btn { background: var(--pop-yellow); color: var(--ink-dark); text-decoration: none; padding: 6px 10px; border-radius: 10px; font-size: 12px; font-weight: bold; border: 2px solid var(--ink-dark); white-space: nowrap; box-shadow: 2px 2px 0px var(--ink-dark); transition: 0.2s; display: flex; align-items: center; gap: 4px;}
         .spa-nav-btn:active { transform: translate(2px,2px); box-shadow: none; }
         
         details { margin-top: 10px; border-top: 1px dashed #CCC; padding-top: 10px; }
-        summary { font-size: 13px; font-weight: bold; color: var(--pop-pink); cursor: pointer; outline: none; margin-bottom: 6px; }
+        summary { font-size: 13px; font-weight: bold; color: var(--pop-pink); cursor: pointer; outline: none; margin-bottom: 6px; display: flex; align-items: center; gap: 4px;}
         .info-list { list-style: none; padding: 0; margin: 0; font-size: 12px; line-height: 1.5; color: #444; }
         .info-list li { margin-bottom: 6px; display: flex; }
         .info-label { font-weight: bold; color: var(--ink-dark); width: 45px; flex-shrink: 0; }
 
-        /* === 5. 附近景點四宮格 === */
+        /* === 6. 附近景點四宮格 === */
         .spot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 30px; }
         .spot-card { background: white; border: 2px solid var(--pop-blue); border-radius: 12px; padding: 12px 10px; text-align: center; text-decoration: none; display: block; transition: 0.2s; box-shadow: 3px 3px 0px rgba(78, 205, 196, 0.2); }
         .spot-card:active { transform: scale(0.96); background: #f0fbf9; box-shadow: none; }
@@ -89,40 +142,43 @@
         .spot-name { font-size: 14px; font-weight: bold; color: var(--ink-dark); margin-bottom: 4px;}
         .spot-desc { font-size: 11px; color: #666; }
 
-        /* === 6. 跳轉近期活動的大按鈕 === */
+        /* === 7. 跳轉近期活動的大按鈕 (還原截圖的黃底黑框樣式) === */
         .event-link-card {
-            background: var(--ink-dark);
+            background: var(--pop-yellow);
             border: 3px solid var(--ink-dark);
             border-radius: 16px;
             padding: 20px;
             text-align: center;
             text-decoration: none;
             display: block;
-            box-shadow: 4px 4px 0px rgba(0,0,0,0.2);
+            box-shadow: 4px 4px 0px var(--ink-dark);
             transition: 0.2s;
-            margin-top: 10px;
+            margin-top: 20px;
+            margin-bottom: 20px;
         }
         .event-link-card:active { transform: translate(3px,3px); box-shadow: 0px 0px 0px transparent; }
-        .event-link-title { color: var(--pop-yellow); font-size: 20px; font-weight: bold; margin-bottom: 6px; display: flex; align-items: center; justify-content: center; gap: 8px;}
-        .event-link-desc { color: white; font-size: 13px; font-weight: bold;}
+        .event-link-title { color: var(--ink-dark); font-size: 20px; font-weight: bold; }
+        
+        .footer-text { text-align: center; font-size: 13px; font-weight: bold; color: var(--ink-dark); margin-top: 30px;}
     </style>
 </head>
 <body>
 
 <div class="container">
     
-    <!-- 1. 漂浮圖案 -->
+    <!-- 1. 漂浮圖案 (加入亂序、大小變化與亮晶晶) -->
     <div class="emoji-header">
         <span class="emo emo-1">🛟</span>
         <span class="emo emo-2">👙</span>
         <span class="emo emo-3">🥽</span>
+        <span class="emo emo-sparkle">✨</span>
         <span class="emo emo-4">🩱</span>
     </div>
 
     <!-- 2. 店名 -->
     <div class="store-name">東泳記泳裝店</div>
 
-    <!-- 3. 聯絡資訊列表 (完美還原截圖) -->
+    <!-- 3. 聯絡資訊列表 (完美還原截圖排版：圖示、電話藍底線、全寬虛線、膠囊按鈕) -->
     <div class="info-card">
         <!-- 導航行 -->
         <div class="info-row">
@@ -132,21 +188,28 @@
             <a href="https://maps.app.goo.gl/YkHK24qn1kZsfBn38?g_st=ic" target="_blank" class="info-btn btn-white">導航</a>
         </div>
         
-        <!-- 虛線分隔 -->
-        <div class="info-divider"></div>
-        
         <!-- 撥打行 -->
         <div class="info-row">
             <div class="info-left">
-                <span class="info-icon">📞</span> 0910-557-998
+                <span class="info-icon">📞</span> <span class="phone-text">0910-557-998</span>
             </div>
             <a href="tel:0910557998" class="info-btn btn-yellow">撥打</a>
         </div>
     </div>
 
 
-    <!-- 4. 泡湯 SPA 精選 -->
-    <div class="section-title">♨️ 知本在地 SPA 溫泉精選</div>
+    <!-- 4. 溫泉插畫與中段標題 -->
+    <div class="onsen-bowl-wrapper">
+        <div class="onsen-bowl">
+            <span class="steam">( ( (</span>
+            <div class="bowl"></div>
+        </div>
+        <div class="guide-title">臺東近期活動</div>
+        <div class="guide-subtitle"><span style="color:var(--pop-pink);">♨️</span> 泡暖湯・穿泳裝・玩台東</div>
+    </div>
+
+    <!-- 5. 泡湯 SPA 精選 -->
+    <div class="section-title"><span style="color:var(--pop-pink);">♨️</span> 知本在地 SPA 溫泉精選</div>
     
     <div class="spa-card">
         <div class="spa-top">
@@ -157,7 +220,7 @@
             <a href="https://maps.google.com/?q=東遊季溫泉渡假村" target="_blank" class="spa-nav-btn">🚗導航</a>
         </div>
         <details>
-            <summary>▼ 交通與詳細資訊</summary>
+            <summary>▶ ▼ 交通與詳細資訊</summary>
             <ul class="info-list">
                 <li><span class="info-label">特色：</span><span>各式SPA水療池、烤箱、冷泉，空間寬敞。</span></li>
                 <li><span class="info-label">停車：</span><span>園區內附設超大型免費露天停車場。</span></li>
@@ -175,7 +238,7 @@
             <a href="https://maps.google.com/?q=知本老爺酒店" target="_blank" class="spa-nav-btn">🚗導航</a>
         </div>
         <details>
-            <summary>▼ 交通與詳細資訊</summary>
+            <summary>▶ ▼ 交通與詳細資訊</summary>
             <ul class="info-list">
                 <li><span class="info-label">特色：</span><span>戶外溫水泳池、多種SPA水療按摩池、溜滑梯。</span></li>
                 <li><span class="info-label">停車：</span><span>飯店專屬免費停車場（含地下及戶外）。</span></li>
@@ -193,7 +256,7 @@
             <a href="https://maps.google.com/?q=丫ㄚ旺溫泉渡假村" target="_blank" class="spa-nav-btn">🚗導航</a>
         </div>
         <details>
-            <summary>▼ 交通與詳細資訊</summary>
+            <summary>▶ ▼ 交通與詳細資訊</summary>
             <ul class="info-list">
                 <li><span class="info-label">特色：</span><span>擁有100%原湯，超大山泉冷水泳池與多溫層SPA。</span></li>
                 <li><span class="info-label">停車：</span><span>大門口及周邊皆有附設免費專屬停車場。</span></li>
@@ -211,7 +274,7 @@
             <a href="https://maps.google.com/?q=東台溫泉飯店" target="_blank" class="spa-nav-btn">🚗導航</a>
         </div>
         <details>
-            <summary>▼ 交通與詳細資訊</summary>
+            <summary>▶ ▼ 交通與詳細資訊</summary>
             <ul class="info-list">
                 <li><span class="info-label">特色：</span><span>氣泡床、衝擊泉、兒童戲水區等結合養生與水療。</span></li>
                 <li><span class="info-label">停車：</span><span>飯店對面及周邊備有專屬免費停車場。</span></li>
@@ -220,7 +283,7 @@
         </details>
     </div>
 
-    <!-- 5. 附近順遊景點 -->
+    <!-- 6. 附近順遊景點 -->
     <div class="section-title">🌲 附近順遊景點推薦</div>
     <div class="spot-grid">
         <a href="https://maps.google.com/?q=知本國家森林遊樂區" target="_blank" class="spot-card">
@@ -245,11 +308,13 @@
         </a>
     </div>
 
-    <!-- 6. 跳轉近期活動 (連結至 2026.html) -->
+    <!-- 7. 跳轉近期活動 (還原截圖的黃色按鈕) -->
     <a href="2026.html" class="event-link-card">
-        <div class="event-link-title">📅 臺東近期活動總整理 ➔</div>
-        <div class="event-link-desc">點擊查看 10-12月 衝浪賽、音樂節資訊</div>
+        <div class="event-link-title">2026 秋冬季節活動</div>
     </a>
+
+    <!-- 底部暖心標語 -->
+    <div class="footer-text">慢下來，感受台東山海與人情的溫度 ❤️</div>
 
 </div>
 
