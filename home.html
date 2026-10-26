@@ -51,21 +51,21 @@
         .store-name { 
             text-align: center; font-size: 30px; font-weight: bold; 
             color: var(--pop-pink); letter-spacing: 2px; 
-            margin-top: 5px; margin-bottom: 15px; 
+            margin-top: 5px; margin-bottom: 12px; 
         }
 
-        /* === 統一的區塊分隔虛線 (只放在下方大區塊的上方) === */
+        /* === 統一的區塊分隔虛線 === */
         .section-divider {
             border-top: 2px dashed rgba(176, 190, 197, 0.6);
             margin: 25px 5px 15px 5px; 
         }
 
-        /* === 3. 聯絡與導航資訊列 (極致緊湊、無虛線) === */
+        /* === 3. 聯絡與導航資訊列 === */
         .info-card { margin-bottom: 10px; padding: 0 5px; }
         
         .info-row { 
             display: flex; justify-content: space-between; align-items: center; 
-            padding: 5px 0; /* 收緊上下間距 */
+            padding: 5px 0; 
         }
         
         .info-left { font-size: 13.5px; font-weight: bold; color: var(--ink-dark); display: flex; align-items: center; gap: 6px; }
@@ -89,17 +89,16 @@
             display: flex; align-items: center; gap: 6px; 
         }
         
-        /* === 4. 熱門商品六宮格 === */
+        /* === 4. 熱門商品六宮格 (拿掉小灰字，調整卡片內距讓比例更好看) === */
         .product-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 5px; }
         .product-card { 
             background: white; border: 2px solid var(--pop-pink); border-radius: 12px; 
-            padding: 10px 5px; text-align: center; display: flex; flex-direction: column; 
+            padding: 18px 5px; text-align: center; display: flex; flex-direction: column; 
             align-items: center; justify-content: center;
             box-shadow: 2px 2px 0px rgba(255, 107, 107, 0.2); transition: 0.2s;
         }
-        .product-icon { font-size: 24px; margin-bottom: 3px; line-height: 1; }
-        .product-name { font-size: 12.5px; font-weight: bold; color: var(--ink-dark); margin-bottom: 2px; }
-        .product-desc { font-size: 9.5px; color: #666; line-height: 1.2; white-space: nowrap;}
+        .product-icon { font-size: 28px; margin-bottom: 6px; line-height: 1; }
+        .product-name { font-size: 13.5px; font-weight: bold; color: var(--ink-dark); }
 
 
         /* === 5. 泡湯 SPA 精選區塊 === */
@@ -161,7 +160,7 @@
     <!-- 2. 店名 -->
     <div class="store-name">東泳記泳裝店</div>
 
-    <!-- 3. 聯絡資訊列表 (極簡無虛線版) -->
+    <!-- 3. 聯絡資訊列表 -->
     <div class="info-card">
         <div class="info-row">
             <div class="info-left">
@@ -178,39 +177,33 @@
         </div>
     </div>
 
-    <!-- 4. 本店熱門商品 -->
+    <!-- 4. 本店熱門商品 (純大字無小灰字版) -->
     <div class="section-divider"></div>
     <div class="section-title"><span style="color:var(--pop-pink);">🛍️</span> 本店熱賣商品</div>
     <div class="product-grid">
         <div class="product-card">
             <div class="product-icon">🎟️</div>
             <div class="product-name">優惠溫泉券</div>
-            <div class="product-desc">知本泡湯必備</div>
         </div>
         <div class="product-card">
             <div class="product-icon">👙</div>
             <div class="product-name">平價泳裝</div>
-            <div class="product-desc">大人小孩齊全</div>
         </div>
         <div class="product-card">
             <div class="product-icon">🥽</div>
             <div class="product-name">泳具與配件</div>
-            <div class="product-desc">泳鏡・浮板・耳塞</div>
         </div>
         <div class="product-card">
             <div class="product-icon">🛟</div>
             <div class="product-name">各式泳圈</div>
-            <div class="product-desc">大中小與造型款</div>
         </div>
         <div class="product-card">
             <div class="product-icon">👶</div>
             <div class="product-name">嬰幼兒童</div>
-            <div class="product-desc">游泳尿布與坐圈</div>
         </div>
         <div class="product-card">
             <div class="product-icon">🏖️</div>
             <div class="product-name">玩水周邊</div>
-            <div class="product-desc">充氣球與拖鞋</div>
         </div>
     </div>
 
