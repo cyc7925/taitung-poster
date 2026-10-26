@@ -6,7 +6,6 @@
     <title>東泳記泳裝店 - 旅遊導覽首頁</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/justfont/open-huninn-font/font.css">
     
-    <!-- 補上現代標準的 SEO 隱藏標籤 (Meta Tags) -->
     <meta name="description" content="東泳記泳裝店位於台東知本，提供平價泳裝、優惠溫泉券、專業泳具與各式泳圈。為您整理知本溫泉SPA推薦與台東近期活動總整理，來台東泡湯玩水必備導覽！">
     <meta name="keywords" content="東泳記泳裝店, 台東泳裝, 知本溫泉, 溫泉券, 泳具, 泳圈, 台東活動, 旅遊導覽, 丫ㄧㄚ旺, 東遊季, 知本老爺, 東台溫泉">
     
@@ -52,33 +51,23 @@
         .store-name { 
             text-align: center; font-size: 30px; font-weight: bold; 
             color: var(--pop-pink); letter-spacing: 2px; 
-            margin-top: 5px; margin-bottom: 12px; 
+            margin-top: 5px; margin-bottom: 15px; 
         }
 
-        /* === 統一的區塊分隔虛線 (放在每個區塊的最上方) === */
+        /* === 統一的區塊分隔虛線 (只放在下方大區塊的上方) === */
         .section-divider {
-            border-top: 2px dashed rgba(176, 190, 197, 0.6); /* 淡淡的虛線裝飾 */
-            margin: 25px 5px 15px 5px; /* 留出呼吸空間 */
-        }
-        
-        /* 針對第一個聯絡區塊的分隔線，上距小一點 */
-        .first-divider {
-            margin-top: 5px;
+            border-top: 2px dashed rgba(176, 190, 197, 0.6);
+            margin: 25px 5px 15px 5px; 
         }
 
-        /* === 3. 聯絡與導航資訊列 === */
-        .info-card { margin-bottom: 15px; padding: 0 5px; }
+        /* === 3. 聯絡與導航資訊列 (極致緊湊、無虛線) === */
+        .info-card { margin-bottom: 10px; padding: 0 5px; }
         
         .info-row { 
             display: flex; justify-content: space-between; align-items: center; 
-            padding: 6px 0; 
+            padding: 5px 0; /* 收緊上下間距 */
         }
         
-        /* 移除之前錯誤的電話底部虛線，改為完全無底線 */
-        .info-row:last-child {
-            border-bottom: none;
-        }
-
         .info-left { font-size: 13.5px; font-weight: bold; color: var(--ink-dark); display: flex; align-items: center; gap: 6px; }
         .info-icon { font-size: 16px; display: inline-block; width: 20px; text-align: center; color: #555; }
         .phone-text { color: #0000EE; text-decoration: underline; font-weight: bold; font-family: sans-serif; letter-spacing: 0.5px; font-size: 15px; }
@@ -93,10 +82,10 @@
         .btn-white { background: white; }
         .btn-yellow { background: var(--pop-yellow); }
 
-        /* === 全局標題樣式 (統一靠左，無下劃線) === */
+        /* === 全局標題樣式 === */
         .section-title { 
             font-size: 15px; font-weight: bold; color: var(--ink-dark); 
-            margin: 0 0 10px 0; /* 移除 padding-bottom 和 border-bottom */
+            margin: 0 0 10px 0; 
             display: flex; align-items: center; gap: 6px; 
         }
         
@@ -172,12 +161,9 @@
     <!-- 2. 店名 -->
     <div class="store-name">東泳記泳裝店</div>
 
-    <!-- 3. 聯絡資訊列表 -->
+    <!-- 3. 聯絡資訊列表 (極簡無虛線版) -->
     <div class="info-card">
-        <!-- 區塊頂部淡淡分隔線 -->
-        <div class="section-divider first-divider"></div>
-        
-        <div class="info-row" style="border-bottom: 1px dashed rgba(176, 190, 197, 0.4); margin-bottom: 4px; padding-bottom: 10px;">
+        <div class="info-row">
             <div class="info-left">
                 <span class="info-icon">🚗</span> 卑南鄉溫泉路370號
             </div>
