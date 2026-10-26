@@ -44,18 +44,18 @@
         @keyframes float3 { 0%, 100% { transform: rotate(15deg) translate(5px, -10px); } 50% { transform: rotate(15deg) translate(5px, -15px); } }
         @keyframes float4 { 0%, 100% { transform: rotate(15deg) translate(25px, -15px); } 50% { transform: rotate(15deg) translate(25px, -20px); } }
 
-        /* === 2. 店名標題 (字體縮小、收緊間距) === */
+        /* === 2. 店名標題 === */
         .store-name { 
             text-align: center; font-size: 30px; font-weight: bold; 
             color: var(--pop-pink); letter-spacing: 2px; 
             margin-top: 5px; margin-bottom: 12px; 
         }
 
-        /* === 3. 聯絡與導航資訊列 (大幅收緊行高、統一按鈕寬度) === */
+        /* === 3. 聯絡與導航資訊列 === */
         .info-card { margin-bottom: 20px; padding: 0 5px; }
         .info-row { 
             display: flex; justify-content: space-between; align-items: center; 
-            padding: 8px 0; /* 極致收緊上下空間 */
+            padding: 8px 0; 
             border-bottom: 2px dashed #b0bec5; 
         }
         
@@ -63,9 +63,8 @@
         .info-icon { font-size: 16px; display: inline-block; width: 20px; text-align: center; color: #555; }
         .phone-text { color: #0000EE; text-decoration: underline; font-weight: bold; font-family: sans-serif; letter-spacing: 0.5px; font-size: 15px; }
 
-        /* 統一按鈕大小設定 */
         .info-btn { 
-            width: 78px; /* 強制設定寬度，讓按鈕長得一模一樣 */
+            width: 78px; 
             box-sizing: border-box;
             display: inline-flex; justify-content: center; align-items: center;
             padding: 6px 0; 
@@ -78,7 +77,7 @@
         .btn-yellow { background: var(--pop-yellow); }
 
 
-        /* === 4. 泡湯 SPA 推薦區塊 (整體收緊、字體再縮小) === */
+        /* === 4. 泡湯 SPA 推薦區塊 === */
         .section-title { font-size: 15px; font-weight: bold; color: var(--ink-dark); margin: 15px 0 8px 0; border-bottom: 2px dashed #CCC; padding-bottom: 6px; display: flex; align-items: center; gap: 6px; }
 
         .spa-card { background: white; border: 2px solid var(--ink-dark); border-radius: 12px; padding: 8px; margin-bottom: 8px; box-shadow: 2px 2px 0px rgba(44,62,80,0.1); } 
@@ -91,8 +90,6 @@
         .spa-nav-btn:active { transform: translate(1px,1px); box-shadow: none; }
         
         details { margin-top: 6px; border-top: 1px dashed #CCC; padding-top: 6px; }
-        
-        /* 隱藏瀏覽器預設的黑色三角箭頭 */
         details summary { list-style: none; }
         details summary::-webkit-details-marker { display: none; }
         
@@ -144,11 +141,10 @@
     <!-- 2. 店名 -->
     <div class="store-name">東泳記泳裝店</div>
 
-    <!-- 3. 聯絡資訊列表 (按鈕大小一致) -->
+    <!-- 3. 聯絡資訊列表 -->
     <div class="info-card">
         <div style="border-top: 2px dashed #b0bec5;"></div>
         
-        <!-- 導航行 -->
         <div class="info-row">
             <div class="info-left">
                 <span class="info-icon">🚗</span> 卑南鄉溫泉路370號
@@ -156,7 +152,6 @@
             <a href="https://maps.app.goo.gl/YkHK24qn1kZsfBn38?g_st=ic" target="_blank" class="info-btn btn-white">🚗 導航</a>
         </div>
         
-        <!-- 撥打行 -->
         <div class="info-row">
             <div class="info-left">
                 <span class="info-icon">📞</span> <span class="phone-text">0910-557-998</span>
@@ -197,7 +192,8 @@
             <summary>▼ 交通與詳細資訊</summary>
             <ul class="info-list">
                 <li><span class="info-label">停車：</span><span>飯店專屬免費停車場（含地下及戶外）。</span></li>
-                <li><span class="info-label">公車：</span><span>搭乘客運 8129路線終點「知本老爺」站。</span></li>
+                <!-- 修正：更新知本老爺正確的公車站名 -->
+                <li><span class="info-label">公車：</span><span>搭乘客運 8129路線於「清覺寺」站下車。</span></li>
             </ul>
         </details>
     </div>
@@ -214,7 +210,8 @@
             <summary>▼ 交通與詳細資訊</summary>
             <ul class="info-list">
                 <li><span class="info-label">停車：</span><span>大門口及周邊皆有附設免費專屬停車場。</span></li>
-                <li><span class="info-label">公車：</span><span>搭乘客運 8129路線於「ㄚㄧㄚ旺」站下車。</span></li>
+                <!-- 修正：更新ㄚㄧㄚ旺正確的公車站名 -->
+                <li><span class="info-label">公車：</span><span>搭乘客運 8129路線於「泓泉飯店」站下車。</span></li>
             </ul>
         </details>
     </div>
