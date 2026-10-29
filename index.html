@@ -17,7 +17,7 @@
             font-family: 'PingFang TC', 'Microsoft JhengHei', sans-serif; 
             display: flex; 
             justify-content: center; 
-            -webkit-text-size-adjust: 100%; /* 鎖定字體，徹底解決 Safari 重新整理時忽大忽小問題 */
+            -webkit-text-size-adjust: 100%; 
         }
         
         .a4-page { 
@@ -27,9 +27,9 @@
             
             background: linear-gradient(180deg, #e1f5fe 0%, #b3e5fc 50%, #ffe082 100%);
             background-image: url('IMG_3578.png'); 
-            background-size: 100% 100%;    /* 百分之百完美填滿整個 A4 頁面 */
+            background-size: 100% 100%;    
             background-position: center;
-            background-repeat: no-repeat; /* 絕對不重複拼貼 */
+            background-repeat: no-repeat; 
             
             margin: 5mm auto; 
             padding: 8mm 8mm 18mm 8mm; 
@@ -53,7 +53,6 @@
             flex-shrink: 0; 
         }
         
-        /* 副標題：深海洋藍色、加粗、精準向右推 */
         .h-sub { 
             color: #01579b; 
             font-size: 15pt; 
@@ -61,52 +60,45 @@
             letter-spacing: 1.2px; 
             margin-bottom: 2px; 
             text-shadow: 1px 1px 2px rgba(255,255,255,0.9); 
-            display: inline-block;     /* <-- 關鍵：讓內距生效並可以自由位移 */
-            padding-left: 41px;         /* <-- 數字越大會越往右退 */    
-            font-family: 'Iansui', cursive !important; /* 強制使用雲端芫荽手寫體 */
+            display: inline-block;     
+            padding-left: 41px;         
+            font-family: 'Iansui', cursive !important; 
         }
 
-        /* 店名：極粗POP黑體（900粗細）、收緊上下多餘行高 */
         .h-title { 
             font-family: 'Noto Sans TC', sans-serif !important; 
             font-size: 40pt !important; 
             font-weight: 900 !important;                       
-            line-height: 1;            /* <-- 關鍵：把上下多餘的行高空白收緊 */
-            margin: 2px 0 2px 0;      /* <-- 微調上下外距，讓它跟上下區塊更緊密 */
+            line-height: 1;            
+            margin: 2px 0 2px 0;      
         }
 
-        /*店名：東泳記泳裝店，立體顏色*/
         .h-title a { 
-            color: #01579b;                /* 正中間的深藍色主字體 */
+            color: #01579b;                
             text-decoration: none; 
             transition: 0.2s; 
-            
-            /* 改用半透明的白色柔和暈染，讓字體立體且自然融入背景，不再死板 */
             text-shadow: 
                 -1.5px -1.5px 1px rgba(255, 255, 255, 0.8), 
                  1.5px -1.5px 1px rgba(255, 255, 255, 0.8), 
                 -1.5px  1.5px 1px rgba(255, 255, 255, 0.8), 
                  1.5px  1.5px 1px rgba(255, 255, 255, 0.8), 
-                 0px 4px 8px rgba(0, 0, 0, 0.25);   /* 右下方的立體浮動陰影 */
+                 0px 4px 8px rgba(0, 0, 0, 0.25);   
         }
 
         .store-info { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; margin-top: 10px; }
-        
         .button-group { display: flex; gap: 12px; align-items: center; }
 
-        /* 按鈕：半透明藍綠電荷、小巧、帶文字陰影確保清晰 */
         .phone, .address { 
-            background: rgba(2, 189, 180, 0.7); /* <-- 調整按鈕透明度 */
+            background: rgba(2, 189, 180, 0.7); 
             color: white; 
-            padding: 4px 12px;                  /* <-- 調整按鈕大小與胖瘦 */
+            padding: 4px 12px;                  
             border-radius: 20px; 
             font-size: 12pt; 
             font-weight: bold; 
             border: none; 
             transition: 0.2s; 
             box-shadow: 0 2px 5px rgba(0,0,0,0.25); 
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4); /* <-- 確保白字清晰的陰影 */
-            /* 指定思源黑體粗體 */
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4); 
             font-family: 'Noto Sans TC', sans-serif !important; 
             font-weight: 700 !important;
         }
@@ -115,10 +107,10 @@
 
         .address-row { font-size: 11pt; font-weight: bold; }
         
-        /* 總整理標語 */
+        /* 總整理標語：鎖定絕對置中，確保不會位移 */
         .section-title {
             position: absolute;
-            top: 48mm;  /*上下調整*/
+            top: 48mm;  
             left: 0;
             width: 100%;
             text-align: center;
@@ -136,7 +128,7 @@
             letter-spacing: 1px;
         }
 
-        /* 活動表格區塊：拉開與標題的距離 */
+        /* 活動表格區塊 */
         .grid { 
             display: flex; 
             gap: 10px; 
@@ -144,7 +136,6 @@
             margin-bottom: 0px; 
         }
         
-        /* 縮短每一欄裡面方塊與方塊的距離 */
         .col { 
             flex: 1; 
             display: flex; 
@@ -152,7 +143,6 @@
             gap: 4px; 
         }
 
-        /* 月份方塊：外框保持圓角與大小不變，但取消內部左右邊距 */
         .month-box { 
             background: rgba(255, 255, 255, 0.48); 
             backdrop-filter: blur(2px);
@@ -167,7 +157,6 @@
             overflow: hidden;            
         }
 
-        /* 月份標題：收緊下方間距，告別分家感 */
         .m-head { 
             color: white; 
             font-weight: bold; 
@@ -198,19 +187,16 @@
         .m-dec .m-head { background: #6a1b9a; }
         .m-ongoing .m-head { background: #00796b; }
         
-        /* 每一項活動的上下留白與行距稍微收緊，讓畫面更緊湊俐落 */
         .event { display: flex; margin-bottom: 3px; border-bottom: 1px dashed rgba(0,0,0,0.15); padding-bottom: 3px; }
         .event:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
         
         .e-date { width: 62px; font-size: 8pt; font-weight: bold; color: #333; flex-shrink: 0; margin-right: 4px; }
         .e-info { flex: 1; display: flex; flex-direction: column; gap: 1px; }
         
-        /* 活動名稱字體 9.3pt，適度收緊行距 */
         .e-name { font-size: 9.3pt; font-weight: bold; color: #111; line-height: 1.25; }
         .e-desc { font-size: 7.3pt; color: #555; line-height: 1.2; }
         .e-loc { font-size: 7.3pt; color: #0277bd; font-weight: bold; line-height: 1.2; }
         
-        /* 底部標語與計數器容器 */
         .footer-container {
             position: absolute; bottom: 5mm; left: 6mm; right: 6mm; 
             text-align: center;
@@ -220,7 +206,6 @@
             gap: 2px;
         }
 
-        /* 瀏覽次數：無底色、下一行、淡藍灰色融入背景 */
         .footer-counter {
             font-size: 7.5pt; 
             color: rgba(230, 245, 255, 0.9); 
@@ -250,7 +235,7 @@
 
         <!-- 活動表格區塊 -->
         <div class="grid">
-            <!-- ====== 左欄：跨月活動與 10 月完整活動統合 ====== -->
+            <!-- ====== 左欄：跨月活動與 10 月完整活動 ====== -->
             <div class="col">
                 <div class="month-box m-ongoing">
                     <div class="m-head">🌟 持續展開 (跨月活動)</div>
