@@ -152,7 +152,7 @@
             gap: 4px; 
         }
 
-        /* 月份方塊：收緊內部上下留白，讓網底跟標題緊密貼合 */
+        /* 月份方塊：外框保持圓角與大小不變，但取消內部左右邊距 */
         .month-box { 
             background: rgba(255, 255, 255, 0.48); 
             backdrop-filter: blur(2px);
@@ -173,7 +173,7 @@
             font-weight: bold; 
             font-size: 11.5pt;         
             padding: 4px 10px; 
-            margin: 0 -8px 3px -8px;    /* <-- 把原本的 5px 改成 3px，讓網底和內文更貼合 */
+            margin: 0 -8px 3px -8px;    
             border-top-left-radius: 17px; 
             border-top-right-radius: 22px;
             border-bottom-left-radius: 0px;
@@ -250,7 +250,7 @@
 
         <!-- 活動表格區塊 -->
         <div class="grid">
-            <!-- ====== 左欄：跨月活動與 10 月完整活動 ====== -->
+            <!-- ====== 左欄：跨月活動與 10 月完整活動統合 ====== -->
             <div class="col">
                 <div class="month-box m-ongoing">
                     <div class="m-head">🌟 持續展開 (跨月活動)</div>
@@ -259,18 +259,14 @@
                     <div class="event"><div class="e-date" style="color:#00796b;">即日起~11/28</div><div class="e-info"><div class="e-name">永續方舟館桌遊大挑戰</div><div class="e-desc">每週六 09:30卡坦島 / 14:30循環之邦</div><div class="e-loc" style="color:#00796b;">📍永續方舟館</div></div></div>
                 </div>
 
-                <div class="month-box m-sep">
-                    <div class="m-head">10月上旬 October</div>
+                <div class="month-box m-oct">
+                    <div class="m-head">10月 October 活動總整理</div>
                     <div class="event"><div class="e-date">10/2</div><div class="e-info"><div class="e-name">《那年，我們一起聽的歌》① 咱的歌·咱的年代</div><div class="e-desc">🎵洪榮宏, 沈文程, 荒山亮, 高欣欣, 吳淑敏</div><div class="e-loc">📍北町日式建築宿舍群 ⏰19:00~21:00</div></div></div>
                     <div class="event"><div class="e-date">10/3</div><div class="e-info"><div class="e-name">《那年，我們一起聽的歌》② 跨世代·唱青春</div><div class="e-desc">🎵陳昇&新寶島樂隊, 周蕙, 賴銘偉, 緯美雙雄</div><div class="e-loc">📍北町日式建築宿舍群 ⏰19:00~21:00</div></div></div>
                     <div class="event"><div class="e-date">10/4</div><div class="e-info"><div class="e-name">2026火燒島馬拉松</div><div class="e-loc">📍綠島人權紀念公園 ⏰05:00~13:00</div></div></div>
                     <div class="event"><div class="e-date">10/10</div><div class="e-info"><div class="e-name">世界的方舟・南島台灣・國慶焰火晚會</div><div class="e-loc">📍台東市國際地標 ⏰19:00~20:30</div></div></div>
                     <div class="event"><div class="e-date">10/17</div><div class="e-info"><div class="e-name">雲端發票向前行 森林健走好心情</div><div class="e-loc">📍臺東森林公園 ⏰14:00~17:00</div></div></div>
                     <div class="event"><div class="e-date">10/18</div><div class="e-info"><div class="e-name">達仁鄉縫迴山海祭路跑、市集音樂會</div><div class="e-loc">📍南田海岸親水公園 ⏰06:00~14:00</div></div></div>
-                </div>
-
-                <div class="month-box m-oct">
-                    <div class="m-head">10月下旬 & 焦點活動</div>
                     <div class="event"><div class="e-date">10/24~25<br><span style="color:red; font-size:7pt;">延期更新</span></div><div class="e-info"><div class="e-name">南島咖啡節市集</div><div class="e-desc">⏰24日13:00~19:00 / 25日11:00~18:00</div><div class="e-loc">📍台東波浪屋前廣場</div></div></div>
                     <div class="event"><div class="e-date">10/25~26<br><span style="color:red; font-size:7pt;">延期更新</span></div><div class="e-info"><div class="e-name">2026臺東慢食節《夜食餐桌》</div><div class="e-loc">📍臺東新生公園廣場 ⏰15:00~20:00</div></div></div>
                     <div class="event"><div class="e-date">10/30</div><div class="e-info"><div class="e-name">微光集・卡K開麥拉</div><div class="e-desc">🎵玩樂樂團, 思奈, 阿法, 巴大雄</div><div class="e-loc">📍微光集(鐵花路371號) ⏰19:00~22:00</div></div></div>
