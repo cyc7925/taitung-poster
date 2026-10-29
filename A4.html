@@ -5,169 +5,80 @@
     <link href="https://fonts.googleapis.com/css2?family=Iansui&family=Noto+Sans+TC:wght@700;900&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
 
     <title>東泳記泳裝店 - 2026台東活動總整理</title>
-    <!-- 設定 LINE 分享時專屬的預覽標題與描述 -->
     <meta property="og:title" content="東泳記泳裝店 - 2026台東活動總整理">
-    <meta property="og:description" content="♨️ 泡暖湯・穿泳裝・玩台東！掌握10月至12月最新最完整的台東在地活動資訊。">
+    <meta property="og:description" content="♨️ 泡暖湯・穿泳裝・玩台東！掌握最新最完整的台東在地活動資訊。">
 
     <style>
         body { 
-            margin: 0; 
-            padding: 0; 
-            background: #e0f2f1; 
+            margin: 0; padding: 0; background: #e0f2f1; 
             font-family: 'PingFang TC', 'Microsoft JhengHei', sans-serif; 
-            display: flex; 
-            justify-content: center; 
-            -webkit-text-size-adjust: 100%; 
+            display: flex; justify-content: center; -webkit-text-size-adjust: 100%; 
         }
         
         .a4-page { 
-            width: 210mm; 
-            min-height: 297mm; 
-            height: auto;      
-            
+            width: 210mm; min-height: 297mm; height: auto;      
             background: linear-gradient(180deg, #e1f5fe 0%, #b3e5fc 50%, #ffe082 100%);
             background-image: url('IMG_3578.png'); 
-            background-size: 100% 100%;    
-            background-position: center;
-            background-repeat: no-repeat; 
-            
-            margin: 5mm auto; 
-            padding: 8mm 8mm 18mm 8mm; 
-            box-sizing: border-box; 
-            position: relative;
-            border: 6px solid white; 
-            box-shadow: 0 0 15px rgba(0,0,0,0.2); 
-            display: flex; 
-            flex-direction: column;
+            background-size: 100% 100%; background-position: center; background-repeat: no-repeat; 
+            margin: 5mm auto; padding: 8mm 8mm 18mm 8mm; box-sizing: border-box; 
+            position: relative; border: 6px solid white; box-shadow: 0 0 15px rgba(0,0,0,0.2); 
+            display: flex; flex-direction: column;
         }
 
         @media print { body { background: white; } .a4-page { margin: 0; box-shadow: none; border: none; } @page { size: A4; margin: 0; } }
         
-        .header { 
-            text-align: left; 
-            margin-top: 0mm;
-            margin-bottom: 0mm; 
-            background: transparent; 
-            padding: 0 4px; 
-            flex-shrink: 0; 
-        }
+        .header { text-align: left; margin-top: 0mm; margin-bottom: 0mm; background: transparent; padding: 0 4px; flex-shrink: 0; }
         
         .h-sub { 
-            color: #01579b; 
-            font-size: 15pt; 
-            font-weight: bold; 
-            letter-spacing: 1.2px; 
-            margin-bottom: 2px; 
-            text-shadow: 1px 1px 2px rgba(255,255,255,0.9); 
-            display: inline-block;     
-            padding-left: 41px;        
+            color: #01579b; font-size: 15pt; font-weight: bold; letter-spacing: 1.2px; margin-bottom: 2px; 
+            text-shadow: 1px 1px 2px rgba(255,255,255,0.9); display: inline-block; padding-left: 41px;        
             font-family: 'Iansui', cursive !important; 
         }
 
         .h-title { 
-            font-family: 'Noto Sans TC', sans-serif !important; 
-            font-size: 40pt !important; 
-            font-weight: 900 !important;                       
-            line-height: 1;            
-            margin: 2px 0 2px 0;      
+            font-family: 'Noto Sans TC', sans-serif !important; font-size: 40pt !important; font-weight: 900 !important;                       
+            line-height: 1; margin: 2px 0 2px 0;      
         }
 
         .h-title a { 
-            color: #01579b;                
-            text-decoration: none; 
-            transition: 0.2s; 
-            text-shadow: 
-                -1.5px -1.5px 1px rgba(255, 255, 255, 0.8), 
-                 1.5px -1.5px 1px rgba(255, 255, 255, 0.8), 
-                -1.5px  1.5px 1px rgba(255, 255, 255, 0.8), 
-                 1.5px  1.5px 1px rgba(255, 255, 255, 0.8), 
-                 0px 4px 8px rgba(0, 0, 0, 0.25);   
+            color: #01579b; text-decoration: none; transition: 0.2s; 
+            text-shadow: -1.5px -1.5px 1px rgba(255, 255, 255, 0.8), 1.5px -1.5px 1px rgba(255, 255, 255, 0.8), -1.5px  1.5px 1px rgba(255, 255, 255, 0.8), 1.5px  1.5px 1px rgba(255, 255, 255, 0.8), 0px 4px 8px rgba(0, 0, 0, 0.25);   
         }
 
         .store-info { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; margin-top: 10px; }
         .button-group { display: flex; gap: 12px; align-items: center; }
 
         .phone, .address { 
-            background: rgba(2, 189, 180, 0.7); 
-            color: white; 
-            padding: 4px 12px;                  
-            border-radius: 20px; 
-            font-size: 12pt; 
-            font-weight: bold; 
-            border: none; 
-            transition: 0.2s; 
-            box-shadow: 0 2px 5px rgba(0,0,0,0.25); 
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4); 
-            font-family: 'Noto Sans TC', sans-serif !important; 
-            font-weight: 700 !important;
+            background: rgba(2, 189, 180, 0.7); color: white; padding: 4px 12px;                  
+            border-radius: 20px; font-size: 12pt; font-weight: bold; border: none; transition: 0.2s; 
+            box-shadow: 0 2px 5px rgba(0,0,0,0.25); text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4); 
+            font-family: 'Noto Sans TC', sans-serif !important; font-weight: 700 !important;
         }
         .phone a, .address a { color: inherit; text-decoration: none; display: block; font-weight: bold; }
         .phone:hover, .address:hover { background: #01579b; transform: scale(1.03); }
 
-        .address-row { font-size: 11pt; font-weight: bold; }
-        
         .section-title {
-            position: absolute;
-            top: 48mm;  
-            left: 0;
-            width: 100%;
-            text-align: center;
-            font-family: 'Noto Sans TC', sans-serif !important;
-            font-weight: 700 !important; 
-            font-size: 22pt;
-            color: #003366; 
-            background: transparent;
-            text-shadow: 
-                -1.5px -1.5px 1px rgba(255, 255, 255, 0.8), 
-                 1.5px -1.5px 1px rgba(255, 255, 255, 0.8), 
-                -1.5px  1.5px 1px rgba(255, 255, 255, 0.8), 
-                 1.5px  1.5px 1px rgba(255, 255, 255, 0.8), 
-                 0px 3px 6px rgba(0, 0, 0, 0.25);
+            position: absolute; top: 48mm; left: 0; width: 100%; text-align: center;
+            font-family: 'Noto Sans TC', sans-serif !important; font-weight: 700 !important; font-size: 22pt;
+            color: #003366; background: transparent;
+            text-shadow: -1.5px -1.5px 1px rgba(255, 255, 255, 0.8), 1.5px -1.5px 1px rgba(255, 255, 255, 0.8), -1.5px  1.5px 1px rgba(255, 255, 255, 0.8), 1.5px  1.5px 1px rgba(255, 255, 255, 0.8), 0px 3px 6px rgba(0, 0, 0, 0.25);
             letter-spacing: 1px;
         }
 
-        .grid { 
-            display: flex; 
-            gap: 10px; 
-            margin-top: 10.5mm; 
-            margin-bottom: 0px; 
-        }
-        
-        .col { 
-            flex: 1; 
-            display: flex; 
-            flex-direction: column; 
-            gap: 3px; 
-        }
+        .grid { display: flex; gap: 10px; margin-top: 10.5mm; margin-bottom: 0px; }
+        .col { flex: 1; display: flex; flex-direction: column; gap: 3px; }
 
         .month-box { 
-            background: rgba(255, 255, 255, 0.48); 
-            backdrop-filter: blur(2px);
-            border: 2.5px solid; 
-            border-radius: 20px 25px 22px 24px / 24px 22px 25px 20px; 
-            padding: 0px 8px 4px 8px;    
-            box-sizing: border-box; 
-            display: flex; 
-            flex-direction: column; 
-            box-shadow: 0 2px 6px rgba(0,0,0,0.08); 
-            margin-bottom: 2px; 
-            overflow: hidden;            
+            background: rgba(255, 255, 255, 0.48); backdrop-filter: blur(2px); border: 2.5px solid; 
+            border-radius: 20px 25px 22px 24px / 24px 22px 25px 20px; padding: 0px 8px 4px 8px;    
+            box-sizing: border-box; display: flex; flex-direction: column; box-shadow: 0 2px 6px rgba(0,0,0,0.08); 
+            margin-bottom: 2px; overflow: hidden;            
         }
 
         .m-head { 
-            color: white; 
-            font-weight: bold; 
-            font-size: 11.5pt;         
-            padding: 4px 10px; 
-            margin: 0 -8px 4px -8px;    
-            border-top-left-radius: 17px; 
-            border-top-right-radius: 22px;
-            border-bottom-left-radius: 0px;
-            border-bottom-right-radius: 0px;
-            text-align: center; 
-            letter-spacing: 0.3px;     
-            flex-shrink: 0; 
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); 
+            color: white; font-weight: bold; font-size: 11.5pt; padding: 4px 10px; margin: 0 -8px 4px -8px;    
+            border-top-left-radius: 17px; border-top-right-radius: 22px; border-bottom-left-radius: 0px; border-bottom-right-radius: 0px;
+            text-align: center; letter-spacing: 0.3px; flex-shrink: 0; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); 
         }
 
         .m-alert { border-color: #d32f2f; }
@@ -193,21 +104,8 @@
         .e-desc { font-size: 7pt; color: #555; margin-top: 1px; }
         .e-loc { font-size: 7pt; color: #0277bd; font-weight: bold; margin-top: 1px; }
         
-        .footer-container {
-            position: absolute; bottom: 5mm; left: 6mm; right: 6mm; 
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 2px;
-        }
-
-        .footer-counter {
-            font-size: 7.5pt; 
-            color: rgba(230, 245, 255, 0.9); 
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4); 
-            letter-spacing: 0.5px;
-        }
+        .footer-container { position: absolute; bottom: 5mm; left: 6mm; right: 6mm; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 2px; }
+        .footer-counter { font-size: 7.5pt; color: rgba(230, 245, 255, 0.9); text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4); letter-spacing: 0.5px; }
     </style>
 </head>
 <body>
@@ -225,10 +123,10 @@
             </div>
         </div>
         
-        <div class="section-title">2026年10月～12月台東活動總整理</div>
+        <div class="section-title">2026年10月底～12月台東活動總整理</div>
 
         <div class="grid">
-            <!-- ====== 左欄：跨月與10月活動 ====== -->
+            <!-- ====== 左欄：跨月與10/31重頭戲 ====== -->
             <div class="col">
                 <div class="month-box m-ongoing">
                     <div class="m-head">🌟 持續展開 (跨月活動)</div>
@@ -238,26 +136,14 @@
                 </div>
 
                 <div class="month-box m-oct">
-                    <div class="m-head">10月 October</div>
-                    <div class="event"><div class="e-date">10/2</div><div class="e-info"><div class="e-name">《那年，我們一起聽的歌》① 咱的歌·咱的年代</div><div class="e-desc">🎵洪榮宏, 沈文程, 荒山亮, 高欣欣, 吳淑敏</div><div class="e-loc">📍北町日式建築宿舍群 ⏰19:00~21:00</div></div></div>
-                    <div class="event"><div class="e-date">10/3</div><div class="e-info"><div class="e-name">《那年，我們一起聽的歌》② 跨世代·唱青春</div><div class="e-desc">🎵陳昇&新寶島樂隊, 周蕙, 賴銘偉, 緯美雙雄</div><div class="e-loc">📍北町日式建築宿舍群 ⏰19:00~21:00</div></div></div>
-                    <div class="event"><div class="e-date">10/4</div><div class="e-info"><div class="e-name">2026火燒島馬拉松</div><div class="e-loc">📍綠島人權紀念公園 ⏰05:00~13:00</div></div></div>
-                    <div class="event"><div class="e-date">10/10</div><div class="e-info"><div class="e-name">世界的方舟・南島台灣・國慶焰火晚會</div><div class="e-loc">📍台東市國際地標 ⏰19:00~20:30</div></div></div>
-                    <div class="event"><div class="e-date">10/17</div><div class="e-info"><div class="e-name">雲端發票向前行 森林健走好心情</div><div class="e-loc">📍臺東森林公園 ⏰14:00~17:00</div></div></div>
-                    <div class="event"><div class="e-date">10/18</div><div class="e-info"><div class="e-name">達仁鄉縫迴山海祭路跑、市集音樂會</div><div class="e-loc">📍南田海岸親水公園 ⏰06:00~14:00</div></div></div>
-                    
-                    <div class="event"><div class="e-date">10/24~25<br><span style="color:red; font-size:7pt;">延期更新</span></div><div class="e-info"><div class="e-name">南島咖啡節市集</div><div class="e-desc">⏰24日13:00~19:00 / 25日11:00~18:00</div><div class="e-loc">📍台東波浪屋前廣場</div></div></div>
-                    
-                    <div class="event"><div class="e-date">10/25~26<br><span style="color:red; font-size:7pt;">延期更新</span></div><div class="e-info"><div class="e-name">2026臺東慢食節《夜食餐桌》</div><div class="e-loc">📍臺東新生公園廣場 ⏰15:00~20:00</div></div></div>
-                    
-                    <div class="event"><div class="e-date">10/30</div><div class="e-info"><div class="e-name">微光集・卡K開麥拉</div><div class="e-desc">🎵玩樂樂團, 思奈, 阿法, 巴大雄</div><div class="e-loc">📍微光集(鐵花路371號) ⏰19:00~22:00</div></div></div>
+                    <div class="m-head">10/31 壓軸登場</div>
                     <div class="event"><div class="e-date">10/31</div><div class="e-info"><div class="e-name">台東純素市集 Taitung Vegan Market</div><div class="e-loc">📍南京路市民廣場 ⏰15:00~19:00</div></div></div>
                     <div class="event"><div class="e-date">10/31</div><div class="e-info"><div class="e-name">臺東市觀光夜市・精彩好市券</div><div class="e-desc">🛍️自備環保用品100元換200元好市券(限量405份)</div><div class="e-loc">📍正氣路×五權街口(桂田旁) ⏰18:00起</div></div></div>
 
                     <div class="event"><div class="e-date">10/31</div><div class="e-info"><div class="e-name">♨️ 2026漫遊知森(全齡森呼吸療癒)</div><div class="e-desc">🏃26攤知森市集 (部分體驗需事前付費報名)</div><div class="e-loc">📍知本國家森林遊樂區 ⏰09:30~16:00</div></div></div>
                     <div class="event"><div class="e-date">10/31</div><div class="e-info"><div class="e-name">♨️ 知本溫泉路跑嘉年華音樂會</div><div class="e-desc">🎵達魯瑪克古謠班, 卑南族青春歌隊, 思奈樂團, 孔亞明, 桑梅絹</div><div class="e-loc">📍東遊季星星草原 ⏰16:00~21:00</div></div></div>
                     
-                    <div class="event"><div class="e-date">10/31</div><div class="e-info"><div class="e-name">☼ 𝟮𝟬𝟮𝟲 𝗧𝗮𝗶𝘄𝗮𝗻 𝗣𝗔𝗦𝗜𝗪𝗔𝗟𝗜 ☾</div><div class="e-desc">🎵卡司：范文凱, 高金龍, 呂薔, Parsha cluB (JP), Saya張惠春, Andrew Gurruwiwi Band (AU)</div><div class="e-loc">📍臺東森林公園 ⏰13:00 開始進場 (免費)</div></div></div>
+                    <div class="event"><div class="e-date">10/31~11/1</div><div class="e-info"><div class="e-name">☼ 𝟮𝟬𝟮𝟲 𝗧𝗮𝗶𝘄𝗮𝗻 𝗣𝗔𝗦𝗜𝗪𝗔𝗟𝗜 ☾</div><div class="e-desc">🎵卡司：范文凱, 高金龍, 呂薔, Parsha cluB (JP), Saya張惠春, Andrew Gurruwiwi Band (AU)</div><div class="e-loc">📍臺東森林公園 ⏰13:00 開始進場 (免費)</div></div></div>
                 </div>
             </div>
 
@@ -272,8 +158,6 @@
 
                 <div class="month-box m-nov">
                     <div class="m-head">11月 November</div>
-                    
-                    <div class="event"><div class="e-date">11/1</div><div class="e-info"><div class="e-name">☼ 𝟮𝟬𝟮𝟲 𝗧𝗮𝗶𝘄𝗮𝗻 𝗣𝗔𝗦𝗜𝗪𝗔𝗟𝗜 ☾</div><div class="e-desc">🎵卡司：巴燕庭, 鄒女在Party, 范逸臣, RHYTHM REBELS (Bali), 葛西瓦, Shepherds Reign (NZ)</div><div class="e-loc">📍臺東森林公園 ⏰13:00 開始進場 (免費)</div></div></div>
                     
                     <div class="event"><div class="e-date">11/1</div><div class="e-info"><div class="e-name">♨️ 跑吧！孩子 2026知本溫泉公益馬拉松</div><div class="e-loc">📍知本龍泉路第二停車場 ⏰06:00~14:30</div></div></div>
                     
