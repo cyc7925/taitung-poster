@@ -152,13 +152,13 @@
             gap: 4px; 
         }
 
-        /* 月份方塊：外框保持圓角與大小不變，但取消內部左右邊距 */
+        /* 月份方塊：收緊內部上下留白，讓網底跟標題緊密貼合 */
         .month-box { 
             background: rgba(255, 255, 255, 0.48); 
             backdrop-filter: blur(2px);
             border: 2.5px solid; 
             border-radius: 20px 25px 22px 24px / 24px 22px 25px 20px; 
-            padding: 2px 8px 6px 8px;    
+            padding: 0px 8px 4px 8px;    
             box-sizing: border-box; 
             display: flex; 
             flex-direction: column; 
@@ -167,13 +167,13 @@
             overflow: hidden;            
         }
 
-        /* 月份標題：用負邊距剛好貼滿外框圓角，不再凸出去 */
+        /* 月份標題：收緊下方間距，告別分家感 */
         .m-head { 
             color: white; 
             font-weight: bold; 
             font-size: 11.5pt;         
             padding: 4px 10px; 
-            margin: 0 -8px 5px -8px;    
+            margin: 0 -8px 3px -8px;    /* <-- 把原本的 5px 改成 3px，讓網底和內文更貼合 */
             border-top-left-radius: 17px; 
             border-top-right-radius: 22px;
             border-bottom-left-radius: 0px;
@@ -199,16 +199,16 @@
         .m-ongoing .m-head { background: #00796b; }
         
         /* 每一項活動的上下留白與行距放寬 */
-        .event { display: flex; margin-bottom: 5px; border-bottom: 1px dashed rgba(0,0,0,0.18); padding-bottom: 5px; }
+        .event { display: flex; margin-bottom: 4px; border-bottom: 1px dashed rgba(0,0,0,0.18); padding-bottom: 4px; }
         .event:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
         
         .e-date { width: 62px; font-size: 8pt; font-weight: bold; color: #333; flex-shrink: 0; margin-right: 4px; }
-        .e-info { flex: 1; display: flex; flex-direction: column; gap: 2px; }
+        .e-info { flex: 1; display: flex; flex-direction: column; gap: 1.5px; }
         
-        /* 活動名稱字體放大到 9.3pt，行距 1.35，視覺清晰舒適 */
-        .e-name { font-size: 9.3pt; font-weight: bold; color: #111; line-height: 1.35; }
-        .e-desc { font-size: 7.5pt; color: #555; line-height: 1.3; }
-        .e-loc { font-size: 7.5pt; color: #0277bd; font-weight: bold; line-height: 1.3; }
+        /* 活動名稱字體放大到 9.3pt，行距適中俐落 */
+        .e-name { font-size: 9.3pt; font-weight: bold; color: #111; line-height: 1.3; }
+        .e-desc { font-size: 7.5pt; color: #555; line-height: 1.25; }
+        .e-loc { font-size: 7.5pt; color: #0277bd; font-weight: bold; line-height: 1.25; }
         
         /* 底部標語與計數器容器 */
         .footer-container {
