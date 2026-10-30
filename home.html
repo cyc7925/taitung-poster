@@ -72,14 +72,13 @@
         .info-icon { font-size: 16px; display: inline-block; width: 20px; text-align: center; color: #555; }
         .phone-text { color: #0000EE; text-decoration: underline; font-weight: bold; font-family: sans-serif; letter-spacing: 0.5px; font-size: 15px; }
         
-        /* 本店詳細介紹區塊樣式 */
-        .store-intro-box {
-            background: white; border: 2.5px solid var(--ink-dark); border-radius: 12px;
-            padding: 12px; margin-bottom: 15px; box-shadow: 2px 2px 0px rgba(44,62,80,0.1);
-            font-size: 12px; line-height: 1.5; color: #444;
+        /* === 本店詳細介紹區塊樣式 (改為無框線、融入背景) === */
+        .store-intro-clean {
+            padding: 0 10px; margin-top: 15px; margin-bottom: 15px;
+            font-size: 12.5px; line-height: 1.6; color: #444; text-align: justify;
         }
-        .intro-title { font-size: 14px; font-weight: bold; color: var(--pop-pink); margin-bottom: 6px; display: flex; align-items: center; gap: 4px; }
-        .intro-text { margin-bottom: 4px; }
+        .intro-title { font-size: 14px; font-weight: bold; color: var(--pop-pink); margin-bottom: 6px; }
+        .intro-text { margin-bottom: 6px; }
 
         .info-btn { 
             padding: 6px 20px; 
@@ -180,7 +179,6 @@
             <a href="tel:0910557998" class="info-btn btn-yellow">撥打</a>
         </div>
 
-        <!-- 已刪除地址下方的重複說明 -->
         <div class="info-row">
             <div class="info-left">
                 <span class="info-icon">🚗</span> 卑南鄉溫泉路370號
@@ -189,8 +187,8 @@
         </div>
     </div>
 
-    <!-- 本店詳細介紹區塊 -->
-    <div class="store-intro-box">
+    <!-- 本店詳細介紹區塊 (改成自然融入背景的排版) -->
+    <div class="store-intro-clean">
         <div class="intro-title">📍 本店介紹與交通指引</div>
         <div class="intro-text">本店位於東遊季 7-11 隔壁，搭乘公車 <a href="https://www.taiwanbus.tw/eBUSPage/Query/QueryResult.aspx?rno=81290&rn=1747899072807&lan=C" target="_blank" class="info-link">[8129]</a> 或騎乘 YouBike 皆可輕鬆抵達；自行開車行經溫泉路沿路即可看見。</div>
         <div class="intro-text">本店提供平價泳裝、優惠溫泉券、專業泳具與各式泳圈，是來知本泡湯玩水必備的在地好選擇！</div>
@@ -225,6 +223,7 @@
             <div class="product-name">玩水周邊</div>
         </div>
     </div>
+
     <!-- 5. 泡湯 SPA 精選 -->
     <div class="section-divider"></div>
     <div class="section-title"><span style="color:var(--pop-pink);">♨️</span> 知本在地 SPA 溫泉精選</div>
