@@ -60,7 +60,7 @@
             margin: 25px 5px 15px 5px; 
         }
 
-        /* === 3. 聯絡與導航資訊列 === */
+        /* === 3. 聯絡與導航資訊列（已將電話與地址互換，並加入本店位置說明） === */
         .info-card { margin-bottom: 10px; padding: 0 5px; }
         
         .info-row { 
@@ -71,6 +71,7 @@
         .info-left { font-size: 13.5px; font-weight: bold; color: var(--ink-dark); display: flex; align-items: center; gap: 6px; }
         .info-icon { font-size: 16px; display: inline-block; width: 20px; text-align: center; color: #555; }
         .phone-text { color: #0000EE; text-decoration: underline; font-weight: bold; font-family: sans-serif; letter-spacing: 0.5px; font-size: 15px; }
+        .store-desc { font-size: 11.5px; color: #666; margin-top: 2px; margin-left: 26px; font-weight: bold; }
 
         .info-btn { 
             padding: 6px 20px; 
@@ -161,20 +162,23 @@
     <!-- 2. 店名 -->
     <div class="store-name">東泳記泳裝店</div>
 
-    <!-- 3. 聯絡資訊列表 -->
+    <!-- 3. 聯絡資訊列表 (已將電話與地址互換，並加入本店位置說明) -->
     <div class="info-card">
-        <div class="info-row">
-            <div class="info-left">
-                <span class="info-icon">🚗</span> 卑南鄉溫泉路370號
-            </div>
-            <a href="https://maps.app.goo.gl/YkHK24qn1kZsfBn38?g_st=ic" target="_blank" class="info-btn btn-white">導航</a>
-        </div>
-        
-        <div class="info-row">
+        <div class="info-row" style="margin-bottom: 8px;">
             <div class="info-left">
                 <span class="info-icon">📞</span> <span class="phone-text">0910-557-998</span>
             </div>
             <a href="tel:0910557998" class="info-btn btn-yellow">撥打</a>
+        </div>
+
+        <div class="info-row">
+            <div>
+                <div class="info-left">
+                    <span class="info-icon">🚗</span> 卑南鄉溫泉路370號
+                </div>
+                <div class="store-desc">📍 本店位置在東遊季 7-11 對面</div>
+            </div>
+            <a href="https://maps.app.goo.gl/YkHK24qn1kZsfBn38?g_st=ic" target="_blank" class="info-btn btn-white">導航</a>
         </div>
     </div>
 
@@ -225,7 +229,7 @@
             <summary>▼ 交通與詳細資訊</summary>
             <div class="traffic-article">
                 <p>走訪知本溫泉區交通相當便捷。開車族可沿台9線轉入縣道194（東58）往知本溫泉方向行駛；搭乘火車至知本或台東站後轉乘計程車或客運即可抵達。</p>
-                <p style="margin-top: 4px;">度假村坐落於溫泉路指標路段右側。若搭乘公車可於「東遊季」站下車；需注意的是，雖然園區外側 7-11 門市設有 YouBike 可供騎乘，但距離實際的泡湯核心區仍有一小段徒步距離，建議旅客可多加利用館內寬敞的免費露天停車場。</p>
+                <p style="margin-top: 4px;">度假村坐落於溫泉路指標路段右側。若搭乘公車可於「東遊季」站下車；園區外側 7-11 門市設有 YouBike 站點，方便旅客騎乘遊覽；館內並備有寬敞的免費露天停車場供自駕車輛停放。</p>
             </div>
         </details>
     </div>
@@ -243,7 +247,7 @@
             <summary>▼ 交通與詳細資訊</summary>
             <div class="traffic-article">
                 <p>前往知本溫泉區可透過台9線銜接縣道194深入群山；鐵路旅客則可選擇於知本站或台東站下車轉乘在地交通工具。</p>
-                <p style="margin-top: 4px;">酒店座落於知本溫泉路的最深處、緊鄰知本國家森林遊樂區。由於最後一段路程為上山路段，搭乘大眾公車較為不便，飯店官方建議可預約付費接駁車前往。館內設有專屬免費停車場（含地下與戶外），開車造訪極為便利。</p>
+                <p style="margin-top: 4px;">酒店座落於知本溫泉區內，沿著溫泉路循指標即可輕鬆抵達。除了大眾運輸與自行開車外，飯店官方亦提供預約付費接駁車服務，交通選擇多元。館內設有專屬免費停車場（含地下與戶外），開車造訪極為便利。</p>
             </div>
         </details>
     </div>
