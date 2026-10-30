@@ -327,25 +327,44 @@
             </ul>
         </details>
     </div>
-
-    <!-- 東台溫泉飯店 -->
-    <div class="spa-card">
-        <div class="spa-top">
-            <div class="spa-title-area">
-                <div class="spa-name">東台溫泉飯店</div>
-                <div class="spa-short">老字號口碑佳，高科技溫泉SPA水療設施</div>
-            </div>
-            <a href="https://maps.google.com/?q=東台溫泉飯店" target="_blank" class="spa-nav-btn">🚗導航</a>
+<!-- 東台溫泉飯店 -->
+<div class="spa-card">
+    <div class="spa-top" style="display: flex; justify-content: space-between; align-items: center; width: 100%; margin-bottom: 8px;">
+        <!-- 導航按鈕緊接在店名前面 -->
+        <div class="spa-name" style="margin: 0; font-size: 16px; font-weight: bold; display: flex; align-items: center; gap: 8px;">
+            <a href="https://maps.google.com/?q=東台溫泉飯店" target="_blank" class="spa-nav-btn" style="font-size: 12px; padding: 3px 8px; border-radius: 4px; text-decoration: none;">🚗導航</a>
+            <span>東台溫泉飯店</span>
         </div>
-        <details>
-            <summary>▼ 交通與詳細資訊</summary>
-            <ul class="info-list">
-                <li><span class="info-label">路線指引：</span><span>飯店比鄰知本國家森林遊樂區。</span></li>
-                <li><span class="info-label">大眾運輸：</span><span>搭乘公車 [8129] 可於「東台飯店」站下車，附近設有 YouBike 租賃點。</span></li>
-                <li><span class="info-label">停車資訊：</span><span>飯店備有專屬免費停車場。</span></li>
-            </ul>
-        </details>
     </div>
+    
+    <!-- 介紹文字：採用官方精華文案，左右對齊 -->
+    <div class="spa-short" style="text-align: justify; line-height: 1.6; margin-bottom: 1px;">
+        溫泉養生承襲德日模式規劃，在開闊溪谷景觀視野中享受多功能水療沖擊、美人原湯與檜木烤箱，消除車旅勞累，展開定點多日溫泉休閒保養之旅。
+    </div>
+
+    <!-- 左右滑動照片藝廊：東台官網圖片連結，高度固定 180px -->
+    <div style="display: flex; overflow-x: auto; gap: 10px; padding: 0 !important; margin: 0 !important; height: 180px; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;">
+      <img src="http://www.dongtair-spa.com.tw/wp-content/uploads/2017/11/spa02.jpg" style="height: 180px; width: auto; object-fit: cover; border-radius: 8px; flex-shrink: 0; scroll-snap-align: start;" alt="東台溫泉照片 1">
+      <img src="http://www.dongtair-spa.com.tw/wp-content/uploads/2017/11/spa01.jpg" style="height: 180px; width: auto; object-fit: cover; border-radius: 8px; flex-shrink: 0; scroll-snap-align: start;" alt="東台溫泉照片 2">
+      <img src="http://www.dongtair-spa.com.tw/wp-content/uploads/2019/05/spa12.png" style="height: 180px; width: auto; object-fit: cover; border-radius: 8px; flex-shrink: 0; scroll-snap-align: start;" alt="東台溫泉照片 3">
+      <img src="http://www.dongtair-spa.com.tw/wp-content/uploads/2017/11/spa03.jpg" style="height: 180px; width: auto; object-fit: cover; border-radius: 8px; flex-shrink: 0; scroll-snap-align: start;" alt="東台溫泉照片 4">
+      <img src="http://www.dongtair-spa.com.tw/wp-content/uploads/2017/11/spa05.jpg" style="height: 180px; width: auto; object-fit: cover; border-radius: 8px; flex-shrink: 0; scroll-snap-align: start;" alt="東台溫泉照片 5">
+      <img src="http://www.dongtair-spa.com.tw/wp-content/uploads/2019/05/spa10.png" style="height: 180px; width: auto; object-fit: cover; border-radius: 8px; flex-shrink: 0; scroll-snap-align: start;" alt="東台溫泉照片 6">
+      <img src="http://www.dongtair-spa.com.tw/wp-content/uploads/2017/11/spa06.jpg" style="height: 180px; width: auto; object-fit: cover; border-radius: 8px; flex-shrink: 0; scroll-snap-align: start;" alt="東台溫泉照片 7">
+      <img src="http://www.dongtair-spa.com.tw/wp-content/uploads/2019/05/spa16.png" style="height: 180px; width: auto; object-fit: cover; border-radius: 8px; flex-shrink: 0; scroll-snap-align: start;" alt="東台溫泉照片 8">
+    </div>
+
+    <!-- 交通與詳細資訊下拉選單：標準凸排格式 -->
+    <details>
+        <summary>▼ 交通與詳細資訊</summary>
+        <ul class="info-list">
+            <li><span class="info-label">路線指引：</span><span>位於知本溫泉區內，沿溫泉路依指標前行即可抵達。</span></li>
+            <li><span class="info-label">大眾運輸：</span><span>搭乘公車［8129］可至知本溫泉區鄰近站點下車。</span></li>
+            <li><span class="info-label">停車資訊：</span><span>館內設有專屬停車場。</span></li>
+        </ul>
+    </details>
+</div>
+
 
     <!-- 6. 附近順遊景點 -->
     <div class="section-divider"></div>
