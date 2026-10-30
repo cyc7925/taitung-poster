@@ -60,7 +60,7 @@
             margin: 25px 5px 15px 5px; 
         }
 
-        /* === 3. 聯絡與導航資訊列（已將電話與地址互換，並加入本店位置說明） === */
+        /* === 3. 聯絡與導航資訊列 === */
         .info-card { margin-bottom: 10px; padding: 0 5px; }
         
         .info-row { 
@@ -93,17 +93,16 @@
         /* === 4. 熱門商品六宮格 === */
         .product-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 5px; }
         .product-card { 
-            background: white; border: 2px solid var(--pop-pink); border-radius: 12px; 
-            padding: 18px 5px; text-align: center; display: flex; flex-direction: column; 
+            background: white; border: 2.5px solid var(--pop-pink); border-radius: 12px; 
+            padding: 16px 5px; text-align: center; display: flex; flex-direction: column; 
             align-items: center; justify-content: center;
             box-shadow: 2px 2px 0px rgba(255, 107, 107, 0.2); transition: 0.2s;
         }
         .product-icon { font-size: 28px; margin-bottom: 6px; line-height: 1; }
         .product-name { font-size: 13.5px; font-weight: bold; color: var(--ink-dark); }
 
-
         /* === 5. 泡湯 SPA 精選區塊 === */
-        .spa-card { background: white; border: 2px solid var(--ink-dark); border-radius: 12px; padding: 8px; margin-bottom: 8px; box-shadow: 2px 2px 0px rgba(44,62,80,0.1); } 
+        .spa-card { background: white; border: 2.5px solid var(--ink-dark); border-radius: 12px; padding: 10px; margin-bottom: 8px; box-shadow: 2px 2px 0px rgba(44,62,80,0.1); } 
         .spa-top { display: flex; justify-content: space-between; align-items: center; }
         .spa-title-area { flex: 1; padding-right: 8px; }
         .spa-name { font-size: 14px; font-weight: bold; color: var(--ink-dark); line-height: 1.1; margin-bottom: 3px; } 
@@ -117,13 +116,14 @@
         details summary::-webkit-details-marker { display: none; }
         summary { font-size: 12px; font-weight: bold; color: var(--pop-pink); cursor: pointer; outline: none; margin-bottom: 4px; display: flex; align-items: center; gap: 4px; }
         
-        /* 專業旅遊文章排版風格 */
-        .traffic-article { font-size: 11.5px; line-height: 1.5; color: #444; margin: 0; padding-left: 0; list-style: none; }
-        .traffic-article p { margin: 0; }
+        /* 交通條列排版風格 */
+        .info-list { list-style: none; padding: 0; margin: 0; font-size: 11.5px; line-height: 1.4; color: #444; } 
+        .info-list li { margin-bottom: 4px; display: flex; }
+        .info-label { font-weight: bold; color: var(--ink-dark); width: 65px; flex-shrink: 0; }
 
         /* === 6. 附近景點四宮格 === */
         .spot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 5px; }
-        .spot-card { background: white; border: 2px solid var(--pop-blue); border-radius: 12px; padding: 8px; text-align: center; text-decoration: none; display: block; transition: 0.2s; box-shadow: 2px 2px 0px rgba(78, 205, 196, 0.2); }
+        .spot-card { background: white; border: 2.5px solid var(--pop-blue); border-radius: 12px; padding: 10px; text-align: center; text-decoration: none; display: block; transition: 0.2s; box-shadow: 2px 2px 0px rgba(78, 205, 196, 0.2); }
         .spot-card:active { transform: scale(0.96); background: #f0fbf9; box-shadow: none; }
         .spot-icon { font-size: 20px; margin-bottom: 3px; }
         .spot-name { font-size: 13px; font-weight: bold; color: var(--ink-dark); margin-bottom: 2px; }
@@ -133,7 +133,7 @@
         .event-btn { 
             display: block; width: 100%; box-sizing: border-box; text-align: center;
             padding: 12px; border-radius: 12px; font-size: 15px; font-weight: bold;
-            border: 2px solid var(--ink-dark); margin-bottom: 10px; text-decoration: none;
+            border: 2.5px solid var(--ink-dark); margin-bottom: 10px; text-decoration: none;
         }
         .yellow-btn { background: var(--pop-yellow); color: var(--ink-dark); box-shadow: 3px 3px 0px var(--ink-dark); transition: 0.2s; }
         .yellow-btn:active { transform: translate(2px,2px); box-shadow: 0px 0px 0px transparent; }
@@ -162,7 +162,7 @@
     <!-- 2. 店名 -->
     <div class="store-name">東泳記泳裝店</div>
 
-    <!-- 3. 聯絡資訊列表 (已將電話與地址互換，並加入本店位置說明) -->
+    <!-- 3. 聯絡資訊列表 -->
     <div class="info-card">
         <div class="info-row" style="margin-bottom: 8px;">
             <div class="info-left">
@@ -211,7 +211,6 @@
             <div class="product-name">玩水周邊</div>
         </div>
     </div>
-
     <!-- 5. 泡湯 SPA 精選 -->
     <div class="section-divider"></div>
     <div class="section-title"><span style="color:var(--pop-pink);">♨️</span> 知本在地 SPA 溫泉精選</div>
@@ -227,10 +226,11 @@
         </div>
         <details>
             <summary>▼ 交通與詳細資訊</summary>
-            <div class="traffic-article">
-                <p>走訪知本溫泉區交通相當便捷。開車族可沿台9線轉入縣道194（東58）往知本溫泉方向行駛；搭乘火車至知本或台東站後轉乘計程車或客運即可抵達。</p>
-                <p style="margin-top: 4px;">度假村坐落於溫泉路指標路段右側。若搭乘公車可於「東遊季」站下車；園區外側 7-11 門市設有 YouBike 站點，方便旅客騎乘遊覽；館內並備有寬敞的免費露天停車場供自駕車輛停放。</p>
-            </div>
+            <ul class="info-list">
+                <li><span class="info-label">路線指引：</span><span>度假村坐落於溫泉路指標路段右側，可由本店「東泳記泳裝店」與其隔壁 7-11 中間的小路進入園區。</span></li>
+                <li><span class="info-label">大眾運輸：</span><span>搭乘公車可於「東遊季」站下車；外側 7-11 門市設有 YouBike 站點。</span></li>
+                <li><span class="info-label">停車資訊：</span><span>園區內備有免費露天停車場。</span></li>
+            </ul>
         </details>
     </div>
 
@@ -245,10 +245,11 @@
         </div>
         <details>
             <summary>▼ 交通與詳細資訊</summary>
-            <div class="traffic-article">
-                <p>前往知本溫泉區可透過台9線銜接縣道194深入群山；鐵路旅客則可選擇於知本站或台東站下車轉乘在地交通工具。</p>
-                <p style="margin-top: 4px;">酒店座落於知本溫泉區內，沿著溫泉路循指標即可輕鬆抵達。除了大眾運輸與自行開車外，飯店官方亦提供預約付費接駁車服務，交通選擇多元。館內設有專屬免費停車場（含地下與戶外），開車造訪極為便利。</p>
-            </div>
+            <ul class="info-list">
+                <li><span class="info-label">路線指引：</span><span>酒店座落於知本溫泉區內，沿著溫泉路轉龍泉路循指標即可輕鬆抵達。</span></li>
+                <li><span class="info-label">大眾運輸：</span><span>飯店官方提供預約付費接駁車服務（詳見官網公告）。</span></li>
+                <li><span class="info-label">停車資訊：</span><span>館內設有免費停車場。</span></li>
+            </ul>
         </details>
     </div>
 
@@ -263,10 +264,11 @@
         </div>
         <details>
             <summary>▼ 交通與詳細資訊</summary>
-            <div class="traffic-article">
-                <p>無論是自行開車經由台9線與縣道194，或是搭乘火車抵達知本站，都能輕鬆駛入知本溫泉風景區。</p>
-                <p style="margin-top: 4px;">度假村位於溫泉路沿線，依循指標即可順利抵達。若選擇搭乘公車，可於「泓泉飯店」站下車後步行前往。園區大門口及周邊皆備有免費專屬停車場，停車空間完善。</p>
-            </div>
+            <ul class="info-list">
+                <li><span class="info-label">路線指引：</span><span>度假村位於溫泉路轉龍泉路沿線，依循指標即可順利抵達。</span></li>
+                <li><span class="info-label">大眾運輸：</span><span>搭乘公車可於「泓泉飯店」站下車後步行前往。</span></li>
+                <li><span class="info-label">停車資訊：</span><span>園區備有免費專屬停車場。</span></li>
+            </ul>
         </details>
     </div>
 
@@ -281,10 +283,11 @@
         </div>
         <details>
             <summary>▼ 交通與詳細資訊</summary>
-            <div class="traffic-article">
-                <p>旅客可經由台9線轉入縣道194直奔知本溫泉區；搭乘火車至知本站或台東站後，再轉乘計程車或客運也很方便。</p>
-                <p style="margin-top: 4px;">飯店比鄰知本國家森林遊樂區。搭乘公車可於「東台飯店」站下車，附近亦設有 YouBike 租賃點，適合喜歡低碳漫遊的旅客；飯店對面與周邊皆設有專屬免費停車場供自駕族使用。</p>
-            </div>
+            <ul class="info-list">
+                <li><span class="info-label">路線指引：</span><span>飯店比鄰知本國家森林遊樂區。</span></li>
+                <li><span class="info-label">大眾運輸：</span><span>搭乘公車可於「東台飯店」站下車，附近設有 YouBike 租賃點。</span></li>
+                <li><span class="info-label">停車資訊：</span><span>飯店備有專屬免費停車場。</span></li>
+            </ul>
         </details>
     </div>
 
