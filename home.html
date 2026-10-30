@@ -128,6 +128,7 @@
         .info-list { list-style: none; padding: 0; margin: 0; font-size: 11.5px; line-height: 1.4; color: #444; } 
         .info-list li { margin-bottom: 4px; display: flex; }
         .info-label { font-weight: bold; color: var(--ink-dark); width: 65px; flex-shrink: 0; }
+        .info-link { color: #0000EE; text-decoration: underline; font-weight: bold; }
 
         /* === 6. 附近景點四宮格 === */
         .spot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 5px; }
@@ -180,8 +181,11 @@
         </div>
 
         <div class="info-row">
-            <div class="info-left">
-                <span class="info-icon">🚗</span> 卑南鄉溫泉路370號
+            <div>
+                <div class="info-left">
+                    <span class="info-icon">🚗</span> 卑南鄉溫泉路370號
+                </div>
+                <div class="store-desc">📍 本店位置在東遊季 7-11 對面</div>
             </div>
             <a href="https://maps.app.goo.gl/YkHK24qn1kZsfBn38?g_st=ic" target="_blank" class="info-btn btn-white">導航</a>
         </div>
@@ -192,6 +196,11 @@
         <div class="intro-title">📍 本店介紹與交通指引</div>
         <div class="intro-text">本店位於東遊季 7-11 隔壁，搭乘公車或騎乘 YouBike 皆可輕鬆抵達；自行開車行經溫泉路沿路即可看見。</div>
         <div class="intro-text">本店提供平價泳裝、優惠溫泉券、專業泳具與各式泳圈，是來知本泡湯玩水必備的在地好選擇！</div>
+        <div class="intro-text" style="margin-top: 6px;">公車路線資訊：<br>
+            • <a href="https://www.taiwanbus.tw/eBUSPage/Query/QueryResult.aspx?rno=81290&rn=1747899072807&lan=C" target="_blank" class="info-link">[8129]</a><br>
+            • <a href="https://www.taiwanbus.tw/eBUSPage/Query/QueryResult.aspx?rno=81310&rn=1793347547990&lan=C" target="_blank" class="info-link">[8131]</a> (每日僅有一班)<br>
+            • <a href="https://www.taiwanbus.tw/eBUSPage/Query/QueryResult.aspx?rno=8131A&rn=1793347574770&lan=C" target="_blank" class="info-link">[8131A]</a> (每日僅有一班)
+        </div>
     </div>
 
     <!-- 4. 本店熱門商品 -->
