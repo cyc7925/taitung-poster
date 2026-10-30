@@ -267,24 +267,45 @@
 
 
 
-    <!-- 知本老爺酒店 -->
-    <div class="spa-card">
-        <div class="spa-top">
-            <div class="spa-title-area">
-                <div class="spa-name">知本老爺酒店</div>
-                <div class="spa-short">五星級天幕風呂水療，設施精緻頂級享受</div>
-            </div>
-            <a href="https://maps.google.com/?q=知本老爺酒店" target="_blank" class="spa-nav-btn">🚗導航</a>
+<!-- 知本老爺酒店 -->
+<div class="spa-card">
+    <div class="spa-top" style="display: flex; justify-content: space-between; align-items: center; width: 100%; margin-bottom: 8px;">
+        <!-- 導航按鈕緊接在店名前面 -->
+        <div class="spa-name" style="margin: 0; font-size: 16px; font-weight: bold; display: flex; align-items: center; gap: 8px;">
+            <a href="https://maps.google.com/?q=知本老爺酒店" target="_blank" class="spa-nav-btn" style="font-size: 12px; padding: 3px 8px; border-radius: 4px; text-decoration: none;">🚗導航</a>
+            <span>知本老爺酒店</span>
         </div>
-        <details>
-            <summary>▼ 交通與詳細資訊</summary>
-            <ul class="info-list">
-                <li><span class="info-label">路線指引：</span><span>酒店座落於知本溫泉區內，沿著溫泉路轉龍泉路循指標即可輕鬆抵達。</span></li>
-                <li><span class="info-label">大眾運輸：</span><span>搭乘公車 [8129] 於「清覺寺」站下車後步行約 11 分鐘（約 550 公尺）；飯店官方亦提供預約付費接駁車服務（詳見官網公告）。</span></li>
-                <li><span class="info-label">停車資訊：</span><span>館內設有免費停車場。</span></li>
-            </ul>
-        </details>
     </div>
+    
+    <!-- 介紹文字：左右對齊，右側平整 -->
+    <div class="spa-short" style="text-align: justify; line-height: 1.6; margin-bottom: 10px;">
+        五星級天幕風呂緊鄰戶外游泳池畔，座落於游泳池畔，穿著泳衣的豐富泡湯設備，依季節更替泳池水溫，設施精緻頂級享受。
+    </div>
+
+    <!-- 左右滑動照片藝廊：royal-1 到 royal-9 -->
+    <div style="display: flex; overflow-x: auto; gap: 10px; padding: 10px 0; margin-top: 10px; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;">
+      <img src="Images/royal-1.jpg" style="height: 180px; width: auto; object-fit: cover; border-radius: 8px; flex-shrink: 0; scroll-snap-align: start;" alt="知本老爺酒店照片 1">
+      <img src="Images/royal-2.jpg" style="height: 180px; width: auto; object-fit: cover; border-radius: 8px; flex-shrink: 0; scroll-snap-align: start;" alt="知本老爺酒店照片 2">
+      <img src="Images/royal-3.jpg" style="height: 180px; width: auto; object-fit: cover; border-radius: 8px; flex-shrink: 0; scroll-snap-align: start;" alt="知本老爺酒店照片 3">
+      <img src="Images/royal-4.jpg" style="height: 180px; width: auto; object-fit: cover; border-radius: 8px; flex-shrink: 0; scroll-snap-align: start;" alt="知本老爺酒店照片 4">
+      <img src="Images/royal-5.jpg" style="height: 180px; width: auto; object-fit: cover; border-radius: 8px; flex-shrink: 0; scroll-snap-align: start;" alt="知本老爺酒店照片 5">
+      <img src="Images/royal-6.jpg" style="height: 180px; width: auto; object-fit: cover; border-radius: 8px; flex-shrink: 0; scroll-snap-align: start;" alt="知本老爺酒店照片 6">
+      <img src="Images/royal-7.jpg" style="height: 180px; width: auto; object-fit: cover; border-radius: 8px; flex-shrink: 0; scroll-snap-align: start;" alt="知本老爺酒店照片 7">
+      <img src="Images/royal-8.jpg" style="height: 180px; width: auto; object-fit: cover; border-radius: 8px; flex-shrink: 0; scroll-snap-align: start;" alt="知本老爺酒店照片 8">
+      <img src="Images/royal-9.jpg" style="height: 180px; width: auto; object-fit: cover; border-radius: 8px; flex-shrink: 0; scroll-snap-align: start;" alt="知本老爺酒店照片 9">
+    </div>
+
+    <!-- 交通與詳細資訊下拉選單：標準凸排格式 -->
+    <details>
+        <summary>▼ 交通與詳細資訊</summary>
+        <ul class="info-list">
+            <li><span class="info-label">路線指引：</span><span>酒店座落於知本溫泉區內，沿著溫泉路轉龍泉路循指標即可輕鬆抵達。</span></li>
+            <li><span class="info-label">大眾運輸：</span><span>搭乘公車 [8129] 於「清覺寺」站下車後步行約 11 分鐘（約 550 公尺）；飯店官方亦提供預約付費接駁車服務（詳見官網公告）。</span></li>
+            <li><span class="info-label">停車資訊：</span><span>館內設有免費停車場。</span></li>
+        </ul>
+    </details>
+</div>
+
 
     <!-- ㄚㄧㄚ旺溫泉渡假村 -->
     <div class="spa-card">
