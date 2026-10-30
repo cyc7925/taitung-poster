@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/justfont/open-huninn-font/font.css">
     
     <meta name="description" content="東泳記泳裝店位於台東知本，提供平價泳裝、優惠溫泉券、專業泳具與各式泳圈。為您整理知本溫泉SPA推薦與台東近期活動總整理，來台東泡湯玩水必備導覽！">
-    <meta name="keywords" content="東泳記泳裝店, 台東泳裝, 知本溫泉, 溫泉券, 泳具, 泳圈, 台東活動, 旅遊導覽, 丫ㄧㄚ旺, 東遊季, 知本老爺, 東台溫泉">
+    <meta name="keywords" content="東泳記泳裝店, 台東泳裝, 知本溫泉, 溫泉券, 泳具, 泳圈, 台東活動, 旅遊導覽, ㄚㄧㄚ旺, 東遊季, 知本老爺, 東台溫泉">
     
     <style>
         :root {
@@ -89,7 +89,7 @@
             display: flex; align-items: center; gap: 6px; 
         }
         
-        /* === 4. 熱門商品六宮格 (拿掉小灰字，調整卡片內距讓比例更好看) === */
+        /* === 4. 熱門商品六宮格 === */
         .product-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 5px; }
         .product-card { 
             background: white; border: 2px solid var(--pop-pink); border-radius: 12px; 
@@ -115,9 +115,9 @@
         details summary { list-style: none; }
         details summary::-webkit-details-marker { display: none; }
         summary { font-size: 12px; font-weight: bold; color: var(--pop-pink); cursor: pointer; outline: none; margin-bottom: 4px; display: flex; align-items: center; gap: 4px; }
-        .info-list { list-style: none; padding: 0; margin: 0; font-size: 11px; line-height: 1.35; color: #444; } 
-        .info-list li { margin-bottom: 4px; display: flex; }
-        .info-label { font-weight: bold; color: var(--ink-dark); width: 40px; flex-shrink: 0; }
+        .info-list { list-style: none; padding: 0; margin: 0; font-size: 11px; line-height: 1.4; color: #444; } 
+        .info-list li { margin-bottom: 5px; display: flex; }
+        .info-label { font-weight: bold; color: var(--ink-dark); width: 45px; flex-shrink: 0; }
 
         /* === 6. 附近景點四宮格 === */
         .spot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 5px; }
@@ -177,7 +177,7 @@
         </div>
     </div>
 
-    <!-- 4. 本店熱門商品 (純大字無小灰字版) -->
+    <!-- 4. 本店熱門商品 -->
     <div class="section-divider"></div>
     <div class="section-title"><span style="color:var(--pop-pink);">🛍️</span> 本店熱賣商品</div>
     <div class="product-grid">
@@ -211,6 +211,7 @@
     <div class="section-divider"></div>
     <div class="section-title"><span style="color:var(--pop-pink);">♨️</span> 知本在地 SPA 溫泉精選</div>
     
+    <!-- 東遊季 -->
     <div class="spa-card">
         <div class="spa-top">
             <div class="spa-title-area">
@@ -222,12 +223,14 @@
         <details>
             <summary>▼ 交通與詳細資訊</summary>
             <ul class="info-list">
-                <li><span class="info-label">停車：</span><span>園區內附設超大型免費露天停車場。</span></li>
-                <li><span class="info-label">公車：</span><span>搭乘客運 8129路線於「東遊季」站下車。</span></li>
+                <li><span class="info-label">開車：</span><span>南下台11線178K或台9線391K右轉縣道194(東58)往知本溫泉方向約2.4公里右側（太麻里北上則於台9線391K左轉縣道194）。</span></li>
+                <li><span class="info-label">鐵路：</span><span>於知本或台東火車站下車（知本站約10分鐘車程、台東站約30分鐘車程）。</span></li>
+                <li><span class="info-label">公車：</span><span>搭乘鼎東客運(山線)溫泉線於「東遊季」站下車（門市外設有 YouBike 公共腳踏車）。</span></li>
             </ul>
         </details>
     </div>
 
+    <!-- 知本老爺酒店 -->
     <div class="spa-card">
         <div class="spa-top">
             <div class="spa-title-area">
@@ -239,12 +242,14 @@
         <details>
             <summary>▼ 交通與詳細資訊</summary>
             <ul class="info-list">
-                <li><span class="info-label">停車：</span><span>飯店專屬免費停車場（含地下及戶外）。</span></li>
-                <li><span class="info-label">公車：</span><span>搭乘客運 8129路線於「清覺寺」站下車。</span></li>
+                <li><span class="info-label">開車：</span><span>由台北經台九線至知本；或由高雄經屏鵝公路、楓港左轉南迴公路至知本溫泉區循指標前往。</span></li>
+                <li><span class="info-label">鐵路：</span><span>北迴南下請於台東或知本火車站下車；南迴鐵路請於知本火車站下車。</span></li>
+                <li><span class="info-label">其他：</span><span>搭乘公車需步行一段山路，官網建議可預約搭乘付費接駁車（詳情請見官網公告）。</span></li>
             </ul>
         </details>
     </div>
 
+    <!-- ㄚㄧㄚ旺溫泉渡假村 -->
     <div class="spa-card">
         <div class="spa-top">
             <div class="spa-title-area">
@@ -256,12 +261,14 @@
         <details>
             <summary>▼ 交通與詳細資訊</summary>
             <ul class="info-list">
-                <li><span class="info-label">停車：</span><span>大門口及周邊皆有附設免費專屬停車場。</span></li>
-                <li><span class="info-label">公車：</span><span>搭乘客運 8129路線於「泓泉飯店」站下車。</span></li>
+                <li><span class="info-label">開車：</span><span>由中山高或南二高下南州交流道至屏東楓港後，走南迴公路直抵知本。</span></li>
+                <li><span class="info-label">鐵路：</span><span>由台北至高雄後轉南迴鐵路直達知本站（豐原/台南亦有南迴鐵路班車直達）。</span></li>
+                <li><span class="info-label">飛機：</span><span>可搭乘航班飛往台東豐年機場再轉乘前往。</span></li>
             </ul>
         </details>
     </div>
 
+    <!-- 東台溫泉飯店 -->
     <div class="spa-card">
         <div class="spa-top">
             <div class="spa-title-area">
@@ -273,8 +280,9 @@
         <details>
             <summary>▼ 交通與詳細資訊</summary>
             <ul class="info-list">
-                <li><span class="info-label">停車：</span><span>飯店對面及周邊備有專屬免費停車場。</span></li>
-                <li><span class="info-label">公車：</span><span>搭乘客運 8129路線於「東台飯店」站下車。</span></li>
+                <li><span class="info-label">開車：</span><span>台北出發經宜蘭、花蓮轉台11線或台九線往知本溫泉（知本森林遊樂區旁）；高雄出發經楓港行台九線經大武、太麻里往知本溫泉。</span></li>
+                <li><span class="info-label">鐵路：</span><span>搭乘北迴鐵路於台東站或知本站下車，或南迴鐵路於知本站下車，出站後可搭計程車或客運。</span></li>
+                <li><span class="info-label">其他：</span><span>鄰近設有公車站牌及 YouBike 公共腳踏車租賃點。</span></li>
             </ul>
         </details>
     </div>
