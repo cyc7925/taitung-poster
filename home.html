@@ -16,6 +16,38 @@
             --pop-pink: #FF6B6B;     
             --pop-yellow: #FFE66D;   
         }
+<style>
+@keyframes fastAutoSlide {
+    0%, 10%   { transform: translateX(0); }
+    12.2%, 22.2% { transform: translateX(-11.11%); }
+    24.4%, 34.4% { transform: translateX(-22.22%); }
+    36.6%, 46.6% { transform: translateX(-33.33%); }
+    48.8%, 58.8% { transform: translateX(-44.44%); }
+    61%, 71%     { transform: translateX(-55.55%); }
+    73.2%, 83.2% { transform: translateX(-66.66%); }
+    85.4%, 95.4% { transform: translateX(-77.77%); }
+    97.6%, 100%  { transform: translateX(-88.88%); }
+}
+
+@keyframes slideTYG {
+    0%, 11%   { transform: translateX(0); }
+    14.2%, 25.2% { transform: translateX(-14.28%); }
+    28.4%, 39.4% { transform: translateX(-28.57%); }
+    42.6%, 53.6% { transform: translateX(-42.85%); }
+    56.8%, 67.8% { transform: translateX(-57.14%); }
+    71%, 82%     { transform: translateX(-71.42%); }
+    85.2%, 95.2% { transform: translateX(-85.71%); }
+    98%, 100%    { transform: translateX(0); }
+}
+
+@keyframes slideYY {
+    0%, 20%   { transform: translateX(0); }
+    25%, 45%  { transform: translateX(-25%); }
+    50%, 70%  { transform: translateX(-50%); }
+    75%, 95%  { transform: translateX(-75%); }
+    100%      { transform: translateX(0); }
+}
+</style>
 
         body {
             background: linear-gradient(180deg, #e0f7fa 0%, #fffde7 100%);
@@ -227,35 +259,34 @@
     <div class="section-divider"></div>
     <div class="section-title"><span style="color:var(--pop-pink);">♨️</span> 知本在地SPA溫泉精選</div>
     
-<!-- 東遊季 -->
+<!-- 東遊季溫泉渡假村 -->
 <div class="spa-card">
     <div class="spa-top" style="display: flex; justify-content: space-between; align-items: center; width: 100%; margin-bottom: 8px;">
-        <!-- 店名與緊接在前的精緻小型導航按鈕 -->
-        <div class="spa-name" style="margin: 0; font-size: 16px; font-weight: bold; display: flex; align-items: center; gap: 8px;">
+        <div class="spa-name" style="margin: 0; font-size: 16px; font-weight: bold; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
             <a href="https://maps.google.com/?q=東遊季溫泉渡假村" target="_blank" class="spa-nav-btn" style="font-size: 12px; padding: 3px 8px; border-radius: 4px; text-decoration: none;">🚗導航</a>
             <span>東遊季溫泉渡假村</span>
+            <span style="font-size: 12px; font-weight: normal; color: #666;">(距離本店約400公尺)</span>
         </div>
     </div>
     
-    <!-- 介紹文字：左右對齊，右側平整 -->
-    <div class="spa-short" style="text-align: justify; line-height: 1.6; margin-bottom: 1px;">
-        由台東縣農會經營，養生溫泉區占地3000坪，規劃有溫泉水療區、露天溫泉區、冷水池、兒童戲水區等，知本最大戶外溫泉SPA，腹地廣大親子首選。
-泉質屬於變質岩的弱鹼碳酸泉。
+    <div class="spa-short" style="text-align: justify; line-height: 1.6; margin-bottom: 10px;">
+        由台東縣農會經營，養生溫泉區占地3000坪，規劃有溫泉水療區、露天溫泉區、冷水池、兒童戲水區等，知本最大戶外溫泉SPA，腹地廣大親子首選。泉質屬於變質岩的弱鹼碳酸泉。
     </div>
 
-    <!-- 左右滑動照片藝廊：大寫 Images/ 與固定高度 -->
-    <div style="display: flex; overflow-x: auto; gap: 10px; padding: 0 !important; margin: 0 !important; height: 180px; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;">
-      <img src="Images/tyg-1.jpg" style="height: 180px; width: auto; object-fit: cover; border-radius: 8px; flex-shrink: 0; scroll-snap-align: start;" alt="東遊季照片 1">
-      <img src="Images/tyg-2.jpg" style="height: 180px; width: auto; object-fit: cover; border-radius: 8px; flex-shrink: 0; scroll-snap-align: start;" alt="東遊季照片 2">
-      <img src="Images/tyg-3.jpg" style="height: 180px; width: auto; object-fit: cover; border-radius: 8px; flex-shrink: 0; scroll-snap-align: start;" alt="東遊季照片 3">
-      <img src="Images/tyg-4.jpg" style="height: 180px; width: auto; object-fit: cover; border-radius: 8px; flex-shrink: 0; scroll-snap-align: start;" alt="東遊季照片 4">
-      <img src="Images/tyg-5.jpg" style="height: 180px; width: auto; object-fit: cover; border-radius: 8px; flex-shrink: 0; scroll-snap-align: start;" alt="東遊季照片 5">
-      <img src="Images/tyg-6.jpg" style="height: 180px; width: auto; object-fit: cover; border-radius: 8px; flex-shrink: 0; scroll-snap-align: start;" alt="東遊季照片 6">
-      <img src="Images/tyg-7.jpg" style="height: 180px; width: auto; object-fit: cover; border-radius: 8px; flex-shrink: 0; scroll-snap-align: start;" alt="東遊季照片 7">
+    <!-- 東遊季 7張照片輪播 -->
+    <div style="height: 180px; overflow: hidden; position: relative; border-radius: 8px; margin-bottom: 8px;">
+        <div style="display: flex; width: 700%; height: 100%; animation: slideTYG 10.5s infinite ease-in-out;">
+            <div style="width: 14.28%; height: 100%;"><img src="Images/tyg-1.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="東遊季照片 1"></div>
+            <div style="width: 14.28%; height: 100%;"><img src="Images/tyg-2.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="東遊季照片 2"></div>
+            <div style="width: 14.28%; height: 100%;"><img src="Images/tyg-3.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="東遊季照片 3"></div>
+            <div style="width: 14.28%; height: 100%;"><img src="Images/tyg-4.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="東遊季照片 4"></div>
+            <div style="width: 14.28%; height: 100%;"><img src="Images/tyg-5.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="東遊季照片 5"></div>
+            <div style="width: 14.28%; height: 100%;"><img src="Images/tyg-6.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="東遊季照片 6"></div>
+            <div style="width: 14.28%; height: 100%;"><img src="Images/tyg-7.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="東遊季照片 7"></div>
+        </div>
     </div>
 
-    <!-- 交通與詳細資訊下拉選單：標準凸排格式 -->
-    <details>
+    <details style="border-top: 1px dashed #CCC; padding-top: 6px; margin-top: 6px;">
         <summary>▼ 交通與詳細資訊</summary>
         <ul class="info-list">
             <li><span class="info-label">路線指引：</span><span>度假村坐落於溫泉路指標路段右側，可由本店「東泳記泳裝店」與7-11東遊季門市之間的小路進入園區。</span></li>
@@ -265,38 +296,36 @@
     </details>
 </div>
 
-
-
 <!-- 知本老爺酒店 -->
 <div class="spa-card">
     <div class="spa-top" style="display: flex; justify-content: space-between; align-items: center; width: 100%; margin-bottom: 8px;">
-        <!-- 導航按鈕緊接在店名前面 -->
-        <div class="spa-name" style="margin: 0; font-size: 16px; font-weight: bold; display: flex; align-items: center; gap: 8px;">
+        <div class="spa-name" style="margin: 0; font-size: 16px; font-weight: bold; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
             <a href="https://maps.google.com/?q=知本老爺酒店" target="_blank" class="spa-nav-btn" style="font-size: 12px; padding: 3px 8px; border-radius: 4px; text-decoration: none;">🚗導航</a>
             <span>知本老爺酒店</span>
+            <span style="font-size: 12px; font-weight: normal; color: #666;">(距離本店約3.3公里)</span>
         </div>
     </div>
     
-    <!-- 介紹文字：左右對齊，右側平整 -->
-    <div class="spa-short" style="text-align: justify; line-height: 1.6; margin-bottom: 1px;">
+    <div class="spa-short" style="text-align: justify; line-height: 1.6; margin-bottom: 10px;">
         五星級天幕風呂緊鄰戶外游泳池畔，豐富泡湯設備；戶外游泳池依季節更替水溫，設施精緻頂級享受。
     </div>
 
-    <!-- 左右滑動照片藝廊：royal-1 到 royal-9 -->
-    <div style="display: flex; overflow-x: auto; gap: 10px; padding: 0 !important; margin: 0 !important; height: 180px; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;">
-      <img src="Images/royal-1.jpg" style="height: 180px; width: auto; object-fit: cover; border-radius: 8px; flex-shrink: 0; scroll-snap-align: start;" alt="知本老爺酒店照片 1">
-      <img src="Images/royal-2.jpg" style="height: 180px; width: auto; object-fit: cover; border-radius: 8px; flex-shrink: 0; scroll-snap-align: start;" alt="知本老爺酒店照片 2">
-      <img src="Images/royal-3.jpg" style="height: 180px; width: auto; object-fit: cover; border-radius: 8px; flex-shrink: 0; scroll-snap-align: start;" alt="知本老爺酒店照片 3">
-      <img src="Images/royal-4.jpg" style="height: 180px; width: auto; object-fit: cover; border-radius: 8px; flex-shrink: 0; scroll-snap-align: start;" alt="知本老爺酒店照片 4">
-      <img src="Images/royal-5.jpg" style="height: 180px; width: auto; object-fit: cover; border-radius: 8px; flex-shrink: 0; scroll-snap-align: start;" alt="知本老爺酒店照片 5">
-      <img src="Images/royal-6.jpg" style="height: 180px; width: auto; object-fit: cover; border-radius: 8px; flex-shrink: 0; scroll-snap-align: start;" alt="知本老爺酒店照片 6">
-      <img src="Images/royal-7.jpg" style="height: 180px; width: auto; object-fit: cover; border-radius: 8px; flex-shrink: 0; scroll-snap-align: start;" alt="知本老爺酒店照片 7">
-      <img src="Images/royal-8.jpg" style="height: 180px; width: auto; object-fit: cover; border-radius: 8px; flex-shrink: 0; scroll-snap-align: start;" alt="知本老爺酒店照片 8">
-      <img src="Images/royal-9.jpg" style="height: 180px; width: auto; object-fit: cover; border-radius: 8px; flex-shrink: 0; scroll-snap-align: start;" alt="知本老爺酒店照片 9">
+    <!-- 知本老爺 9張照片輪播 -->
+    <div style="height: 180px; overflow: hidden; position: relative; border-radius: 8px; margin-bottom: 8px;">
+        <div style="display: flex; width: 900%; height: 100%; animation: fastAutoSlide 13.5s infinite ease-in-out;">
+            <div style="width: 11.11%; height: 100%;"><img src="Images/royal-1.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="老爺照片 1"></div>
+            <div style="width: 11.11%; height: 100%;"><img src="Images/royal-2.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="老爺照片 2"></div>
+            <div style="width: 11.11%; height: 100%;"><img src="Images/royal-3.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="老爺照片 3"></div>
+            <div style="width: 11.11%; height: 100%;"><img src="Images/royal-4.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="老爺照片 4"></div>
+            <div style="width: 11.11%; height: 100%;"><img src="Images/royal-5.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="老爺照片 5"></div>
+            <div style="width: 11.11%; height: 100%;"><img src="Images/royal-6.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="老爺照片 6"></div>
+            <div style="width: 11.11%; height: 100%;"><img src="Images/royal-7.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="老爺照片 7"></div>
+            <div style="width: 11.11%; height: 100%;"><img src="Images/royal-8.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="老爺照片 8"></div>
+            <div style="width: 11.11%; height: 100%;"><img src="Images/royal-9.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="老爺照片 9"></div>
+        </div>
     </div>
 
-    <!-- 交通與詳細資訊下拉選單：標準凸排格式 -->    <!-- 交通與詳細資訊下拉選單：修正凸排重疊問題 -->
-    <details>
+    <details style="border-top: 1px dashed #CCC; padding-top: 6px; margin-top: 6px;">
         <summary>▼ 交通與詳細資訊</summary>
         <ul class="info-list">
             <li><span class="info-label">路線指引：</span><span>酒店座落於知本溫泉區內，沿著溫泉路轉龍泉路循指標即可輕鬆抵達。</span></li>
@@ -306,33 +335,31 @@
     </details>
 </div>
 
-
 <!-- Y—Y旺溫泉渡假村 -->
 <div class="spa-card">
     <div class="spa-top" style="display: flex; justify-content: space-between; align-items: center; width: 100%; margin-bottom: 8px;">
-        <!-- 導航按鈕緊接在店名前面 -->
-        <div class="spa-name" style="margin: 0; font-size: 16px; font-weight: bold; display: flex; align-items: center; gap: 8px;">
+        <div class="spa-name" style="margin: 0; font-size: 16px; font-weight: bold; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
             <a href="https://maps.google.com/?q=ㄚㄧㄚ旺溫泉渡假村" target="_blank" class="spa-nav-btn" style="font-size: 12px; padding: 3px 8px; border-radius: 4px; text-decoration: none;">🚗導航</a>
             <span>Y—Y旺溫泉渡假村</span>
+            <span style="font-size: 12px; font-weight: normal; color: #666;">(距離本店約3.2公里)</span>
         </div>
     </div>
     
-    <!-- 介紹文字：左右對齊，右側平整 -->
-    <div class="spa-short" style="text-align: justify; line-height: 1.6; margin-bottom: 1px;">
+    <div class="spa-short" style="text-align: justify; line-height: 1.6; margin-bottom: 10px;">
         原民風紅磚建築，群山環繞的純湯秘境，享受自然放鬆的泡湯時光。
     </div>
 
-    <!-- 左右滑動照片藝廊結構：用註解隱藏。未來有照片時，只要把上下兩行的 < ! - - 跟 - - > 刪掉即可恢復顯示 -->
-    <!--
-    <div style="display: flex; overflow-x: auto; gap: 10px; padding: 0 !important; margin: 0 !important; height: 180px; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;">
-      <img src="Images/yy-1.jpg" style="height: 180px; width: auto; object-fit: cover; border-radius: 8px; flex-shrink: 0; scroll-snap-align: start;" alt="ㄚㄧㄚ旺照片 1">
-      <img src="Images/yy-2.jpg" style="height: 180px; width: auto; object-fit: cover; border-radius: 8px; flex-shrink: 0; scroll-snap-align: start;" alt="ㄚㄧㄚ旺照片 2">
-      <img src="Images/yy-3.jpg" style="height: 180px; width: auto; object-fit: cover; border-radius: 8px; flex-shrink: 0; scroll-snap-align: start;" alt="ㄚㄧㄚ旺照片 3">
+    <!-- ㄚㄧㄚ旺 4張照片輪播 -->
+    <div style="height: 180px; overflow: hidden; position: relative; border-radius: 8px; margin-bottom: 8px;">
+        <div style="display: flex; width: 400%; height: 100%; animation: slideYY 6s infinite ease-in-out;">
+            <div style="width: 25%; height: 100%;"><img src="Images/yy-1.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="ㄚㄧㄚ旺照片 1"></div>
+            <div style="width: 25%; height: 100%;"><img src="Images/yy-2.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="ㄚㄧㄚ旺照片 2"></div>
+            <div style="width: 25%; height: 100%;"><img src="Images/yy-3.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="ㄚㄧㄚ旺照片 3"></div>
+            <div style="width: 25%; height: 100%;"><img src="Images/yy-4.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="ㄚㄧㄚ旺照片 4"></div>
+        </div>
     </div>
-    -->
 
-    <!-- 交通與詳細資訊下拉選單：標準凸排格式 -->
-    <details>
+    <details style="border-top: 1px dashed #CCC; padding-top: 6px; margin-top: 6px;">
         <summary>▼ 交通與詳細資訊</summary>
         <ul class="info-list">
             <li><span class="info-label">路線指引：</span><span>度假村位於溫泉路轉龍泉路沿線，依循指標即可順利抵達。</span></li>
@@ -342,15 +369,9 @@
     </details>
 </div>
 
-
-
-
-
-
-<!-- 東台溫泉飯店 (高速自動循環播放 + 距離提示) -->
+<!-- 東台溫泉飯店 -->
 <div class="spa-card">
     <div class="spa-top" style="display: flex; justify-content: space-between; align-items: center; width: 100%; margin-bottom: 8px;">
-        <!-- 導航按鈕與飯店名稱（含距離提示） -->
         <div class="spa-name" style="margin: 0; font-size: 16px; font-weight: bold; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
             <a href="https://maps.google.com/?q=東台溫泉飯店" target="_blank" class="spa-nav-btn" style="font-size: 12px; padding: 3px 8px; border-radius: 4px; text-decoration: none;">🚗導航</a>
             <span>東台溫泉飯店</span>
@@ -358,27 +379,25 @@
         </div>
     </div>
     
-    <!-- 介紹文字：左右對齊，右側平整 -->
     <div class="spa-short" style="text-align: justify; line-height: 1.6; margin-bottom: 10px;">
         溫泉養生承襲德日模式規劃，在開闊溪谷景觀視野中享受多功能水療沖擊、美人原湯與檜木烤箱，消除車旅勞累，展開定點多日溫泉休閒保養之旅。
     </div>
 
-    <!-- 自動循環輪播照片區塊：畫面極簡乾淨、自動滑動 -->
+    <!-- 東台溫泉 9張照片輪播 -->
     <div style="height: 180px; overflow: hidden; position: relative; border-radius: 8px; margin-bottom: 8px;">
         <div style="display: flex; width: 900%; height: 100%; animation: fastAutoSlide 13.5s infinite ease-in-out;">
-            <div style="width: 11.11%; height: 100%;"><img src="Images/dt-1.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="東台溫泉照片 1"></div>
-            <div style="width: 11.11%; height: 100%;"><img src="Images/dt-2.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="東台溫泉照片 2"></div>
-            <div style="width: 11.11%; height: 100%;"><img src="Images/dt-3.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="東台溫泉照片 3"></div>
-            <div style="width: 11.11%; height: 100%;"><img src="Images/dt-4.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="東台溫泉照片 4"></div>
-            <div style="width: 11.11%; height: 100%;"><img src="Images/dt-5.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="東台溫泉照片 5"></div>
-            <div style="width: 11.11%; height: 100%;"><img src="Images/dt-6.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="東台溫泉照片 6"></div>
-            <div style="width: 11.11%; height: 100%;"><img src="Images/dt-7.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="東台溫泉照片 7"></div>
-            <div style="width: 11.11%; height: 100%;"><img src="Images/dt-8.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="東台溫泉照片 8"></div>
-            <div style="width: 11.11%; height: 100%;"><img src="Images/dt-9.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="東台溫泉照片 9"></div>
+            <div style="width: 11.11%; height: 100%;"><img src="Images/dt-1.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="東台照片 1"></div>
+            <div style="width: 11.11%; height: 100%;"><img src="Images/dt-2.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="東台照片 2"></div>
+            <div style="width: 11.11%; height: 100%;"><img src="Images/dt-3.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="東台照片 3"></div>
+            <div style="width: 11.11%; height: 100%;"><img src="Images/dt-4.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="東台照片 4"></div>
+            <div style="width: 11.11%; height: 100%;"><img src="Images/dt-5.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="東台照片 5"></div>
+            <div style="width: 11.11%; height: 100%;"><img src="Images/dt-6.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="東台照片 6"></div>
+            <div style="width: 11.11%; height: 100%;"><img src="Images/dt-7.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="東台照片 7"></div>
+            <div style="width: 11.11%; height: 100%;"><img src="Images/dt-8.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="東台照片 8"></div>
+            <div style="width: 11.11%; height: 100%;"><img src="Images/dt-9.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="東台照片 9"></div>
         </div>
     </div>
 
-    <!-- 交通與詳細資訊下拉選單：保留原本完美的虛線與排版 -->
     <details style="border-top: 1px dashed #CCC; padding-top: 6px; margin-top: 6px;">
         <summary>▼ 交通與詳細資訊</summary>
         <ul class="info-list">
@@ -388,14 +407,6 @@
         </ul>
     </details>
 </div>
-
-
-
-
-
-
-
-
 
 
 
