@@ -347,13 +347,14 @@
 
 
 
-<!-- 東台溫泉飯店 (高速自動循環播放 + 純淨無干擾畫面) -->
+<!-- 東台溫泉飯店 (高速自動循環播放 + 距離提示) -->
 <div class="spa-card">
     <div class="spa-top" style="display: flex; justify-content: space-between; align-items: center; width: 100%; margin-bottom: 8px;">
-        <!-- 導航按鈕緊接在店名前面 -->
-        <div class="spa-name" style="margin: 0; font-size: 16px; font-weight: bold; display: flex; align-items: center; gap: 8px;">
+        <!-- 導航按鈕與飯店名稱（含距離提示） -->
+        <div class="spa-name" style="margin: 0; font-size: 16px; font-weight: bold; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
             <a href="https://maps.google.com/?q=東台溫泉飯店" target="_blank" class="spa-nav-btn" style="font-size: 12px; padding: 3px 8px; border-radius: 4px; text-decoration: none;">🚗導航</a>
             <span>東台溫泉飯店</span>
+            <span style="font-size: 12px; font-weight: normal; color: #666;">(距離本店約3.8公里)</span>
         </div>
     </div>
     
@@ -388,20 +389,6 @@
     </details>
 </div>
 
-<!-- 請確認你的 <style> 標籤內有這段動畫，讓圖片順暢動起來 -->
-<style>
-@keyframes fastAutoSlide {
-    0%, 10%   { transform: translateX(0); }
-    12.2%, 22.2% { transform: translateX(-11.11%); }
-    24.4%, 34.4% { transform: translateX(-22.22%); }
-    36.6%, 46.6% { transform: translateX(-33.33%); }
-    48.8%, 58.8% { transform: translateX(-44.44%); }
-    61%, 71%     { transform: translateX(-55.55%); }
-    73.2%, 83.2% { transform: translateX(-66.66%); }
-    85.4%, 95.4% { transform: translateX(-77.77%); }
-    97.6%, 100%  { transform: translateX(-88.88%); }
-}
-</style>
 
 
 
