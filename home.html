@@ -31,16 +31,10 @@
         .emoji-cluster {
             text-align: center;
             margin-top: 10px; 
-            margin-bottom: 0px; 
+            margin-bottom: -15px; /* 這裡加上負數，把底下的標題往上吸！ */
             user-select: none;
         }
-        .emo-group { display: inline-block; position: relative; }
-        
-        .e-ring { display: inline-block; font-size: 32px; transform: rotate(-15deg) translate(-5px, -5px); animation: float1 3s ease-in-out infinite; }
-        .e-bikini { display: inline-block; font-size: 42px; position: relative; z-index: 2; animation: float2 3s ease-in-out infinite 0.5s; }
-        .e-goggles { display: inline-block; font-size: 30px; transform: rotate(15deg) translate(5px, -10px); position: relative; animation: float3 3s ease-in-out infinite 1s; }
-        .e-sparkle { position: absolute; top: -10px; right: -15px; font-size: 20px; transform: rotate(10deg); color: #FFD700; text-shadow: 0 0 5px rgba(255,215,0,0.8); }
-        .e-onepiece { display: block; font-size: 30px; transform: rotate(15deg) translate(25px, -15px); margin-top: -15px; animation: float4 3s ease-in-out infinite 1.5s; }
+
 
         @keyframes float1 { 0%, 100% { transform: rotate(-15deg) translate(-5px, -5px); } 50% { transform: rotate(-15deg) translate(-5px, -10px); } }
         @keyframes float2 { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
@@ -60,43 +54,41 @@
             margin: 25px 5px 15px 5px; 
         }
 
+        
         /* === 3. 聯絡與導航資訊列 === */
-.info-card { margin-bottom: 0px; padding: 0 5px; } /* 這裡改成 0px 縮小與下方的距離 */
+        .info-card { margin-bottom: 0px; padding: 0 5px; } 
         
-.info-row { 
-    display: flex; justify-content: space-between; align-items: center; 
-    padding: 5px 0; 
-}
-        
-.info-left { font-size: 13.5px; font-weight: bold; color: var(--ink-dark); display: flex; align-items: center; gap: 6px; }
-.info-icon { font-size: 16px; display: inline-block; width: 20px; text-align: center; color: #555; }
-.phone-text { color: #0000EE; text-decoration: underline; font-weight: bold; font-family: sans-serif; letter-spacing: 0.5px; font-size: 15px; }
-
-/* 找到這行，修改它的 padding 和 font-size */
-.info-btn { 
-    padding: 4px 10px; /* 數字調小，按鈕就會變扁變小 */
-    font-size: 12px;   /* 數字調小，按鈕裡的字就會變小 */
-    /* ... 這裡保留你原本其他的設定 (例如 border-radius 等) ... */
-}
-  
-        /* === 本店詳細介紹區塊樣式 (改為無框線、融入背景) === */
-        .store-intro-clean {
-            padding: 0 10px; margin-top: 15px; margin-bottom: 15px;
-            font-size: 12.5px; line-height: 1.6; color: #444; text-align: justify;
+        .info-row { 
+            display: flex; justify-content: space-between; align-items: center; 
+            padding: 2px 0; /* 這裡原本是 5px，改小讓電話跟地址靠緊 */
         }
-        .intro-title { font-size: 14px; font-weight: bold; color: var(--pop-pink); margin-bottom: 6px; }
-        .intro-text { margin-bottom: 6px; }
+        
+        .info-left { font-size: 13.5px; font-weight: bold; color: var(--ink-dark); display: flex; align-items: center; gap: 6px; }
+        .info-icon { font-size: 16px; display: inline-block; width: 20px; text-align: center; color: #555; }
+        .phone-text { color: #0000EE; text-decoration: underline; font-weight: bold; font-family: sans-serif; letter-spacing: 0.5px; font-size: 15px; }
 
+        /* 把兩段重複的 .info-btn 合併，並真正縮小內距 */
         .info-btn { 
-            padding: 6px 20px; 
+            padding: 3px 12px; /* 真正的縮小按鈕！ */
             border: 2px solid var(--ink-dark); border-radius: 20px; 
-            font-size: 12.5px; font-weight: bold; color: var(--ink-dark); text-decoration: none;
+            font-size: 12px; font-weight: bold; color: var(--ink-dark); text-decoration: none;
             box-shadow: 2px 2px 0px var(--ink-dark); transition: 0.2s; display: inline-block; text-align: center;
         }
         .info-btn:active { transform: translate(1px, 1px); box-shadow: 0 0 0 var(--ink-dark); }
         .btn-white { background: white; }
         .btn-yellow { background: var(--pop-yellow); }
+  
+        /* === 本店詳細介紹區塊樣式 === */
+        .store-intro-clean {
+            padding: 0 10px; 
+            margin-top: 2px; /* 原本是 15px，改小讓它貼緊上方的地址 */
+            margin-bottom: 15px;
+            font-size: 12.5px; line-height: 1.6; color: #444; text-align: justify;
+        }
 
+  
+        
+        
         /* === 全局標題樣式 === */
         .section-title { 
             font-size: 15px; font-weight: bold; color: var(--ink-dark); 
@@ -209,22 +201,22 @@
     <!-- 2. 店名 -->
     <div class="store-name">東泳記泳裝店</div>
 
-<!-- 3. 聯絡資訊列表 -->
+    <!-- 3. 聯絡資訊列表 -->
     <div class="info-card">
-        <div class="info-row" style="margin-bottom: 0px;">
+        <div class="info-row">
             <div class="info-left">
                 <span class="info-icon">📞</span> <span class="phone-text">0910-557-998</span>
             </div>
-            <!-- 加入 style 縮小 padding 和字體 -->
-            <a href="tel:0910557998" class="info-btn btn-yellow" style="padding: 6px 16px; font-size: 14px;">撥打</a>
+            <!-- 已經清除行內樣式，現在按鈕會真的變小了 -->
+            <a href="tel:0910557998" class="info-btn btn-yellow">撥打</a>
         </div>
 
         <div class="info-row">
             <div class="info-left">
                 <span class="info-icon">🚗</span>卑南鄉溫泉路370號
             </div>
-            <!-- 加入 style 縮小 padding 和字體 -->
-            <a href="https://maps.app.goo.gl/YkHK24qn1kZsfBn38?g_st=ic" target="_blank" class="info-btn btn-white" style="padding: 6px 16px; font-size: 14px;">導航</a>
+            <!-- 已經清除行內樣式，現在按鈕會真的變小了 -->
+            <a href="https://maps.app.goo.gl/YkHK24qn1kZsfBn38?g_st=ic" target="_blank" class="info-btn btn-white">導航</a>
         </div>
     </div>
 
