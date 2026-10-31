@@ -347,7 +347,7 @@
 
 
 
-<!-- 東台溫泉飯店 -->
+<!-- 東台溫泉飯店 (自動循環播放版) -->
 <div class="spa-card">
     <div class="spa-top" style="display: flex; justify-content: space-between; align-items: center; width: 100%; margin-bottom: 8px;">
         <!-- 導航按鈕緊接在店名前面 -->
@@ -358,25 +358,27 @@
     </div>
     
     <!-- 介紹文字：左右對齊，右側平整 -->
-    <div class="spa-short" style="text-align: justify; line-height: 1.6; margin-bottom: 8px;">
+    <div class="spa-short" style="text-align: justify; line-height: 1.6; margin-bottom: 10px;">
         溫泉養生承襲德日模式規劃，在開闊溪谷景觀視野中享受多功能水療沖擊、美人原湯與檜木烤箱，消除車旅勞累，展開定點多日溫泉休閒保養之旅。
     </div>
 
-    <!-- 左右滑動照片藝廊：恢復 180px 漂亮大圖，並透過負邊距讓照片寬度延伸，右側清楚露出第二張的一大截以提示可滑動 -->
-    <div style="display: flex; overflow-x: auto; gap: 10px; padding: 0 15px 8px 15px !important; margin: 0 -10px 8px -10px !important; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none;">
-      <img src="Images/dt-1.jpg" style="height: 180px; width: 85%; object-fit: cover; border-radius: 8px; flex-shrink: 0; scroll-snap-align: start;" alt="東台溫泉照片 1">
-      <img src="Images/dt-2.jpg" style="height: 180px; width: 85%; object-fit: cover; border-radius: 8px; flex-shrink: 0; scroll-snap-align: start;" alt="東台溫泉照片 2">
-      <img src="Images/dt-3.jpg" style="height: 180px; width: 85%; object-fit: cover; border-radius: 8px; flex-shrink: 0; scroll-snap-align: start;" alt="東台溫泉照片 3">
-      <img src="Images/dt-4.jpg" style="height: 180px; width: 85%; object-fit: cover; border-radius: 8px; flex-shrink: 0; scroll-snap-align: start;" alt="東台溫泉照片 4">
-      <img src="Images/dt-5.jpg" style="height: 180px; width: 85%; object-fit: cover; border-radius: 8px; flex-shrink: 0; scroll-snap-align: start;" alt="東台溫泉照片 5">
-      <img src="Images/dt-6.jpg" style="height: 180px; width: 85%; object-fit: cover; border-radius: 8px; flex-shrink: 0; scroll-snap-align: start;" alt="東台溫泉照片 6">
-      <img src="Images/dt-7.jpg" style="height: 180px; width: 85%; object-fit: cover; border-radius: 8px; flex-shrink: 0; scroll-snap-align: start;" alt="東台溫泉照片 7">
-      <img src="Images/dt-8.jpg" style="height: 180px; width: 85%; object-fit: cover; border-radius: 8px; flex-shrink: 0; scroll-snap-align: start;" alt="東台溫泉照片 8">
-      <img src="Images/dt-9.jpg" style="height: 180px; width: 85%; object-fit: cover; border-radius: 8px; flex-shrink: 0; scroll-snap-align: start;" alt="東台溫泉照片 9">
+    <!-- 自動循環輪播照片區塊：固定高度 180px，圓角與邊框完美貼合 -->
+    <div style="height: 180px; overflow: hidden; position: relative; border-radius: 8px; margin-bottom: 10px;">
+        <div style="display: flex; width: 900%; height: 100%; animation: autoSlideGallery 27s infinite ease-in-out;">
+            <div style="width: 11.11%; height: 100%;"><img src="Images/dt-1.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="東台溫泉照片 1"></div>
+            <div style="width: 11.11%; height: 100%;"><img src="Images/dt-2.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="東台溫泉照片 2"></div>
+            <div style="width: 11.11%; height: 100%;"><img src="Images/dt-3.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="東台溫泉照片 3"></div>
+            <div style="width: 11.11%; height: 100%;"><img src="Images/dt-4.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="東台溫泉照片 4"></div>
+            <div style="width: 11.11%; height: 100%;"><img src="Images/dt-5.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="東台溫泉照片 5"></div>
+            <div style="width: 11.11%; height: 100%;"><img src="Images/dt-6.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="東台溫泉照片 6"></div>
+            <div style="width: 11.11%; height: 100%;"><img src="Images/dt-7.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="東台溫泉照片 7"></div>
+            <div style="width: 11.11%; height: 100%;"><img src="Images/dt-8.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="東台溫泉照片 8"></div>
+            <div style="width: 11.11%; height: 100%;"><img src="Images/dt-9.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="東台溫泉照片 9"></div>
+        </div>
     </div>
 
-    <!-- 交通與詳細資訊下拉選單：標準凸排格式 -->
-    <details>
+    <!-- 交通與詳細資訊下拉選單：保留原本完美的虛線與排版 -->
+    <details style="border-top: 1px dashed #CCC; padding-top: 6px; margin-top: 6px;">
         <summary>▼ 交通與詳細資訊</summary>
         <ul class="info-list">
             <li><span class="info-label">路線指引：</span><span>位於知本溫泉區內，沿溫泉路依指標前行即可抵達。</span></li>
@@ -385,6 +387,22 @@
         </ul>
     </details>
 </div>
+
+<!-- 請順便把這段自動輪播的動畫語法加到你的 <style> 標籤裡面 -->
+<style>
+@keyframes autoSlideGallery {
+    0%, 10%   { transform: translateX(0); }
+    12.2%, 22.2% { transform: translateX(-11.11%); }
+    24.4%, 34.4% { transform: translateX(-22.22%); }
+    36.6%, 46.6% { transform: translateX(-33.33%); }
+    48.8%, 58.8% { transform: translateX(-44.44%); }
+    61%, 71%     { transform: translateX(-55.55%); }
+    73.2%, 83.2% { transform: translateX(-66.66%); }
+    85.4%, 95.4% { transform: translateX(-77.77%); }
+    97.6%, 100%  { transform: translateX(-88.88%); }
+}
+</style>
+
 
 
 
