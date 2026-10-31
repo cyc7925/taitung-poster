@@ -347,7 +347,7 @@
 
 
 
-<!-- 東台溫泉飯店 (高速自動循環播放 + 無干擾乾淨畫面) -->
+<!-- 東台溫泉飯店 (無黑邊填滿 + 輪播 + 相簿標籤) -->
 <div class="spa-card">
     <div class="spa-top" style="display: flex; justify-content: space-between; align-items: center; width: 100%; margin-bottom: 8px;">
         <!-- 導航按鈕緊接在店名前面 -->
@@ -362,8 +362,13 @@
         溫泉養生承襲德日模式規劃，在開闊溪谷景觀視野中享受多功能水療沖擊、美人原湯與檜木烤箱，消除車旅勞累，展開定點多日溫泉休閒保養之旅。
     </div>
 
-    <!-- 自動循環輪播照片區塊：完全無遮擋、高速自動輪播 -->
-    <div style="height: 180px; overflow: hidden; position: relative; border-radius: 8px; margin-bottom: 6px;">
+    <!-- 自動循環輪播照片區塊：object-fit: cover 完美填滿無黑邊，右上角加上相簿提示標籤 -->
+    <div style="height: 180px; overflow: hidden; position: relative; border-radius: 8px; margin-bottom: 10px;">
+        <!-- 右上角相簿提示標籤 -->
+        <div style="position: absolute; top: 10px; right: 10px; background: rgba(0, 0, 0, 0.6); color: white; padding: 3px 8px; border-radius: 12px; font-size: 11px; font-weight: bold; z-index: 10; pointer-events: none; display: flex; align-items: center; gap: 3px;">
+            <span>📷</span> <span>9張照片</span>
+        </div>
+
         <div style="display: flex; width: 900%; height: 100%; animation: fastAutoSlide 13.5s infinite ease-in-out;">
             <div style="width: 11.11%; height: 100%;"><img src="Images/dt-1.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="東台溫泉照片 1"></div>
             <div style="width: 11.11%; height: 100%;"><img src="Images/dt-2.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="東台溫泉照片 2"></div>
@@ -371,15 +376,10 @@
             <div style="width: 11.11%; height: 100%;"><img src="Images/dt-4.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="東台溫泉照片 4"></div>
             <div style="width: 11.11%; height: 100%;"><img src="Images/dt-5.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="東台溫泉照片 5"></div>
             <div style="width: 11.11%; height: 100%;"><img src="Images/dt-6.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="東台溫泉照片 6"></div>
-            <div style="width: 11.11%; height: 100%;"><img src="Images/dt-7.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="東台溫泉照片 7"></div>
+            <div style="width: 11.11%; height: 100%;"><img src="Images/dt-7.jpg" style="width: 100% ; height: 100%; object-fit: cover; display: block;" alt="東台溫泉照片 7"></div>
             <div style="width: 11.11%; height: 100%;"><img src="Images/dt-8.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="東台溫泉照片 8"></div>
             <div style="width: 11.11%; height: 100%;"><img src="Images/dt-9.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="東台溫泉照片 9"></div>
         </div>
-    </div>
-
-    <!-- 底部相簿提示文字（放在照片下方，完全不擋畫面，清楚告知總共有 9 張照片） -->
-    <div style="text-align: center; font-size: 11px; color: #888; margin-bottom: 8px; font-weight: bold;">
-        📷 精選相簿輪播 (共 9 張照片)
     </div>
 
     <!-- 交通與詳細資訊下拉選單：保留原本完美的虛線與排版 -->
@@ -393,20 +393,6 @@
     </details>
 </div>
 
-<!-- 請務必確認你的 <style> 標籤裡面有包含這段自動輪播動畫，圖片才會動！ -->
-<style>
-@keyframes fastAutoSlide {
-    0%, 10%   { transform: translateX(0); }
-    12.2%, 22.2% { transform: translateX(-11.11%); }
-    24.4%, 34.4% { transform: translateX(-22.22%); }
-    36.6%, 46.6% { transform: translateX(-33.33%); }
-    48.8%, 58.8% { transform: translateX(-44.44%); }
-    61%, 71%     { transform: translateX(-55.55%); }
-    73.2%, 83.2% { transform: translateX(-66.66%); }
-    85.4%, 95.4% { transform: translateX(-77.77%); }
-    97.6%, 100%  { transform: translateX(-88.88%); }
-}
-</style>
 
 
 
