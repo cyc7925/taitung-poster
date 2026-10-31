@@ -2,7 +2,8 @@
 
 > 一款專為**台東知本旅遊**與**在地泡湯客**打造的輕量級行動導覽網頁。結合流暢的 UI 設計與實用的在地資訊，讓旅客一機在手，輕鬆掌握知本溫泉飯店、景點與交通攻略！
 
-🌐 **線上預覽 (Live Demo)**：[https://cyc7925.github.io]🌐 **線上預覽 (Live Demo)**：[https://cyc7925.github.io/taitung-poster/](https://cyc7925.github.io/taitung-poster/)
+🌐 **線上預覽 (Live Demo)**：[https://cyc7925.github.io/taitung-poster/home.html](https://cyc7925.github.io/taitung-poster/home.html)
+
 
 
 ---
