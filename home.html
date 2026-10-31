@@ -35,7 +35,24 @@
             user-select: none;
         }
 
+                .emo-group { display: inline-block; position: relative; }
+        
+        /* 這裡有微調：幫 e-ring 加上 position: relative; */
+        .e-ring { display: inline-block; font-size: 32px; transform: rotate(-15deg) translate(-5px, -5px); animation: float1 3s ease-in-out infinite; position: relative; }
+        
+        .e-bikini { display: inline-block; font-size: 42px; position: relative; z-index: 2; animation: float2 3s ease-in-out infinite 0.5s; }
+        .e-goggles { display: inline-block; font-size: 30px; transform: rotate(15deg) translate(5px, -10px); position: relative; animation: float3 3s ease-in-out infinite 1s; }
+        
+        /* 右邊的星星 */
+        .e-sparkle { position: absolute; top: -10px; right: -15px; font-size: 20px; transform: rotate(10deg); color: #FFD700; text-shadow: 0 0 5px rgba(255,215,0,0.8); }
+        
+        /* 👇 新增這行：專屬左邊的星星 👇 */
+        .e-sparkle-left { position: absolute; top: -5px; left: -15px; font-size: 20px; transform: rotate(-20deg); color: #FFD700; text-shadow: 0 0 5px rgba(255,215,0,0.8); }
+        
+        .e-onepiece { display: block; font-size: 30px; transform: rotate(15deg) translate(25px, -15px); margin-top: -15px; animation: float4 3s ease-in-out infinite 1.5s; }
 
+
+        @keyframes float1 { 0%, 100% { transform: rotate(-15deg) translate(-5px, -5px); } 50% { transform: rotate(-15deg) translate(-5px, -10px); } }
         @keyframes float1 { 0%, 100% { transform: rotate(-15deg) translate(-5px, -5px); } 50% { transform: rotate(-15deg) translate(-5px, -10px); } }
         @keyframes float2 { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
         @keyframes float3 { 0%, 100% { transform: rotate(15deg) translate(5px, -10px); } 50% { transform: rotate(15deg) translate(5px, -15px); } }
@@ -191,12 +208,13 @@
     <!-- 1. 漂浮圖案 -->
     <div class="emoji-cluster">
         <div class="emo-group">
-            <span class="e-ring">🛟</span>
+            <span class="e-ring">🛟<span class="e-sparkle-left">✨</span></span>
             <span class="e-bikini">👙</span>
             <span class="e-goggles">🥽<span class="e-sparkle">✨</span></span>
             <span class="e-onepiece">🩱</span>
         </div>
     </div>
+
 
     <!-- 2. 店名 -->
     <div class="store-name">東泳記泳裝店</div>
