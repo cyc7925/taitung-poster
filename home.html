@@ -51,7 +51,7 @@
         .store-name { 
             text-align: center; font-size: 30px; font-weight: bold; 
             color: var(--pop-pink); letter-spacing: 2px; 
-            margin-top: 0px; margin-bottom: 2px; 
+            margin-top: 0px; margin-bottom: 0px; 
         }
 
         /* === 統一的區塊分隔虛線 === */
@@ -61,17 +61,24 @@
         }
 
         /* === 3. 聯絡與導航資訊列 === */
-        .info-card { margin-bottom: 10px; padding: 0 5px; }
+.info-card { margin-bottom: 0px; padding: 0 5px; } /* 這裡改成 0px 縮小與下方的距離 */
         
-        .info-row { 
-            display: flex; justify-content: space-between; align-items: center; 
-            padding: 5px 0; 
-        }
+.info-row { 
+    display: flex; justify-content: space-between; align-items: center; 
+    padding: 5px 0; 
+}
         
-        .info-left { font-size: 13.5px; font-weight: bold; color: var(--ink-dark); display: flex; align-items: center; gap: 6px; }
-        .info-icon { font-size: 16px; display: inline-block; width: 20px; text-align: center; color: #555; }
-        .phone-text { color: #0000EE; text-decoration: underline; font-weight: bold; font-family: sans-serif; letter-spacing: 0.5px; font-size: 15px; }
-        
+.info-left { font-size: 13.5px; font-weight: bold; color: var(--ink-dark); display: flex; align-items: center; gap: 6px; }
+.info-icon { font-size: 16px; display: inline-block; width: 20px; text-align: center; color: #555; }
+.phone-text { color: #0000EE; text-decoration: underline; font-weight: bold; font-family: sans-serif; letter-spacing: 0.5px; font-size: 15px; }
+
+/* 找到這行，修改它的 padding 和 font-size */
+.info-btn { 
+    padding: 4px 14px; /* 數字調小，按鈕就會變扁變小 */
+    font-size: 13px;   /* 數字調小，按鈕裡的字就會變小 */
+    /* ... 這裡保留你原本其他的設定 (例如 border-radius 等) ... */
+}
+  
         /* === 本店詳細介紹區塊樣式 (改為無框線、融入背景) === */
         .store-intro-clean {
             padding: 0 10px; margin-top: 15px; margin-bottom: 15px;
