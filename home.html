@@ -347,10 +347,6 @@
 
 
 
-
-
-
-
 <!-- 東台溫泉飯店 -->
 <div class="spa-card">
     <div class="spa-top" style="display: flex; justify-content: space-between; align-items: center; width: 100%; margin-bottom: 8px;">
@@ -362,21 +358,39 @@
     </div>
     
     <!-- 介紹文字：左右對齊，右側平整 -->
-    <div class="spa-short" style="text-align: justify; line-height: 1.6; margin-bottom: 1px;">
+    <div class="spa-short" style="text-align: justify; line-height: 1.6; margin-bottom: 8px;">
         溫泉養生承襲德日模式規劃，在開闊溪谷景觀視野中享受多功能水療沖擊、美人原湯與檜木烤箱，消除車旅勞累，展開定點多日溫泉休閒保養之旅。
     </div>
 
-    <!-- 左右滑動照片藝廊：dt-1 到 dt-9 -->
-    <div style="display: flex; overflow-x: auto; gap: 10px; padding: 0 !important; margin: 0 !important; height: 180px; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;">
-      <img src="Images/dt-1.jpg" style="height: 180px; width: auto; object-fit: cover; border-radius: 8px; flex-shrink: 0; scroll-snap-align: start;" alt="東台溫泉照片 1">
-      <img src="Images/dt-2.jpg" style="height: 180px; width: auto; object-fit: cover; border-radius: 8px; flex-shrink: 0; scroll-snap-align: start;" alt="東台溫泉照片 2">
-      <img src="Images/dt-3.jpg" style="height: 180px; width: auto; object-fit: cover; border-radius: 8px; flex-shrink: 0; scroll-snap-align: start;" alt="東台溫泉照片 3">
-      <img src="Images/dt-4.jpg" style="height: 180px; width: auto; object-fit: cover; border-radius: 8px; flex-shrink: 0; scroll-snap-align: start;" alt="東台溫泉照片 4">
-      <img src="Images/dt-5.jpg" style="height: 180px; width: auto; object-fit: cover; border-radius: 8px; flex-shrink: 0; scroll-snap-align: start;" alt="東台溫泉照片 5">
-      <img src="Images/dt-6.jpg" style="height: 180px; width: auto; object-fit: cover; border-radius: 8px; flex-shrink: 0; scroll-snap-align: start;" alt="東台溫泉照片 6">
-      <img src="Images/dt-7.jpg" style="height: 180px; width: auto; object-fit: cover; border-radius: 8px; flex-shrink: 0; scroll-snap-align: start;" alt="東台溫泉照片 7">
-      <img src="Images/dt-8.jpg" style="height: 180px; width: auto; object-fit: cover; border-radius: 8px; flex-shrink: 0; scroll-snap-align: start;" alt="東台溫泉照片 8">
-      <img src="Images/dt-9.jpg" style="height: 180px; width: auto; object-fit: cover; border-radius: 8px; flex-shrink: 0; scroll-snap-align: start;" alt="東台溫泉照片 9">
+    <!-- 左右滑動照片藝廊：高度固定 180px，寬度 auto 保持原比例不壓縮，吸附式滑動 -->
+    <div style="display: flex; overflow-x: auto; gap: 10px; padding: 0 15px 5px 0 !important; margin: 0 -15px 8px -15px !important; height: 180px; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none;">
+      <div style="padding-left: 15px; flex-shrink: 0; display: flex;">
+          <img src="Images/dt-1.jpg" style="height: 180px; width: auto; border-radius: 8px; scroll-snap-align: start;" alt="東台溫泉照片 1">
+      </div>
+      <div style="flex-shrink: 0; display: flex;">
+          <img src="Images/dt-2.jpg" style="height: 180px; width: auto; border-radius: 8px; scroll-snap-align: start;" alt="東台溫泉照片 2">
+      </div>
+      <div style="flex-shrink: 0; display: flex;">
+          <img src="Images/dt-3.jpg" style="height: 180px; width: auto; border-radius: 8px; scroll-snap-align: start;" alt="東台溫泉照片 3">
+      </div>
+      <div style="flex-shrink: 0; display: flex;">
+          <img src="Images/dt-4.jpg" style="height: 180px; width: auto; border-radius: 8px; scroll-snap-align: start;" alt="東台溫泉照片 4">
+      </div>
+      <div style="flex-shrink: 0; display: flex;">
+          <img src="Images/dt-5.jpg" style="height: 180px; width: auto; border-radius: 8px; scroll-snap-align: start;" alt="東台溫泉照片 5">
+      </div>
+      <div style="flex-shrink: 0; display: flex;">
+          <img src="Images/dt-6.jpg" style="height: 180px; width: auto; border-radius: 8px; scroll-snap-align: start;" alt="東台溫泉照片 6">
+      </div>
+      <div style="flex-shrink: 0; display: flex;">
+          <img src="Images/dt-7.jpg" style="height: 180px; width: auto; border-radius: 8px; scroll-snap-align: start;" alt="東台溫泉照片 7">
+      </div>
+      <div style="flex-shrink: 0; display: flex;">
+          <img src="Images/dt-8.jpg" style="height: 180px; width: auto; border-radius: 8px; scroll-snap-align: start;" alt="東台溫泉照片 8">
+      </div>
+      <div style="flex-shrink: 0; display: flex;">
+          <img src="Images/dt-9.jpg" style="height: 180px; width: auto; border-radius: 8px; scroll-snap-align: start;" alt="東台溫泉照片 9">
+      </div>
     </div>
 
     <!-- 交通與詳細資訊下拉選單：標準凸排格式 -->
@@ -389,6 +403,7 @@
         </ul>
     </details>
 </div>
+
 
 
 
