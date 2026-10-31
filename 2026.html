@@ -184,15 +184,19 @@
 <div class="container">
     <div class="content-section">
         
-        <!-- 一般的活動標題與 2026 年份區塊 (不干擾原本的頂部置頂) -->
-        <div style="padding: 15px 0 10px 0;">
+                <!-- 恢復完美置頂、且 2026 壓在線上的跨月標題 -->
+        <div class="month-header" style="padding-top: 10px; padding-right: 15px; background-color: #FDF9F1;">
             <div style="font-size: 13px; color: #D9534F; font-weight: bold; margin-bottom: 4px; letter-spacing: 1px;">臺東縣近期活動資訊</div>
-            <div style="display: flex; align-items: center;">
+            <div style="display: flex; align-items: center; position: relative;">
                 <div style="font-size: 20px; font-weight: 900; color: #333; letter-spacing: 0.5px; white-space: nowrap;">持續展開 (跨月活動)</div>
-                <div style="flex-grow: 1; height: 3px; background: #FFB6B9; margin: 0 12px; border-radius: 2px;"></div>
-                <div style="font-size: 26px; font-weight: 900; color: #D9534F; font-style: italic;">2026</div>
+                
+                <!-- 粉紅線條與壓在上面的 2026 -->
+                <div style="flex-grow: 1; height: 3px; background: #FFB6B9; margin-left: 12px; border-radius: 2px; position: relative;">
+                    <div style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); font-size: 28px; font-weight: 900; color: #D9534F; font-style: italic; background-color: #FDF9F1; padding: 0 8px;">2026</div>
+                </div>
             </div>
         </div>
+
 
 
         <!-- 下面接著原本的時間軸內容 (例如 7/1 - 10/31 藝術...) -->
