@@ -553,7 +553,7 @@
                 </div>
             </div>
             
-            <div class="event" data-end="1122">
+                        <div class="event" data-end="1122">
                 <div class="event-card">
                     <div class="card-header">
                         <span class="event-date">11/6-11/8、11/14-11/22</span>
@@ -561,15 +561,22 @@
                         <span class="tag tag-fee">需付費</span>
                     </div>
                     <div class="event-title">🏄‍♂️衝浪小旅行｜臺灣國際衝浪公開賽系列</div>
+                    
                     <div class="event-desc">
-                           <div style="padding-left: 65px; text-indent: -60px;">遊程1：新港職人見學(魚市場見學、職人手作)</div>
-                            <div style="padding-left: 65px; text-indent: -60px;">遊程2：山海獵人足跡(傳統射箭、山林走讀)</div>
+                        <!-- 利用 flex 將標題與內容拆成左右兩塊，確保換行完美內凹對齊 -->
+                        <div style="display: flex; align-items: flex-start; margin-bottom: 4px;">
+                            <span style="flex-shrink: 0;">遊程1：</span>
+                            <div>新港職人見學(魚市場見學、職人手作)</div>
                         </div>
-
-
+                        <div style="display: flex; align-items: flex-start;">
+                            <span style="flex-shrink: 0;">遊程2：</span>
+                            <div>山海獵人足跡(傳統射箭、山林走讀)</div>
+                        </div>
+                    </div>
                     <a href="https://maps.google.com/?q=臺東金樽漁港" target="_blank" class="event-loc">📍 臺東金樽漁港</a>
                 </div>
             </div>
+
 
             <div class="event" data-end="1122">
                 <div class="event-card">
