@@ -347,7 +347,7 @@
 
 
 
-<!-- 東台溫泉飯店 (自動循環播放版) -->
+<!-- 東台溫泉飯店 (高速自動輪播相簿版) -->
 <div class="spa-card">
     <div class="spa-top" style="display: flex; justify-content: space-between; align-items: center; width: 100%; margin-bottom: 8px;">
         <!-- 導航按鈕緊接在店名前面 -->
@@ -362,18 +362,18 @@
         溫泉養生承襲德日模式規劃，在開闊溪谷景觀視野中享受多功能水療沖擊、美人原湯與檜木烤箱，消除車旅勞累，展開定點多日溫泉休閒保養之旅。
     </div>
 
-    <!-- 自動循環輪播照片區塊：固定高度 180px，圓角與邊框完美貼合 -->
-    <div style="height: 180px; overflow: hidden; position: relative; border-radius: 8px; margin-bottom: 10px;">
-        <div style="display: flex; width: 900%; height: 100%; animation: autoSlideGallery 27s infinite ease-in-out;">
-            <div style="width: 11.11%; height: 100%;"><img src="Images/dt-1.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="東台溫泉照片 1"></div>
-            <div style="width: 11.11%; height: 100%;"><img src="Images/dt-2.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="東台溫泉照片 2"></div>
-            <div style="width: 11.11%; height: 100%;"><img src="Images/dt-3.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="東台溫泉照片 3"></div>
-            <div style="width: 11.11%; height: 100%;"><img src="Images/dt-4.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="東台溫泉照片 4"></div>
-            <div style="width: 11.11%; height: 100%;"><img src="Images/dt-5.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="東台溫泉照片 5"></div>
-            <div style="width: 11.11%; height: 100%;"><img src="Images/dt-6.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="東台溫泉照片 6"></div>
-            <div style="width: 11.11%; height: 100%;"><img src="Images/dt-7.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="東台溫泉照片 7"></div>
-            <div style="width: 11.11%; height: 100%;"><img src="Images/dt-8.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="東台溫泉照片 8"></div>
-            <div style="width: 11.11%; height: 100%;"><img src="Images/dt-9.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="東台溫泉照片 9"></div>
+    <!-- 自動循環輪播照片區塊：維持高度 180px，object-fit: contain 確保原比例不變形 -->
+    <div style="height: 180px; overflow: hidden; position: relative; border-radius: 8px; margin-bottom: 10px; background: #000;">
+        <div style="display: flex; width: 900%; height: 100%; animation: fastAutoSlide 13.5s infinite ease-in-out;">
+            <div style="width: 11.11%; height: 100%; display: flex; justify-content: center; align-items: center;"><img src="Images/dt-1.jpg" style="max-width: 100%; max-height: 100%; object-fit: contain; display: block;" alt="東台溫泉照片 1"></div>
+            <div style="width: 11.11%; height: 100%; display: flex; justify-content: center; align-items: center;"><img src="Images/dt-2.jpg" style="max-width: 100%; max-height: 100%; object-fit: contain; display: block;" alt="東台溫泉照片 2"></div>
+            <div style="width: 11.11%; height: 100%; display: flex; justify-content: center; align-items: center;"><img src="Images/dt-3.jpg" style="max-width: 100%; max-height: 100%; object-fit: contain; display: block;" alt="東台溫泉照片 3"></div>
+            <div style="width: 11.11%; height: 100%; display: flex; justify-content: center; align-items: center;"><img src="Images/dt-4.jpg" style="max-width: 100%; max-height: 100%; object-fit: contain; display: block;" alt="東台溫泉照片 4"></div>
+            <div style="width: 11.11%; height: 100%; display: flex; justify-content: center; align-items: center;"><img src="Images/dt-5.jpg" style="max-width: 100%; max-height: 100%; object-fit: contain; display: block;" alt="東台溫泉照片 5"></div>
+            <div style="width: 11.11%; height: 100%; display: flex; justify-content: center; align-items: center;"><img src="Images/dt-6.jpg" style="max-width: 100%; max-height: 100%; object-fit: contain; display: block;" alt="東台溫泉照片 6"></div>
+            <div style="width: 11.11%; height: 100%; display: flex; justify-content: center; align-items: center;"><img src="Images/dt-7.jpg" style="max-width: 100%; max-height: 100%; object-fit: contain; display: block;" alt="東台溫泉照片 7"></div>
+            <div style="width: 11.11%; height: 100%; display: flex; justify-content: center; align-items: center;"><img src="Images/dt-8.jpg" style="max-width: 100%; max-height: 100%; object-fit: contain; display: block;" alt="東台溫泉照片 8"></div>
+            <div style="width: 11.11%; height: 100%; display: flex; justify-content: center; align-items: center;"><img src="Images/dt-9.jpg" style="max-width: 100%; max-height: 100%; object-fit: contain; display: block;" alt="東台溫泉照片 9"></div>
         </div>
     </div>
 
@@ -388,9 +388,9 @@
     </details>
 </div>
 
-<!-- 請順便把這段自動輪播的動畫語法加到你的 <style> 標籤裡面 -->
+<!-- 請更新這段高速自動輪播的動畫語法到你的 <style> 標籤裡面 -->
 <style>
-@keyframes autoSlideGallery {
+@keyframes fastAutoSlide {
     0%, 10%   { transform: translateX(0); }
     12.2%, 22.2% { transform: translateX(-11.11%); }
     24.4%, 34.4% { transform: translateX(-22.22%); }
@@ -402,6 +402,7 @@
     97.6%, 100%  { transform: translateX(-88.88%); }
 }
 </style>
+
 
 
 
