@@ -15,6 +15,7 @@
             --pop-yellow: #FFE66D;   
             --pop-green: #A8E6CF;    
             --pop-purple: #CBAACB;   
+            --text-scale: 1;
         }
 
         body {
@@ -25,7 +26,7 @@
 
         .container { max-width: 500px; margin: 0 auto; padding: 0 15px; }
 
-        /* === 店家導覽列 === */
+        /* === 統一的頂部導覽列 (與首頁、大廳完全一致) === */
         .sticky-navbar {
             position: sticky; top: 0; z-index: 100;
             height: max(80px, calc(60px + env(safe-area-inset-top))); box-sizing: border-box; 
@@ -33,45 +34,40 @@
             padding: max(10px, env(safe-area-inset-top)) 15px 10px 15px; display: flex; align-items: center; justify-content: space-between;
             box-shadow: 0 4px 0px rgba(0,0,0,0.05);
         }
-        .nav-info { display: flex; flex-direction: column; gap: 4px; }
-        
-        .nav-store { font-size: 24px; font-weight: bold; color: var(--pop-pink); letter-spacing: 1px; line-height: 1.1; }
-        .nav-loc { color: var(--ink-dark); text-decoration: none; font-size: 13px; font-weight: bold; display: inline-block; padding-bottom: 1px;}
+        .nav-info { display: flex; flex-direction: column; gap: 2px; }
+        .nav-store { font-size: calc(22px * var(--text-scale)); font-weight: bold; color: var(--pop-pink); letter-spacing: 1px; line-height: 1.1; }
+        .nav-loc { color: var(--ink-dark); text-decoration: none; font-size: calc(13px * var(--text-scale)); font-weight: bold; display: inline-block; }
         
         .btn-call {
             background: var(--pop-yellow); border: 3px solid var(--ink-dark); border-radius: 12px; padding: 8px 10px; 
-            font-size: 13px; font-weight: bold; color: var(--ink-dark); text-decoration: none; transition: 0.2s;
-            white-space: nowrap; flex-shrink: 0; box-shadow: 2px 2px 0px var(--ink-dark);
+            font-size: calc(13px * var(--text-scale)); font-weight: bold; color: var(--ink-dark); text-decoration: none; transition: 0.2s;
+            white-space: nowrap; flex-shrink: 0; box-shadow: 2px 2px 0px var(--ink-dark); display: flex; align-items: center; gap: 4px;
         }
         .btn-call:active { transform: translate(2px,2px); box-shadow: 0px 0px 0px var(--ink-dark); }
 
-        /* === 標題與插畫 === */
-        .hero-section { 
-            display: flex; align-items: center; justify-content: center; gap: 15px; 
-            padding: 25px 10px 15px 10px; 
+        /* === 底部 App 風格導覽列 (與其他頁面完全一致的順序與功能) === */
+        .font-floater {
+            position: fixed; 
+            bottom: 0; left: 0; width: 100%; 
+            display: flex; flex-direction: row; justify-content: space-around;
+            background: rgba(255, 255, 255, 0.95); 
+            border-top: 1.5px solid rgba(44, 62, 80, 0.2);
+            border-radius: 16px 16px 0 0; 
+            backdrop-filter: blur(8px); 
+            z-index: 999; 
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+            padding: 8px 0 calc(8px + env(safe-area-inset-bottom)) 0; 
         }
-        .hero-text { 
-            display: flex; flex-direction: column; align-items: flex-start;
+        .font-floater button, .font-floater a {
+            background: transparent; border: none; outline: none;
+            padding: 6px 0; font-size: 15px; font-weight: bold; font-family: inherit;
+            color: #666; cursor: pointer; transition: 0.2s; 
+            text-decoration: none; text-align: center; flex: 1; 
         }
-        .hero-title { 
-            font-weight: bold; color: var(--ink-dark); 
-            margin: 0 0 4px 0; line-height: 1.1; 
-            white-space: nowrap;
+        .font-floater button:not(:last-child), .font-floater a:not(:last-child) { 
+            border-right: 1px solid rgba(0,0,0,0.08); 
         }
-        .title-year { font-size: 32px; color: var(--pop-pink); letter-spacing: 1px; display: block; }
-        .title-text { font-size: 17px; display: block; margin-top: 2px;}
-        .hero-subtitle { font-size: 13px; color: #666; font-weight: bold; margin: 0; }
-
-        /* --- SVG 動畫區 --- */
-        @keyframes pulse-sun { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.04); } }
-        @keyframes float-steam { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
-        @keyframes wave-move { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(-4px); } }
-        
-        .anim-sun { animation: pulse-sun 3s ease-in-out infinite; transform-origin: 70px 35px; }
-        .anim-steam-1 { animation: float-steam 2.5s ease-in-out infinite; }
-        .anim-steam-2 { animation: float-steam 2.5s ease-in-out infinite 1.2s; }
-        .anim-wave-1 { animation: wave-move 3s ease-in-out infinite; }
-        .anim-wave-2 { animation: wave-move 3s ease-in-out infinite 1.5s; }
+        .font-floater button:active, .font-floater a:active { background: #F0F0F0; color: var(--pop-pink); }
 
         /* === 雙層月份子標題 === */
         .month-header { 
@@ -81,12 +77,11 @@
             margin: 0 -15px; 
             display: flex; flex-direction: column; gap: 4px;
         }
-        .month-context { font-size: 13px; color: var(--pop-pink); font-weight: bold; letter-spacing: 0.5px; }
-        .month-title { font-size: 19px; font-weight: bold; color: var(--ink-dark); display: flex; align-items: center; gap: 10px; width: 100%; }
+        .month-title { font-size: calc(19px * var(--text-scale)); font-weight: bold; color: var(--ink-dark); display: flex; align-items: center; gap: 10px; width: 100%; }
         .month-title::after { content: ""; flex: 1; height: 4px; background: var(--pop-pink); border-radius: 2px; opacity: 0.5;}
         
         /* 內容區塊 */
-        .content-section { padding-bottom: 80px; }
+        .content-section { padding-bottom: 90px; }
         
         .timeline { border-left: 4px dotted var(--pop-blue); margin-left: 20px; padding-left: 25px; padding-bottom: 5px; padding-top: 5px;}
         .event { position: relative; margin-bottom: 25px; }
@@ -104,10 +99,10 @@
         }
         
         .card-header { margin-bottom: 2px; line-height: 1.8; }
-        .event-date { font-weight: bold; font-size: 16px; color: var(--ink-dark); margin-right: 6px; }
+        .event-date { font-weight: bold; font-size: calc(16px * var(--text-scale)); color: var(--ink-dark); margin-right: 6px; }
         
         .tag { 
-            font-size: 12px; padding: 2px 8px; border-radius: 8px; font-weight: bold; 
+            font-size: calc(12px * var(--text-scale)); padding: 2px 8px; border-radius: 8px; font-weight: bold; 
             letter-spacing: 0.5px; border: 2px solid var(--ink-dark); 
             display: inline-block; vertical-align: middle; margin-right: 4px; margin-bottom: 4px;
         }
@@ -118,13 +113,11 @@
         .tag-fee { background: var(--pop-purple); color: white; }     
         .tag-art { background: var(--pop-green); color: var(--ink-dark); }
 
-        /* 標題與內文 */
-        .event-title { font-size: 16px; font-weight: bold; line-height: 1.3;}
-        .event-desc { font-size: 14px; color: #555; line-height: 1.5; }
+        .event-title { font-size: calc(16px * var(--text-scale)); font-weight: bold; line-height: 1.3;}
+        .event-desc { font-size: calc(14px * var(--text-scale)); color: #555; line-height: 1.5; }
         
-        /* 地點按鈕 */
         .event-loc { 
-            font-size: 13px; font-weight: bold; color: var(--ink-dark); 
+            font-size: calc(13px * var(--text-scale)); font-weight: bold; color: var(--ink-dark); 
             background: #f0f4f8; padding: 6px 12px; border-radius: 8px; 
             display: inline-block; text-decoration: none; border: 1px solid #d1d9e6;
             transition: 0.2s; margin-top: 4px;
@@ -132,74 +125,67 @@
         .event-loc:active { background: #dce4ec; transform: scale(0.97); }
 
         .postponed { background: #FFFBF0; border: 3px dashed #F39C12; box-shadow: 2px 2px 0px rgba(243, 156, 18, 0.2); }
-        .postponed .event-title { color: var(--ink-dark); text-decoration: none; }
-        .postponed .event-desc { color: #D35400; font-weight: bold; }
-        .postponed .event-loc { opacity: 0.8; pointer-events: none; } 
-
         .cancelled { background: #FFF0F0; border: 3px dashed #E74C3C; box-shadow: 2px 2px 0px rgba(231, 76, 60, 0.2); }
-        .cancelled .event-title { color: var(--ink-dark); text-decoration: none; }
-        .cancelled .event-desc { color: #C0392B; font-weight: bold; }
-        .cancelled .event-loc { opacity: 0.8; pointer-events: none; } 
 
-        /* === 溫馨提醒免責聲明 === */
         .disclaimer {
-            font-size: 13px; color: #888; font-weight: bold; line-height: 1.5;
+            font-size: calc(13px * var(--text-scale)); color: #888; font-weight: bold; line-height: 1.5;
             text-align: left; margin: 25px 15px; padding-top: 20px;
             border-top: 1px dashed #CCC;
         }
 
         .home-btn {
             display: inline-block; background: white; border: 3px solid var(--ink-dark); border-radius: 15px;
-            padding: 10px 20px; font-size: 16px; font-weight: bold; color: var(--ink-dark);
+            padding: 10px 20px; font-size: calc(16px * var(--text-scale)); font-weight: bold; color: var(--ink-dark);
             text-decoration: none; box-shadow: 3px 3px 0px var(--ink-dark); transition: 0.2s;
             margin-bottom: 20px;
         }
         .home-btn:active { transform: translate(2px, 2px); box-shadow: 0px 0px 0px var(--ink-dark); }
         
-        /* === 浮動頁尾暖心標語 === */
         .slogan-footer {
-            position: fixed; bottom: 0; left: 0; width: 100%;
-            background: rgba(255, 249, 230, 0.85); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); 
-            border-top: 2px solid rgba(44, 62, 80, 0.1);
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            padding: 12px 0 max(12px, env(safe-area-inset-bottom));
-            z-index: 100; box-shadow: 0 -4px 10px rgba(0,0,0,0.05);
+            text-align: center; font-size: calc(13px * var(--text-scale)); font-weight: bold; color: var(--ink-dark);
+            padding: 20px 0 10px 0;
         }
-        .slogan-text {
-            font-size: 14px; font-weight: bold; color: var(--ink-dark); letter-spacing: 1px;
-            display: flex; align-items: center; gap: 4px;
+
+        @media (min-width: 768px) {
+            .container { max-width: 800px; padding: 0 40px; }
+            .nav-store { font-size: 26px; }
         }
     </style>
 </head>
 <body>
 
+<!-- === 統一頂部導覽列 === -->
 <div class="sticky-navbar">
     <div class="nav-info">
         <div class="nav-store">東泳記泳裝店</div>
-        <a href="https://maps.google.com/?q=東泳記泳裝店" target="_blank" class="nav-loc">卑南鄉溫泉路370號🚗導航</a>
+        <a href="https://maps.app.goo.gl/YkHK24qn1kZsfBn38?g_st=ic" target="_blank" class="nav-loc">卑南鄉溫泉路370號🚗導航</a>
     </div>
     <a href="tel:0910557998" class="btn-call">📞 0910-557-998</a>
+</div>
+
+<!-- === 底部 App 風格導覽列 (與首頁大廳完美同步) === -->
+<div class="font-floater">
+    <a href="home.html" title="返回首頁">𖠿</a>
+    <a href="tel:0910557998" title="撥打電話">📞</a>
+    <a href="https://maps.app.goo.gl/YkHK24qn1kZsfBn38?g_st=ic" target="_blank" title="開啟導航">🚗</a>
+    <button onclick="changeFont(-0.1)">A-</button>
+    <button onclick="resetFont()">A</button>
+    <button onclick="changeFont(0.1)">A+</button>
+    <button onclick="scrollToTop()" title="回到頂部">🔝</button>
 </div>
 
 <div class="container">
     <div class="content-section">
         
-                <!-- 恢復完美置頂、且 2026 壓在線上的跨月標題 -->
-<div class="month-header" style="background-color: #FDF9F1; padding-top: 10px; padding-bottom: 10px;">
-    <div style="font-size: 15px; color: #D9534F; font-weight: bold; margin-bottom: -2px; line-height: 1; letter-spacing: 1px;">臺東縣近期活動資訊</div>
-    <div style="display: flex; align-items: flex-end;">
-        <div style="font-size: 20px; font-weight: 900; color: #333; letter-spacing: 0.5px; white-space: nowrap; line-height: 1;">持續展開 (跨月活動)</div>
-        <div style="flex-grow: 1; border-bottom: 3px solid #FFB6B9; margin-left: 12px; position: relative; height: 28px;">
-            <div style="position: absolute; right: 15px; bottom: -2px; font-size: 32px; font-weight: 900; color: #D9534F; font-style: italic; line-height: 1;">2026</div>
+        <div class="month-header" style="background-color: #FDF9F1; padding-top: 10px; padding-bottom: 10px;">
+            <div style="font-size: calc(15px * var(--text-scale)); color: #D9534F; font-weight: bold; margin-bottom: -2px; line-height: 1; letter-spacing: 1px;">臺東縣近期活動資訊</div>
+            <div style="display: flex; align-items: flex-end;">
+                <div style="font-size: calc(20px * var(--text-scale)); font-weight: 900; color: #333; letter-spacing: 0.5px; white-space: nowrap; line-height: 1;">持續展開 (跨月活動)</div>
+                <div style="flex-grow: 1; border-bottom: 3px solid #FFB6B9; margin-left: 12px; position: relative; height: 28px;">
+                    <div style="position: absolute; right: 15px; bottom: -2px; font-size: calc(32px * var(--text-scale)); font-weight: 900; color: #D9534F; font-style: italic; line-height: 1;">2026</div>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
-
-
-
-
-
-        <!-- 下面接著原本的時間軸內容 (例如 7/1 - 10/31 藝術...) -->
 
         <div class="timeline">
             <div class="event">
@@ -236,276 +222,17 @@
             </div>
         </div>
 
-<div class="month-header" style="background-color: #FDF9F1; padding-top: 10px; padding-bottom: 10px;">
-    <div style="font-size: 15px; color: #D9534F; font-weight: bold; margin-bottom: -2px; line-height: 1; letter-spacing: 1px;">臺東縣近期活動資訊</div>
-    <div style="display: flex; align-items: flex-end;">
-        <div style="font-size: 20px; font-weight: 900; color: #333; letter-spacing: 0.5px; white-space: nowrap; line-height: 1;">10月 October</div>
-        <div style="flex-grow: 1; border-bottom: 3px solid #FFB6B9; margin-left: 12px; position: relative; height: 28px;">
-            <div style="position: absolute; right: 15px; bottom: -2px; font-size: 32px; font-weight: 900; color: #D9534F; font-style: italic; line-height: 1;">2026</div>
+        <div class="month-header" style="background-color: #FDF9F1; padding-top: 10px; padding-bottom: 10px;">
+            <div style="font-size: calc(15px * var(--text-scale)); color: #D9534F; font-weight: bold; margin-bottom: -2px; line-height: 1; letter-spacing: 1px;">臺東縣近期活動資訊</div>
+            <div style="display: flex; align-items: flex-end;">
+                <div style="font-size: calc(20px * var(--text-scale)); font-weight: 900; color: #333; letter-spacing: 0.5px; white-space: nowrap; line-height: 1;">11月 November</div>
+                <div style="flex-grow: 1; border-bottom: 3px solid #FFB6B9; margin-left: 12px; position: relative; height: 28px;">
+                    <div style="position: absolute; right: 15px; bottom: -2px; font-size: calc(32px * var(--text-scale)); font-weight: 900; color: #D9534F; font-style: italic; line-height: 1;">2026</div>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
-
 
         <div class="timeline">
-            <div class="event" data-end="1002">
-                <div class="event-card">
-                    <div class="card-header">
-                        <span class="event-date">10/2</span>
-                        <span class="tag tag-music">音樂</span>
-                    </div>
-                    <div class="event-title">《那年，我們一起聽的歌》①</div>
-                    <div class="event-desc">時間：19:00~21:00<br>咱的歌·咱的年代<br>洪榮宏, 沈文程, 荒山亮, 高欣欣, 吳淑敏</div>
-                    <a href="https://maps.google.com/?q=北町日式建築宿舍群" target="_blank" class="event-loc">📍 北町日式建築宿舍群</a>
-                </div>
-            </div>
-            <div class="event" data-end="1003">
-                <div class="event-card">
-                    <div class="card-header">
-                        <span class="event-date">10/3</span>
-                        <span class="tag tag-music">音樂</span>
-                    </div>
-                    <div class="event-title">《那年，我們一起聽的歌》②</div>
-                    <div class="event-desc">時間：19:00~21:00<br>跨世代·唱青春<br>陳昇&新寶島樂隊, 周蕙, 賴銘偉, 緯美雙雄</div>
-                    <a href="https://maps.google.com/?q=北町日式建築宿舍群" target="_blank" class="event-loc">📍 北町日式建築宿舍群</a>
-                </div>
-            </div>
-            <div class="event" data-end="1004">
-                <div class="event-card">
-                    <div class="card-header">
-                        <span class="event-date">10/4</span>
-                        <span class="tag tag-sport">路跑</span>
-                        <span class="tag tag-fee">需報名</span>
-                    </div>
-                    <div class="event-title">2026火燒島馬拉松</div>
-                    <div class="event-desc">時間：05:00~13:00</div>
-                    <a href="https://maps.google.com/?q=綠島人權紀念公園" target="_blank" class="event-loc">📍 綠島人權紀念公園</a>
-                </div>
-            </div>
-            <div class="event" data-end="1010">
-                <div class="event-card">
-                    <div class="card-header">
-                        <span class="event-date">10/10</span>
-                        <span class="tag tag-free">免費觀賞</span>
-                    </div>
-                    <div class="event-title">世界的方舟・南島台灣・國慶焰火晚會</div>
-<a href="https://tour.taitung.gov.tw/zh-tw/event-calendar/details/6518" target="_blank" style="display: block; margin: -4px -15px !important; border-radius: 0; overflow: hidden;">
-    <img src="https://tour.taitung.gov.tw/image/56967/1024x768" alt="115年國慶焰火在臺東" style="width: 100%; display: block; border-radius: 0; margin: 0 !important; padding: 0 !important;">
-</a>
-                    <div class="event-desc">時間：19:00~20:30</div>
-                    <a href="https://maps.google.com/?q=台東市國際地標" target="_blank" class="event-loc">📍 台東市國際地標</a>
-                </div>
-            </div>
-            <div class="event" data-end="1017">
-                <div class="event-card">
-                    <div class="card-header">
-                        <span class="event-date">10/17</span>
-                        <span class="tag tag-sport">健走</span>
-                    </div>
-                    <div class="event-title">雲端發票向前行 森林健走好心情</div>
-                    <div class="event-desc">時間：14:00~17:00</div>
-                    <a href="https://maps.google.com/?q=臺東森林公園" target="_blank" class="event-loc">📍 臺東森林公園</a>
-                </div>
-            </div>
-            <div class="event" data-end="1018">
-                <div class="event-card">
-                    <div class="card-header">
-                        <span class="event-date">10/18</span>
-                        <span class="tag tag-sport">路跑</span>
-                        <span class="tag tag-market">市集</span>
-                    </div>
-                    <div class="event-title">達仁鄉縫迴山海祭路跑、市集音樂會</div>
-                    <div class="event-desc">時間：06:00~14:00</div>
-                    <a href="https://maps.google.com/?q=南田海岸親水公園" target="_blank" class="event-loc">📍 南田海岸親水公園</a>
-                </div>
-            </div>
-            
-            <div class="event" data-end="1231">
-                <div class="event-card cancelled">
-                    <div class="card-header">
-                        <span class="event-date">10/24 - 10/25</span>
-                        <span class="tag" style="background:#E74C3C; color:white; border-color:#E74C3C;">取消</span>
-                    </div>
-                    <div class="event-title">2026 池上秋收稻穗藝術節</div>
-                    <div class="event-desc">因薔琵颱風影響，本活動全數取消演出。</div>
-                    <div class="event-loc">📍 台東縣池上鄉萬安社區天堂路稻田區</div>
-                </div>
-            </div>
-            
-            <div class="event" data-end="1231">
-                <div class="event-card postponed">
-                    <div class="card-header">
-                        <span class="event-date">延期公告</span>
-                        <span class="tag" style="background:#F39C12; color:white; border-color:#F39C12;">待定</span>
-                    </div>
-                    <div class="event-title">2026 台東香草生活節</div>
-                    <div class="event-desc">因薔琵颱風延期辦理，新日期將另行公告。</div>
-                    <div class="event-loc">📍 臺東縣客家文化園區</div>
-                </div>
-            </div>
-
-            <div class="event" data-end="1024">
-                <div class="event-card">
-                    <div class="card-header">
-                        <span class="event-date">10/24</span>
-                        <span class="tag tag-market">市集</span>
-                        <span class="tag tag-free" style="color:#F39C12; border-color:#F39C12;">延期更新</span>
-                    </div>
-                    <div class="event-title">南島咖啡節市集</div>
-                    <div class="event-desc">時間：13:00~19:00</div>
-                    <a href="https://maps.google.com/?q=台東波浪屋" target="_blank" class="event-loc">📍 台東波浪屋前廣場</a>
-                </div>
-            </div>
-            <div class="event" data-end="1025">
-                <div class="event-card">
-                    <div class="card-header">
-                        <span class="event-date">10/25</span>
-                        <span class="tag tag-market">市集</span>
-                    </div>
-                    <div class="event-title">南島咖啡節市集</div>
-                    <div class="event-desc">時間：11:00~18:00</div>
-                    <a href="https://maps.google.com/?q=台東波浪屋" target="_blank" class="event-loc">📍 台東波浪屋前廣場</a>
-                </div>
-            </div>
-            <div class="event" data-end="1026">
-                <div class="event-card">
-                    <div class="card-header">
-                        <span class="event-date">10/25 - 10/26</span>
-                        <span class="tag tag-market">美食</span>
-                        <span class="tag tag-free" style="color:#F39C12; border-color:#F39C12;">延期更新</span>
-                    </div>
-                    <div class="event-title">🧺2026臺東慢食節《夜食餐桌》</div>
-                    <div class="event-desc">時間：15:00~20:00</div>
-                    <a href="https://maps.google.com/?q=臺東新生公園" target="_blank" class="event-loc">📍 臺東新生公園廣場</a>
-                </div>
-            </div>
-
-            <div class="event" data-end="1030">
-                <div class="event-card">
-                    <div class="card-header">
-                        <span class="event-date">10/30</span>
-                        <span class="tag tag-music">音樂</span>
-                        <span class="tag tag-market">市集</span>
-                    </div>
-                    <div class="event-title">🎤微光集・卡K開麥拉</div>
-                    <div class="event-desc">時間：19:00~22:00<br>玩樂樂團, 思奈, 阿法, 巴大雄</div>
-                    <a href="https://maps.google.com/?q=台東市鐵花路371號" target="_blank" class="event-loc">📍 微光集 (台東市鐵花路371號)</a>
-                </div>
-            </div>
-            
-            <div class="event" data-end="1031">
-                <div class="event-card">
-                    <div class="card-header">
-                        <span class="event-date">10/31</span>
-                        <span class="tag tag-market">市集</span>
-                    </div>
-                    <div class="event-title">🥦台東純素市集 Taitung Vegan Market</div>
-                    <div class="event-desc">時間：15:00~19:00<br>台灣著名的草食百老匯，為大家帶來味蕾不一樣的感受！</div>
-                    <a href="https://maps.google.com/?q=台東市南京路市民廣場" target="_blank" class="event-loc">📍 南京路市民廣場</a>
-                </div>
-            </div>
-
-            
-
-            <div class="event" data-end="1031">
-                <div class="event-card">
-                    <div class="card-header">
-                        <span class="event-date">10/31</span>
-                        <span class="tag tag-market">市集</span>
-                        <span class="tag tag-art" style="background:#A8E6CF; color:#2C3E50;">手作</span>
-                    </div>
-                    <div class="event-title">🌿我在太麻里好解憂＿好解憂散策市集</div>
-                    <div class="event-desc">
-                        時間：13:00~17:00<br>
-                        特色手作、在地美食、農特產選物、文創設計、療癒生活與數位商圈掃碼活動。把美好帶回家，把消費留在地方！
-                    </div>
-                    <a href="https://maps.google.com/?q=太麻里福興宮" target="_blank" class="event-loc">📍 太麻里福興宮前</a>
-                </div>
-            </div>
-
-
-
-            <div class="event" data-end="1031">
-                <div class="event-card">
-                    <div class="card-header">
-
-                                           
-                        <span class="event-date">10/31</span>
-                        <span class="tag tag-sport">療癒</span>
-                        <span class="tag tag-market">市集</span>
-                    </div>
-                    <div class="event-title">♨️2026漫遊知森(全齡森呼吸療癒)</div>
-<a href="https://taitung.forest.gov.tw/news/0079261" target="_blank" style="display: block; margin: -4px -15px !important; border-radius: 0; overflow: hidden;">
-    <img src="https://taitung.forest.gov.tw/Attachments/ArticlePicture/79261/1b56ec6ccc534f12a5280b4fdfedf55f.jpg" alt="漫遊2026知森" style="width: 100%; display: block; border-radius: 0; margin: 0 !important; padding: 0 !important;">
-</a>
-                    <div class="event-desc">時間：09:30~16:00<br>26攤知森市集 (部分體驗需事前付費報名)</div>
-                    <a href="https://maps.google.com/?q=知本國家森林遊樂區" target="_blank" class="event-loc">📍 知本國家森林遊樂區</a>
-                </div>
-            </div>
-
-                       <div class="event" data-end="1031">
-                <div class="event-card">
-                    <div class="card-header">
-                        <span class="event-date">10/31</span>
-                        <span class="tag tag-music">音樂</span>
-                    </div>
-                    <div class="event-title">♨️知本溫泉路跑嘉年華音樂會</div>
-                    
-                    <!-- 把框框高度縮小到 160px (切掉下方文字)，並將圖片往上推 -35px (切掉上方天空) -->
-                    <div style="margin: -8px -15px 12px -15px; height: 160px; overflow: hidden; border-radius: 0;">
-                        <a href="https://www.beinan.gov.tw/wp-content/uploads/2026/10/%E5%8D%91%E5%8D%97%E9%84%89%E5%85%AC%E6%89%80_%E6%BA%AB%E6%B3%89%E8%B7%AF%E8%B7%91_A1%E6%B5%B7%E5%A0%B1_0-1-1447x2048.jpg" target="_blank" style="display: block;">
-                            <img src="https://www.beinan.gov.tw/wp-content/uploads/2026/10/%E5%8D%91%E5%8D%97%E9%84%89%E5%85%AC%E6%89%80_%E6%BA%AB%E6%B3%89%E8%B7%AF%E8%B7%91_A1%E6%B5%B7%E5%A0%B1_0-1-1447x2048.jpg" alt="知本溫泉路跑嘉年華音樂會" style="width: 100%; height: auto; display: block; margin: -35px 0 0 0; padding: 0;">
-                        </a>
-                    </div>
-
-                    <div class="event-desc">
-                        時間：16:00~21:00<br>
-                        <div style="margin-top: 4px;">🎵達魯瑪克古謠班, 卑南族青春歌隊, 思奈樂團, 孔亞明, 桑梅絹 (Seredaw)</div>
-                    </div>
-                    <a href="https://maps.google.com/?q=東遊季星星草原" target="_blank" class="event-loc" style="margin-top: 10px;">📍 東遊季星星草原</a>
-                </div>
-            </div>
-
-
-
-            
-            <div class="event" data-end="1031">
-                <div class="event-card">
-                    <div class="card-header">
-                        <span class="event-date">10/31</span>
-                        <span class="tag tag-music">音樂</span>
-                        <span class="tag tag-free">免費入場</span>
-                    </div>
-                    <div class="event-title">🐷𝟮𝟬𝟮𝟲 𝗧𝗮𝗶𝘄𝗮𝗻 𝗣𝗔𝗦𝗜𝗪𝗔𝗟𝗜 國際原住民音樂節</div>
-                    <div class="event-desc">時間：13:00 開始進場<br>范文凱, 高金龍, 呂薔, Parsha cluB (JP), Saya張惠春, Andrew Gurruwiwi Band (AU)</div>
-                    <a href="https://maps.google.com/?q=臺東森林公園" target="_blank" class="event-loc">📍 臺東森林公園</a>
-                </div>
-            </div>
-            <div class="event" data-end="1031">
-                <div class="event-card">
-                    <div class="card-header">
-                        <span class="event-date">10/31</span>
-                        <span class="tag tag-market" style="background:#E67E22;">好康優惠</span>
-                    </div>
-                    <div class="event-title">臺東市觀光夜市・精彩好市券</div>
-                    <div class="event-desc">時間：18:00 起<br>自備指定環保用品，即可憑100元現金兌換200元好市券！(限量405份，兌完為止)</div>
-                    <a href="https://maps.google.com/?q=臺東市正氣路五權街口" target="_blank" class="event-loc">📍 正氣路 × 五權街口 (桂田酒店旁)</a>
-                </div>
-            </div>
-        </div>
-
-<div class="month-header" style="background-color: #FDF9F1; padding-top: 10px; padding-bottom: 10px;">
-    <div style="font-size: 15px; color: #D9534F; font-weight: bold; margin-bottom: -2px; line-height: 1; letter-spacing: 1px;">臺東縣近期活動資訊</div>
-    <div style="display: flex; align-items: flex-end;">
-        <div style="font-size: 20px; font-weight: 900; color: #333; letter-spacing: 0.5px; white-space: nowrap; line-height: 1;">11月 November</div>
-        <div style="flex-grow: 1; border-bottom: 3px solid #FFB6B9; margin-left: 12px; position: relative; height: 28px;">
-            <div style="position: absolute; right: 15px; bottom: -2px; font-size: 32px; font-weight: 900; color: #D9534F; font-style: italic; line-height: 1;">2026</div>
-        </div>
-    </div>
-</div>
-
-  <div class="timeline">
-            
             <div class="event" data-end="1101">
                 <div class="event-card">
                     <div class="card-header">
@@ -527,9 +254,6 @@
                         <span class="tag tag-fee">需報名</span>
                     </div>
                     <div class="event-title">♨️跑吧！孩子｜2026知本溫泉公益馬拉松</div>
-<a href="https://tour.taitung.gov.tw/zh-tw/event-calendar/details/6252" target="_blank" style="display: block; margin: -4px -15px !important; border-radius: 0; overflow: hidden;">
-    <img src="https://tour.taitung.gov.tw/image/55231/1024x768" alt="2026知本溫泉公益馬拉松" style="width: 100%; display: block; border-radius: 0; margin: 0 !important; padding: 0 !important;">
-</a>
                     <div class="event-desc">時間：06:00~14:30</div>
                     <a href="https://maps.google.com/?q=知本龍泉路" target="_blank" class="event-loc">📍 知本龍泉路第二停車場</a>
                 </div>
@@ -555,276 +279,8 @@
                         <span class="tag tag-free">免費觀賽</span>
                     </div>
                     <div class="event-title">🏄‍♂️2026臺灣國際衝浪公開賽｜國內賽</div>
-<a href="https://www.facebook.com/share/1JC973mqgS/?mibextid=wwXIfr" target="_blank" style="display: block; margin: -4px -15px !important; border-radius: 0; overflow: hidden;">
-    <img src="https://scontent-nrt1-1.xx.fbcdn.net/v/t39.30808-6/843119149_1557036733132493_458002251264432429_n.png?stp=dst-png_p720x720&_nc_cat=109&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=4ILaq4s8fdIQ7kNvwHNafLC&_nc_oc=AdrF8AgZ2q8AbV6KqNrKU2tZ4r9IeC-qmC9gV1Zc6o7-RYygniheuUTm0Ol5v7r1fPQ&_nc_zt=23&_nc_ht=scontent-nrt1-1.xx&edm=AKIiGfEEAAAA&_nc_gid=iXgjSsl3IYKaBTiEAXVExA&_nc_tpa=Q5bMBQKfUoyU-YQelWKPOw6mqZ_CjuFpDR2Sst7oVmGZY0WgZZn1Trv6BYRyo1Vdu95cnjBQ36sjaIA1Gg&oh=00_AQTtXAg3X5BKUjwHJ03fi3eAewCsGVjW9Cis5ns_QjaqhQ&oe=6AEA6525" alt="2026臺灣國際衝浪公開賽" style="width: 100%; display: block; border-radius: 0; margin: 0 !important; padding: 0 !important;">
-</a>
                     <div class="event-desc">男女短板/長板/青少年短板</div>
                     <a href="https://maps.google.com/?q=臺東金樽漁港" target="_blank" class="event-loc">📍 臺東金樽漁港</a>
-                </div>
-            </div>
-                        <!-- 🏄‍♂️衝浪公開賽：衝浪小旅行 -->
-            <div class="event" data-end="1122">
-                <div class="event-card">
-                    <div class="card-header">
-                        <span class="event-date">11/6-11/8、11/14-11/22</span>
-                        <span class="tag tag-market" style="background:#A8E6CF; color:#2C3E50;">旅遊</span>
-                        <span class="tag tag-fee">需付費</span>
-                    </div>
-                    <div class="event-title">🏄‍♂️衝浪小旅行｜臺灣國際衝浪公開賽系列</div>
-                    
-                    <div class="event-desc">
-                        <div style="font-weight: bold; color: var(--ink-dark); margin-bottom: 6px;">【專案優惠價 $500/人】名額有限售完為止</div>
-                        
-                        <!-- 遊程1 -->
-                        <div style="display: flex; align-items: flex-start; margin-bottom: 6px;">
-                            <span style="flex-shrink: 0; font-weight: bold;">遊程①：</span>
-                            <div>
-                                新港職人見學一日遊<br>
-                                <span style="font-size: 0.9em; color: #666;">(魚市場見學、職人手作、永續午餐、衝浪導覽)</span><br>
-                                <a href="https://www.mytaitungtrip.com/surfingtour1" target="_blank" style="display: inline-block; margin-top: 2px; color: var(--primary-color); font-weight: bold; text-decoration: underline;">👉 點此報名</a>
-                            </div>
-                        </div>
-                        
-                        <!-- 遊程2 -->
-                        <div style="display: flex; align-items: flex-start;">
-                            <span style="flex-shrink: 0; font-weight: bold;">遊程②：</span>
-                            <div>
-                                山海獵人足跡一日遊<br>
-                                <span style="font-size: 0.9em; color: #666;">(傳統射箭、山林走讀、永續午餐、衝浪導覽)</span><br>
-                                <a href="https://www.mytaitungtrip.com/surfingtour2" target="_blank" style="display: inline-block; margin-top: 2px; color: var(--primary-color); font-weight: bold; text-decoration: underline;">👉 點此報名</a>
-                            </div>
-                        </div>
-                    </div>
-                    <a href="https://maps.google.com/?q=臺東金樽漁港" target="_blank" class="event-loc" style="margin-top: 8px;">📍 臺東金樽漁港</a>
-                </div>
-            </div>
-
-
-
-                                   <!-- 🏄‍♂️衝浪公開賽：海洋市集 -->
-            <div class="event" data-end="1122">
-                <div class="event-card">
-                    <div class="card-header">
-                        <span class="event-date">11/6-11/8、11/14-11/22</span>
-                        <span class="tag tag-market">市集</span>
-                        <span class="tag tag-art" style="background:#A8E6CF; color:#2C3E50;">環保</span>
-                    </div>
-                    <div class="event-title">🏄‍♂️海洋市集｜臺灣國際衝浪公開賽系列</div>
-                    
-                    <div class="event-desc">
-                        <!-- 利用 flex 凸排對齊，讓資訊整齊好讀 -->
-                        <div style="display: flex; align-items: flex-start; margin-bottom: 4px;">
-                            <span style="flex-shrink: 0; font-weight: bold;">時間：</span>
-                            <div>12:00~17:00</div>
-                        </div>
-                        <div style="display: flex; align-items: flex-start; margin-bottom: 4px;">
-                            <span style="flex-shrink: 0; font-weight: bold;">好康：</span>
-                            <div>自備環保餐具或提袋消費（不限金額），可至服務台兌換限量「環保海龜杯墊」！</div>
-                        </div>
-                        <div style="display: flex; align-items: flex-start;">
-                            <span style="flex-shrink: 0; font-weight: bold;">美食：</span>
-                            <div>集結現炸鬼頭刀、披薩等多家在地人氣美食與文創品牌。</div>
-                        </div>
-                    </div>
-                    <a href="https://maps.google.com/?q=臺東金樽漁港" target="_blank" class="event-loc" style="margin-top: 8px;">📍 臺東金樽漁港</a>
-                </div>
-            </div>
-
-
-
-                        <!-- 🏄‍♂️衝浪公開賽：攝影比賽 -->
-            <div class="event" data-end="1127">
-                <div class="event-card">
-                    <div class="card-header">
-                        <span class="event-date">11/6-11/27</span>
-                        <span class="tag tag-art">藝文</span>
-                    </div>
-                    <div class="event-title">📸衝浪攝影比賽｜臺灣國際衝浪公開賽系列</div>
-                    
-                    <div class="event-desc">
-                        <div style="display: flex; align-items: flex-start; margin-bottom: 4px;">
-                            <span style="flex-shrink: 0; font-weight: bold;">作品徵件：</span>
-                            <div>11/06 05:00 ~ 11/22 17:00</div>
-                        </div>
-                        <div style="display: flex; align-items: flex-start; margin-bottom: 6px;">
-                            <span style="flex-shrink: 0; font-weight: bold;">全民投票：</span>
-                            <div>11/23 00:00 ~ 11/27 12:00 (參與投票可抽好禮)</div>
-                        </div>
-                        <div style="margin-bottom: 6px;">用相機定格金樽的溫度、浪尖的專注與市集的笑意，高額獎金等你帶回家！</div>
-                        <a href="https://contest.plus1today.tw/2026taiwanopenofsurfing" target="_blank" style="display: inline-block; color: var(--primary-color); font-weight: bold; text-decoration: underline;">👉 詳細簡章與報名</a>
-                    </div>
-                    <a href="https://maps.google.com/?q=臺東金樽漁港" target="_blank" class="event-loc" style="margin-top: 4px;">📍 臺東金樽漁港</a>
-                </div>
-            </div>
-
-
-            <div class="event" data-end="1107">
-                <div class="event-card">
-                    <div class="card-header">
-                        <span class="event-date">11/7</span>
-                        <span class="tag tag-market" style="background:#E67E22;">好康優惠</span>
-                    </div>
-                    <div class="event-title">臺東市觀光夜市・精彩好市券</div>
-                    <div class="event-desc">時間：18:00 起<br>自備指定環保用品，即可憑100元現金兌換200元好市券！(限量405份，兌完為止)</div>
-                    <a href="https://maps.google.com/?q=臺東市正氣路五權街口" target="_blank" class="event-loc">📍 正氣路 × 五權街口 (桂田酒店旁)</a>
-                </div>
-            </div>
-
-                        <!-- 🏄‍♂️衝浪公開賽：滑板賽 -->
-            <div class="event" data-end="1107">
-                <div class="event-card">
-                    <div class="card-header">
-                        <span class="event-date">11/7</span>
-                        <span class="tag tag-sport" style="background:#4ECDC4; color:white;">極限運動</span>
-                    </div>
-                    <div class="event-title">🛹滑板賽 Skate Jam｜臺灣國際衝浪公開賽系列</div>
-                    <div class="event-desc">
-                        集結全台頂尖滑板人同場較勁！現場亦有「滑板體驗」（採現場報名），新手也能感受滑行樂趣。<br>
-                        <a href="https://reurl.cc/MWmZav" target="_blank" style="display: inline-block; margin-top: 6px; color: var(--primary-color); font-weight: bold; text-decoration: underline;">👉 賽事線上報名</a>
-                    </div>
-                    <a href="https://maps.google.com/?q=臺東金樽漁港" target="_blank" class="event-loc" style="margin-top: 4px;">📍 臺東金樽漁港</a>
-                </div>
-            </div>
-div>
-
-
-                         <!-- 🏄‍♂️衝浪公開賽：體能挑戰賽 -->
-            <div class="event" data-end="1108">
-                <div class="event-card">
-                    <div class="card-header">
-                        <span class="event-date">11/8</span>
-                        <span class="tag tag-sport" style="background:#4ECDC4; color:white;">體能</span>
-                    </div>
-                    <div class="event-title">🏃太平洋體能挑戰賽｜臺灣國際衝浪公開賽系列</div>
-                    <div class="event-desc">
-                        以陸連島與「貓洞」獨特地景為舞台的海岸線障礙賽，無論健身玩家、跑者或新手，一起踏上海灘突破極限！<br>
-                        <a href="https://www.focusline.com.tw/261108JB" target="_blank" style="display: inline-block; margin-top: 6px; color: var(--primary-color); font-weight: bold; text-decoration: underline;">👉 賽事線上報名</a>
-                    </div>
-                    <a href="https://maps.google.com/?q=臺東金樽漁港" target="_blank" class="event-loc" style="margin-top: 4px;">📍 臺東金樽漁港</a>
-                </div>
-            </div>
-
-
-            
-                                         <div class="event" data-end="1114">
-                <div class="event-card">
-                    <div class="card-header">
-                        <span class="event-date">11/14</span>
-                        <span class="tag tag-music">嘉年華</span>
-                        <span class="tag tag-market">市集</span>
-                        <span class="tag tag-art" style="background:#A8E6CF; color:#2C3E50;">手作闖關</span>
-                    </div>
-                    <div class="event-title">🐟2026東海岸旗魚季｜旗享東岸嘉年華</div>
-                    
-                    <!-- 旗魚季主視覺圖片 -->
-                    <a href="https://ezgo.ardswc.gov.tw/_api/content/images/articles/44474/1920x1080_articles-image-gfqd0wjneusqr0iz7duo0g.jpg" target="_blank" style="display: block; margin: -4px -15px !important; border-radius: 0; overflow: hidden;">
-                        <img src="https://ezgo.ardswc.gov.tw/_api/content/images/articles/44474/1920x1080_articles-image-gfqd0wjneusqr0iz7duo0g.jpg" alt="2026東海岸旗魚季" style="width: 100%; display: block; border-radius: 0; margin: 0 !important; padding: 0 !important;">
-                    </a>
-
-                    <div class="event-desc">
-                        <div style="margin-bottom: 8px;">晚會🎵葉璦菱, 曾心梅, 江志豐, 晨悠, 張芮菲</div>
-                        
-                        <div style="font-weight: bold; color: var(--ink-dark); margin-bottom: 6px;">【旗海永續・十大系列活動】</div>
-                        
-                        <!-- 內容區塊用 div 包覆，讓換行的文字完美切齊在右側 -->
-                        <div style="display: flex; align-items: flex-start; margin-bottom: 4px;">
-                            <span style="flex-shrink: 0; font-weight: bold;">黑潮市集：</span>
-                            <div>09:00起，17組在地商家從早逛到晚</div>
-                        </div>
-                        <div style="display: flex; align-items: flex-start; margin-bottom: 4px;">
-                            <span style="flex-shrink: 0; font-weight: bold;">活動①：</span>
-                            <div>09:00起「預約未來的成功時刻」漁村地圖集章</div>
-                        </div>
-                        <div style="display: flex; align-items: flex-start; margin-bottom: 4px;">
-                            <span style="flex-shrink: 0; font-weight: bold;">活動②：</span>
-                            <div>
-                                09:00 領卡「走入成功職人的一天」<br>
-                                13:00 體驗講堂開講
-                            </div>
-                        </div>
-                        <div style="display: flex; align-items: flex-start; margin-bottom: 4px;">
-                            <span style="flex-shrink: 0; font-weight: bold;">活動③：</span>
-                            <div>
-                                「海廢重生創意手作」共三場：<br>
-                                09:30 阿魯賽塞吊飾(線上報名)<br>
-                                10:00 海廢吊燈(現場報名)<br>
-                                11:30 海廢魚吊飾(現場報名)
-                            </div>
-                        </div>
-                        <div style="display: flex; align-items: flex-start;">
-                            <span style="flex-shrink: 0; font-weight: bold;">活動④：</span>
-                            <div>10:30起「旗海大冒險親子闖關」成功獲100元餐券</div>
-                        </div>
-                    </div>
-                    <a href="https://maps.google.com/?q=成功鎮海濱公園" target="_blank" class="event-loc" style="margin-top: 10px;">📍 成功鎮海濱公園</a>
-                </div>
-            </div>
-
-
-
-
-            <div class="event" data-end="1122">
-                <div class="event-card">
-                    <div class="card-header">
-                        <span class="event-date">11/14 - 11/22</span>
-                        <span class="tag tag-sport">衝浪</span>
-                        <span class="tag tag-free">免費觀賽</span>
-                    </div>
-                    <div class="event-title">🏄‍♂️2026臺灣國際衝浪公開賽｜國際賽</div>
-<a href="https://www.facebook.com/share/1JC973mqgS/?mibextid=wwXIfr" target="_blank" style="display: block; margin: -4px -15px !important; border-radius: 0; overflow: hidden;">
-    <img src="https://scontent-nrt1-1.xx.fbcdn.net/v/t39.30808-6/843119149_1557036733132493_458002251264432429_n.png?stp=dst-png_p720x720&_nc_cat=109&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=4ILaq4s8fdIQ7kNvwHNafLC&_nc_oc=AdrF8AgZ2q8AbV6KqNrKU2tZ4r9IeC-qmC9gV1Zc6o7-RYygniheuUTm0Ol5v7r1fPQ&_nc_zt=23&_nc_ht=scontent-nrt1-1.xx&edm=AKIiGfEEAAAA&_nc_gid=iXgjSsl3IYKaBTiEAXVExA&_nc_tpa=Q5bMBQKfUoyU-YQelWKPOw6mqZ_CjuFpDR2Sst7oVmGZY0WgZZn1Trv6BYRyo1Vdu95cnjBQ36sjaIA1Gg&oh=00_AQTtXAg3X5BKUjwHJ03fi3eAewCsGVjW9Cis5ns_QjaqhQ&oe=6AEA6525" alt="2026臺灣國際衝浪公開賽" style="width: 100%; display: block; border-radius: 0; margin: 0 !important; padding: 0 !important;">
-</a>
-                    <div class="event-desc">短版世界積分巡迴賽 INTL 6,000<br>★ WSL全球僅設四站的頂級賽事 ★</div>
-                    <a href="https://maps.google.com/?q=臺東金樽漁港" target="_blank" class="event-loc">📍 臺東金樽漁港</a>
-                </div>
-            </div>
-
-                        <!-- 🏄‍♂️衝浪公開賽：街舞大賽 -->
-            <div class="event" data-end="1115">
-                <div class="event-card">
-                    <div class="card-header">
-                        <span class="event-date">11/15</span>
-                        <span class="tag tag-music">舞蹈</span>
-                    </div>
-                    <div class="event-title">💃街舞大賽 Street Dance Battle｜臺灣國際衝浪公開賽系列</div>
-                    <div class="event-desc">
-                        透過排舞競賽帶來海洋與街頭文化的跨界碰撞，號召各路舞者用最炸的節奏引爆東海岸熱情！<br>
-                        <a href="https://forms.gle/cNYKqthWaUTmnnYd8" target="_blank" style="display: inline-block; margin-top: 6px; color: var(--primary-color); font-weight: bold; text-decoration: underline;">👉 賽事線上報名</a>
-                    </div>
-                    <a href="https://maps.google.com/?q=臺東金樽漁港" target="_blank" class="event-loc" style="margin-top: 4px;">📍 臺東金樽漁港</a>
-                </div>
-            </div>
-</div>
-
-<div class="month-header" style="background-color: #FDF9F1; padding-top: 10px; padding-bottom: 10px;">
-    <div style="font-size: 15px; color: #D9534F; font-weight: bold; margin-bottom: -2px; line-height: 1; letter-spacing: 1px;">臺東縣近期活動資訊</div>
-    <div style="display: flex; align-items: flex-end;">
-        <div style="font-size: 20px; font-weight: 900; color: #333; letter-spacing: 0.5px; white-space: nowrap; line-height: 1;">12月 December</div>
-        <div style="flex-grow: 1; border-bottom: 3px solid #FFB6B9; margin-left: 12px; position: relative; height: 28px;">
-            <div style="position: absolute; right: 15px; bottom: -2px; font-size: 32px; font-weight: 900; color: #D9534F; font-style: italic; line-height: 1;">2026</div>
-        </div>
-    </div>
-</div>
-
-
-        <div class="timeline">
-            <div class="event" data-end="1231">
-                <div class="event-card">
-                    <div class="card-header">
-                        <span class="event-date">12/31</span>
-                        <span class="tag tag-music">跨年晚會</span>
-                        <span class="tag tag-free">免費入場</span>
-                    </div>
-                    <div class="event-title">2027 台東跨年晚會－東漂去旅行</div>
-                    <!-- 新增的跨年活動圖片 -->
-<a href="https://tour.taitung.gov.tw/zh-tw/event-calendar/details/6294" target="_blank" style="display: block; margin: -4px -15px !important; border-radius: 0; overflow: hidden;">
-    <img src="https://tour.taitung.gov.tw/image/57158/1024x768" alt="2027台東跨年晚會" style="width: 100%; display: block; border-radius: 0; margin: 0 !important; padding: 0 !important;">
-</a>
-                    <div class="event-desc">
-                        時間：17:30 起<br>
-                        首波超強卡司：徐佳瑩、蔡健雅、彭佳慧、韋禮安。準備好來台東練歌，更多卡司敬請期待！
-                    </div>
-                    <a href="https://maps.google.com/?q=台東市國際地標" target="_blank" class="event-loc">📍 台東市國際地標</a>
                 </div>
             </div>
         </div>
@@ -833,7 +289,6 @@ div>
             溫馨提醒：本網頁整理之活動資訊僅供旅客參考，實際活動時間、地點與收費標準，請依各主辦單位最新公告為準。
         </div>
 
-
         <div style="text-align: center; margin-top: 25px;">
             <a href="home.html" class="home-btn">回到活動首頁</a>
         </div>
@@ -841,66 +296,35 @@ div>
 </div>
 
 <div class="slogan-footer">
-    <div class="slogan-text">
-        慢下來，感受台東山海與人情的溫度
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--pop-pink)" stroke="none">
-            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-        </svg>
-    </div>
+    慢下來，感受台東山海與人情的溫度 ❤️
 </div>
 
+<!-- === ⚙️ 字體縮放記憶系統 === -->
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const today = new Date();
-        const currentMonthDay = (today.getMonth() + 1) * 100 + today.getDate(); 
-        
-        const events = document.querySelectorAll('.event[data-end]');
-        let targetEvents = [];
-        let targetEndDate = null;
-        
-        for (let i = 0; i < events.length; i++) {
-            const eventEnd = parseInt(events[i].getAttribute('data-end'));
-            const isPostponed = events[i].querySelector('.postponed') !== null;
-            const isCancelled = events[i].querySelector('.cancelled') !== null;
-            
-            if (eventEnd >= currentMonthDay && !isPostponed && !isCancelled) {
-                targetEndDate = eventEnd;
-                break;
-            }
-        }
-        
-        if (targetEndDate !== null) {
-            for (let i = 0; i < events.length; i++) {
-                const checkEnd = parseInt(events[i].getAttribute('data-end'));
-                const checkPostponed = events[i].querySelector('.postponed') !== null;
-                const checkCancelled = events[i].querySelector('.cancelled') !== null;
-                
-                if (checkEnd === targetEndDate && !checkPostponed && !checkCancelled) {
-                    targetEvents.push(events[i]);
-                }
-            }
-        }
-        
-        if (targetEvents.length > 0) {
-            setTimeout(function() {
-                const y = targetEvents[0].getBoundingClientRect().top + window.scrollY - 145;
-                window.scrollTo({top: y, behavior: 'smooth'});
-                
-                targetEvents.forEach(function(event) {
-                    const card = event.querySelector('.event-card');
-                    if(card) {
-                        card.style.boxShadow = '0 0 0 4px var(--pop-pink)';
-                        card.style.borderColor = 'var(--pop-pink)';
-                        
-                        setTimeout(() => {
-                            card.style.boxShadow = '4px 4px 0px rgba(44, 62, 80, 0.15)';
-                            card.style.borderColor = 'var(--ink-dark)';
-                        }, 1500);
-                    }
-                });
-            }, 300);
-        }
-    });
+    let currentScale = parseFloat(localStorage.getItem('userFontScale')) || 1;
+    
+    function applyFontScale() {
+        document.documentElement.style.setProperty('--text-scale', currentScale);
+        localStorage.setItem('userFontScale', currentScale);
+    }
+    
+    function changeFont(step) {
+        currentScale += step;
+        if (currentScale < 0.8) currentScale = 0.8;
+        if (currentScale > 1.4) currentScale = 1.4;
+        applyFontScale();
+    }
+    
+    function resetFont() {
+        currentScale = 1;
+        applyFontScale();
+    }
+    
+    function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    applyFontScale();
 </script>
 
 </body>
