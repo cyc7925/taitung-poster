@@ -2,8 +2,8 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>東泳記 - 影音藝廊 (電視/電腦版)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>東泳記 - 影音大廳</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/justfont/open-huninn-font/font.css">
     
     <style>
@@ -21,66 +21,112 @@
             min-height: 100vh;
         }
 
-        /* 1. 解放寬度限制！改成 1200px (或 90%) 適合大螢幕 */
-        .container { max-width: 1200px; margin: 0 auto; padding: 30px 40px 60px 40px; }
+        /* 預設為手機版樣式 */
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px 15px 40px 15px; }
 
         /* === 頂部導覽列 === */
         .top-nav {
             display: flex; justify-content: space-between; align-items: center;
-            margin-bottom: 30px;
+            margin-bottom: 20px; flex-wrap: wrap; gap: 10px;
         }
         .back-btn {
-            background: white; border: 2px solid var(--ink-dark); padding: 8px 20px;
-            border-radius: 20px; font-size: 18px; font-weight: bold; color: var(--ink-dark);
-            text-decoration: none; box-shadow: 3px 3px 0px var(--ink-dark);
+            background: white; border: 2px solid var(--ink-dark); padding: 6px 14px;
+            border-radius: 20px; font-size: 15px; font-weight: bold; color: var(--ink-dark);
+            text-decoration: none; box-shadow: 2px 2px 0px var(--ink-dark); white-space: nowrap;
         }
-        .back-btn:active { transform: translate(2px, 2px); box-shadow: 0 0 0 transparent; }
+        .back-btn:active { transform: translate(1px, 1px); box-shadow: 0 0 0 transparent; }
         
-        /* 標題放大，遠看才清楚 */
-        .page-title { font-size: 32px; font-weight: bold; color: var(--pop-pink); margin: 0; letter-spacing: 2px;}
+        .page-title { font-size: 24px; font-weight: bold; color: var(--pop-pink); margin: 0; letter-spacing: 1px;}
 
-        /* === 影音網格排版 (電視版改為 4 欄式) === */
+        /* === 影音網格排版 (預設手機為 2 欄式) === */
         .media-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr); /* 變成 4 欄並排 */
-            gap: 20px; /* 照片間距拉大 */
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 12px; 
         }
 
-        /* 讓分類標題橫跨所有欄位 */
+        /* 分類標題橫跨整個螢幕 */
         .gallery-section-title {
-            grid-column: 1 / -1; /* 1 / -1 代表從第一格橫跨到最後一格 */
-            font-size: 24px; font-weight: bold; color: var(--ink-dark);
-            margin-top: 30px; margin-bottom: 10px;
-            border-bottom: 3px dashed rgba(176, 190, 197, 0.6);
-            padding-bottom: 12px;
-            display: flex; align-items: center; gap: 10px;
+            grid-column: 1 / -1; 
+            font-size: 18px; font-weight: bold; color: var(--ink-dark);
+            margin-top: 25px; margin-bottom: 5px;
+            border-bottom: 2px dashed rgba(176, 190, 197, 0.6);
+            padding-bottom: 8px;
+            display: flex; align-items: center; gap: 8px;
         }
 
-        /* 統一設定照片外觀 */
+        /* 統一設定靜態照片外觀 */
         .media-item {
             width: 100%;
             aspect-ratio: 1 / 1; 
             object-fit: cover; 
-            border-radius: 16px; /* 圓角稍微加大 */
-            border: 3px solid var(--ink-dark); /* 邊框加粗 */
-            box-shadow: 4px 4px 0px rgba(44,62,80,0.15);
+            border-radius: 12px; 
+            border: 2px solid var(--ink-dark); 
+            box-shadow: 2px 2px 0px rgba(44,62,80,0.15);
             background-color: #f5f5f5; 
-            transition: transform 0.3s ease; /* 滑鼠移過去的特效準備 */
+            transition: transform 0.3s ease;
         }
         
-        /* 讓照片在電腦上看有互動感 (滑鼠移過去會微微放大) */
-        .media-item:hover {
-            transform: scale(1.03);
-            z-index: 10;
+        /* === 📺 自訂電子相簿輪播區塊 === */
+        .slideshow-container {
+            grid-column: 1 / -1; /* 橫跨滿版 */
+            width: 100%;
+            aspect-ratio: 16 / 9; /* 保持類似影片的電視比例 */
+            background-color: #000;
+            border-radius: 12px;
+            border: 2px solid var(--ink-dark);
+            box-shadow: 2px 2px 0px rgba(44,62,80,0.15);
+            position: relative;
+            overflow: hidden;
         }
 
-        /* 影片樣式獨立設定：橫跨所有欄位，並設定為 16:9 電視比例 */
-        video.media-item {
-            aspect-ratio: 16 / 9; 
-            grid-column: 1 / -1; /* 橫跨滿版 */
-            max-height: 70vh; /* 避免影片太高超出電視螢幕 */
-            margin: 0 auto; 
-            background-color: #000;
+        .slide-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* 如果想要整張圖看到滿，可以改為 contain */
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out; /* 淡入淡出效果 */
+        }
+        .slide-img.active {
+            opacity: 1;
+        }
+
+        /* 播放/暫停控制器按鈕 */
+        .slide-controls {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            background: rgba(255, 255, 255, 0.85);
+            padding: 5px 12px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0px 2px 5px rgba(0,0,0,0.3);
+            border: 1px solid var(--ink-dark);
+        }
+        .play-btn {
+            background: none; border: none; font-size: 14px; font-weight: bold;
+            color: var(--ink-dark); cursor: pointer; display: flex; align-items: center; gap: 4px;
+            font-family: inherit; outline: none; padding: 0;
+        }
+
+        /* 💻 響應式設計 (RWD)：當螢幕大於 768px (平板/電腦/電視) 時自動套用以下設定 */
+        @media (min-width: 768px) {
+            .container { padding: 30px 40px 60px 40px; }
+            .page-title { font-size: 32px; letter-spacing: 2px; }
+            .top-nav { margin-bottom: 30px; }
+            .back-btn { font-size: 18px; padding: 8px 20px; box-shadow: 3px 3px 0px var(--ink-dark); }
+            
+            /* 電腦版自動變成 4 欄 */
+            .media-grid { grid-template-columns: repeat(4, 1fr); gap: 20px; }
+            .gallery-section-title { font-size: 24px; border-bottom-width: 3px; }
+            .media-item { border-width: 3px; border-radius: 16px; box-shadow: 4px 4px 0px rgba(44,62,80,0.15); }
+            .media-item:hover { transform: scale(1.05); z-index: 10; position: relative; }
+            .slideshow-container { border-width: 3px; border-radius: 16px; }
         }
     </style>
 </head>
@@ -90,21 +136,31 @@
     
     <!-- 頂部返回按鈕與標題 -->
     <div class="top-nav">
-        <!-- 記得這裡要對應你的首頁檔名 -->
+        <!-- 記得確認這裡要對應你的首頁檔名 -->
         <a href="home.html" class="back-btn">⬅ 返回首頁</a>
-        <h1 class="page-title">📸 東泳記 - 影音大廳</h1>
+        <h1 class="page-title">📸 東泳記影音大廳</h1>
     </div>
 
     <!-- 影音專區開始 -->
     <div class="media-grid">
 
-        <!-- 🎥 影片保留區 -->
-        <div class="gallery-section-title"><span style="color:var(--pop-pink);">🎬</span> 精彩影片預告</div>
-        <video controls class="media-item">
-            <source src="Images/your-video.mp4" type="video/mp4">
-            您的瀏覽器不支援影片播放。
-        </video>
+        <!-- 📺 電子相簿輪播區塊 (取代原有的影片) -->
+        <div class="gallery-section-title"><span style="color:var(--pop-pink);">✨</span> 知本溫泉精選預覽</div>
+        <div class="slideshow-container">
+            <!-- 輪播的照片清單 (你可以隨時在這裡增減要輪播的照片) -->
+            <img src="Images/tyg-1.jpg" class="slide-img active" alt="輪播 1">
+            <img src="Images/royal-1.jpg" class="slide-img" alt="輪播 2">
+            <img src="Images/dt-1.jpg" class="slide-img" alt="輪播 3">
+            <img src="Images/yy-1.jpg" class="slide-img" alt="輪播 4">
+            <img src="Images/tyg-2.jpg" class="slide-img" alt="輪播 5">
 
+            <!-- 暫停/播放按鈕 -->
+            <div class="slide-controls">
+                <button class="play-btn" id="togglePlayBtn">⏸ 暫停</button>
+            </div>
+        </div>
+
+        <!-- 以下為靜態網格照片 -->
         <!-- 📸 東遊季溫泉渡假村 (7張) -->
         <div class="gallery-section-title"><span style="color:var(--pop-pink);">♨️</span> 東遊季溫泉渡假村</div>
         <img src="Images/tyg-1.jpg" class="media-item" alt="東遊季照片">
@@ -148,6 +204,51 @@
 
     </div>
 </div>
+
+<!-- ⚙️ 處理電子相簿輪播與暫停按鈕的 JavaScript 程式碼 -->
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const slides = document.querySelectorAll(".slide-img");
+        const playBtn = document.getElementById("togglePlayBtn");
+        let currentIndex = 0;
+        let isPlaying = true;
+        let slideInterval;
+
+        // 切換到下一張照片的函數
+        function nextSlide() {
+            slides[currentIndex].classList.remove("active");
+            currentIndex = (currentIndex + 1) % slides.length;
+            slides[currentIndex].classList.add("active");
+        }
+
+        // 開始輪播 (設定每 2.5 秒換一張)
+        function startSlideShow() {
+            slideInterval = setInterval(nextSlide, 2500);
+        }
+
+        // 停止輪播
+        function stopSlideShow() {
+            clearInterval(slideInterval);
+        }
+
+        // 初始化開始播放
+        startSlideShow();
+
+        // 點擊按鈕時的動作
+        playBtn.addEventListener("click", function() {
+            if (isPlaying) {
+                stopSlideShow();
+                playBtn.innerHTML = "▶️ 播放";
+                isPlaying = false;
+            } else {
+                nextSlide(); // 馬上換下一張
+                startSlideShow();
+                playBtn.innerHTML = "⏸ 暫停";
+                isPlaying = true;
+            }
+        });
+    });
+</script>
 
 </body>
 </html>
