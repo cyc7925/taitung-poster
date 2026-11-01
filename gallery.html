@@ -24,7 +24,7 @@
             min-height: 100vh;
         }
 
-        .container { max-width: 500px; margin: 0 auto; padding: 10px 15px 90px 15px; }
+        .container { max-width: 500px; margin: 0 auto; padding: 15px 15px 90px 15px; }
 
         /* === 頂部導覽列 === */
         .sticky-navbar {
@@ -56,7 +56,7 @@
             backdrop-filter: blur(8px); 
             z-index: 999; 
             box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
-            padding: 8px 0 calc(8px + env(safe-area-inset-top)) 0; 
+            padding: 8px 0 calc(8px + env(safe-area-inset-bottom)) 0; 
         }
         .font-floater button, .font-floater a {
             background: transparent; border: none; outline: none;
@@ -68,12 +68,6 @@
             border-right: 1px solid rgba(0,0,0,0.08); 
         }
         .font-floater button:active, .font-floater a:active { background: #F0F0F0; color: var(--pop-pink); }
-
-        /* === 影音大廳專屬樣式 === */
-        .page-title {
-            text-align: center; font-size: calc(22px * var(--text-scale)); font-weight: bold;
-            color: var(--pop-pink); margin: 15px 0 10px 0; display: flex; align-items: center; justify-content: center; gap: 8px;
-        }
 
         /* 輪播區塊與控制按鈕 */
         .slideshow-wrapper {
@@ -90,25 +84,24 @@
         }
         .slide-img.active { opacity: 1; }
 
-        /* 輪播下方的專屬控制按鈕列 */
         .slideshow-controls {
             display: flex; gap: 10px; margin-top: 10px; justify-content: center;
         }
         .control-btn {
             background: var(--pop-yellow); border: 2px solid var(--ink-dark); border-radius: 10px;
-            padding: 6px 14px; font-size: calc(13px * var(--text-scale)); font-weight: bold; color: var(--ink-dark);
+            padding: 6px 16px; font-size: calc(13px * var(--text-scale)); font-weight: bold; color: var(--ink-dark);
             cursor: pointer; box-shadow: 2px 2px 0px var(--ink-dark); display: flex; align-items: center; gap: 4px;
             font-family: inherit; transition: 0.2s;
         }
         .control-btn:active { transform: translate(1px, 1px); box-shadow: none; }
 
-        /* 恢復折疊選單樣式 */
+        /* 飯店相簿折疊選單與雙欄大圖排版 */
         details { margin-top: 10px; border: 2px solid var(--ink-dark); border-radius: 12px; padding: 10px; background: white; box-shadow: 2px 2px 0px rgba(44,62,80,0.1); }
         details summary { list-style: none; font-size: calc(15px * var(--text-scale)); font-weight: bold; color: var(--pop-pink); cursor: pointer; display: flex; align-items: center; justify-content: space-between; }
         details summary::-webkit-details-marker { display: none; }
 
         .gallery-grid {
-            display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 10px;
+            display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 10px;
         }
         .gallery-thumb {
             aspect-ratio: 4 / 3; width: 100%; object-fit: cover; border-radius: 8px;
@@ -117,10 +110,26 @@
         }
         .gallery-thumb:active { transform: scale(0.96); }
 
+        /* 🔥 點擊放大彈出窗 (Lightbox 燈箱效果) */
+        #lightbox {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.85); z-index: 9999;
+            display: none; align-items: center; justify-content: center; padding: 20px; box-sizing: border-box;
+        }
+        #lightbox img {
+            max-width: 100%; max-height: 85vh; object-fit: contain; border-radius: 8px;
+            border: 3px solid white; box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+        }
+        #lightbox-close {
+            position: absolute; top: 20px; right: 20px; background: white; color: var(--ink-dark);
+            border: none; border-radius: 50%; width: 40px; height: 40px; font-size: 20px; font-weight: bold;
+            cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
         @media (min-width: 768px) {
             .container { max-width: 800px; padding: 30px 40px; }
             .nav-store { font-size: 26px; }
-            .gallery-grid { grid-template-columns: repeat(4, 1fr); gap: 12px; }
+            .gallery-grid { grid-template-columns: repeat(3, 1fr); gap: 12px; }
         }
     </style>
 </head>
@@ -148,11 +157,9 @@
 
 <div class="container">
     
-    <div class="page-title">📸 東泳記影音大廳</div>
-
-    <!-- 📺 電子相簿輪播區塊 -->
-    <div class="slideshow-wrapper" id="slideshowWrapper">
-        <div class="slideshow-container" id="slideshowArea" title="點擊畫面也可暫停/播放">
+    <!-- 📺 電子相簿輪播區塊 (點擊圖片可直接放大) -->
+    <div class="slideshow-wrapper">
+        <div class="slideshow-container" id="slideshowArea" title="點擊圖片可放大觀看">
             <img src="Images/tyg-1.jpg" class="slide-img active" alt="東遊季">
             <img src="Images/tyg-2.jpg" class="slide-img" alt="東遊季">
             <img src="Images/tyg-3.jpg" class="slide-img" alt="東遊季">
@@ -190,67 +197,72 @@
         <div class="slideshow-controls">
             <button class="control-btn" id="togglePlayBtn">⏸︎ 暫停</button>
             <button class="control-btn" id="togglePlayBtnPlay" style="display:none;">▶︎ 播放</button>
-            <button class="control-btn" onclick="toggleFullscreen()">⛶ 全螢幕</button>
         </div>
     </div>
 
-    <!-- 📁 各飯店折疊相簿分類區塊 -->
+    <!-- 📁 各飯店折疊相簿分類區塊 (每行 2 張大圖，點擊任一張可放大) -->
     <details open>
         <summary>♨️ 東遊季溫泉渡假村相簿 <span>▼</span></summary>
         <div class="gallery-grid">
-            <img src="Images/tyg-1.jpg" class="gallery-thumb" alt="東遊季 1">
-            <img src="Images/tyg-2.jpg" class="gallery-thumb" alt="東遊季 2">
-            <img src="Images/tyg-3.jpg" class="gallery-thumb" alt="東遊季 3">
-            <img src="Images/tyg-4.jpg" class="gallery-thumb" alt="東遊季 4">
-            <img src="Images/tyg-5.jpg" class="gallery-thumb" alt="東遊季 5">
-            <img src="Images/tyg-6.jpg" class="gallery-thumb" alt="東遊季 6">
-            <img src="Images/tyg-7.jpg" class="gallery-thumb" alt="東遊季 7">
+            <img src="Images/tyg-1.jpg" class="gallery-thumb" alt="東遊季 1" onclick="openLightbox(this.src)">
+            <img src="Images/tyg-2.jpg" class="gallery-thumb" alt="東遊季 2" onclick="openLightbox(this.src)">
+            <img src="Images/tyg-3.jpg" class="gallery-thumb" alt="東遊季 3" onclick="openLightbox(this.src)">
+            <img src="Images/tyg-4.jpg" class="gallery-thumb" alt="東遊季 4" onclick="openLightbox(this.src)">
+            <img src="Images/tyg-5.jpg" class="gallery-thumb" alt="東遊季 5" onclick="openLightbox(this.src)">
+            <img src="Images/tyg-6.jpg" class="gallery-thumb" alt="東遊季 6" onclick="openLightbox(this.src)">
+            <img src="Images/tyg-7.jpg" class="gallery-thumb" alt="東遊季 7" onclick="openLightbox(this.src)">
         </div>
     </details>
 
     <details>
         <summary>♨️ 知本老爺酒店相簿 <span>▼</span></summary>
         <div class="gallery-grid">
-            <img src="Images/royal-1.jpg" class="gallery-thumb" alt="老爺 1">
-            <img src="Images/royal-2.jpg" class="gallery-thumb" alt="老爺 2">
-            <img src="Images/royal-3.jpg" class="gallery-thumb" alt="老爺 3">
-            <img src="Images/royal-4.jpg" class="gallery-thumb" alt="老爺 4">
-            <img src="Images/royal-5.jpg" class="gallery-thumb" alt="老爺 5">
-            <img src="Images/royal-6.jpg" class="gallery-thumb" alt="老爺 6">
-            <img src="Images/royal-7.jpg" class="gallery-thumb" alt="老爺 7">
-            <img src="Images/royal-8.jpg" class="gallery-thumb" alt="老爺 8">
-            <img src="Images/royal-9.jpg" class="gallery-thumb" alt="老爺 9">
+            <img src="Images/royal-1.jpg" class="gallery-thumb" alt="老爺 1" onclick="openLightbox(this.src)">
+            <img src="Images/royal-2.jpg" class="gallery-thumb" alt="老爺 2" onclick="openLightbox(this.src)">
+            <img src="Images/royal-3.jpg" class="gallery-thumb" alt="老爺 3" onclick="openLightbox(this.src)">
+            <img src="Images/royal-4.jpg" class="gallery-thumb" alt="老爺 4" onclick="openLightbox(this.src)">
+            <img src="Images/royal-5.jpg" class="gallery-thumb" alt="老爺 5" onclick="openLightbox(this.src)">
+            <img src="Images/royal-6.jpg" class="gallery-thumb" alt="老爺 6" onclick="openLightbox(this.src)">
+            <img src="Images/royal-7.jpg" class="gallery-thumb" alt="老爺 7" onclick="openLightbox(this.src)">
+            <img src="Images/royal-8.jpg" class="gallery-thumb" alt="老爺 8" onclick="openLightbox(this.src)">
+            <img src="Images/royal-9.jpg" class="gallery-thumb" alt="老爺 9" onclick="openLightbox(this.src)">
         </div>
     </details>
 
     <details>
         <summary>♨️ Y—Y旺溫泉渡假村相簿 <span>▼</span></summary>
         <div class="gallery-grid">
-            <img src="Images/yy-1.jpg" class="gallery-thumb" alt="ㄚㄧㄚ旺 1">
-            <img src="Images/yy-2.jpg" class="gallery-thumb" alt="ㄚㄧㄚ旺 2">
-            <img src="Images/yy-3.jpg" class="gallery-thumb" alt="ㄚㄧㄚ旺 3">
-            <img src="Images/yy-4.jpg" class="gallery-thumb" alt="ㄚㄧㄚ旺 4">
+            <img src="Images/yy-1.jpg" class="gallery-thumb" alt="ㄚㄧㄚ旺 1" onclick="openLightbox(this.src)">
+            <img src="Images/yy-2.jpg" class="gallery-thumb" alt="ㄚㄧㄚ旺 2" onclick="openLightbox(this.src)">
+            <img src="Images/yy-3.jpg" class="gallery-thumb" alt="ㄚㄧㄚ旺 3" onclick="openLightbox(this.src)">
+            <img src="Images/yy-4.jpg" class="gallery-thumb" alt="ㄚㄧㄚ旺 4" onclick="openLightbox(this.src)">
         </div>
     </details>
 
     <details>
         <summary>♨️ 東台溫泉飯店相簿 <span>▼</span></summary>
         <div class="gallery-grid">
-            <img src="Images/dt-1.jpg" class="gallery-thumb" alt="東台 1">
-            <img src="Images/dt-2.jpg" class="gallery-thumb" alt="東台 2">
-            <img src="Images/dt-3.jpg" class="gallery-thumb" alt="東台 3">
-            <img src="Images/dt-4.jpg" class="gallery-thumb" alt="東台 4">
-            <img src="Images/dt-5.jpg" class="gallery-thumb" alt="東台 5">
-            <img src="Images/dt-6.jpg" class="gallery-thumb" alt="東台 6">
-            <img src="Images/dt-7.jpg" class="gallery-thumb" alt="東台 7">
-            <img src="Images/dt-8.jpg" class="gallery-thumb" alt="東台 8">
-            <img src="Images/dt-9.jpg" class="gallery-thumb" alt="東台 9">
+            <img src="Images/dt-1.jpg" class="gallery-thumb" alt="東台 1" onclick="openLightbox(this.src)">
+            <img src="Images/dt-2.jpg" class="gallery-thumb" alt="東台 2" onclick="openLightbox(this.src)">
+            <img src="Images/dt-3.jpg" class="gallery-thumb" alt="東台 3" onclick="openLightbox(this.src)">
+            <img src="Images/dt-4.jpg" class="gallery-thumb" alt="東台 4" onclick="openLightbox(this.src)">
+            <img src="Images/dt-5.jpg" class="gallery-thumb" alt="東台 5" onclick="openLightbox(this.src)">
+            <img src="Images/dt-6.jpg" class="gallery-thumb" alt="東台 6" onclick="openLightbox(this.src)">
+            <img src="Images/dt-7.jpg" class="gallery-thumb" alt="東台 7" onclick="openLightbox(this.src)">
+            <img src="Images/dt-8.jpg" class="gallery-thumb" alt="東台 8" onclick="openLightbox(this.src)">
+            <img src="Images/dt-9.jpg" class="gallery-thumb" alt="東台 9" onclick="openLightbox(this.src)">
         </div>
     </details>
 
 </div>
 
-<!-- === ⚙️ 輪播與字體控制指令碼 === -->
+<!-- 🔥 彈出大圖燈箱容器 -->
+<div id="lightbox" onclick="closeLightbox()">
+    <button id="lightbox-close">✕</button>
+    <img id="lightbox-img" src="" alt="放大預覽">
+</div>
+
+<!-- === ⚙️ 輪播與燈箱控制指令碼 === -->
 <script>
     let currentScale = parseFloat(localStorage.getItem('userFontScale')) || 1;
     function applyFontScale() {
@@ -302,30 +314,28 @@
         }
     }
 
-    slideshowArea.addEventListener('click', togglePlay);
     pauseBtn.addEventListener('click', togglePlay);
     playBtn.addEventListener('click', togglePlay);
 
-    // 全螢幕修復：強制讓輪播外框放大，手機點擊絕對有反應
-    function toggleFullscreen() {
-        const elem = document.getElementById('slideshowWrapper');
-        if (!document.fullscreenElement && !document.webkitFullscreenElement) {
-            if (elem.requestFullscreen) {
-                elem.requestFullscreen();
-            } else if (elem.webkitRequestFullscreen) {
-                elem.webkitRequestFullscreen();
-            } else if (elem.msRequestFullscreen) {
-                elem.msRequestFullscreen();
-            }
+    // 點擊輪播圖也能直接放大目前那張照片
+    slideshowArea.addEventListener('click', function(e) {
+        if (e.target.tagName === 'IMG') {
+            openLightbox(e.target.src);
         } else {
-            if (document.exitFullscreen) {
-                document.exitFullscreen();
-            } else if (document.webkitExitFullscreen) {
-                document.webkitExitFullscreen();
-            } else if (document.msExitFullscreen) {
-                document.msExitFullscreen();
-            }
+            togglePlay();
         }
+    });
+
+    // 燈箱放大功能
+    function openLightbox(imgSrc) {
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        lightboxImg.src = imgSrc;
+        lightbox.style.display = 'flex';
+    }
+
+    function closeLightbox() {
+        document.getElementById('lightbox').style.display = 'none';
     }
 </script>
 
