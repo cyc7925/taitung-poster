@@ -56,7 +56,7 @@
             background: rgba(255, 255, 255, 0.95); 
             border-top: 1.5px solid rgba(44, 62, 80, 0.2);
             border-radius: 16px 16px 0 0; 
-            backdrop-filter: blur(8px); 
+            backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
             z-index: 999; 
             box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
             padding: 8px 0 calc(8px + env(safe-area-inset-bottom)) 0; 
@@ -86,6 +86,39 @@
         @keyframes float2 { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
         @keyframes float3 { 0%, 100% { transform: rotate(15deg) translate(5px, -10px); } 50% { transform: rotate(15deg) translate(5px, -15px); } }
         @keyframes float4 { 0%, 100% { transform: rotate(15deg) translate(25px, -15px); } 50% { transform: rotate(15deg) translate(25px, -20px); } }
+
+        /* === 修復輪播動畫 Keyframes === */
+        @keyframes slideTYG {
+            0%, 10% { transform: translateX(0); }
+            14.28%, 24.28% { transform: translateX(-14.28%); }
+            28.57%, 38.57% { transform: translateX(-28.57%); }
+            42.85%, 52.85% { transform: translateX(-42.85%); }
+            57.14%, 67.14% { transform: translateX(-57.14%); }
+            71.42%, 81.42% { transform: translateX(-71.42%); }
+            85.71%, 95.71% { transform: translateX(-85.71%); }
+            100% { transform: translateX(0); }
+        }
+
+        @keyframes fastAutoSlide {
+            0%, 8% { transform: translateX(0); }
+            11.11%, 19.11% { transform: translateX(-11.11%); }
+            22.22%, 30.22% { transform: translateX(-22.22%); }
+            33.33%, 41.33% { transform: translateX(-33.33%); }
+            44.44%, 52.44% { transform: translateX(-44.44%); }
+            55.55%, 63.55% { transform: translateX(-55.55%); }
+            66.66%, 74.66% { transform: translateX(-66.66%); }
+            77.77%, 85.77% { transform: translateX(-77.77%); }
+            88.88%, 96.88% { transform: translateX(-88.88%); }
+            100% { transform: translateX(0); }
+        }
+
+        @keyframes slideYY {
+            0%, 20% { transform: translateX(0); }
+            25%, 45% { transform: translateX(-25%); }
+            50%, 70% { transform: translateX(-50%); }
+            75%, 95% { transform: translateX(-75%); }
+            100% { transform: translateX(0); }
+        }
 
         /* === 區塊與內文樣式 === */
         .section-divider { border-top: 2px dashed rgba(176, 190, 197, 0.6); margin: 25px 5px 15px 5px; }
@@ -169,7 +202,7 @@
 </head>
 <body>
 
-<!-- === 統一的頂部導覽列 (與 2026.html 完全一致) === -->
+<!-- === 統一的頂部導覽列 === -->
 <div class="sticky-navbar">
     <div class="nav-info">
         <div class="nav-store">東泳記泳裝店</div>
@@ -178,8 +211,9 @@
     <a href="tel:0910557998" class="btn-call">📞 0910-557-998</a>
 </div>
 
-<!-- === 底部多功能工具列 === -->
+<!-- === 底部多功能工具列 (已補上首頁 🏠) === -->
 <div class="font-floater">
+    <a href="home.html" title="返回首頁">🏠</a>
     <a href="tel:0910557998" title="撥打電話">📞</a>
     <a href="https://maps.app.goo.gl/YkHK24qn1kZsfBn38?g_st=ic" target="_blank" title="開啟導航">🚗</a>
     <button onclick="changeFont(-0.1)">A-</button>
