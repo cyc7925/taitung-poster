@@ -14,7 +14,9 @@
             --ink-dark: #2C3E50;     
             --pop-blue: #4ECDC4;     
             --pop-pink: #FF6B6B;     
-            --pop-yellow: #FFE66D;   
+            --pop-yellow: #FFE66D;
+            /* 這是字體縮放的魔法變數，預設為 1 倍 */
+            --text-scale: 1;   
         }
 
         body {
@@ -28,13 +30,7 @@
         .container { max-width: 500px; margin: 0 auto; padding: 10px 15px 40px 15px; }
 
         /* === 1. 漂浮 Emoji 區塊 === */
-        .emoji-cluster {
-            text-align: center;
-            margin-top: 10px; 
-            margin-bottom: -15px; 
-            user-select: none;
-        }
-
+        .emoji-cluster { text-align: center; margin-top: 10px; margin-bottom: -15px; user-select: none; }
         .emo-group { display: inline-block; position: relative; }
         
         .e-ring { display: inline-block; font-size: 32px; transform: rotate(-15deg) translate(-5px, -5px); animation: float1 3s ease-in-out infinite; position: relative; }
@@ -43,7 +39,6 @@
         
         .e-sparkle { position: absolute; top: -10px; right: -15px; font-size: 20px; transform: rotate(10deg); color: #FFD700; text-shadow: 0 0 5px rgba(255,215,0,0.8); }
         .e-sparkle-left { position: absolute; top: -5px; left: -15px; font-size: 20px; transform: rotate(-20deg); color: #FFD700; text-shadow: 0 0 5px rgba(255,215,0,0.8); }
-        
         .e-onepiece { display: block; font-size: 30px; transform: rotate(15deg) translate(25px, -15px); margin-top: -15px; animation: float4 3s ease-in-out infinite 1.5s; }
 
         @keyframes float1 { 0%, 100% { transform: rotate(-15deg) translate(-5px, -5px); } 50% { transform: rotate(-15deg) translate(-5px, -10px); } }
@@ -53,50 +48,54 @@
 
         /* === 2. 店名標題 === */
         .store-name { 
-            text-align: center; font-size: 30px; font-weight: bold; 
+            text-align: center; font-size: calc(30px * var(--text-scale)); font-weight: bold; 
             color: var(--pop-pink); letter-spacing: 2px; 
             margin-top: 0px; margin-bottom: 0px; 
         }
 
         /* === 統一的區塊分隔虛線 === */
-        .section-divider {
-            border-top: 2px dashed rgba(176, 190, 197, 0.6);
-            margin: 25px 5px 15px 5px; 
-        }
+        .section-divider { border-top: 2px dashed rgba(176, 190, 197, 0.6); margin: 25px 5px 15px 5px; }
         
         /* === 3. 聯絡與導航資訊列 === */
         .info-card { margin-bottom: 0px; padding: 0 5px; } 
-        
-        .info-row { 
-            display: flex; justify-content: space-between; align-items: center; 
-            padding: 2px 0; 
-        }
-        
-        .info-left { font-size: 13.5px; font-weight: bold; color: var(--ink-dark); display: flex; align-items: center; gap: 6px; }
-        .info-icon { font-size: 16px; display: inline-block; width: 20px; text-align: center; color: #555; }
-        .phone-text { color: #0000EE; text-decoration: underline; font-weight: bold; font-family: sans-serif; letter-spacing: 0.5px; font-size: 15px; }
+        .info-row { display: flex; justify-content: space-between; align-items: center; padding: 2px 0; }
+        .info-left { font-size: calc(13.5px * var(--text-scale)); font-weight: bold; color: var(--ink-dark); display: flex; align-items: center; gap: 6px; }
+        .info-icon { font-size: calc(16px * var(--text-scale)); display: inline-block; width: 20px; text-align: center; color: #555; }
+        .phone-text { color: #0000EE; text-decoration: underline; font-weight: bold; font-family: sans-serif; letter-spacing: 0.5px; font-size: calc(15px * var(--text-scale)); }
 
         .info-btn { 
-            padding: 3px 12px; 
-            border: 2px solid var(--ink-dark); border-radius: 20px; 
-            font-size: 12px; font-weight: bold; color: var(--ink-dark); text-decoration: none;
+            padding: 3px 12px; border: 2px solid var(--ink-dark); border-radius: 20px; 
+            font-size: calc(12px * var(--text-scale)); font-weight: bold; color: var(--ink-dark); text-decoration: none;
             box-shadow: 2px 2px 0px var(--ink-dark); transition: 0.2s; display: inline-block; text-align: center;
         }
         .info-btn:active { transform: translate(1px, 1px); box-shadow: 0 0 0 var(--ink-dark); }
         .btn-white { background: white; }
         .btn-yellow { background: var(--pop-yellow); }
+
+        /* === 🆕 字體大小控制列 === */
+        .font-controls-inline {
+            display: flex; justify-content: center; align-items: center;
+            margin-top: 15px; margin-bottom: 5px; gap: 6px;
+        }
+        .font-btn-inline {
+            background: white; border: 2px solid var(--ink-dark);
+            padding: 4px 10px; border-radius: 12px; font-size: 12px;
+            font-weight: bold; color: var(--ink-dark); cursor: pointer;
+            box-shadow: 2px 2px 0px rgba(44,62,80,0.15); transition: 0.2s;
+        }
+        .font-btn-inline:active { transform: translate(1px, 1px); box-shadow: 0 0 0 transparent; }
   
-        /* === 本店詳細介紹區塊樣式 === */
+        /* === 本店詳細介紹區塊 === */
         .store-intro-clean {
             padding: 0 10px; margin-top: 2px; margin-bottom: 15px;
-            font-size: 12.5px; line-height: 1.6; color: #444; text-align: justify;
+            font-size: calc(12.5px * var(--text-scale)); line-height: 1.6; color: #444; text-align: justify;
         }
-        .intro-title { font-size: 14px; font-weight: bold; color: var(--pop-pink); margin-bottom: 6px; }
+        .intro-title { font-size: calc(14px * var(--text-scale)); font-weight: bold; color: var(--pop-pink); margin-bottom: 6px; }
         .intro-text { margin-bottom: 6px; }
         
         /* === 全局標題樣式 === */
         .section-title { 
-            font-size: 15px; font-weight: bold; color: var(--ink-dark); 
+            font-size: calc(15px * var(--text-scale)); font-weight: bold; color: var(--ink-dark); 
             margin: 0 0 10px 0; display: flex; align-items: center; gap: 6px; 
         }
         
@@ -108,74 +107,63 @@
             align-items: center; justify-content: center;
             box-shadow: 2px 2px 0px rgba(255, 107, 107, 0.2); transition: 0.2s;
         }
-        .product-icon { font-size: 28px; margin-bottom: 6px; line-height: 1; }
-        .product-name { font-size: 13.5px; font-weight: bold; color: var(--ink-dark); }
+        .product-icon { font-size: calc(28px * var(--text-scale)); margin-bottom: 6px; line-height: 1; }
+        .product-name { font-size: calc(13.5px * var(--text-scale)); font-weight: bold; color: var(--ink-dark); }
 
-        /* === 5. 泡湯 SPA 精選區塊 === */
+        /* === 5. 泡湯 SPA 精選 === */
         .spa-card { background: white; border: 2.5px solid var(--ink-dark); border-radius: 12px; padding: 10px; margin-bottom: 8px; box-shadow: 2px 2px 0px rgba(44,62,80,0.1); } 
         .spa-top { display: flex; justify-content: space-between; align-items: center; }
         .spa-title-area { flex: 1; padding-right: 8px; }
-        .spa-name { font-size: 14px; font-weight: bold; color: var(--ink-dark); line-height: 1.1; margin-bottom: 3px; } 
-        .spa-short { font-size: 11px; color: #666; margin-top: 0; line-height: 1.3; } 
+        .spa-name { font-size: calc(14px * var(--text-scale)); font-weight: bold; color: var(--ink-dark); line-height: 1.1; margin-bottom: 3px; } 
+        .spa-short { font-size: calc(11px * var(--text-scale)); color: #666; margin-top: 0; line-height: 1.3; } 
         
-        .spa-nav-btn { background: var(--pop-yellow); color: var(--ink-dark); text-decoration: none; padding: 4px 8px; border-radius: 8px; font-size: 11px; font-weight: bold; border: 2px solid var(--ink-dark); white-space: nowrap; box-shadow: 2px 2px 0px var(--ink-dark); transition: 0.2s; display: flex; align-items: center; gap: 4px; }
+        .spa-nav-btn { background: var(--pop-yellow); color: var(--ink-dark); text-decoration: none; padding: 4px 8px; border-radius: 8px; font-size: calc(11px * var(--text-scale)); font-weight: bold; border: 2px solid var(--ink-dark); white-space: nowrap; box-shadow: 2px 2px 0px var(--ink-dark); transition: 0.2s; display: flex; align-items: center; gap: 4px; }
         .spa-nav-btn:active { transform: translate(1px,1px); box-shadow: none; }
         
         details { margin-top: 6px; border-top: 1px dashed #CCC; padding-top: 6px; }
         details summary { list-style: none; }
         details summary::-webkit-details-marker { display: none; }
-        summary { font-size: 12px; font-weight: bold; color: var(--pop-pink); cursor: pointer; outline: none; margin-bottom: 4px; display: flex; align-items: center; gap: 4px; }
+        summary { font-size: calc(12px * var(--text-scale)); font-weight: bold; color: var(--pop-pink); cursor: pointer; outline: none; margin-bottom: 4px; display: flex; align-items: center; gap: 4px; }
         
-        .info-list { list-style: none; padding: 0; margin: 0; font-size: 11.5px; line-height: 1.4; color: #444; } 
+        .info-list { list-style: none; padding: 0; margin: 0; font-size: calc(11.5px * var(--text-scale)); line-height: 1.4; color: #444; } 
         .info-list li { margin-bottom: 4px; display: flex; }
         .info-label { font-weight: bold; color: var(--ink-dark); width: 65px; flex-shrink: 0; }
         .info-link { color: #0000EE; text-decoration: underline; font-weight: bold; }
 
-        /* === 影音大廳超連結按鈕 (極簡折疊風格) === */
+        /* === 影音大廳超連結 === */
         .gallery-link-btn {
             display: flex; justify-content: center; align-items: center; gap: 8px;
             padding: 12px 0; margin: 15px 5px 5px 5px; 
-            font-size: 15px; font-weight: bold; color: var(--pop-pink); text-decoration: none;
+            font-size: calc(15px * var(--text-scale)); font-weight: bold; color: var(--pop-pink); text-decoration: none;
             border-top: 1px dashed #CCC; border-bottom: 1px dashed #CCC; 
             background-color: rgba(255, 107, 107, 0.05); transition: 0.2s;
         }
         .gallery-link-btn:active { background-color: rgba(255, 107, 107, 0.12); }
 
-        /* === 6. 附近景點四宮格 === */
+        /* === 6. 附近景點 === */
         .spot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 5px; }
         .spot-card { background: white; border: 2.5px solid var(--pop-blue); border-radius: 12px; padding: 10px; text-align: center; text-decoration: none; display: block; transition: 0.2s; box-shadow: 2px 2px 0px rgba(78, 205, 196, 0.2); }
         .spot-card:active { transform: scale(0.96); background: #f0fbf9; box-shadow: none; }
-        .spot-icon { font-size: 20px; margin-bottom: 3px; }
-        .spot-name { font-size: 13px; font-weight: bold; color: var(--ink-dark); margin-bottom: 2px; }
-        .spot-desc { font-size: 10px; color: #666; }
+        .spot-icon { font-size: calc(20px * var(--text-scale)); margin-bottom: 3px; }
+        .spot-name { font-size: calc(13px * var(--text-scale)); font-weight: bold; color: var(--ink-dark); margin-bottom: 2px; }
+        .spot-desc { font-size: calc(10px * var(--text-scale)); color: #666; }
 
-        /* === 7. 近期活動區塊 === */
+        /* === 7. 近期活動 === */
         .event-btn { 
             display: block; width: 100%; box-sizing: border-box; text-align: center;
-            padding: 12px; border-radius: 12px; font-size: 15px; font-weight: bold;
+            padding: 12px; border-radius: 12px; font-size: calc(15px * var(--text-scale)); font-weight: bold;
             border: 2.5px solid var(--ink-dark); margin-bottom: 10px; text-decoration: none;
         }
         .yellow-btn { background: var(--pop-yellow); color: var(--ink-dark); box-shadow: 3px 3px 0px var(--ink-dark); transition: 0.2s; }
         .yellow-btn:active { transform: translate(2px,2px); box-shadow: 0px 0px 0px transparent; }
         .gray-btn { background: rgba(255,255,255,0.7); color: #888; border-color: #CCC; box-shadow: none; }
 
-        /* === 底部標語與口號 === */
+        /* === 底部標語 === */
         .slogan-area { text-align: center; margin-top: 25px; }
-        .slogan-sub { font-size: 12px; font-weight: bold; color: #555; margin-bottom: 6px; }
-        .footer-text { font-size: 11.5px; font-weight: bold; color: var(--ink-dark); }
+        .slogan-sub { font-size: calc(12px * var(--text-scale)); font-weight: bold; color: #555; margin-bottom: 6px; }
+        .footer-text { font-size: calc(11.5px * var(--text-scale)); font-weight: bold; color: var(--ink-dark); }
 
-        /* 動畫專用區塊 */
-        @keyframes fastAutoSlide {
-            0%, 10%   { transform: translateX(0); }
-            12.2%, 22.2% { transform: translateX(-11.11%); }
-            24.4%, 34.4% { transform: translateX(-22.22%); }
-            36.6%, 46.6% { transform: translateX(-33.33%); }
-            48.8%, 58.8% { transform: translateX(-44.44%); }
-            61%, 71%     { transform: translateX(-55.55%); }
-            73.2%, 83.2% { transform: translateX(-66.66%); }
-            85.4%, 95.4% { transform: translateX(-77.77%); }
-            97.6%, 100%  { transform: translateX(-88.88%); }
-        }
+        /* 輪播動畫 */
         @keyframes slideTYG {
             0%, 11%   { transform: translateX(0); }
             14.2%, 25.2% { transform: translateX(-14.28%); }
@@ -193,11 +181,22 @@
             75%, 95%  { transform: translateX(-75%); }
             100%      { transform: translateX(0); }
         }
+        @keyframes fastAutoSlide {
+            0%, 10%   { transform: translateX(0); }
+            12.2%, 22.2% { transform: translateX(-11.11%); }
+            24.4%, 34.4% { transform: translateX(-22.22%); }
+            36.6%, 46.6% { transform: translateX(-33.33%); }
+            48.8%, 58.8% { transform: translateX(-44.44%); }
+            61%, 71%     { transform: translateX(-55.55%); }
+            73.2%, 83.2% { transform: translateX(-66.66%); }
+            85.4%, 95.4% { transform: translateX(-77.77%); }
+            97.6%, 100%  { transform: translateX(-88.88%); }
+        }
 
-        /* 💻 響應式設計 (RWD)：讓首頁在電腦/平板上自動展開排版 */
+        /* 💻 響應式設計 (RWD)：完美適應平板與電腦！ */
         @media (min-width: 768px) {
             .container { max-width: 800px; padding: 30px 40px; }
-            .store-name { font-size: 38px; margin-bottom: 10px; }
+            .store-name { font-size: calc(38px * var(--text-scale)); margin-bottom: 10px; }
             .product-grid { grid-template-columns: repeat(6, 1fr); }
             .spot-grid { grid-template-columns: repeat(4, 1fr); }
             .spa-card { padding: 15px 20px; }
@@ -229,7 +228,6 @@
             </div>
             <a href="tel:0910557998" class="info-btn btn-yellow">撥打</a>
         </div>
-
         <div class="info-row">
             <div class="info-left">
                 <span class="info-icon">🚗</span>卑南鄉溫泉路370號
@@ -238,76 +236,82 @@
         </div>
     </div>
 
-<div class="store-intro-clean">
-    <div class="intro-text" style="letter-spacing: -0.2px; line-height: 1.45;">
-        店內提供平價泳裝、優惠溫泉券、泳具週邊與各式泳圈，是您來知本泡湯玩水必備的在地好選擇！<br>
-        我們在地用心經營，堅持<span style="font-weight: 900; color: #333;">不用花大錢也能穿出高級時尚</span>。精選多款平價修身泳裝，讓您不傷荷包，就能輕鬆拿捏泡湯時尚，成為溫泉區最亮眼的焦點！
+    <!-- === 🆕 內嵌式：字體大小控制按鈕 === -->
+    <div class="font-controls-inline">
+        <span style="font-size: calc(13px * var(--text-scale)); font-weight: bold; color: #666;">文字大小</span>
+        <button class="font-btn-inline" onclick="changeFont(-0.1)">縮小 A-</button>
+        <button class="font-btn-inline" onclick="resetFont()">標準 A</button>
+        <button class="font-btn-inline" onclick="changeFont(0.1)">放大 A+</button>
     </div>
 
-    <div class="intro-title" style="margin-top: 8px; margin-bottom: 4px;">📍本店位置與交通指引</div>
-    <div class="intro-text" style="letter-spacing: -0.2px; line-height: 1.45;">
-        本店位於溫泉路右側，不超過7-11東遊季門市。<br>
-        自行開車行經溫泉路，留意右手邊即可看見。<br>
-        若搭乘大眾交通工具，搭乘<b>⁠公車<a href="https://www.taiwanbus.tw/eBUSPage/Query/QueryResult.aspx?rno=81290&rn=1747899072807&lan=C" target="_blank" class="info-link">[8129]</b>⁠</a>至<b>⁠東遊季站</b>⁠下車步行約170公尺即可抵達；距YouBike站點只有短短50公尺，交通非常便利。<br>
-        從本店前往⁠<b>⁠東遊季溫泉區</b>⁠約400公尺的距離。
+    <div class="store-intro-clean">
+        <div class="intro-text" style="letter-spacing: -0.2px; line-height: 1.45;">
+            店內提供平價泳裝、優惠溫泉券、泳具週邊與各式泳圈，是您來知本泡湯玩水必備的在地好選擇！<br>
+            我們在地用心經營，堅持<span style="font-weight: 900; color: #333;">不用花大錢也能穿出高級時尚</span>。精選多款平價修身泳裝，讓您不傷荷包，就能輕鬆拿捏泡湯時尚，成為溫泉區最亮眼的焦點！
+        </div>
+
+        <div class="intro-title" style="margin-top: 8px; margin-bottom: 4px;">📍本店位置與交通指引</div>
+        <div class="intro-text" style="letter-spacing: -0.2px; line-height: 1.45;">
+            本店位於溫泉路右側，不超過7-11東遊季門市。<br>
+            自行開車行經溫泉路，留意右手邊即可看見。<br>
+            若搭乘大眾交通工具，搭乘<b>⁠公車<a href="https://www.taiwanbus.tw/eBUSPage/Query/QueryResult.aspx?rno=81290&rn=1747899072807&lan=C" target="_blank" class="info-link">[8129]</b>⁠</a>至<b>⁠東遊季站</b>⁠下車步行約170公尺即可抵達；距YouBike站點只有短短50公尺，交通非常便利。<br>
+            從本店前往⁠<b>⁠東遊季溫泉區</b>⁠約400公尺的距離。
+        </div>
+
+        <div class="intro-title" style="margin-top: 8px; margin-bottom: 4px;">💡在地泡湯攻略</div>
+        <div class="intro-text" style="letter-spacing: -0.2px; line-height: 1.45;">買完泳裝與溫泉券後，可順路到旁邊的<b>⁠7-11</b>⁠或<b>⁠東遊季採集館</b>⁠買些零食、便當、泡麵帶進去享用，補給超方便！若想體驗煮溫泉蛋的樂趣，您可以自行準備雞蛋，或是進入溫泉區後再向販售部購買喔。</div>
     </div>
 
-    <div class="intro-title" style="margin-top: 8px; margin-bottom: 4px;">💡在地泡湯攻略</div>
-    <div class="intro-text" style="letter-spacing: -0.2px; line-height: 1.45;">買完泳裝與溫泉券後，可順路到旁邊的<b>⁠7-11</b>⁠或<b>⁠東遊季採集館</b>⁠買些零食、便當、泡麵帶進去享用，補給超方便！若想體驗煮溫泉蛋的樂趣，您可以自行準備雞蛋，或是進入溫泉區後再向販售部購買喔。</div>
-</div>
+    <!-- 極簡純文字五星好評連結 -->
+    <div style="text-align: center; margin: 5px 15px 15px 15px; font-size: calc(15px * var(--text-scale)); color: #555; line-height: 1.4; letter-spacing: 0.2px;">
+        如果您也喜歡這份用心，歡迎給我們留個<a href="https://maps.app.goo.gl/QXSfAW5gbzAmZQbD6?g_st=ic" target="_blank" style="color: #D9534F; font-weight: 900; text-decoration: none;">有省錢/五星級⭐⭐⭐⭐⭐評論鼓勵დ</a>
+    </div>
 
-<!-- 極簡純文字五星好評連結 -->
-<div style="text-align: center; margin: 5px 15px 15px 15px; font-size: 15px; color: #555; line-height: 1.4; letter-spacing: 0.2px;">
-    如果您也喜歡這份用心，歡迎給我們留個<a href="https://maps.app.goo.gl/QXSfAW5gbzAmZQbD6?g_st=ic" target="_blank" style="color: #D9534F; font-weight: 900; text-decoration: none;">有省錢/五星級⭐⭐⭐⭐⭐評論鼓勵დ</a>
-</div>
+    <!-- 4. 本店熱門商品 -->
+    <div class="section-title"><span style="color:var(--pop-pink);">🛍️</span> 本店熱賣商品</div>
+    <div class="product-grid">
+        <div class="product-card">
+            <div class="product-icon">🎟️</div>
+            <div class="product-name">優惠溫泉券</div>
+        </div>
+        <div class="product-card">
+            <div class="product-icon">👙</div>
+            <div class="product-name">平價泳裝</div>
+        </div>
+        <div class="product-card">
+            <div class="product-icon">🥽</div>
+            <div class="product-name">泳具與配件</div>
+        </div>
+        <div class="product-card">
+            <div class="product-icon">🛟</div>
+            <div class="product-name">各式泳圈</div>
+        </div>
+        <div class="product-card">
+            <div class="product-icon">👶</div>
+            <div class="product-name">嬰幼兒童</div>
+        </div>
+        <div class="product-card">
+            <div class="product-icon">🏖️</div>
+            <div class="product-name">玩水周邊</div>
+        </div>
+    </div>
 
-<!-- 4. 本店熱門商品 -->
-<div class="section-title"><span style="color:var(--pop-pink);">🛍️</span> 本店熱賣商品</div>
-<div class="product-grid">
-    <div class="product-card">
-        <div class="product-icon">🎟️</div>
-        <div class="product-name">優惠溫泉券</div>
-    </div>
-    <div class="product-card">
-        <div class="product-icon">👙</div>
-        <div class="product-name">平價泳裝</div>
-    </div>
-    <div class="product-card">
-        <div class="product-icon">🥽</div>
-        <div class="product-name">泳具與配件</div>
-    </div>
-    <div class="product-card">
-        <div class="product-icon">🛟</div>
-        <div class="product-name">各式泳圈</div>
-    </div>
-    <div class="product-card">
-        <div class="product-icon">👶</div>
-        <div class="product-name">嬰幼兒童</div>
-    </div>
-    <div class="product-card">
-        <div class="product-icon">🏖️</div>
-        <div class="product-name">玩水周邊</div>
-    </div>
-</div>
-
-<!-- 5. 泡湯 SPA 精選 -->
-<div class="section-divider"></div>
-<div class="section-title"><span style="color:var(--pop-pink);">♨️</span> 知本在地SPA溫泉精選</div>
+    <!-- 5. 泡湯 SPA 精選 -->
+    <div class="section-divider"></div>
+    <div class="section-title"><span style="color:var(--pop-pink);">♨️</span> 知本在地SPA溫泉精選</div>
     
     <!-- 東遊季溫泉渡假村 -->
     <div class="spa-card">
         <div class="spa-top" style="display: flex; justify-content: space-between; align-items: center; width: 100%; margin-bottom: 8px;">
-            <div class="spa-name" style="margin: 0; font-size: 16px; font-weight: bold; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
-                <a href="https://maps.google.com/?q=東遊季溫泉渡假村" target="_blank" class="spa-nav-btn" style="font-size: 12px; padding: 3px 8px; border-radius: 4px; text-decoration: none;">🚗導航</a>
+            <div class="spa-name" style="margin: 0; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                <a href="https://maps.google.com/?q=東遊季溫泉渡假村" target="_blank" class="spa-nav-btn">🚗導航</a>
                 <span>東遊季溫泉渡假村</span>
-                <span style="font-size: 12px; font-weight: normal; color: #666;">(距離本店約400公尺)</span>
+                <span style="font-size: calc(12px * var(--text-scale)); font-weight: normal; color: #666;">(距離本店約400公尺)</span>
             </div>
         </div>
-        
-        <div class="spa-short" style="text-align: justify; line-height: 1.6; margin-bottom: 10px;">
+        <div class="spa-short" style="text-align: justify; margin-bottom: 10px;">
             由台東縣農會經營，養生溫泉區占地3000坪，規劃有溫泉水療區、露天溫泉區、冷水池、兒童戲水區等，知本最大戶外溫泉SPA，腹地廣大親子首選。泉質屬於變質岩的弱鹼碳酸泉。
         </div>
-
         <div style="height: 180px; overflow: hidden; position: relative; border-radius: 8px; margin-bottom: 8px;">
             <div style="display: flex; width: 700%; height: 100%; animation: slideTYG 10.5s infinite ease-in-out;">
                 <div style="width: 14.28%; height: 100%;"><img src="Images/tyg-1.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="東遊季照片 1"></div>
@@ -319,13 +323,11 @@
                 <div style="width: 14.28%; height: 100%;"><img src="Images/tyg-7.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="東遊季照片 7"></div>
             </div>
         </div>
-
-        <details style="border-top: 1px dashed #CCC; padding-top: 6px; margin-top: 6px;">
+        <details>
             <summary>▼ 交通與詳細資訊</summary>
             <ul class="info-list">
-                <li><span class="info-label">路線指引：</span><span>度假村坐落於溫泉路指標路段右側，可由本店「東泳記泳裝店」與7-11東遊季門市之間的小路進入園區。</span></li>
+                <li><span class="info-label">路線指引：</span><span>度假村坐落於溫泉路指標路段右側，可由本店與7-11之間小路進入。</span></li>
                 <li><span class="info-label">大眾運輸：</span><span>搭乘公車［8129］可於「東遊季」站下車；7-11門市外設有YouBike站點。</span></li>
-                <li><span class="info-label">停車資訊：</span><span>園區內備有免費露天停車場。</span></li>
             </ul>
         </details>
     </div>
@@ -333,37 +335,33 @@
     <!-- 知本老爺酒店 -->
     <div class="spa-card">
         <div class="spa-top" style="display: flex; justify-content: space-between; align-items: center; width: 100%; margin-bottom: 8px;">
-            <div class="spa-name" style="margin: 0; font-size: 16px; font-weight: bold; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
-                <a href="https://maps.google.com/?q=知本老爺酒店" target="_blank" class="spa-nav-btn" style="font-size: 12px; padding: 3px 8px; border-radius: 4px; text-decoration: none;">🚗導航</a>
+            <div class="spa-name" style="margin: 0; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                <a href="https://maps.google.com/?q=知本老爺酒店" target="_blank" class="spa-nav-btn">🚗導航</a>
                 <span>知本老爺酒店</span>
-                <span style="font-size: 12px; font-weight: normal; color: #666;">(距離本店約3.3公里)</span>
+                <span style="font-size: calc(12px * var(--text-scale)); font-weight: normal; color: #666;">(距離本店約3.3公里)</span>
             </div>
         </div>
-        
-        <div class="spa-short" style="text-align: justify; line-height: 1.6; margin-bottom: 10px;">
+        <div class="spa-short" style="text-align: justify; margin-bottom: 10px;">
             五星級天幕風呂緊鄰戶外游泳池畔，豐富泡湯設備；戶外游泳池依季節更替水溫，設施精緻頂級享受。
         </div>
-
         <div style="height: 180px; overflow: hidden; position: relative; border-radius: 8px; margin-bottom: 8px;">
             <div style="display: flex; width: 900%; height: 100%; animation: fastAutoSlide 13.5s infinite ease-in-out;">
-                <div style="width: 11.11%; height: 100%;"><img src="Images/royal-1.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="老爺照片 1"></div>
-                <div style="width: 11.11%; height: 100%;"><img src="Images/royal-2.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="老爺照片 2"></div>
-                <div style="width: 11.11%; height: 100%;"><img src="Images/royal-3.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="老爺照片 3"></div>
-                <div style="width: 11.11%; height: 100%;"><img src="Images/royal-4.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="老爺照片 4"></div>
-                <div style="width: 11.11%; height: 100%;"><img src="Images/royal-5.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="老爺照片 5"></div>
-                <div style="width: 11.11%; height: 100%;"><img src="Images/royal-6.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="老爺照片 6"></div>
-                <div style="width: 11.11%; height: 100%;"><img src="Images/royal-7.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="老爺照片 7"></div>
-                <div style="width: 11.11%; height: 100%;"><img src="Images/royal-8.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="老爺照片 8"></div>
-                <div style="width: 11.11%; height: 100%;"><img src="Images/royal-9.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="老爺照片 9"></div>
+                <div style="width: 11.11%; height: 100%;"><img src="Images/royal-1.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="老爺 1"></div>
+                <div style="width: 11.11%; height: 100%;"><img src="Images/royal-2.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="老爺 2"></div>
+                <div style="width: 11.11%; height: 100%;"><img src="Images/royal-3.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="老爺 3"></div>
+                <div style="width: 11.11%; height: 100%;"><img src="Images/royal-4.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="老爺 4"></div>
+                <div style="width: 11.11%; height: 100%;"><img src="Images/royal-5.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="老爺 5"></div>
+                <div style="width: 11.11%; height: 100%;"><img src="Images/royal-6.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="老爺 6"></div>
+                <div style="width: 11.11%; height: 100%;"><img src="Images/royal-7.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="老爺 7"></div>
+                <div style="width: 11.11%; height: 100%;"><img src="Images/royal-8.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="老爺 8"></div>
+                <div style="width: 11.11%; height: 100%;"><img src="Images/royal-9.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="老爺 9"></div>
             </div>
         </div>
-
-        <details style="border-top: 1px dashed #CCC; padding-top: 6px; margin-top: 6px;">
+        <details>
             <summary>▼ 交通與詳細資訊</summary>
             <ul class="info-list">
-                <li><span class="info-label">路線指引：</span><span>酒店座落於知本溫泉區內，沿著溫泉路轉龍泉路循指標即可輕鬆抵達。</span></li>
-                <li><span class="info-label">大眾運輸：</span><span>搭乘公車［8129］於「清覺寺」站下車後步行約 11 分鐘（約 550 公尺）；飯店官方亦提供預約付費接駁車服務（詳見官網公告）。</span></li>
-                <li><span class="info-label">停車資訊：</span><span>館內設有免費停車場。</span></li>
+                <li><span class="info-label">路線指引：</span><span>沿著溫泉路轉龍泉路循指標即可輕鬆抵達。</span></li>
+                <li><span class="info-label">大眾運輸：</span><span>搭乘公車［8129］於「清覺寺」站下車後步行約11分鐘。</span></li>
             </ul>
         </details>
     </div>
@@ -371,32 +369,27 @@
     <!-- Y—Y旺溫泉渡假村 -->
     <div class="spa-card">
         <div class="spa-top" style="display: flex; justify-content: space-between; align-items: center; width: 100%; margin-bottom: 8px;">
-            <div class="spa-name" style="margin: 0; font-size: 16px; font-weight: bold; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
-                <a href="https://maps.google.com/?q=ㄚㄧㄚ旺溫泉渡假村" target="_blank" class="spa-nav-btn" style="font-size: 12px; padding: 3px 8px; border-radius: 4px; text-decoration: none;">🚗導航</a>
+            <div class="spa-name" style="margin: 0; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                <a href="https://maps.google.com/?q=ㄚㄧㄚ旺溫泉渡假村" target="_blank" class="spa-nav-btn">🚗導航</a>
                 <span>Y—Y旺溫泉渡假村</span>
-                <span style="font-size: 12px; font-weight: normal; color: #666;">(距離本店約3.2公里)</span>
+                <span style="font-size: calc(12px * var(--text-scale)); font-weight: normal; color: #666;">(距離本店約3.2公里)</span>
             </div>
         </div>
-        
-        <div class="spa-short" style="text-align: justify; line-height: 1.6; margin-bottom: 10px;">
+        <div class="spa-short" style="text-align: justify; margin-bottom: 10px;">
             原民風紅磚建築，群山環繞的純湯秘境，享受自然放鬆的泡湯時光。
         </div>
-
         <div style="height: 180px; overflow: hidden; position: relative; border-radius: 8px; margin-bottom: 8px;">
             <div style="display: flex; width: 400%; height: 100%; animation: slideYY 6s infinite ease-in-out;">
-                <div style="width: 25%; height: 100%;"><img src="Images/yy-1.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="ㄚㄧㄚ旺照片 1"></div>
-                <div style="width: 25%; height: 100%;"><img src="Images/yy-2.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="ㄚㄧㄚ旺照片 2"></div>
-                <div style="width: 25%; height: 100%;"><img src="Images/yy-3.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="ㄚㄧㄚ旺照片 3"></div>
-                <div style="width: 25%; height: 100%;"><img src="Images/yy-4.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="ㄚㄧㄚ旺照片 4"></div>
+                <div style="width: 25%; height: 100%;"><img src="Images/yy-1.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="ㄚㄧㄚ旺 1"></div>
+                <div style="width: 25%; height: 100%;"><img src="Images/yy-2.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="ㄚㄧㄚ旺 2"></div>
+                <div style="width: 25%; height: 100%;"><img src="Images/yy-3.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="ㄚㄧㄚ旺 3"></div>
+                <div style="width: 25%; height: 100%;"><img src="Images/yy-4.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="ㄚㄧㄚ旺 4"></div>
             </div>
         </div>
-
-        <details style="border-top: 1px dashed #CCC; padding-top: 6px; margin-top: 6px;">
+        <details>
             <summary>▼ 交通與詳細資訊</summary>
             <ul class="info-list">
-                <li><span class="info-label">路線指引：</span><span>度假村位於溫泉路轉龍泉路沿線，依循指標即可順利抵達。</span></li>
                 <li><span class="info-label">大眾運輸：</span><span>搭乘公車［8129］可於「泓泉飯店」站下車後步行前往。</span></li>
-                <li><span class="info-label">停車資訊：</span><span>園區備有免費專屬停車場。</span></li>
             </ul>
         </details>
     </div>
@@ -404,44 +397,39 @@
     <!-- 東台溫泉飯店 -->
     <div class="spa-card">
         <div class="spa-top" style="display: flex; justify-content: space-between; align-items: center; width: 100%; margin-bottom: 8px;">
-            <div class="spa-name" style="margin: 0; font-size: 16px; font-weight: bold; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
-                <a href="https://maps.google.com/?q=東台溫泉飯店" target="_blank" class="spa-nav-btn" style="font-size: 12px; padding: 3px 8px; border-radius: 4px; text-decoration: none;">🚗導航</a>
+            <div class="spa-name" style="margin: 0; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                <a href="https://maps.google.com/?q=東台溫泉飯店" target="_blank" class="spa-nav-btn">🚗導航</a>
                 <span>東台溫泉飯店</span>
-                <span style="font-size: 12px; font-weight: normal; color: #666;">(距離本店約3.8公里)</span>
+                <span style="font-size: calc(12px * var(--text-scale)); font-weight: normal; color: #666;">(距離本店約3.8公里)</span>
             </div>
         </div>
-        
-        <div class="spa-short" style="text-align: justify; line-height: 1.6; margin-bottom: 10px;">
-            溫泉養生承襲德日模式規劃，在開闊溪谷景觀視野中享受多功能水療沖擊、美人原湯與檜木烤箱，消除車旅勞累，展開定點多日溫泉休閒保養之旅。
+        <div class="spa-short" style="text-align: justify; margin-bottom: 10px;">
+            溫泉養生承襲德日模式規劃，在開闊溪谷景觀視野中享受多功能水療沖擊、美人原湯與檜木烤箱。
         </div>
-
         <div style="height: 180px; overflow: hidden; position: relative; border-radius: 8px; margin-bottom: 8px;">
             <div style="display: flex; width: 900%; height: 100%; animation: fastAutoSlide 13.5s infinite ease-in-out;">
-                <div style="width: 11.11%; height: 100%;"><img src="Images/dt-1.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="東台照片 1"></div>
-                <div style="width: 11.11%; height: 100%;"><img src="Images/dt-2.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="東台照片 2"></div>
-                <div style="width: 11.11%; height: 100%;"><img src="Images/dt-3.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="東台照片 3"></div>
-                <div style="width: 11.11%; height: 100%;"><img src="Images/dt-4.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="東台照片 4"></div>
-                <div style="width: 11.11%; height: 100%;"><img src="Images/dt-5.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="東台照片 5"></div>
-                <div style="width: 11.11%; height: 100%;"><img src="Images/dt-6.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="東台照片 6"></div>
-                <div style="width: 11.11%; height: 100%;"><img src="Images/dt-7.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="東台照片 7"></div>
-                <div style="width: 11.11%; height: 100%;"><img src="Images/dt-8.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="東台照片 8"></div>
-                <div style="width: 11.11%; height: 100%;"><img src="Images/dt-9.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="東台照片 9"></div>
+                <div style="width: 11.11%; height: 100%;"><img src="Images/dt-1.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="東台 1"></div>
+                <div style="width: 11.11%; height: 100%;"><img src="Images/dt-2.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="東台 2"></div>
+                <div style="width: 11.11%; height: 100%;"><img src="Images/dt-3.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="東台 3"></div>
+                <div style="width: 11.11%; height: 100%;"><img src="Images/dt-4.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="東台 4"></div>
+                <div style="width: 11.11%; height: 100%;"><img src="Images/dt-5.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="東台 5"></div>
+                <div style="width: 11.11%; height: 100%;"><img src="Images/dt-6.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="東台 6"></div>
+                <div style="width: 11.11%; height: 100%;"><img src="Images/dt-7.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="東台 7"></div>
+                <div style="width: 11.11%; height: 100%;"><img src="Images/dt-8.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="東台 8"></div>
+                <div style="width: 11.11%; height: 100%;"><img src="Images/dt-9.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="東台 9"></div>
             </div>
         </div>
-
-        <details style="border-top: 1px dashed #CCC; padding-top: 6px; margin-top: 6px;">
+        <details>
             <summary>▼ 交通與詳細資訊</summary>
             <ul class="info-list">
-                <li><span class="info-label">路線指引：</span><span>位於知本溫泉區內，沿溫泉路依指標前行即可抵達。</span></li>
-                <li><span class="info-label">大眾運輸：</span><span>搭乘公車［8129］可至知本溫泉區鄰近站點下車；飯店門口設有YouBike站點。</span></li>
-                <li><span class="info-label">停車資訊：</span><span>館內設有專屬停車場。</span></li>
+                <li><span class="info-label">大眾運輸：</span><span>搭乘公車［8129］可至知本溫泉區鄰近站點下車。</span></li>
             </ul>
         </details>
     </div>
 
-    <!-- 📸 前往影音大廳的專屬連結 (依據截圖紅線位置插入) -->
+    <!-- 📸 影音大廳超連結 (極簡風格，完美融入版面！) -->
     <a href="gallery.html" class="gallery-link-btn">
-        📸 點擊觀看更多「知本溫泉」精選相簿大廳 ➔
+        📸 點擊觀看更多「知本溫泉」精選相簿 ➔
     </a>
 
     <!-- 6. 附近順遊景點 -->
@@ -473,7 +461,6 @@
     <!-- 7. 臺東近期活動 -->
     <div class="section-divider"></div>
     <div class="section-title"><span style="color:var(--pop-pink);">📅</span> 臺東近期活動總整理</div>
-
     <a href="2026.html" class="event-btn yellow-btn">2026 秋冬季活動</a>
     <div class="event-btn gray-btn">2027 最新活動 (敬請期待)</div>
 
@@ -482,8 +469,36 @@
         <div class="slogan-sub"><span style="color:var(--pop-pink);">♨️</span> 泡暖湯・穿泳裝・玩台東</div>
         <div class="footer-text">慢下來，感受台東山海與人情的溫度 ❤️</div>
     </div>
-
 </div>
+
+<!-- === ⚙️ 字體縮放記憶系統 (跨網頁同步) === -->
+<script>
+    // 從瀏覽器記憶中讀取使用者設定的字體比例，如果沒設定過就用預設的 1
+    let currentScale = parseFloat(localStorage.getItem('userFontScale')) || 1;
+    
+    function applyFontScale() {
+        // 將比例寫入 CSS 魔法變數，網頁文字會瞬間縮放
+        document.documentElement.style.setProperty('--text-scale', currentScale);
+        // 將使用者的喜好儲存下來 (之後你在 2026.html 也貼上這段腳本，就會自動同步！)
+        localStorage.setItem('userFontScale', currentScale);
+    }
+    
+    function changeFont(step) {
+        currentScale += step;
+        // 限制最大/最小比例，避免字體縮太小或撐破排版
+        if (currentScale < 0.8) currentScale = 0.8;
+        if (currentScale > 1.4) currentScale = 1.4;
+        applyFontScale();
+    }
+    
+    function resetFont() {
+        currentScale = 1;
+        applyFontScale();
+    }
+    
+    // 一進入網頁就立刻套用使用者的設定
+    applyFontScale();
+</script>
 
 </body>
 </html>
