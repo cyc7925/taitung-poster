@@ -28,7 +28,7 @@
 
         .container { position: relative; max-width: 500px; margin: 0 auto; padding: 10px 15px 40px 15px; }
 
-        /* === 🆕 浮動式頂部導覽列 (比照 2026.html) === */
+        /* === 浮動式頂部導覽列 === */
         .sticky-header {
             position: sticky; top: 0; z-index: 999;
             background: rgba(224, 247, 250, 0.95); backdrop-filter: blur(5px);
@@ -50,24 +50,24 @@
         }
         .header-phone-btn:active { transform: translate(1px,1px); box-shadow: none; }
 
-        /* === 🆕 極簡直式字體控制 (固定在右側) === */
+        /* === 🆕 升級版：直式多功能浮動列 (包含電話、導航、字體控制) === */
         .font-floater {
             position: fixed; 
             top: 85px; right: 12px; 
-            display: flex; flex-direction: column; /* 改成直的！ */
+            display: flex; flex-direction: column; 
             background: rgba(255, 255, 255, 0.7); 
             border: 1px solid #D0D0D0; border-radius: 12px;
             backdrop-filter: blur(4px); z-index: 1000; overflow: hidden;
             box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
         }
-        .font-floater button {
+        .font-floater button, .font-floater a {
             background: transparent; border: none; outline: none;
-            padding: 8px 10px; font-size: 13px; font-weight: bold; font-family: inherit;
-            color: #888; cursor: pointer; transition: 0.2s;
+            padding: 8px 10px; font-size: 14px; font-weight: bold; font-family: inherit;
+            color: #888; cursor: pointer; transition: 0.2s; 
+            text-decoration: none; display: block; text-align: center;
         }
-        /* 框線改在下方 */
-        .font-floater button:not(:last-child) { border-bottom: 1px solid #E0E0E0; }
-        .font-floater button:active { background: #F0F0F0; color: var(--pop-pink); }
+        .font-floater button:not(:last-child), .font-floater a:not(:last-child) { border-bottom: 1px solid #E0E0E0; }
+        .font-floater button:active, .font-floater a:active { background: #F0F0F0; color: var(--pop-pink); }
 
         /* === 1. 漂浮 Emoji 區塊 === */
         .emoji-cluster { text-align: center; margin-top: 5px; margin-bottom: 10px; user-select: none; }
@@ -183,7 +183,7 @@
 
 <div class="container">
     
-    <!-- === 🆕 浮動置頂 Header === -->
+    <!-- === 浮動置頂 Header === -->
     <div class="sticky-header">
         <div class="header-left">
             <h1 class="header-title">東泳記泳裝店</h1>
@@ -197,8 +197,10 @@
         </div>
     </div>
 
-    <!-- === 🆕 直式字體控制 (固定在右側) === -->
+    <!-- === 🆕 多功能浮動工具列 (電話/導航/字體) === -->
     <div class="font-floater">
+        <a href="tel:0910557998" title="撥打電話">📞</a>
+        <a href="https://maps.app.goo.gl/YkHK24qn1kZsfBn38?g_st=ic" target="_blank" title="開啟導航">🚗</a>
         <button onclick="changeFont(-0.1)">A-</button>
         <button onclick="resetFont()">A</button>
         <button onclick="changeFont(0.1)">A+</button>
@@ -214,7 +216,7 @@
         </div>
     </div>
 
-    <!-- 極簡店面簡介 (只保留一句話，快速進入重點) -->
+    <!-- 極簡店面簡介 -->
     <div class="store-intro-clean">
         <div class="intro-text" style="letter-spacing: -0.2px; line-height: 1.45;">
             店內提供平價泳裝、優惠溫泉券、泳具週邊與各式泳圈，是您來知本泡湯玩水必備的在地好選擇！<br>
@@ -254,6 +256,12 @@
             <div class="product-icon">🏖️</div>
             <div class="product-name">玩水周邊</div>
         </div>
+    </div>
+
+    <!-- === 🆕 移到熱賣商品底下的泡湯攻略 === -->
+    <div class="store-intro-clean" style="margin-top: 15px;">
+        <div class="intro-title" style="margin-bottom: 4px;">💡在地泡湯攻略</div>
+        <div class="intro-text" style="letter-spacing: -0.2px; line-height: 1.45;">買完泳裝與溫泉券後，可順路到旁邊的<b>⁠7-11</b>⁠或<b>⁠東遊季採集館</b>⁠買些零食、便當、泡麵帶進去享用，補給超方便！若想體驗煮溫泉蛋的樂趣，您可以自行準備雞蛋，或是進入溫泉區後再向販售部購買喔。</div>
     </div>
 
     <!-- 5. 泡湯 SPA 精選 -->
@@ -424,7 +432,7 @@
     <a href="2026.html" class="event-btn yellow-btn">2026 秋冬季活動</a>
     <div class="event-btn gray-btn">2027 最新活動 (敬請期待)</div>
 
-    <!-- === 🆕 挪到最底部的交通指引與攻略 === -->
+    <!-- === 🆕 挪到最底部的交通指引 === -->
     <div class="section-divider"></div>
     <div class="store-intro-clean">
         <div class="intro-title">📍本店位置與交通指引</div>
@@ -434,9 +442,6 @@
             若搭乘大眾交通工具，搭乘<b>⁠公車<a href="https://www.taiwanbus.tw/eBUSPage/Query/QueryResult.aspx?rno=81290&rn=1747899072807&lan=C" target="_blank" class="info-link">[8129]</b>⁠</a>至<b>⁠東遊季站</b>⁠下車步行約170公尺即可抵達；距YouBike站點只有短短50公尺，交通非常便利。<br>
             從本店前往⁠<b>⁠東遊季溫泉區</b>⁠約400公尺的距離。
         </div>
-
-        <div class="intro-title" style="margin-top: 15px; margin-bottom: 4px;">💡在地泡湯攻略</div>
-        <div class="intro-text" style="letter-spacing: -0.2px; line-height: 1.45;">買完泳裝與溫泉券後，可順路到旁邊的<b>⁠7-11</b>⁠或<b>⁠東遊季採集館</b>⁠買些零食、便當、泡麵帶進去享用，補給超方便！若想體驗煮溫泉蛋的樂趣，您可以自行準備雞蛋，或是進入溫泉區後再向販售部購買喔。</div>
     </div>
 
     <!-- 底部暖心標語與口號 -->
