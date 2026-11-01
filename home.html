@@ -27,7 +27,8 @@
             min-height: 100vh;
         }
 
-        .container { max-width: 500px; margin: 0 auto; padding: 10px 15px 40px 15px; }
+        /* 只要在這裡補上 position: relative; 即可 */
+        .container { position: relative; max-width: 500px; margin: 0 auto; padding: 10px 15px 40px 15px; }
 
         /* === 1. 漂浮 Emoji 區塊 === */
         .emoji-cluster { text-align: center; margin-top: 10px; margin-bottom: -15px; user-select: none; }
@@ -238,13 +239,27 @@
         </div>
     </div>
 
-        <!-- === 🆕 內嵌式：極簡字體大小控制 === -->
-    <div class="font-controls-inline">
-        <span style="font-size: 12px; color: #999; margin-right: 4px;">字體大小</span>
-        <button class="font-btn-inline" onclick="changeFont(-0.1)">A-</button>
-        <button class="font-btn-inline" onclick="resetFont()">標準</button>
-        <button class="font-btn-inline" onclick="changeFont(0.1)">A+</button>
-    </div>
+                /* === 🆕 極簡右上角字體控制 (絕對定位，完全不佔空間) === */
+        .font-floater {
+            position: absolute; 
+            top: 15px; right: 15px; /* 固定在容器右上角 */
+            display: flex;
+            background: rgba(255, 255, 255, 0.65); /* 半透明底色融入背景 */
+            border: 1px solid #D0D0D0;
+            border-radius: 20px;
+            backdrop-filter: blur(4px); /* 帶一點高級的毛玻璃效果 */
+            z-index: 100;
+            overflow: hidden;
+            box-shadow: 2px 2px 0px rgba(0,0,0,0.05);
+        }
+        .font-floater button {
+            background: transparent; border: none; outline: none;
+            padding: 4px 10px; font-size: 13px; font-weight: bold; font-family: inherit;
+            color: #888; cursor: pointer; transition: 0.2s;
+        }
+        .font-floater button:not(:last-child) { border-right: 1px solid #E0E0E0; }
+        .font-floater button:active { background: #F0F0F0; color: var(--pop-pink); }
+
 
 
     <div class="store-intro-clean">
