@@ -55,29 +55,31 @@
             display: flex; align-items: center; gap: 8px;
         }
 
-        /* 一般網格照片 */
+        /* 📸 一般網格照片 (已改為 4:3 長方形，更有質感！) */
         .media-item {
-            width: 100%; aspect-ratio: 1 / 1; object-fit: cover; 
+            width: 100%; 
+            aspect-ratio: 4 / 3; /* 從 1/1 改成 4/3 長方形 */
+            object-fit: cover; 
             border-radius: 12px; border: 2px solid var(--ink-dark); 
             box-shadow: 2px 2px 0px rgba(44,62,80,0.15);
             background-color: #f5f5f5; transition: transform 0.3s ease;
         }
         
-        /* === 📺 電子相簿輪播區塊 (畫面長高) === */
+        /* === 📺 電子相簿輪播區塊 === */
         .slideshow-wrapper {
             grid-column: 1 / -1; 
             width: 100%;
         }
         .slideshow-container {
             width: 100%;
-            aspect-ratio: 4 / 3; /* 讓手機版的畫面變得更高！ */
+            aspect-ratio: 4 / 3; 
             background-color: #000;
             border-radius: 12px;
             border: 2px solid var(--ink-dark);
             box-shadow: 2px 2px 0px rgba(44,62,80,0.15);
             position: relative;
             overflow: hidden;
-            cursor: pointer; /* 提示可以點擊 */
+            cursor: pointer; 
         }
 
         .slide-img {
@@ -90,7 +92,7 @@
 
         /* 移出畫面的精緻小控制器 */
         .external-controls {
-            display: flex; justify-content: flex-end; /* 靠右對齊 */
+            display: flex; justify-content: flex-end; 
             gap: 10px; margin-top: 10px; margin-bottom: 10px;
         }
         
@@ -103,12 +105,30 @@
         }
         .control-btn:active { transform: translate(1px,1px); box-shadow: none; }
 
+        /* 📱 破解 Apple iOS 手機專用「網頁版全螢幕」支援 */
+        .slideshow-wrapper.fullscreen-mode {
+            position: fixed !important;
+            top: 0 !important; left: 0 !important;
+            width: 100vw !important; height: 100vh !important;
+            background-color: #000 !important;
+            z-index: 9999 !important;
+            display: flex; flex-direction: column; justify-content: center;
+            margin: 0 !important;
+        }
+        .slideshow-wrapper.fullscreen-mode .slideshow-container {
+            border: none !important; border-radius: 0 !important;
+            height: auto !important; aspect-ratio: auto !important; flex: 1;
+        }
+        .slideshow-wrapper.fullscreen-mode .external-controls {
+            position: absolute; bottom: 40px; right: 20px; z-index: 10000;
+        }
+
         /* 💻 響應式設計：螢幕變大時自動套用 */
         @media (min-width: 768px) {
             .container { padding: 30px 40px 60px 40px; }
             .page-title { font-size: 32px; }
             .media-grid { grid-template-columns: repeat(4, 1fr); gap: 20px; }
-            .slideshow-container { aspect-ratio: 16 / 9; /* 電腦電視版自動切換為寬螢幕 */ border-radius: 16px; border-width: 3px; }
+            .slideshow-container { aspect-ratio: 16 / 9; border-radius: 16px; border-width: 3px; }
             .media-item { border-width: 3px; border-radius: 16px; }
             .media-item:hover { transform: scale(1.05); z-index: 10; position: relative; }
         }
@@ -126,7 +146,7 @@
 
     <div class="media-grid">
 
-        <!-- 📺 電子相簿輪播區塊 (加入 Wrapper 來裝控制器) -->
+        <!-- 📺 電子相簿輪播區塊 -->
         <div class="gallery-section-title"><span style="color:var(--pop-pink);">✨</span> 知本溫泉精選預覽</div>
         
         <div class="slideshow-wrapper">
@@ -138,7 +158,6 @@
                 <img src="Images/tyg-2.jpg" class="slide-img" alt="輪播 5">
             </div>
             
-            <!-- 將按鈕獨立移到框線外面 -->
             <div class="external-controls">
                 <button class="control-btn" id="togglePlayBtn">⏸ 暫停</button>
                 <button class="control-btn" id="fullscreenBtn">⛶ 全螢幕</button>
@@ -189,13 +208,14 @@
     </div>
 </div>
 
-<!-- ⚙️ JavaScript 控制器 -->
+<!-- ⚙️ JavaScript 雙引擎控制器 (包含 iOS 全螢幕破解) -->
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         const slides = document.querySelectorAll(".slide-img");
         const playBtn = document.getElementById("togglePlayBtn");
         const fullscreenBtn = document.getElementById("fullscreenBtn");
         const slideshowArea = document.getElementById("slideshowArea");
+        const wrapper = document.querySelector(".slideshow-wrapper"); 
         
         let currentIndex = 0;
         let isPlaying = true;
@@ -212,7 +232,6 @@
 
         startSlideShow();
 
-        // 獨立的播放/暫停切換邏輯
         function togglePlay() {
             if (isPlaying) {
                 stopSlideShow();
@@ -226,28 +245,41 @@
             }
         }
 
-        // 綁定按鈕點擊
         playBtn.addEventListener("click", togglePlay);
-        
-        // 綁定照片點擊 (進入全螢幕後也可以點畫面暫停)
         slideshowArea.addEventListener("click", togglePlay);
 
-        // 全螢幕功能
+        // 全螢幕功能 (雙重保險設計)
         fullscreenBtn.addEventListener("click", function() {
-            if (!document.fullscreenElement && !document.webkitFullscreenElement) {
-                if (slideshowArea.requestFullscreen) {
-                    slideshowArea.requestFullscreen();
-                } else if (slideshowArea.webkitRequestFullscreen) {
-                    slideshowArea.webkitRequestFullscreen(); /* 支援 Safari */
-                }
+            const isNativeFs = document.fullscreenElement || document.webkitFullscreenElement;
+            const isFakeFs = wrapper.classList.contains("fullscreen-mode");
+
+            if (isNativeFs) {
+                if (document.exitFullscreen) document.exitFullscreen();
+                else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+                fullscreenBtn.innerHTML = "⛶ 全螢幕";
+            } else if (isFakeFs) {
+                wrapper.classList.remove("fullscreen-mode");
+                document.body.style.overflow = "auto"; 
+                fullscreenBtn.innerHTML = "⛶ 全螢幕";
             } else {
-                if (document.exitFullscreen) {
-                    document.exitFullscreen();
-                } else if (document.webkitExitFullscreen) {
-                    document.webkitExitFullscreen(); /* 支援 Safari */
+                if (wrapper.requestFullscreen) {
+                    wrapper.requestFullscreen().then(() => {
+                        fullscreenBtn.innerHTML = "✖ 退出";
+                    }).catch(() => enterFakeFullscreen());
+                } else if (wrapper.webkitRequestFullscreen) {
+                    wrapper.webkitRequestFullscreen();
+                    fullscreenBtn.innerHTML = "✖ 退出";
+                } else {
+                    enterFakeFullscreen();
                 }
             }
         });
+
+        function enterFakeFullscreen() {
+            wrapper.classList.add("fullscreen-mode");
+            document.body.style.overflow = "hidden"; 
+            fullscreenBtn.innerHTML = "✖ 退出";
+        }
     });
 </script>
 
