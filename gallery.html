@@ -3,351 +3,299 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>東泳記 - 影音大廳</title>
+    <title>東泳記影音大廳 - 知本溫泉精選相簿</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/justfont/open-huninn-font/font.css">
     
     <style>
         :root {
+            --bg-yellow: #FFF9E6;    
             --ink-dark: #2C3E50;     
+            --pop-blue: #4ECDC4;     
             --pop-pink: #FF6B6B;     
             --pop-yellow: #FFE66D;   
+            --text-scale: 1;   
         }
 
         body {
             background: linear-gradient(180deg, #e0f7fa 0%, #fffde7 100%);
             color: var(--ink-dark);
             font-family: 'jf-openhuninn-1.1', sans-serif;
-            margin: 0; padding: 0; 
+            margin: 0; padding: 0; -webkit-text-size-adjust: 100%;
             min-height: 100vh;
         }
 
-        /* 預設手機版樣式 */
-        .container { max-width: 1200px; margin: 0 auto; padding: 20px 15px 40px 15px; }
+        .container { max-width: 500px; margin: 0 auto; padding: 10px 15px 90px 15px; }
 
-        /* === 頂部導覽列 === */
-        .top-nav {
-            display: flex; justify-content: space-between; align-items: center;
-            margin-bottom: 20px; flex-wrap: wrap; gap: 10px;
+        /* === 統一的頂部導覽列 (與首頁完全一致) === */
+        .sticky-navbar {
+            position: sticky; top: 0; z-index: 100;
+            height: max(80px, calc(60px + env(safe-area-inset-top))); box-sizing: border-box; 
+            background: white; border-bottom: 3px solid var(--ink-dark);
+            padding: max(10px, env(safe-area-inset-top)) 15px 10px 15px; display: flex; align-items: center; justify-content: space-between;
+            box-shadow: 0 4px 0px rgba(0,0,0,0.05);
         }
-        .back-btn {
-            background: white; border: 2px solid var(--ink-dark); padding: 6px 14px;
-            border-radius: 20px; font-size: 15px; font-weight: bold; color: var(--ink-dark);
-            text-decoration: none; box-shadow: 2px 2px 0px var(--ink-dark); white-space: nowrap;
-        }
-        .back-btn:active { transform: translate(1px, 1px); box-shadow: 0 0 0 transparent; }
+        .nav-info { display: flex; flex-direction: column; gap: 2px; }
+        .nav-store { font-size: calc(22px * var(--text-scale)); font-weight: bold; color: var(--pop-pink); letter-spacing: 1px; line-height: 1.1; }
+        .nav-loc { color: var(--ink-dark); text-decoration: none; font-size: calc(13px * var(--text-scale)); font-weight: bold; display: inline-block; }
         
-        .page-title { font-size: 24px; font-weight: bold; color: var(--pop-pink); margin: 0; letter-spacing: 1px;}
+        .btn-call {
+            background: var(--pop-yellow); border: 3px solid var(--ink-dark); border-radius: 12px; padding: 8px 10px; 
+            font-size: calc(13px * var(--text-scale)); font-weight: bold; color: var(--ink-dark); text-decoration: none; transition: 0.2s;
+            white-space: nowrap; flex-shrink: 0; box-shadow: 2px 2px 0px var(--ink-dark); display: flex; align-items: center; gap: 4px;
+        }
+        .btn-call:active { transform: translate(2px,2px); box-shadow: 0px 0px 0px var(--ink-dark); }
 
-        /* === 主網格排版 === */
-        .media-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+        /* === 底部 App 風格導覽列 (包含返回首頁、播放/暫停、全螢幕、字體調整、回頂部) === */
+        .font-floater {
+            position: fixed; 
+            bottom: 0; left: 0; width: 100%; 
+            display: flex; flex-direction: row; justify-content: space-around;
+            background: rgba(255, 255, 255, 0.95); 
+            border-top: 1.5px solid rgba(44, 62, 80, 0.2);
+            border-radius: 16px 16px 0 0; 
+            backdrop-filter: blur(8px); 
+            z-index: 999; 
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+            padding: 8px 0 calc(8px + env(safe-area-inset-bottom)) 0; 
+        }
+        .font-floater button, .font-floater a {
+            background: transparent; border: none; outline: none;
+            padding: 6px 0; font-size: 15px; font-weight: bold; font-family: inherit;
+            color: #666; cursor: pointer; transition: 0.2s; 
+            text-decoration: none; text-align: center; flex: 1; 
+        }
+        .font-floater button:not(:last-child), .font-floater a:not(:last-child) { 
+            border-right: 1px solid rgba(0,0,0,0.08); 
+        }
+        .font-floater button:active, .font-floater a:active { background: #F0F0F0; color: var(--pop-pink); }
 
-        /* 分類標題 */
-        .gallery-section-title {
-            grid-column: 1 / -1; 
-            font-size: 18px; font-weight: bold; color: var(--ink-dark);
-            /* 👇 這裡原本是 25px，把數字改小就能大幅縮減飯店之間的行距 👇 */
-            margin-top: 3px; 
-            margin-bottom: 5px;
-            border-bottom: 2px dashed rgba(176, 190, 197, 0.6);
-            padding-bottom: 8px;
-            display: flex; align-items: center; gap: 8px;
+        /* === 影音大廳專屬樣式 === */
+        .page-title {
+            text-align: center; font-size: calc(22px * var(--text-scale)); font-weight: bold;
+            color: var(--pop-pink); margin: 15px 0 10px 0; display: flex; align-items: center; justify-content: center; gap: 8px;
         }
 
-
-        /* === 🗂️ 折疊相簿專用設定 === */
-        .hotel-details {
-            width: 100%;
-            margin-bottom: 5px;
+        /* 輪播區塊 */
+        .slideshow-wrapper {
+            background: white; border: 3px solid var(--ink-dark); border-radius: 16px;
+            padding: 10px; box-shadow: 4px 4px 0px rgba(44, 62, 80, 0.15); margin-bottom: 20px;
         }
-        .hotel-details summary {
-            list-style: none; /* 隱藏預設箭頭 */
-            cursor: pointer;
-            outline: none;
-            transition: opacity 0.2s;
-        }
-        .hotel-details summary::-webkit-details-marker { display: none; }
-        .hotel-details summary:active { opacity: 0.6; }
-        
-        /* 展開後的相片網格 (手機 2 欄，電腦 4 欄) */
-        .hotel-photo-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-            padding-top: 15px; 
-            padding-bottom: 10px;
-        }
-
-        /* 📸 一般網格照片 (4:3 長方形) */
-        .media-item {
-            width: 100%; 
-            aspect-ratio: 4 / 3; 
-            object-fit: cover; 
-            border-radius: 12px; border: 2px solid var(--ink-dark); 
-            box-shadow: 2px 2px 0px rgba(44,62,80,0.15);
-            background-color: #f5f5f5; transition: transform 0.3s ease;
-        }
-        
-        /* === 📺 電子相簿輪播區塊 === */
-        .slideshow-wrapper { width: 100%; }
         .slideshow-container {
-            width: 100%; aspect-ratio: 4 / 3; 
-            background-color: #000; border-radius: 12px;
-            border: 2px solid var(--ink-dark); box-shadow: 2px 2px 0px rgba(44,62,80,0.15);
-            position: relative; overflow: hidden; cursor: pointer; 
+            width: 100%; aspect-ratio: 4 / 3; overflow: hidden; position: relative;
+            border-radius: 10px; background: #000; cursor: pointer;
         }
-
         .slide-img {
-            width: 100%; height: 100%; object-fit: cover; 
-            position: absolute; top: 0; left: 0;
-            opacity: 0; transition: opacity 0.8s ease-in-out; 
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            object-fit: cover; opacity: 0; transition: opacity 1s ease-in-out;
         }
         .slide-img.active { opacity: 1; }
 
-        /* 移出畫面的精緻小控制器 */
-        .external-controls {
-            display: flex; justify-content: flex-end; 
-            gap: 10px; margin-top: 10px; margin-bottom: 10px;
+        /* 照片分類與網格 */
+        .gallery-section-title {
+            font-size: calc(18px * var(--text-scale)); font-weight: bold; color: var(--ink-dark);
+            margin-top: 15px; margin-bottom: 8px;
+            border-bottom: 2px dashed rgba(176, 190, 197, 0.6);
+            padding-bottom: 6px; display: flex; align-items: center; gap: 8px;
         }
-        
-        .control-btn {
-            background: white; border: 2px solid var(--ink-dark);
-            padding: 5px 14px; border-radius: 20px; font-size: 13px;
-            font-weight: bold; color: var(--ink-dark); cursor: pointer;
-            box-shadow: 2px 2px 0px rgba(44,62,80,0.2);
-            display: flex; align-items: center; outline: none; font-family: inherit;
+        .gallery-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 15px;
         }
-        .control-btn:active { transform: translate(1px,1px); box-shadow: none; }
+        .gallery-thumb {
+            aspect-ratio: 4 / 3; width: 100%; object-fit: cover; border-radius: 8px;
+            border: 2px solid var(--ink-dark); box-shadow: 2px 2px 0px rgba(44,62,80,0.1);
+            transition: transform 0.2s; cursor: pointer; display: block; background: #eee;
+        }
+        .gallery-thumb:active { transform: scale(0.96); }
 
-        /* 📱 破解 Apple iOS 手機專用全螢幕 */
-        .slideshow-wrapper.fullscreen-mode {
-            position: fixed !important; top: 0 !important; left: 0 !important;
-            width: 100vw !important; height: 100vh !important; background-color: #000 !important;
-            z-index: 9999 !important; display: flex; flex-direction: column; justify-content: center;
-            margin: 0 !important;
-        }
-        .slideshow-wrapper.fullscreen-mode .slideshow-container {
-            border: none !important; border-radius: 0 !important;
-            height: auto !important; aspect-ratio: auto !important; flex: 1;
-        }
-        .slideshow-wrapper.fullscreen-mode .external-controls {
-            position: absolute; bottom: 40px; right: 20px; z-index: 10000;
-        }
-
-        /* 💻 響應式設計：螢幕變大時自動套用 */
         @media (min-width: 768px) {
-            .container { padding: 30px 40px 60px 40px; }
-            .page-title { font-size: 32px; }
-            .gallery-section-title { font-size: 24px; border-bottom-width: 3px; }
-            .hotel-photo-grid { grid-template-columns: repeat(4, 1fr); gap: 20px; }
-            .slideshow-container { aspect-ratio: 16 / 9; border-radius: 16px; border-width: 3px; }
-            .media-item { border-width: 3px; border-radius: 16px; box-shadow: 4px 4px 0px rgba(44,62,80,0.15); }
-            .media-item:hover { transform: scale(1.05); z-index: 10; position: relative; }
+            .container { max-width: 800px; padding: 30px 40px; }
+            .nav-store { font-size: 26px; }
+            .gallery-grid { grid-template-columns: repeat(4, 1fr); gap: 12px; }
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-    
-    <div class="top-nav">
-        <a href="home.html" class="back-btn">⬅ 返回首頁</a>
-        <h1 class="page-title">📸 東泳記影音大廳</h1>
+<!-- === 頂部導覽列 === -->
+<div class="sticky-navbar">
+    <div class="nav-info">
+        <div class="nav-store">東泳記泳裝店</div>
+        <a href="https://maps.app.goo.gl/YkHK24qn1kZsfBn38?g_st=ic" target="_blank" class="nav-loc">卑南鄉溫泉路370號🚗導航</a>
     </div>
-
-    <div class="media-grid">
-
-                <!-- 📺 電子相簿輪播區塊 -->
-        <div class="slideshow-wrapper">
-            <div class="slideshow-container" id="slideshowArea" title="點擊畫面也可暫停/播放">
-                <!-- 29 張輪播照片 -->
-                <img src="Images/tyg-1.jpg" class="slide-img active" alt="東遊季">
-                <img src="Images/tyg-2.jpg" class="slide-img" alt="東遊季">
-                <img src="Images/tyg-3.jpg" class="slide-img" alt="東遊季">
-                <img src="Images/tyg-4.jpg" class="slide-img" alt="東遊季">
-                <img src="Images/tyg-5.jpg" class="slide-img" alt="東遊季">
-                <img src="Images/tyg-6.jpg" class="slide-img" alt="東遊季">
-                <img src="Images/tyg-7.jpg" class="slide-img" alt="東遊季">
-                
-                <img src="Images/royal-1.jpg" class="slide-img" alt="知本老爺">
-                <img src="Images/royal-2.jpg" class="slide-img" alt="知本老爺">
-                <img src="Images/royal-3.jpg" class="slide-img" alt="知本老爺">
-                <img src="Images/royal-4.jpg" class="slide-img" alt="知本老爺">
-                <img src="Images/royal-5.jpg" class="slide-img" alt="知本老爺">
-                <img src="Images/royal-6.jpg" class="slide-img" alt="知本老爺">
-                <img src="Images/royal-7.jpg" class="slide-img" alt="知本老爺">
-                <img src="Images/royal-8.jpg" class="slide-img" alt="知本老爺">
-                <img src="Images/royal-9.jpg" class="slide-img" alt="知本老爺">
-
-                <img src="Images/yy-1.jpg" class="slide-img" alt="ㄚㄧㄚ旺">
-                <img src="Images/yy-2.jpg" class="slide-img" alt="ㄚㄧㄚ旺">
-                <img src="Images/yy-3.jpg" class="slide-img" alt="ㄚㄧㄚ旺">
-                <img src="Images/yy-4.jpg" class="slide-img" alt="ㄚㄧㄚ旺">
-
-                <img src="Images/dt-1.jpg" class="slide-img" alt="東台">
-                <img src="Images/dt-2.jpg" class="slide-img" alt="東台">
-                <img src="Images/dt-3.jpg" class="slide-img" alt="東台">
-                <img src="Images/dt-4.jpg" class="slide-img" alt="東台">
-                <img src="Images/dt-5.jpg" class="slide-img" alt="東台">
-                <img src="Images/dt-6.jpg" class="slide-img" alt="東台">
-                <img src="Images/dt-7.jpg" class="slide-img" alt="東台">
-                <img src="Images/dt-8.jpg" class="slide-img" alt="東台">
-                <img src="Images/dt-9.jpg" class="slide-img" alt="東台">
-            </div>
-            
-            <!-- 👇 就是這段控制器按鈕剛剛被不小心刪掉了！補回來 👇 -->
-            <div class="external-controls">
-                <button class="control-btn" id="togglePlayBtn">⏸ 暫停</button>
-                <button class="control-btn" id="fullscreenBtn">⛶ 全螢幕</button>
-            </div>
-        </div>
-
-
-
-        <!-- 📸 東遊季溫泉渡假村 (折疊設計) -->
-        <details class="hotel-details">
-            <summary class="gallery-section-title">
-                <span style="color:var(--pop-pink);">♨️</span> <span>東遊季溫泉渡假村</span>
-                <span style="margin-left: auto; font-size: 13px; color: #888; font-weight: normal;">▼ 點擊展開</span>
-            </summary>
-            <div class="hotel-photo-grid">
-                <img src="Images/tyg-1.jpg" class="media-item" alt="東遊季照片">
-                <img src="Images/tyg-2.jpg" class="media-item" alt="東遊季照片">
-                <img src="Images/tyg-3.jpg" class="media-item" alt="東遊季照片">
-                <img src="Images/tyg-4.jpg" class="media-item" alt="東遊季照片">
-                <img src="Images/tyg-5.jpg" class="media-item" alt="東遊季照片">
-                <img src="Images/tyg-6.jpg" class="media-item" alt="東遊季照片">
-                <img src="Images/tyg-7.jpg" class="media-item" alt="東遊季照片">
-            </div>
-        </details>
-
-        <!-- 📸 知本老爺酒店 (折疊設計) -->
-        <details class="hotel-details">
-            <summary class="gallery-section-title">
-                <span style="color:var(--pop-pink);">♨️</span> <span>知本老爺酒店</span>
-                <span style="margin-left: auto; font-size: 13px; color: #888; font-weight: normal;">▼ 點擊展開</span>
-            </summary>
-            <div class="hotel-photo-grid">
-                <img src="Images/royal-1.jpg" class="media-item" alt="知本老爺照片">
-                <img src="Images/royal-2.jpg" class="media-item" alt="知本老爺照片">
-                <img src="Images/royal-3.jpg" class="media-item" alt="知本老爺照片">
-                <img src="Images/royal-4.jpg" class="media-item" alt="知本老爺照片">
-                <img src="Images/royal-5.jpg" class="media-item" alt="知本老爺照片">
-                <img src="Images/royal-6.jpg" class="media-item" alt="知本老爺照片">
-                <img src="Images/royal-7.jpg" class="media-item" alt="知本老爺照片">
-                <img src="Images/royal-8.jpg" class="media-item" alt="知本老爺照片">
-                <img src="Images/royal-9.jpg" class="media-item" alt="知本老爺照片">
-            </div>
-        </details>
-
-        <!-- 📸 ㄚㄧㄚ旺溫泉渡假村 (折疊設計) -->
-        <details class="hotel-details">
-            <summary class="gallery-section-title">
-                <span style="color:var(--pop-pink);">♨️</span> <span>ㄚㄧㄚ旺溫泉渡假村</span>
-                <span style="margin-left: auto; font-size: 13px; color: #888; font-weight: normal;">▼ 點擊展開</span>
-            </summary>
-            <div class="hotel-photo-grid">
-                <img src="Images/yy-1.jpg" class="media-item" alt="ㄚㄧㄚ旺照片">
-                <img src="Images/yy-2.jpg" class="media-item" alt="ㄚㄧㄚ旺照片">
-                <img src="Images/yy-3.jpg" class="media-item" alt="ㄚㄧㄚ旺照片">
-                <img src="Images/yy-4.jpg" class="media-item" alt="ㄚㄧㄚ旺照片">
-            </div>
-        </details>
-
-        <!-- 📸 東台溫泉飯店 (折疊設計) -->
-        <details class="hotel-details">
-            <summary class="gallery-section-title">
-                <span style="color:var(--pop-pink);">♨️</span> <span>東台溫泉飯店</span>
-                <span style="margin-left: auto; font-size: 13px; color: #888; font-weight: normal;">▼ 點擊展開</span>
-            </summary>
-            <div class="hotel-photo-grid">
-                <img src="Images/dt-1.jpg" class="media-item" alt="東台溫泉照片">
-                <img src="Images/dt-2.jpg" class="media-item" alt="東台溫泉照片">
-                <img src="Images/dt-3.jpg" class="media-item" alt="東台溫泉照片">
-                <img src="Images/dt-4.jpg" class="media-item" alt="東台溫泉照片">
-                <img src="Images/dt-5.jpg" class="media-item" alt="東台溫泉照片">
-                <img src="Images/dt-6.jpg" class="media-item" alt="東台溫泉照片">
-                <img src="Images/dt-7.jpg" class="media-item" alt="東台溫泉照片">
-                <img src="Images/dt-8.jpg" class="media-item" alt="東台溫泉照片">
-                <img src="Images/dt-9.jpg" class="media-item" alt="東台溫泉照片">
-            </div>
-        </details>
-
-    </div>
+    <a href="tel:0910557998" class="btn-call">📞 0910-557-998</a>
 </div>
 
-<!-- ⚙️ JavaScript 雙引擎控制器 (包含 iOS 全螢幕破解) -->
+<!-- === 底部 App 風格導覽列 (符合你的按鈕順序與符號需求) === -->
+<div class="font-floater">
+    <a href="home.html" title="返回首頁">𖠿</a>
+    <button id="togglePlayBtn" title="暫停">⏸︎</button>
+    <button id="togglePlayBtnPlay" title="播放" style="display:none;">▶︎</button>
+    <button onclick="toggleFullscreen()" title="全螢幕">⛶</button>
+    <button onclick="changeFont(-0.1)">A-</button>
+    <button onclick="resetFont()">A</button>
+    <button onclick="changeFont(0.1)">A+</button>
+    <button onclick="scrollToTop()" title="回到頂部">🔝</button>
+</div>
+
+<div class="container">
+    
+    <div class="page-title">📸 東泳記影音大廳</div>
+
+    <!-- 📺 電子相簿輪播區塊 -->
+    <div class="slideshow-wrapper">
+        <div class="slideshow-container" id="slideshowArea" title="點擊畫面也可暫停/播放">
+            <!-- 29 張完整精選照片 -->
+            <img src="Images/tyg-1.jpg" class="slide-img active" alt="東遊季">
+            <img src="Images/tyg-2.jpg" class="slide-img" alt="東遊季">
+            <img src="Images/tyg-3.jpg" class="slide-img" alt="東遊季">
+            <img src="Images/tyg-4.jpg" class="slide-img" alt="東遊季">
+            <img src="Images/tyg-5.jpg" class="slide-img" alt="東遊季">
+            <img src="Images/tyg-6.jpg" class="slide-img" alt="東遊季">
+            <img src="Images/tyg-7.jpg" class="slide-img" alt="東遊季">
+            
+            <img src="Images/royal-1.jpg" class="slide-img" alt="知本老爺">
+            <img src="Images/royal-2.jpg" class="slide-img" alt="知本老爺">
+            <img src="Images/royal-3.jpg" class="slide-img" alt="知本老爺">
+            <img src="Images/royal-4.jpg" class="slide-img" alt="知本老爺">
+            <img src="Images/royal-5.jpg" class="slide-img" alt="知本老爺">
+            <img src="Images/royal-6.jpg" class="slide-img" alt="知本老爺">
+            <img src="Images/royal-7.jpg" class="slide-img" alt="知本老爺">
+            <img src="Images/royal-8.jpg" class="slide-img" alt="知本老爺">
+            <img src="Images/royal-9.jpg" class="slide-img" alt="知本老爺">
+
+            <img src="Images/yy-1.jpg" class="slide-img" alt="ㄚㄧㄚ旺">
+            <img src="Images/yy-2.jpg" class="slide-img" alt="ㄚㄧㄚ旺">
+            <img src="Images/yy-3.jpg" class="slide-img" alt="ㄚㄧㄚ旺">
+            <img src="Images/yy-4.jpg" class="slide-img" alt="ㄚㄧㄚ旺">
+
+            <img src="Images/dt-1.jpg" class="slide-img" alt="東台">
+            <img src="Images/dt-2.jpg" class="slide-img" alt="東台">
+            <img src="Images/dt-3.jpg" class="slide-img" alt="東台">
+            <img src="Images/dt-4.jpg" class="slide-img" alt="東台">
+            <img src="Images/dt-5.jpg" class="slide-img" alt="東台">
+            <img src="Images/dt-6.jpg" class="slide-img" alt="東台">
+            <img src="Images/dt-7.jpg" class="slide-img" alt="東台">
+            <img src="Images/dt-8.jpg" class="slide-img" alt="東台">
+            <img src="Images/dt-9.jpg" class="slide-img" alt="東台">
+        </div>
+    </div>
+
+    <!-- 📁 各飯店完整相簿分類區塊 -->
+    <div class="gallery-section-title">♨️ 東遊季溫泉渡假村</div>
+    <div class="gallery-grid">
+        <img src="Images/tyg-1.jpg" class="gallery-thumb" alt="東遊季 1">
+        <img src="Images/tyg-2.jpg" class="gallery-thumb" alt="東遊季 2">
+        <img src="Images/tyg-3.jpg" class="gallery-thumb" alt="東遊季 3">
+        <img src="Images/tyg-4.jpg" class="gallery-thumb" alt="東遊季 4">
+        <img src="Images/tyg-5.jpg" class="gallery-thumb" alt="東遊季 5">
+        <img src="Images/tyg-6.jpg" class="gallery-thumb" alt="東遊季 6">
+        <img src="Images/tyg-7.jpg" class="gallery-thumb" alt="東遊季 7">
+    </div>
+
+    <div class="gallery-section-title">♨️ 知本老爺酒店</div>
+    <div class="gallery-grid">
+        <img src="Images/royal-1.jpg" class="gallery-thumb" alt="老爺 1">
+        <img src="Images/royal-2.jpg" class="gallery-thumb" alt="老爺 2">
+        <img src="Images/royal-3.jpg" class="gallery-thumb" alt="老爺 3">
+        <img src="Images/royal-4.jpg" class="gallery-thumb" alt="老爺 4">
+        <img src="Images/royal-5.jpg" class="gallery-thumb" alt="老爺 5">
+        <img src="Images/royal-6.jpg" class="gallery-thumb" alt="老爺 6">
+        <img src="Images/royal-7.jpg" class="gallery-thumb" alt="老爺 7">
+        <img src="Images/royal-8.jpg" class="gallery-thumb" alt="老爺 8">
+        <img src="Images/royal-9.jpg" class="gallery-thumb" alt="老爺 9">
+    </div>
+
+    <div class="gallery-section-title">♨️ Y—Y旺溫泉渡假村</div>
+    <div class="gallery-grid">
+        <img src="Images/yy-1.jpg" class="gallery-thumb" alt="ㄚㄧㄚ旺 1">
+        <img src="Images/yy-2.jpg" class="gallery-thumb" alt="ㄚㄧㄚ旺 2">
+        <img src="Images/yy-3.jpg" class="gallery-thumb" alt="ㄚㄧㄚ旺 3">
+        <img src="Images/yy-4.jpg" class="gallery-thumb" alt="ㄚㄧㄚ旺 4">
+    </div>
+
+    <div class="gallery-section-title">♨️ 東台溫泉飯店</div>
+    <div class="gallery-grid">
+        <img src="Images/dt-1.jpg" class="gallery-thumb" alt="東台 1">
+        <img src="Images/dt-2.jpg" class="gallery-thumb" alt="東台 2">
+        <img src="Images/dt-3.jpg" class="gallery-thumb" alt="東台 3">
+        <img src="Images/dt-4.jpg" class="gallery-thumb" alt="東台 4">
+        <img src="Images/dt-5.jpg" class="gallery-thumb" alt="東台 5">
+        <img src="Images/dt-6.jpg" class="gallery-thumb" alt="東台 6">
+        <img src="Images/dt-7.jpg" class="gallery-thumb" alt="東台 7">
+        <img src="Images/dt-8.jpg" class="gallery-thumb" alt="東台 8">
+        <img src="Images/dt-9.jpg" class="gallery-thumb" alt="東台 9">
+    </div>
+
+</div>
+
+<!-- === ⚙️ 輪播與字體控制指令碼 === -->
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const slides = document.querySelectorAll(".slide-img");
-        const playBtn = document.getElementById("togglePlayBtn");
-        const fullscreenBtn = document.getElementById("fullscreenBtn");
-        const slideshowArea = document.getElementById("slideshowArea");
-        const wrapper = document.querySelector(".slideshow-wrapper"); 
-        
-        let currentIndex = 0;
-        let isPlaying = true;
-        let slideInterval;
+    // 字體縮放記憶系統
+    let currentScale = parseFloat(localStorage.getItem('userFontScale')) || 1;
+    function applyFontScale() {
+        document.documentElement.style.setProperty('--text-scale', currentScale);
+        localStorage.setItem('userFontScale', currentScale);
+    }
+    function changeFont(step) {
+        currentScale += step;
+        if (currentScale < 0.8) currentScale = 0.8;
+        if (currentScale > 1.4) currentScale = 1.4;
+        applyFontScale();
+    }
+    function resetFont() {
+        currentScale = 1;
+        applyFontScale();
+    }
+    function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    applyFontScale();
 
-        function nextSlide() {
-            slides[currentIndex].classList.remove("active");
-            currentIndex = (currentIndex + 1) % slides.length;
-            slides[currentIndex].classList.add("active");
+    // 輪播控制系統
+    const slides = document.querySelectorAll('.slide-img');
+    let currentIndex = 0;
+    let slideshowInterval = setInterval(nextSlide, 3000);
+    let isPlaying = true;
+
+    function nextSlide() {
+        slides[currentIndex].classList.remove('active');
+        currentIndex = (currentIndex + 1) % slides.length;
+        slides[currentIndex].classList.add('active');
+    }
+
+    const slideshowArea = document.getElementById('slideshowArea');
+    const pauseBtn = document.getElementById('togglePlayBtn');
+    const playBtn = document.getElementById('togglePlayBtnPlay');
+
+    function togglePlay() {
+        if (isPlaying) {
+            clearInterval(slideshowInterval);
+            isPlaying = false;
+            pauseBtn.style.display = 'none';
+            playBtn.style.display = 'block';
+        } else {
+            slideshowInterval = setInterval(nextSlide, 3000);
+            isPlaying = true;
+            playBtn.style.display = 'none';
+            pauseBtn.style.display = 'block';
         }
+    }
 
-        function startSlideShow() { slideInterval = setInterval(nextSlide, 2500); }
-        function stopSlideShow() { clearInterval(slideInterval); }
+    slideshowArea.addEventListener('click', togglePlay);
+    pauseBtn.addEventListener('click', togglePlay);
+    playBtn.addEventListener('click', togglePlay);
 
-        startSlideShow();
-
-        function togglePlay() {
-            if (isPlaying) {
-                stopSlideShow();
-                playBtn.innerHTML = "▶️ 播放";
-                isPlaying = false;
-            } else {
-                nextSlide();
-                startSlideShow();
-                playBtn.innerHTML = "⏸ 暫停";
-                isPlaying = true;
-            }
+    // 全螢幕功能
+    function toggleFullscreen() {
+        const elem = document.getElementById('slideshowArea');
+        if (!document.fullscreenElement) {
+            if (elem.requestFullscreen) { elem.requestFullscreen(); }
+            else if (elem.webkitRequestFullscreen) { elem.webkitRequestFullscreen(); }
+        } else {
+            if (document.exitFullscreen) { document.exitFullscreen(); }
+            else if (document.webkitExitFullscreen) { document.webkitExitFullscreen(); }
         }
-
-        playBtn.addEventListener("click", togglePlay);
-        slideshowArea.addEventListener("click", togglePlay);
-
-        // 全螢幕功能 (雙重保險設計)
-        fullscreenBtn.addEventListener("click", function() {
-            const isNativeFs = document.fullscreenElement || document.webkitFullscreenElement;
-            const isFakeFs = wrapper.classList.contains("fullscreen-mode");
-
-            if (isNativeFs) {
-                if (document.exitFullscreen) document.exitFullscreen();
-                else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
-                fullscreenBtn.innerHTML = "⛶ 全螢幕";
-            } else if (isFakeFs) {
-                wrapper.classList.remove("fullscreen-mode");
-                document.body.style.overflow = "auto"; 
-                fullscreenBtn.innerHTML = "⛶ 全螢幕";
-            } else {
-                if (wrapper.requestFullscreen) {
-                    wrapper.requestFullscreen().then(() => {
-                        fullscreenBtn.innerHTML = "✖ 退出";
-                    }).catch(() => enterFakeFullscreen());
-                } else if (wrapper.webkitRequestFullscreen) {
-                    wrapper.webkitRequestFullscreen();
-                    fullscreenBtn.innerHTML = "✖ 退出";
-                } else {
-                    enterFakeFullscreen();
-                }
-            }
-        });
-
-        function enterFakeFullscreen() {
-            wrapper.classList.add("fullscreen-mode");
-            document.body.style.overflow = "hidden"; 
-            fullscreenBtn.innerHTML = "✖ 退出";
-        }
-    });
+    }
 </script>
 
 </body>
