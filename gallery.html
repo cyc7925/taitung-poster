@@ -69,10 +69,9 @@
         }
         .font-floater button:active, .font-floater a:active { background: #F0F0F0; color: var(--pop-pink); }
 
-        /* 輪播區塊與控制按鈕 (針對電腦全螢幕優化：全螢幕時背景變純黑，照片完整呈現) */
+        /* 輪播區塊 (已移除外框，但保留全螢幕展開功能) */
         .slideshow-wrapper {
-            background: white; border: 3px solid var(--ink-dark); border-radius: 16px;
-            padding: 12px; box-shadow: 4px 4px 0px rgba(44, 62, 80, 0.15); margin-bottom: 20px;
+            background: transparent; margin-bottom: 20px;
         }
         .slideshow-wrapper:fullscreen {
             background: black; padding: 0; border: none; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100vw; height: 100vh;
@@ -83,18 +82,19 @@
 
         .slideshow-container {
             width: 100%; aspect-ratio: 4 / 3; overflow: hidden; position: relative;
-            border-radius: 10px; background: #000; cursor: pointer;
+            border-radius: 16px; background: #000; cursor: pointer;
+            border: 3px solid var(--ink-dark); box-shadow: 4px 4px 0px rgba(44, 62, 80, 0.15);
         }
         .slideshow-wrapper:fullscreen .slideshow-container {
-            width: 100%; height: 100%; aspect-ratio: unset; border-radius: 0;
+            width: 100%; height: 100%; aspect-ratio: unset; border-radius: 0; border: none; box-shadow: none;
         }
         .slideshow-wrapper:-webkit-full-screen .slideshow-container {
-            width: 100%; height: 100%; aspect-ratio: unset; border-radius: 0;
+            width: 100%; height: 100%; aspect-ratio: unset; border-radius: 0; border: none; box-shadow: none;
         }
 
         .slide-img {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            object-fit: contain; opacity: 0; transition: opacity 1s ease-in-out;
+            object-fit: cover; opacity: 0; transition: opacity 1s ease-in-out;
         }
         .slide-img.active { opacity: 1; }
 
@@ -132,7 +132,7 @@
         }
         .gallery-thumb:active { transform: scale(0.96); }
 
-        /* 手機點擊縮圖彈出大圖燈箱 */
+        /* 彈出大圖燈箱容器 */
         #lightbox {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0, 0, 0, 0.9); z-index: 9999;
@@ -179,7 +179,7 @@
 
 <div class="container">
     
-    <!-- 📺 電子相簿輪播區塊 (支援電腦全螢幕自動輪播) -->
+    <!-- 📺 電子相簿輪播區塊 (無外框，但保留暫停與全螢幕按鈕) -->
     <div class="slideshow-wrapper" id="slideshowWrapper">
         <div class="slideshow-container" id="slideshowArea" title="點擊畫面可暫停/播放">
             <img src="Images/tyg-1.jpg" class="slide-img active" alt="東遊季">
@@ -227,7 +227,7 @@
     <details>
         <summary>
             <span>♨️ 東遊季溫泉渡假村相簿</span>
-            <span class="summary-hint">👉 點擊看更多照片 ▼</span>
+            <span class="summary-hint">點擊看更多照片 ▼</span>
         </summary>
         <div class="gallery-grid">
             <img src="Images/tyg-1.jpg" class="gallery-thumb" alt="東遊季 1" onclick="openLightbox(this.src)">
@@ -243,7 +243,7 @@
     <details>
         <summary>
             <span>♨️ 知本老爺酒店相簿</span>
-            <span class="summary-hint">👉 點擊看更多照片 ▼</span>
+            <span class="summary-hint">點擊看更多照片 ▼</span>
         </summary>
         <div class="gallery-grid">
             <img src="Images/royal-1.jpg" class="gallery-thumb" alt="老爺 1" onclick="openLightbox(this.src)">
@@ -261,7 +261,7 @@
     <details>
         <summary>
             <span>♨️ Y—Y旺溫泉渡假村相簿</span>
-            <span class="summary-hint">👉 點擊看更多照片 ▼</span>
+            <span class="summary-hint">點擊看更多照片 ▼</span>
         </summary>
         <div class="gallery-grid">
             <img src="Images/yy-1.jpg" class="gallery-thumb" alt="ㄚㄧㄚ旺 1" onclick="openLightbox(this.src)">
@@ -274,7 +274,7 @@
     <details>
         <summary>
             <span>♨️ 東台溫泉飯店相簿</span>
-            <span class="summary-hint">👉 點擊看更多照片 ▼</span>
+            <span class="summary-hint">點擊看更多照片 ▼</span>
         </summary>
         <div class="gallery-grid">
             <img src="Images/dt-1.jpg" class="gallery-thumb" alt="東台 1" onclick="openLightbox(this.src)">
@@ -291,7 +291,7 @@
 
 </div>
 
-<!-- 手機點擊縮圖彈出大圖容器 -->
+<!-- 彈出大圖燈箱容器 -->
 <div id="lightbox" onclick="closeLightbox()">
     <button id="lightbox-close">✕</button>
     <img id="lightbox-img" src="" alt="放大預覽">
@@ -352,14 +352,14 @@
     pauseBtn.addEventListener('click', togglePlay);
     playBtn.addEventListener('click', togglePlay);
 
-    // 點擊輪播圖本身可以暫停/播放
+    // 點擊輪播圖也能暫停/播放
     slideshowArea.addEventListener('click', function(e) {
         if (e.target.tagName !== 'BUTTON') {
             togglePlay();
         }
     });
 
-    // 真正的電腦全螢幕功能：將整個相簿輪播外框放大到螢幕滿版，並維持自動輪播
+    // 真正的電腦全螢幕功能：點擊後整個輪播區塊展開滿版，且自動輪播持續進行
     function toggleFullscreen() {
         const elem = document.getElementById('slideshowWrapper');
         if (!document.fullscreenElement && !document.webkitFullscreenElement) {
@@ -377,7 +377,7 @@
         }
     }
 
-    // 燈箱放大功能 (給下方縮圖使用)
+    // 燈箱放大功能 (下方縮圖使用)
     function openLightbox(imgSrc) {
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightbox-img');
