@@ -72,19 +72,21 @@
         .btn-white { background: white; }
         .btn-yellow { background: var(--pop-yellow); }
 
-        /* === 🆕 字體大小控制列 === */
+        /* === 🆕 字體大小控制列 (極簡淺框設計) === */
         .font-controls-inline {
             display: flex; justify-content: center; align-items: center;
             margin-top: 15px; margin-bottom: 5px; gap: 6px;
         }
         .font-btn-inline {
-            background: white; border: 2px solid var(--ink-dark);
-            padding: 4px 10px; border-radius: 12px; font-size: 12px;
-            font-weight: bold; color: var(--ink-dark); cursor: pointer;
-            box-shadow: 2px 2px 0px rgba(44,62,80,0.15); transition: 0.2s;
+            background: transparent; /* 去掉白色底色，融入背景 */
+            border: 1px solid #D0D0D0; /* 變成淺淺的細框線 */
+            padding: 4px 12px; border-radius: 15px; font-size: 12px;
+            font-weight: normal; color: #777; cursor: pointer; /* 字體改細、顏色改淡 */
+            box-shadow: none; transition: 0.2s; font-family: inherit;
         }
-        .font-btn-inline:active { transform: translate(1px, 1px); box-shadow: 0 0 0 transparent; }
-  
+        /* 按下去的時候稍微變深，並透出一點點粉紅色 */
+        .font-btn-inline:active { background: #F0F0F0; color: var(--pop-pink); border-color: #BBB; }
+
         /* === 本店詳細介紹區塊 === */
         .store-intro-clean {
             padding: 0 10px; margin-top: 2px; margin-bottom: 15px;
@@ -236,13 +238,14 @@
         </div>
     </div>
 
-    <!-- === 🆕 內嵌式：字體大小控制按鈕 === -->
+        <!-- === 🆕 內嵌式：極簡字體大小控制 === -->
     <div class="font-controls-inline">
-        <span style="font-size: calc(13px * var(--text-scale)); font-weight: bold; color: #666;">文字大小</span>
-        <button class="font-btn-inline" onclick="changeFont(-0.1)">縮小 A-</button>
-        <button class="font-btn-inline" onclick="resetFont()">標準 A</button>
-        <button class="font-btn-inline" onclick="changeFont(0.1)">放大 A+</button>
+        <span style="font-size: 12px; color: #999; margin-right: 4px;">字體大小</span>
+        <button class="font-btn-inline" onclick="changeFont(-0.1)">A-</button>
+        <button class="font-btn-inline" onclick="resetFont()">標準</button>
+        <button class="font-btn-inline" onclick="changeFont(0.1)">A+</button>
     </div>
+
 
     <div class="store-intro-clean">
         <div class="intro-text" style="letter-spacing: -0.2px; line-height: 1.45;">
