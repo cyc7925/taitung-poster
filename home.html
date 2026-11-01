@@ -50,23 +50,30 @@
         }
         .header-phone-btn:active { transform: translate(1px,1px); box-shadow: none; }
 
-        /* === 🆕 升級版：直式多功能浮動列 (包含電話、導航、字體控制) === */
+         /* === App 風格底部水平導覽列 === */
         .font-floater {
             position: fixed; 
-            top: 85px; right: 12px; 
-            display: flex; flex-direction: column; 
-            background: rgba(255, 255, 255, 0.7); 
-            border: 1px solid #D0D0D0; border-radius: 12px;
-            backdrop-filter: blur(4px); z-index: 1000; overflow: hidden;
-            box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+            bottom: 0; left: 0; width: 100%; /* 貼齊螢幕最下方滿版 */
+            display: flex; flex-direction: row; justify-content: space-around;
+            background: rgba(255, 255, 255, 0.95); 
+            border-top: 1.5px solid rgba(176, 190, 197, 0.5);
+            border-radius: 16px 16px 0 0; /* 只有上方有圓角 */
+            backdrop-filter: blur(8px); 
+            z-index: 999; 
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+            /* env(safe-area) 是為了解決 iPhone 底部那一條黑線擋住按鈕的問題 */
+            padding: 5px 0; padding-bottom: calc(5px + env(safe-area-inset-bottom)); 
         }
         .font-floater button, .font-floater a {
             background: transparent; border: none; outline: none;
-            padding: 8px 10px; font-size: 14px; font-weight: bold; font-family: inherit;
-            color: #888; cursor: pointer; transition: 0.2s; 
-            text-decoration: none; display: block; text-align: center;
+            padding: 10px 0; font-size: 15px; font-weight: bold; font-family: inherit;
+            color: #666; cursor: pointer; transition: 0.2s; 
+            text-decoration: none; text-align: center; flex: 1; /* 5個按鈕均分寬度 */
         }
-        .font-floater button:not(:last-child), .font-floater a:not(:last-child) { border-bottom: 1px solid #E0E0E0; }
+        .font-floater button:not(:last-child), .font-floater a:not(:last-child) { 
+            border-bottom: none; /* 取消底線 */
+            border-right: 1px solid rgba(0,0,0,0.08); /* 改成右側分隔線 */
+        }
         .font-floater button:active, .font-floater a:active { background: #F0F0F0; color: var(--pop-pink); }
 
         /* === 1. 漂浮 Emoji 區塊 === */
