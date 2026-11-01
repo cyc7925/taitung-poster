@@ -69,27 +69,48 @@
         }
         .font-floater button:active, .font-floater a:active { background: #F0F0F0; color: var(--pop-pink); }
 
-        /* 輪播區塊與控制按鈕 */
+        /* 輪播區塊與控制按鈕 (針對電腦全螢幕優化：全螢幕時背景變純黑，照片完整呈現) */
         .slideshow-wrapper {
             background: white; border: 3px solid var(--ink-dark); border-radius: 16px;
             padding: 12px; box-shadow: 4px 4px 0px rgba(44, 62, 80, 0.15); margin-bottom: 20px;
         }
+        .slideshow-wrapper:fullscreen {
+            background: black; padding: 0; border: none; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100vw; height: 100vh;
+        }
+        .slideshow-wrapper:-webkit-full-screen {
+            background: black; padding: 0; border: none; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100vw; height: 100vh;
+        }
+
         .slideshow-container {
             width: 100%; aspect-ratio: 4 / 3; overflow: hidden; position: relative;
             border-radius: 10px; background: #000; cursor: pointer;
         }
+        .slideshow-wrapper:fullscreen .slideshow-container {
+            width: 100%; height: 100%; aspect-ratio: unset; border-radius: 0;
+        }
+        .slideshow-wrapper:-webkit-full-screen .slideshow-container {
+            width: 100%; height: 100%; aspect-ratio: unset; border-radius: 0;
+        }
+
         .slide-img {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            object-fit: cover; opacity: 0; transition: opacity 1s ease-in-out;
+            object-fit: contain; opacity: 0; transition: opacity 1s ease-in-out;
         }
         .slide-img.active { opacity: 1; }
 
         .slideshow-controls {
             display: flex; gap: 10px; margin-top: 10px; justify-content: center;
         }
+        .slideshow-wrapper:fullscreen .slideshow-controls {
+            position: absolute; bottom: 20px; z-index: 10; background: rgba(0,0,0,0.5); padding: 10px 20px; border-radius: 12px;
+        }
+        .slideshow-wrapper:-webkit-full-screen .slideshow-controls {
+            position: absolute; bottom: 20px; z-index: 10; background: rgba(0,0,0,0.5); padding: 10px 20px; border-radius: 12px;
+        }
+
         .control-btn {
             background: var(--pop-yellow); border: 2px solid var(--ink-dark); border-radius: 10px;
-            padding: 8px 24px; font-size: calc(14px * var(--text-scale)); font-weight: bold; color: var(--ink-dark);
+            padding: 8px 16px; font-size: calc(13px * var(--text-scale)); font-weight: bold; color: var(--ink-dark);
             cursor: pointer; box-shadow: 2px 2px 0px var(--ink-dark); display: inline-flex; align-items: center; justify-content: center; gap: 4px;
             font-family: inherit; transition: 0.2s;
         }
@@ -111,15 +132,15 @@
         }
         .gallery-thumb:active { transform: scale(0.96); }
 
-        /* 彈出大圖燈箱容器 */
+        /* 手機點擊縮圖彈出大圖燈箱 */
         #lightbox {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.85); z-index: 9999;
+            background: rgba(0, 0, 0, 0.9); z-index: 9999;
             display: none; align-items: center; justify-content: center; padding: 20px; box-sizing: border-box;
         }
         #lightbox img {
             max-width: 100%; max-height: 85vh; object-fit: contain; border-radius: 8px;
-            border: 3px solid white; box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+            border: 3px solid white; box-shadow: 0 5px 25px rgba(0,0,0,0.6);
         }
         #lightbox-close {
             position: absolute; top: 20px; right: 20px; background: white; color: var(--ink-dark);
@@ -158,9 +179,9 @@
 
 <div class="container">
     
-    <!-- 📺 電子相簿輪播區塊 (點擊圖片可直接放大) -->
-    <div class="slideshow-wrapper">
-        <div class="slideshow-container" id="slideshowArea" title="點擊圖片可放大觀看">
+    <!-- 📺 電子相簿輪播區塊 (支援電腦全螢幕自動輪播) -->
+    <div class="slideshow-wrapper" id="slideshowWrapper">
+        <div class="slideshow-container" id="slideshowArea" title="點擊畫面可暫停/播放">
             <img src="Images/tyg-1.jpg" class="slide-img active" alt="東遊季">
             <img src="Images/tyg-2.jpg" class="slide-img" alt="東遊季">
             <img src="Images/tyg-3.jpg" class="slide-img" alt="東遊季">
@@ -198,10 +219,11 @@
         <div class="slideshow-controls">
             <button class="control-btn" id="togglePlayBtn">⏸︎ 暫停</button>
             <button class="control-btn" id="togglePlayBtnPlay" style="display:none;">▶︎ 播放</button>
+            <button class="control-btn" onclick="toggleFullscreen()">⛶ 全螢幕</button>
         </div>
     </div>
 
-    <!-- 📁 各飯店折疊相簿分類區塊 (全部預設隱藏，附帶提示小字) -->
+    <!-- 📁 各飯店折疊相簿分類區塊 (預設收合) -->
     <details>
         <summary>
             <span>♨️ 東遊季溫泉渡假村相簿</span>
@@ -269,13 +291,13 @@
 
 </div>
 
-<!-- 彈出大圖燈箱容器 -->
+<!-- 手機點擊縮圖彈出大圖容器 -->
 <div id="lightbox" onclick="closeLightbox()">
     <button id="lightbox-close">✕</button>
     <img id="lightbox-img" src="" alt="放大預覽">
 </div>
 
-<!-- === ⚙️ 輪播與燈箱控制指令碼 === -->
+<!-- === ⚙️ 輪播與全螢幕控制指令碼 === -->
 <script>
     let currentScale = parseFloat(localStorage.getItem('userFontScale')) || 1;
     function applyFontScale() {
@@ -330,16 +352,32 @@
     pauseBtn.addEventListener('click', togglePlay);
     playBtn.addEventListener('click', togglePlay);
 
-    // 點擊輪播圖也能直接放大目前那張照片
+    // 點擊輪播圖本身可以暫停/播放
     slideshowArea.addEventListener('click', function(e) {
-        if (e.target.tagName === 'IMG') {
-            openLightbox(e.target.src);
-        } else {
+        if (e.target.tagName !== 'BUTTON') {
             togglePlay();
         }
     });
 
-    // 燈箱放大功能
+    // 真正的電腦全螢幕功能：將整個相簿輪播外框放大到螢幕滿版，並維持自動輪播
+    function toggleFullscreen() {
+        const elem = document.getElementById('slideshowWrapper');
+        if (!document.fullscreenElement && !document.webkitFullscreenElement) {
+            if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+            } else if (elem.webkitRequestFullscreen) {
+                elem.webkitRequestFullscreen();
+            }
+        } else {
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            } else if (document.webkitExitFullscreen) {
+                document.webkitExitFullscreen();
+            }
+        }
+    }
+
+    // 燈箱放大功能 (給下方縮圖使用)
     function openLightbox(imgSrc) {
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightbox-img');
