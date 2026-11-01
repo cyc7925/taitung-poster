@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
@@ -69,29 +69,15 @@
         }
         .font-floater button:active, .font-floater a:active { background: #F0F0F0; color: var(--pop-pink); }
 
-        /* 輪播區塊 (已移除外框，但保留全螢幕展開功能) */
+        /* 輪播區塊 (無外框設計) */
         .slideshow-wrapper {
             background: transparent; margin-bottom: 20px;
         }
-        .slideshow-wrapper:fullscreen {
-            background: black; padding: 0; border: none; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100vw; height: 100vh;
-        }
-        .slideshow-wrapper:-webkit-full-screen {
-            background: black; padding: 0; border: none; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100vw; height: 100vh;
-        }
-
         .slideshow-container {
             width: 100%; aspect-ratio: 4 / 3; overflow: hidden; position: relative;
             border-radius: 16px; background: #000; cursor: pointer;
             border: 3px solid var(--ink-dark); box-shadow: 4px 4px 0px rgba(44, 62, 80, 0.15);
         }
-        .slideshow-wrapper:fullscreen .slideshow-container {
-            width: 100%; height: 100%; aspect-ratio: unset; border-radius: 0; border: none; box-shadow: none;
-        }
-        .slideshow-wrapper:-webkit-full-screen .slideshow-container {
-            width: 100%; height: 100%; aspect-ratio: unset; border-radius: 0; border: none; box-shadow: none;
-        }
-
         .slide-img {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             object-fit: cover; opacity: 0; transition: opacity 1s ease-in-out;
@@ -101,13 +87,6 @@
         .slideshow-controls {
             display: flex; gap: 10px; margin-top: 10px; justify-content: center;
         }
-        .slideshow-wrapper:fullscreen .slideshow-controls {
-            position: absolute; bottom: 20px; z-index: 10; background: rgba(0,0,0,0.5); padding: 10px 20px; border-radius: 12px;
-        }
-        .slideshow-wrapper:-webkit-full-screen .slideshow-controls {
-            position: absolute; bottom: 20px; z-index: 10; background: rgba(0,0,0,0.5); padding: 10px 20px; border-radius: 12px;
-        }
-
         .control-btn {
             background: var(--pop-yellow); border: 2px solid var(--ink-dark); border-radius: 10px;
             padding: 8px 16px; font-size: calc(13px * var(--text-scale)); font-weight: bold; color: var(--ink-dark);
@@ -115,6 +94,27 @@
             font-family: inherit; transition: 0.2s;
         }
         .control-btn:active { transform: translate(1px, 1px); box-shadow: none; }
+
+        /* 🔥 100% 成功率的「滿版輪播展示模式 (全螢幕替代方案)」 */
+        #fullscreen-overlay {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            background: black; z-index: 99999; display: none;
+            flex-direction: column; align-items: center; justify-content: center;
+        }
+        #fullscreen-container {
+            width: 95vw; height: 85vh; position: relative; overflow: hidden; border-radius: 12px;
+        }
+        .fs-slide {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            object-fit: contain; opacity: 0; transition: opacity 1s ease-in-out;
+        }
+        .fs-slide.active { opacity: 1; }
+        #fs-close-btn {
+            position: absolute; top: 20px; right: 20px; background: white; color: var(--ink-dark);
+            border: none; border-radius: 50%; width: 45px; height: 45px; font-size: 22px; font-weight: bold;
+            cursor: pointer; z-index: 100000; display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
 
         /* 飯店相簿折疊選單與雙欄大圖排版 */
         details { margin-top: 10px; border: 2px solid var(--ink-dark); border-radius: 12px; padding: 10px; background: white; box-shadow: 2px 2px 0px rgba(44,62,80,0.1); }
@@ -132,7 +132,7 @@
         }
         .gallery-thumb:active { transform: scale(0.96); }
 
-        /* 彈出大圖燈箱容器 */
+        /* 一般單張放大燈箱 */
         #lightbox {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0, 0, 0, 0.9); z-index: 9999;
@@ -179,8 +179,8 @@
 
 <div class="container">
     
-    <!-- 📺 電子相簿輪播區塊 (無外框，但保留暫停與全螢幕按鈕) -->
-    <div class="slideshow-wrapper" id="slideshowWrapper">
+    <!-- 📺 電子相簿輪播區塊 -->
+    <div class="slideshow-wrapper">
         <div class="slideshow-container" id="slideshowArea" title="點擊畫面可暫停/播放">
             <img src="Images/tyg-1.jpg" class="slide-img active" alt="東遊季">
             <img src="Images/tyg-2.jpg" class="slide-img" alt="東遊季">
@@ -219,7 +219,7 @@
         <div class="slideshow-controls">
             <button class="control-btn" id="togglePlayBtn">⏸︎ 暫停</button>
             <button class="control-btn" id="togglePlayBtnPlay" style="display:none;">▶︎ 播放</button>
-            <button class="control-btn" onclick="toggleFullscreen()">⛶ 全螢幕</button>
+            <button class="control-btn" onclick="openFullscreenMode()">⛶ 全螢幕</button>
         </div>
     </div>
 
@@ -291,13 +291,21 @@
 
 </div>
 
-<!-- 彈出大圖燈箱容器 -->
+<!-- 🔥 100% 成功率的滿版輪播展示層 (全螢幕模式) -->
+<div id="fullscreen-overlay">
+    <button id="fs-close-btn" onclick="closeFullscreenMode()">✕</button>
+    <div id="fullscreen-container">
+        <!-- 自動同步載入所有輪播照片 -->
+    </div>
+</div>
+
+<!-- 一般單張放大燈箱 -->
 <div id="lightbox" onclick="closeLightbox()">
     <button id="lightbox-close">✕</button>
     <img id="lightbox-img" src="" alt="放大預覽">
 </div>
 
-<!-- === ⚙️ 輪播與全螢幕控制指令碼 === -->
+<!-- === ⚙️ 輪播與滿版展示控制指令碼 === -->
 <script>
     let currentScale = parseFloat(localStorage.getItem('userFontScale')) || 1;
     function applyFontScale() {
@@ -319,7 +327,7 @@
     }
     applyFontScale();
 
-    // 輪播控制
+    // 主頁面輪播控制
     const slides = document.querySelectorAll('.slide-img');
     let currentIndex = 0;
     let slideshowInterval = setInterval(nextSlide, 3000);
@@ -329,6 +337,13 @@
         slides[currentIndex].classList.remove('active');
         currentIndex = (currentIndex + 1) % slides.length;
         slides[currentIndex].classList.add('active');
+        
+        // 如果滿版輪播模式開著，同步切換
+        if (fsActive) {
+            fsSlides[fsIndex].classList.remove('active');
+            fsIndex = currentIndex;
+            fsSlides[fsIndex].classList.add('active');
+        }
     }
 
     const slideshowArea = document.getElementById('slideshowArea');
@@ -352,29 +367,41 @@
     pauseBtn.addEventListener('click', togglePlay);
     playBtn.addEventListener('click', togglePlay);
 
-    // 點擊輪播圖也能暫停/播放
     slideshowArea.addEventListener('click', function(e) {
         if (e.target.tagName !== 'BUTTON') {
             togglePlay();
         }
     });
 
-    // 真正的電腦全螢幕功能：點擊後整個輪播區塊展開滿版，且自動輪播持續進行
-    function toggleFullscreen() {
-        const elem = document.getElementById('slideshowWrapper');
-        if (!document.fullscreenElement && !document.webkitFullscreenElement) {
-            if (elem.requestFullscreen) {
-                elem.requestFullscreen();
-            } else if (elem.webkitRequestFullscreen) {
-                elem.webkitRequestFullscreen();
-            }
-        } else {
-            if (document.exitFullscreen) {
-                document.exitFullscreen();
-            } else if (document.webkitExitFullscreen) {
-                document.webkitExitFullscreen();
-            }
-        }
+    // 🔥 滿版輪播模式 (全螢幕替代方案：保證100%可用、自動輪播繼續跑)
+    let fsActive = false;
+    let fsIndex = 0;
+    const fsContainer = document.getElementById('fullscreen-container');
+    
+    // 初始化滿版相片
+    slides.forEach((img, idx) => {
+        const fsImg = document.createElement('img');
+        fsImg.src = img.src;
+        fsImg.className = 'fs-slide' + (idx === 0 ? ' active' : '');
+        fsContainer.appendChild(fsImg);
+    });
+    const fsSlides = fsContainer.querySelectorAll('.fs-slide');
+
+    function openFullscreenMode() {
+        const overlay = document.getElementById('fullscreen-overlay');
+        fsIndex = currentIndex;
+        fsSlides.forEach((s, i) => {
+            if (i === fsIndex) s.classList.add('active');
+            else s.classList.remove('active');
+        });
+        overlay.style.display = 'flex';
+        fsActive = true;
+    }
+
+    function closeFullscreenMode() {
+        const overlay = document.getElementById('fullscreen-overlay');
+        overlay.style.display = 'none';
+        fsActive = false;
     }
 
     // 燈箱放大功能 (下方縮圖使用)
