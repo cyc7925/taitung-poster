@@ -41,14 +41,18 @@
         /* === 主網格排版 === */
         .media-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
 
-        /* 分類標題樣式 (包含折疊按鈕) */
+        /* 分類標題 */
         .gallery-section-title {
+            grid-column: 1 / -1; 
             font-size: 18px; font-weight: bold; color: var(--ink-dark);
-            margin-top: 20px; margin-bottom: 5px;
+            /* 👇 這裡原本是 25px，把數字改小就能大幅縮減飯店之間的行距 👇 */
+            margin-top: 8px; 
+            margin-bottom: 5px;
             border-bottom: 2px dashed rgba(176, 190, 197, 0.6);
             padding-bottom: 8px;
             display: flex; align-items: center; gap: 8px;
         }
+
 
         /* === 🗂️ 折疊相簿專用設定 === */
         .hotel-details {
