@@ -15,7 +15,6 @@
             --pop-blue: #4ECDC4;     
             --pop-pink: #FF6B6B;     
             --pop-yellow: #FFE66D;
-            /* 這是字體縮放的魔法變數，預設為 1 倍 */
             --text-scale: 1;   
         }
 
@@ -29,14 +28,53 @@
 
         .container { position: relative; max-width: 500px; margin: 0 auto; padding: 10px 15px 40px 15px; }
 
-        /* === 1. 漂浮 Emoji 區塊 === */
-        .emoji-cluster { text-align: center; margin-top: 10px; margin-bottom: -15px; user-select: none; }
-        .emo-group { display: inline-block; position: relative; }
+        /* === 🆕 浮動式頂部導覽列 (比照 2026.html) === */
+        .sticky-header {
+            position: sticky; top: 0; z-index: 999;
+            background: rgba(224, 247, 250, 0.95); backdrop-filter: blur(5px);
+            padding: 12px 15px; margin: -10px -15px 10px -15px;
+            border-bottom: 2.5px solid var(--pop-pink);
+            display: flex; justify-content: space-between; align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .header-left { display: flex; flex-direction: column; gap: 5px; }
+        .header-title { font-size: calc(22px * var(--text-scale)); font-weight: bold; color: var(--pop-pink); margin: 0; letter-spacing: 1px; }
+        .header-address { font-size: calc(12px * var(--text-scale)); font-weight: bold; color: var(--ink-dark); display: flex; align-items: center; gap: 4px;}
+        .header-nav { color: #D9534F; text-decoration: none; font-weight: bold; }
         
+        .header-phone-btn {
+            background: var(--pop-yellow); border: 2px solid var(--ink-dark);
+            padding: 6px 10px; border-radius: 8px; font-size: calc(14px * var(--text-scale));
+            font-weight: bold; color: var(--ink-dark); text-decoration: none;
+            box-shadow: 2px 2px 0px var(--ink-dark); white-space: nowrap; display: flex; align-items: center; gap: 4px;
+        }
+        .header-phone-btn:active { transform: translate(1px,1px); box-shadow: none; }
+
+        /* === 🆕 極簡直式字體控制 (固定在右側) === */
+        .font-floater {
+            position: fixed; 
+            top: 85px; right: 12px; 
+            display: flex; flex-direction: column; /* 改成直的！ */
+            background: rgba(255, 255, 255, 0.7); 
+            border: 1px solid #D0D0D0; border-radius: 12px;
+            backdrop-filter: blur(4px); z-index: 1000; overflow: hidden;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+        }
+        .font-floater button {
+            background: transparent; border: none; outline: none;
+            padding: 8px 10px; font-size: 13px; font-weight: bold; font-family: inherit;
+            color: #888; cursor: pointer; transition: 0.2s;
+        }
+        /* 框線改在下方 */
+        .font-floater button:not(:last-child) { border-bottom: 1px solid #E0E0E0; }
+        .font-floater button:active { background: #F0F0F0; color: var(--pop-pink); }
+
+        /* === 1. 漂浮 Emoji 區塊 === */
+        .emoji-cluster { text-align: center; margin-top: 5px; margin-bottom: 10px; user-select: none; }
+        .emo-group { display: inline-block; position: relative; }
         .e-ring { display: inline-block; font-size: 32px; transform: rotate(-15deg) translate(-5px, -5px); animation: float1 3s ease-in-out infinite; position: relative; }
         .e-bikini { display: inline-block; font-size: 42px; position: relative; z-index: 2; animation: float2 3s ease-in-out infinite 0.5s; }
         .e-goggles { display: inline-block; font-size: 30px; transform: rotate(15deg) translate(5px, -10px); position: relative; animation: float3 3s ease-in-out infinite 1s; }
-        
         .e-sparkle { position: absolute; top: -10px; right: -15px; font-size: 20px; transform: rotate(10deg); color: #FFD700; text-shadow: 0 0 5px rgba(255,215,0,0.8); }
         .e-sparkle-left { position: absolute; top: -5px; left: -15px; font-size: 20px; transform: rotate(-20deg); color: #FFD700; text-shadow: 0 0 5px rgba(255,215,0,0.8); }
         .e-onepiece { display: block; font-size: 30px; transform: rotate(15deg) translate(25px, -15px); margin-top: -15px; animation: float4 3s ease-in-out infinite 1.5s; }
@@ -46,56 +84,12 @@
         @keyframes float3 { 0%, 100% { transform: rotate(15deg) translate(5px, -10px); } 50% { transform: rotate(15deg) translate(5px, -15px); } }
         @keyframes float4 { 0%, 100% { transform: rotate(15deg) translate(25px, -15px); } 50% { transform: rotate(15deg) translate(25px, -20px); } }
 
-        /* === 2. 店名標題 === */
-        .store-name { 
-            text-align: center; font-size: calc(30px * var(--text-scale)); font-weight: bold; 
-            color: var(--pop-pink); letter-spacing: 2px; 
-            margin-top: 0px; margin-bottom: 0px; 
-        }
-
         /* === 統一的區塊分隔虛線 === */
         .section-divider { border-top: 2px dashed rgba(176, 190, 197, 0.6); margin: 25px 5px 15px 5px; }
-        
-        /* === 3. 聯絡與導航資訊列 === */
-        .info-card { margin-bottom: 0px; padding: 0 5px; } 
-        .info-row { display: flex; justify-content: space-between; align-items: center; padding: 2px 0; }
-        .info-left { font-size: calc(13.5px * var(--text-scale)); font-weight: bold; color: var(--ink-dark); display: flex; align-items: center; gap: 6px; }
-        .info-icon { font-size: calc(16px * var(--text-scale)); display: inline-block; width: 20px; text-align: center; color: #555; }
-        .phone-text { color: #0000EE; text-decoration: underline; font-weight: bold; font-family: sans-serif; letter-spacing: 0.5px; font-size: calc(15px * var(--text-scale)); }
-
-        .info-btn { 
-            padding: 3px 12px; border: 2px solid var(--ink-dark); border-radius: 20px; 
-            font-size: calc(12px * var(--text-scale)); font-weight: bold; color: var(--ink-dark); text-decoration: none;
-            box-shadow: 2px 2px 0px var(--ink-dark); transition: 0.2s; display: inline-block; text-align: center;
-        }
-        .info-btn:active { transform: translate(1px, 1px); box-shadow: 0 0 0 var(--ink-dark); }
-        .btn-white { background: white; }
-        .btn-yellow { background: var(--pop-yellow); }
-
-        /* === 🆕 極簡右上角字體控制 === */
-        .font-floater {
-            position: absolute; 
-            top: 15px; right: 15px; 
-            display: flex;
-            background: rgba(255, 255, 255, 0.65); 
-            border: 1px solid #D0D0D0;
-            border-radius: 20px;
-            backdrop-filter: blur(4px); 
-            z-index: 100;
-            overflow: hidden;
-            box-shadow: 2px 2px 0px rgba(0,0,0,0.05);
-        }
-        .font-floater button {
-            background: transparent; border: none; outline: none;
-            padding: 4px 10px; font-size: 13px; font-weight: bold; font-family: inherit;
-            color: #888; cursor: pointer; transition: 0.2s;
-        }
-        .font-floater button:not(:last-child) { border-right: 1px solid #E0E0E0; }
-        .font-floater button:active { background: #F0F0F0; color: var(--pop-pink); }
 
         /* === 本店詳細介紹區塊 === */
         .store-intro-clean {
-            padding: 0 10px; margin-top: 10px; margin-bottom: 15px;
+            padding: 0 10px; margin-top: 2px; margin-bottom: 15px;
             font-size: calc(12.5px * var(--text-scale)); line-height: 1.6; color: #444; text-align: justify;
         }
         .intro-title { font-size: calc(14px * var(--text-scale)); font-weight: bold; color: var(--pop-pink); margin-bottom: 6px; }
@@ -172,39 +166,13 @@
         .footer-text { font-size: calc(11.5px * var(--text-scale)); font-weight: bold; color: var(--ink-dark); }
 
         /* 輪播動畫 */
-        @keyframes slideTYG {
-            0%, 11%   { transform: translateX(0); }
-            14.2%, 25.2% { transform: translateX(-14.28%); }
-            28.4%, 39.4% { transform: translateX(-28.57%); }
-            42.6%, 53.6% { transform: translateX(-42.85%); }
-            56.8%, 67.8% { transform: translateX(-57.14%); }
-            71%, 82%     { transform: translateX(-71.42%); }
-            85.2%, 95.2% { transform: translateX(-85.71%); }
-            98%, 100%    { transform: translateX(0); }
-        }
-        @keyframes slideYY {
-            0%, 20%   { transform: translateX(0); }
-            25%, 45%  { transform: translateX(-25%); }
-            50%, 70%  { transform: translateX(-50%); }
-            75%, 95%  { transform: translateX(-75%); }
-            100%      { transform: translateX(0); }
-        }
-        @keyframes fastAutoSlide {
-            0%, 10%   { transform: translateX(0); }
-            12.2%, 22.2% { transform: translateX(-11.11%); }
-            24.4%, 34.4% { transform: translateX(-22.22%); }
-            36.6%, 46.6% { transform: translateX(-33.33%); }
-            48.8%, 58.8% { transform: translateX(-44.44%); }
-            61%, 71%     { transform: translateX(-55.55%); }
-            73.2%, 83.2% { transform: translateX(-66.66%); }
-            85.4%, 95.4% { transform: translateX(-77.77%); }
-            97.6%, 100%  { transform: translateX(-88.88%); }
-        }
+        @keyframes slideTYG { 0%, 11% { transform: translateX(0); } 14.2%, 25.2% { transform: translateX(-14.28%); } 28.4%, 39.4% { transform: translateX(-28.57%); } 42.6%, 53.6% { transform: translateX(-42.85%); } 56.8%, 67.8% { transform: translateX(-57.14%); } 71%, 82% { transform: translateX(-71.42%); } 85.2%, 95.2% { transform: translateX(-85.71%); } 98%, 100% { transform: translateX(0); } }
+        @keyframes slideYY { 0%, 20% { transform: translateX(0); } 25%, 45% { transform: translateX(-25%); } 50%, 70% { transform: translateX(-50%); } 75%, 95% { transform: translateX(-75%); } 100% { transform: translateX(0); } }
+        @keyframes fastAutoSlide { 0%, 10% { transform: translateX(0); } 12.2%, 22.2% { transform: translateX(-11.11%); } 24.4%, 34.4% { transform: translateX(-22.22%); } 36.6%, 46.6% { transform: translateX(-33.33%); } 48.8%, 58.8% { transform: translateX(-44.44%); } 61%, 71% { transform: translateX(-55.55%); } 73.2%, 83.2% { transform: translateX(-66.66%); } 85.4%, 95.4% { transform: translateX(-77.77%); } 97.6%, 100% { transform: translateX(-88.88%); } }
 
-        /* 💻 響應式設計 (RWD)：完美適應平板與電腦！ */
         @media (min-width: 768px) {
             .container { max-width: 800px; padding: 30px 40px; }
-            .store-name { font-size: calc(38px * var(--text-scale)); margin-bottom: 10px; }
+            .header-title { font-size: calc(30px * var(--text-scale)); }
             .product-grid { grid-template-columns: repeat(6, 1fr); }
             .spot-grid { grid-template-columns: repeat(4, 1fr); }
             .spa-card { padding: 15px 20px; }
@@ -215,7 +183,21 @@
 
 <div class="container">
     
-    <!-- === 🆕 右上角浮動字體控制 === -->
+    <!-- === 🆕 浮動置頂 Header === -->
+    <div class="sticky-header">
+        <div class="header-left">
+            <h1 class="header-title">東泳記泳裝店</h1>
+            <div class="header-address">
+                卑南鄉溫泉路370號 
+                <a href="https://maps.app.goo.gl/YkHK24qn1kZsfBn38?g_st=ic" target="_blank" class="header-nav">🚗導航</a>
+            </div>
+        </div>
+        <div class="header-right">
+            <a href="tel:0910557998" class="header-phone-btn">📞 0910-557-998</a>
+        </div>
+    </div>
+
+    <!-- === 🆕 直式字體控制 (固定在右側) === -->
     <div class="font-floater">
         <button onclick="changeFont(-0.1)">A-</button>
         <button onclick="resetFont()">A</button>
@@ -232,41 +214,12 @@
         </div>
     </div>
 
-    <!-- 2. 店名 -->
-    <div class="store-name">東泳記泳裝店</div>
-
-    <!-- 3. 聯絡資訊列表 -->
-    <div class="info-card">
-        <div class="info-row">
-            <div class="info-left">
-                <span class="info-icon">📞</span> <span class="phone-text">0910-557-998</span>
-            </div>
-            <a href="tel:0910557998" class="info-btn btn-yellow">撥打</a>
-        </div>
-        <div class="info-row">
-            <div class="info-left">
-                <span class="info-icon">🚗</span>卑南鄉溫泉路370號
-            </div>
-            <a href="https://maps.app.goo.gl/YkHK24qn1kZsfBn38?g_st=ic" target="_blank" class="info-btn btn-white">導航</a>
-        </div>
-    </div>
-
+    <!-- 極簡店面簡介 (只保留一句話，快速進入重點) -->
     <div class="store-intro-clean">
         <div class="intro-text" style="letter-spacing: -0.2px; line-height: 1.45;">
             店內提供平價泳裝、優惠溫泉券、泳具週邊與各式泳圈，是您來知本泡湯玩水必備的在地好選擇！<br>
             我們在地用心經營，堅持<span style="font-weight: 900; color: #333;">不用花大錢也能穿出高級時尚</span>。精選多款平價修身泳裝，讓您不傷荷包，就能輕鬆拿捏泡湯時尚，成為溫泉區最亮眼的焦點！
         </div>
-
-        <div class="intro-title" style="margin-top: 8px; margin-bottom: 4px;">📍本店位置與交通指引</div>
-        <div class="intro-text" style="letter-spacing: -0.2px; line-height: 1.45;">
-            本店位於溫泉路右側，不超過7-11東遊季門市。<br>
-            自行開車行經溫泉路，留意右手邊即可看見。<br>
-            若搭乘大眾交通工具，搭乘<b>⁠公車<a href="https://www.taiwanbus.tw/eBUSPage/Query/QueryResult.aspx?rno=81290&rn=1747899072807&lan=C" target="_blank" class="info-link">[8129]</b>⁠</a>至<b>⁠東遊季站</b>⁠下車步行約170公尺即可抵達；距YouBike站點只有短短50公尺，交通非常便利。<br>
-            從本店前往⁠<b>⁠東遊季溫泉區</b>⁠約400公尺的距離。
-        </div>
-
-        <div class="intro-title" style="margin-top: 8px; margin-bottom: 4px;">💡在地泡湯攻略</div>
-        <div class="intro-text" style="letter-spacing: -0.2px; line-height: 1.45;">買完泳裝與溫泉券後，可順路到旁邊的<b>⁠7-11</b>⁠或<b>⁠東遊季採集館</b>⁠買些零食、便當、泡麵帶進去享用，補給超方便！若想體驗煮溫泉蛋的樂趣，您可以自行準備雞蛋，或是進入溫泉區後再向販售部購買喔。</div>
     </div>
 
     <!-- 極簡純文字五星好評連結 -->
@@ -470,6 +423,21 @@
     <div class="section-title"><span style="color:var(--pop-pink);">📅</span> 臺東近期活動總整理</div>
     <a href="2026.html" class="event-btn yellow-btn">2026 秋冬季活動</a>
     <div class="event-btn gray-btn">2027 最新活動 (敬請期待)</div>
+
+    <!-- === 🆕 挪到最底部的交通指引與攻略 === -->
+    <div class="section-divider"></div>
+    <div class="store-intro-clean">
+        <div class="intro-title">📍本店位置與交通指引</div>
+        <div class="intro-text" style="letter-spacing: -0.2px; line-height: 1.45;">
+            本店位於溫泉路右側，不超過7-11東遊季門市。<br>
+            自行開車行經溫泉路，留意右手邊即可看見。<br>
+            若搭乘大眾交通工具，搭乘<b>⁠公車<a href="https://www.taiwanbus.tw/eBUSPage/Query/QueryResult.aspx?rno=81290&rn=1747899072807&lan=C" target="_blank" class="info-link">[8129]</b>⁠</a>至<b>⁠東遊季站</b>⁠下車步行約170公尺即可抵達；距YouBike站點只有短短50公尺，交通非常便利。<br>
+            從本店前往⁠<b>⁠東遊季溫泉區</b>⁠約400公尺的距離。
+        </div>
+
+        <div class="intro-title" style="margin-top: 15px; margin-bottom: 4px;">💡在地泡湯攻略</div>
+        <div class="intro-text" style="letter-spacing: -0.2px; line-height: 1.45;">買完泳裝與溫泉券後，可順路到旁邊的<b>⁠7-11</b>⁠或<b>⁠東遊季採集館</b>⁠買些零食、便當、泡麵帶進去享用，補給超方便！若想體驗煮溫泉蛋的樂趣，您可以自行準備雞蛋，或是進入溫泉區後再向販售部購買喔。</div>
+    </div>
 
     <!-- 底部暖心標語與口號 -->
     <div class="slogan-area">
