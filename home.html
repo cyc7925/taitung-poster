@@ -6,7 +6,7 @@
     <title>東泳記泳裝店 - 旅遊導覽首頁</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/justfont/open-huninn-font/font.css">
     
-    <meta name="description" content="東泳記泳裝店位於台東知本，提供平價泳裝、優惠溫泉券、專業泳具與各式泳圈。為您整理知本溫泉SPA推薦與台東近期活動總整理，來台東泡湯玩水必備導覽！">
+    <meta name="description" content="東泳記泳裝店位於台東知本，提供高CP值泳裝、優惠溫泉券、專業泳具與各式泳圈。為您整理知本溫泉SPA推薦與台東近期活動總整理，來台東泡湯玩水必備導覽！">
     <meta name="keywords" content="東泳記泳裝店, 台東泳裝, 知本溫泉, 溫泉券, 泳具, 泳圈, 台東活動, 旅遊導覽, ㄚㄧㄚ旺, 東遊季, 知本老爺, 東台溫泉">
     
     <style>
@@ -51,22 +51,24 @@
         }
         .header-phone-btn:active { transform: translate(1px,1px); box-shadow: none; }
 
-        /* === 升級版：App 風格底部水平導覽列 === */
+        /* === 升級版：App 風格底部水平導覽列 (更貼底、更輕薄) === */
         .font-floater {
             position: fixed; 
             bottom: 0; left: 0; width: 100%; 
             display: flex; flex-direction: row; justify-content: space-around;
             background: rgba(255, 255, 255, 0.95); 
-            border-top: 1.5px solid rgba(176, 190, 197, 0.5);
-            border-radius: 16px 16px 0 0; 
+            border-top: 1px solid rgba(176, 190, 197, 0.4);
+            border-radius: 12px 12px 0 0; 
             backdrop-filter: blur(8px); 
             z-index: 999; 
-            box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
-            padding: 5px 0; padding-bottom: calc(5px + env(safe-area-inset-bottom)); 
+            box-shadow: 0 -2px 8px rgba(0,0,0,0.06);
+            /* 移除多餘的頂部留白，完全貼底，並保留 iPhone 底線安全區 */
+            padding-bottom: env(safe-area-inset-bottom); 
         }
         .font-floater button, .font-floater a {
             background: transparent; border: none; outline: none;
-            padding: 10px 0; font-size: 15px; font-weight: bold; font-family: inherit;
+            /* 縮減上下 padding，讓按鈕整體高度降低 */
+            padding: 8px 0; font-size: 15px; font-weight: bold; font-family: inherit;
             color: #666; cursor: pointer; transition: 0.2s; 
             text-decoration: none; text-align: center; flex: 1; 
         }
@@ -204,14 +206,14 @@
         </div>
     </div>
 
-    <!-- === 多功能浮動工具列 (電話/導航/字體/回頂部) === -->
+    <!-- === 多功能浮動工具列 (更貼底、不佔空間) === -->
     <div class="font-floater">
         <a href="tel:0910557998" title="撥打電話">📞</a>
         <a href="https://maps.app.goo.gl/YkHK24qn1kZsfBn38?g_st=ic" target="_blank" title="開啟導航">🚗</a>
         <button onclick="changeFont(-0.1)">A-</button>
         <button onclick="resetFont()">A</button>
         <button onclick="changeFont(0.1)">A+</button>
-        <button onclick="scrollToTop()">🔝</button>
+        <button onclick="scrollToTop()">⬆</button>
     </div>
 
     <!-- 1. 漂浮圖案 -->
@@ -224,11 +226,11 @@
         </div>
     </div>
 
-    <!-- 極簡店面簡介 -->
+    <!-- 👑 全新潤稿：極簡店面簡介 -->
     <div class="store-intro-clean">
         <div class="intro-text" style="letter-spacing: -0.2px; line-height: 1.45;">
-            店內提供平價泳裝、優惠溫泉券、泳具週邊與各式泳圈，是您來知本泡湯玩水必備的在地好選擇！<br>
-            我們在地用心經營，堅持<span style="font-weight: 900; color: #333;">不用花大錢也能穿出高級時尚</span>。精選多款平價修身泳裝，讓您不傷荷包，就能輕鬆拿捏泡湯時尚，成為溫泉區最亮眼的焦點！
+            來知本泡湯玩水，東泳記為您一站備齊所有裝備！店內提供多款高 CP 值修身泳裝、優惠溫泉券以及各式專業泳具與造型泳圈。<br>
+            我們在地用心經營，堅持「無負擔的精緻感」，讓您輕鬆拿捏泡湯穿搭，成為溫泉區最亮眼的焦點！
         </div>
     </div>
 
@@ -246,7 +248,7 @@
         </div>
         <div class="product-card">
             <div class="product-icon">👙</div>
-            <div class="product-name">平價泳裝</div>
+            <div class="product-name">精選泳裝</div>
         </div>
         <div class="product-card">
             <div class="product-icon">🥽</div>
