@@ -37,10 +37,10 @@
             padding: max(10px, env(safe-area-inset-top)) 15px 10px 15px; display: flex; align-items: center; justify-content: space-between;
             box-shadow: 0 4px 0px rgba(0,0,0,0.05);
         }
-        .nav-info { display: flex; flex-direction: column; gap: 2px; }
-        .nav-store { font-size: calc(22px * var(--text-scale)); font-weight: bold; color: var(--pop-pink); letter-spacing: 1px; line-height: 1.1; }
-        .nav-loc { color: var(--ink-dark); text-decoration: none; font-size: calc(13px * var(--text-scale)); font-weight: bold; display: inline-block; }
-        
+        .nav-info { display: flex; flex-direction: column; gap: 2px; overflow: hidden; }
+        .nav-store { font-size: calc(22px * var(--text-scale)); font-weight: bold; color: var(--pop-pink); letter-spacing: 1px; line-height: 1.1; white-space: nowrap; }
+        .nav-loc { color: var(--ink-dark); text-decoration: none; font-size: calc(13px * var(--text-scale)); font-weight: bold; display: inline-block; white-space: nowrap; }
+
         .btn-call {
             background: var(--pop-yellow); border: 3px solid var(--ink-dark); border-radius: 12px; padding: 8px 10px; 
             font-size: calc(13px * var(--text-scale)); font-weight: bold; color: var(--ink-dark); text-decoration: none; transition: 0.2s;
@@ -476,12 +476,14 @@
         localStorage.setItem('userFontScale', currentScale);
     }
     
-    function changeFont(step) {
+        function changeFont(step) {
         currentScale += step;
+        currentScale = Math.round(currentScale * 10) / 10; // 避免小數點計算誤差
         if (currentScale < 0.8) currentScale = 0.8;
-        if (currentScale > 1.4) currentScale = 1.4;
+        if (currentScale > 1.2) currentScale = 1.2; // 放大極限改為 1.2 (只能按兩次)
         applyFontScale();
     }
+
     
     function resetFont() {
         currentScale = 1;
