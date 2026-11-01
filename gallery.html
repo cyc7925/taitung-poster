@@ -156,12 +156,10 @@
 
     <div class="media-grid">
 
-        <!-- 📺 電子相簿輪播區塊 (不折疊，一進來就看到) -->
-        <div class="gallery-section-title"><span style="color:var(--pop-pink);">✨</span> 知本溫泉精選預覽</div>
-        
-                <div class="slideshow-wrapper">
+                <!-- 📺 電子相簿輪播區塊 -->
+        <div class="slideshow-wrapper">
             <div class="slideshow-container" id="slideshowArea" title="點擊畫面也可暫停/播放">
-                <!-- 👇 請把這個區塊裡面的照片，替換成下面這完整的 29 張 👇 -->
+                <!-- 29 張輪播照片 -->
                 <img src="Images/tyg-1.jpg" class="slide-img active" alt="東遊季">
                 <img src="Images/tyg-2.jpg" class="slide-img" alt="東遊季">
                 <img src="Images/tyg-3.jpg" class="slide-img" alt="東遊季">
@@ -195,6 +193,14 @@
                 <img src="Images/dt-8.jpg" class="slide-img" alt="東台">
                 <img src="Images/dt-9.jpg" class="slide-img" alt="東台">
             </div>
+            
+            <!-- 👇 就是這段控制器按鈕剛剛被不小心刪掉了！補回來 👇 -->
+            <div class="external-controls">
+                <button class="control-btn" id="togglePlayBtn">⏸ 暫停</button>
+                <button class="control-btn" id="fullscreenBtn">⛶ 全螢幕</button>
+            </div>
+        </div>
+
 
 
         <!-- 📸 東遊季溫泉渡假村 (折疊設計) -->
