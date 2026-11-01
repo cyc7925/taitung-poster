@@ -2,7 +2,7 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>東泳記泳裝店 - 旅遊導覽首頁</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/justfont/open-huninn-font/font.css">
     
@@ -27,7 +27,6 @@
             min-height: 100vh;
         }
 
-        /* 只要在這裡補上 position: relative; 即可 */
         .container { position: relative; max-width: 500px; margin: 0 auto; padding: 10px 15px 40px 15px; }
 
         /* === 1. 漂浮 Emoji 區塊 === */
@@ -73,24 +72,30 @@
         .btn-white { background: white; }
         .btn-yellow { background: var(--pop-yellow); }
 
-        /* === 🆕 字體大小控制列 (極簡淺框設計) === */
-        .font-controls-inline {
-            display: flex; justify-content: center; align-items: center;
-            margin-top: 15px; margin-bottom: 5px; gap: 6px;
+        /* === 🆕 極簡右上角字體控制 === */
+        .font-floater {
+            position: absolute; 
+            top: 15px; right: 15px; 
+            display: flex;
+            background: rgba(255, 255, 255, 0.65); 
+            border: 1px solid #D0D0D0;
+            border-radius: 20px;
+            backdrop-filter: blur(4px); 
+            z-index: 100;
+            overflow: hidden;
+            box-shadow: 2px 2px 0px rgba(0,0,0,0.05);
         }
-        .font-btn-inline {
-            background: transparent; /* 去掉白色底色，融入背景 */
-            border: 1px solid #D0D0D0; /* 變成淺淺的細框線 */
-            padding: 4px 12px; border-radius: 15px; font-size: 12px;
-            font-weight: normal; color: #777; cursor: pointer; /* 字體改細、顏色改淡 */
-            box-shadow: none; transition: 0.2s; font-family: inherit;
+        .font-floater button {
+            background: transparent; border: none; outline: none;
+            padding: 4px 10px; font-size: 13px; font-weight: bold; font-family: inherit;
+            color: #888; cursor: pointer; transition: 0.2s;
         }
-        /* 按下去的時候稍微變深，並透出一點點粉紅色 */
-        .font-btn-inline:active { background: #F0F0F0; color: var(--pop-pink); border-color: #BBB; }
+        .font-floater button:not(:last-child) { border-right: 1px solid #E0E0E0; }
+        .font-floater button:active { background: #F0F0F0; color: var(--pop-pink); }
 
         /* === 本店詳細介紹區塊 === */
         .store-intro-clean {
-            padding: 0 10px; margin-top: 2px; margin-bottom: 15px;
+            padding: 0 10px; margin-top: 10px; margin-bottom: 15px;
             font-size: calc(12.5px * var(--text-scale)); line-height: 1.6; color: #444; text-align: justify;
         }
         .intro-title { font-size: calc(14px * var(--text-scale)); font-weight: bold; color: var(--pop-pink); margin-bottom: 6px; }
@@ -210,6 +215,13 @@
 
 <div class="container">
     
+    <!-- === 🆕 右上角浮動字體控制 === -->
+    <div class="font-floater">
+        <button onclick="changeFont(-0.1)">A-</button>
+        <button onclick="resetFont()">A</button>
+        <button onclick="changeFont(0.1)">A+</button>
+    </div>
+
     <!-- 1. 漂浮圖案 -->
     <div class="emoji-cluster">
         <div class="emo-group">
@@ -238,29 +250,6 @@
             <a href="https://maps.app.goo.gl/YkHK24qn1kZsfBn38?g_st=ic" target="_blank" class="info-btn btn-white">導航</a>
         </div>
     </div>
-
-                /* === 🆕 極簡右上角字體控制 (絕對定位，完全不佔空間) === */
-        .font-floater {
-            position: absolute; 
-            top: 15px; right: 15px; /* 固定在容器右上角 */
-            display: flex;
-            background: rgba(255, 255, 255, 0.65); /* 半透明底色融入背景 */
-            border: 1px solid #D0D0D0;
-            border-radius: 20px;
-            backdrop-filter: blur(4px); /* 帶一點高級的毛玻璃效果 */
-            z-index: 100;
-            overflow: hidden;
-            box-shadow: 2px 2px 0px rgba(0,0,0,0.05);
-        }
-        .font-floater button {
-            background: transparent; border: none; outline: none;
-            padding: 4px 10px; font-size: 13px; font-weight: bold; font-family: inherit;
-            color: #888; cursor: pointer; transition: 0.2s;
-        }
-        .font-floater button:not(:last-child) { border-right: 1px solid #E0E0E0; }
-        .font-floater button:active { background: #F0F0F0; color: var(--pop-pink); }
-
-
 
     <div class="store-intro-clean">
         <div class="intro-text" style="letter-spacing: -0.2px; line-height: 1.45;">
@@ -445,7 +434,7 @@
         </details>
     </div>
 
-    <!-- 📸 影音大廳超連結 (極簡風格，完美融入版面！) -->
+    <!-- 📸 影音大廳超連結 -->
     <a href="gallery.html" class="gallery-link-btn">
         📸 點擊觀看更多「知本溫泉」精選相簿 ➔
     </a>
@@ -491,19 +480,15 @@
 
 <!-- === ⚙️ 字體縮放記憶系統 (跨網頁同步) === -->
 <script>
-    // 從瀏覽器記憶中讀取使用者設定的字體比例，如果沒設定過就用預設的 1
     let currentScale = parseFloat(localStorage.getItem('userFontScale')) || 1;
     
     function applyFontScale() {
-        // 將比例寫入 CSS 魔法變數，網頁文字會瞬間縮放
         document.documentElement.style.setProperty('--text-scale', currentScale);
-        // 將使用者的喜好儲存下來 (之後你在 2026.html 也貼上這段腳本，就會自動同步！)
         localStorage.setItem('userFontScale', currentScale);
     }
     
     function changeFont(step) {
         currentScale += step;
-        // 限制最大/最小比例，避免字體縮太小或撐破排版
         if (currentScale < 0.8) currentScale = 0.8;
         if (currentScale > 1.4) currentScale = 1.4;
         applyFontScale();
@@ -514,7 +499,6 @@
         applyFontScale();
     }
     
-    // 一進入網頁就立刻套用使用者的設定
     applyFontScale();
 </script>
 
