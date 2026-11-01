@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>東泳記 - 影音藝廊</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/justfont/open-huninn-font/font.css">
+    
+    <style>
+        :root {
+            --ink-dark: #2C3E50;     
+            --pop-pink: #FF6B6B;     
+            --pop-yellow: #FFE66D;   
+        }
+
+        body {
+            background: linear-gradient(180deg, #e0f7fa 0%, #fffde7 100%);
+            color: var(--ink-dark);
+            font-family: 'jf-openhuninn-1.1', sans-serif;
+            margin: 0; padding: 0; 
+            min-height: 100vh;
+        }
+
+        .container { max-width: 500px; margin: 0 auto; padding: 15px 15px 40px 15px; }
+
+        /* === 頂部導覽列 === */
+        .top-nav {
+            display: flex; justify-content: space-between; align-items: center;
+            margin-bottom: 20px;
+        }
+        .back-btn {
+            background: white; border: 2px solid var(--ink-dark); padding: 6px 14px;
+            border-radius: 20px; font-size: 14px; font-weight: bold; color: var(--ink-dark);
+            text-decoration: none; box-shadow: 2px 2px 0px var(--ink-dark);
+        }
+        .back-btn:active { transform: translate(1px, 1px); box-shadow: 0 0 0 transparent; }
+        
+        .page-title { font-size: 22px; font-weight: bold; color: var(--pop-pink); margin: 0; letter-spacing: 1px;}
+
+        /* === 影音網格排版 (雙欄式) === */
+        .media-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* 兩欄並排 */
+            gap: 12px; /* 照片之間的距離 */
+        }
+
+        /* 統一設定照片與影片的外觀 */
+        .media-item {
+            width: 100%;
+            aspect-ratio: 1 / 1; /* 強制變成正方形，畫面會很整齊 */
+            object-fit: cover; /* 照片自動裁切填滿，不會變形 */
+            border-radius: 12px;
+            border: 2px solid var(--ink-dark);
+            box-shadow: 2px 2px 0px rgba(44,62,80,0.15);
+            background-color: #f5f5f5; /* 載入前的底色 */
+        }
+
+        /* 讓影片的控制器看起來更貼合邊緣 */
+        video.media-item {
+            aspect-ratio: auto; /* 影片通常是長方形，解除正方形限制以免裁到畫面 */
+            grid-column: span 2; /* 讓影片佔滿兩格的寬度，變大比較好點擊！ */
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    
+    <!-- 頂部返回按鈕與標題 -->
+    <div class="top-nav">
+        <!-- 這裡的 index.html 請改成你首頁的檔名 -->
+        <a href="index.html" class="back-btn">⬅ 返回首頁</a>
+        <h1 class="page-title">📸 影音藝廊</h1>
+    </div>
+
+    <!-- 影音專區開始 -->
+    <div class="media-grid">
+
+        <!-- 🎥 示範影片區塊 -->
+        <!-- 加上 controls 就會自動出現播放/暫停/音量按鈕！ -->
+        <video controls class="media-item" poster="Images/video-cover.jpg">
+            <!-- src 請換成你實際的影片檔案路徑 -->
+            <source src="Images/your-video.mp4" type="video/mp4">
+            您的瀏覽器不支援影片播放。
+        </video>
+
+        <!-- 📸 照片區塊 (我拿你原本的溫泉照片當範例) -->
+        <img src="Images/tyg-1.jpg" class="media-item" alt="東遊季照片">
+        <img src="Images/royal-1.jpg" class="media-item" alt="知本老爺照片">
+        <img src="Images/yy-1.jpg" class="media-item" alt="ㄚㄧㄚ旺照片">
+        <img src="Images/dt-1.jpg" class="media-item" alt="東台照片">
+        
+        <img src="Images/tyg-2.jpg" class="media-item" alt="東遊季照片">
+        <img src="Images/royal-2.jpg" class="media-item" alt="知本老爺照片">
+        
+        <!-- 想要加更多照片，只要一直複製 <img> 這一行並更改 src 網址就可以了 -->
+
+    </div>
+
+</div>
+
+</body>
+</html>
