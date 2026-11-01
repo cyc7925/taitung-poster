@@ -38,27 +38,45 @@
         
         .page-title { font-size: 24px; font-weight: bold; color: var(--pop-pink); margin: 0; letter-spacing: 1px;}
 
-        /* === 影音網格排版 (手機預設 2 欄) === */
-        .media-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr); 
-            gap: 12px; 
-        }
+        /* === 主網格排版 === */
+        .media-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
 
-        /* 分類標題 */
+        /* 分類標題樣式 (包含折疊按鈕) */
         .gallery-section-title {
-            grid-column: 1 / -1; 
             font-size: 18px; font-weight: bold; color: var(--ink-dark);
-            margin-top: 25px; margin-bottom: 5px;
+            margin-top: 20px; margin-bottom: 5px;
             border-bottom: 2px dashed rgba(176, 190, 197, 0.6);
             padding-bottom: 8px;
             display: flex; align-items: center; gap: 8px;
         }
 
-        /* 📸 一般網格照片 (已改為 4:3 長方形，更有質感！) */
+        /* === 🗂️ 折疊相簿專用設定 === */
+        .hotel-details {
+            width: 100%;
+            margin-bottom: 5px;
+        }
+        .hotel-details summary {
+            list-style: none; /* 隱藏預設箭頭 */
+            cursor: pointer;
+            outline: none;
+            transition: opacity 0.2s;
+        }
+        .hotel-details summary::-webkit-details-marker { display: none; }
+        .hotel-details summary:active { opacity: 0.6; }
+        
+        /* 展開後的相片網格 (手機 2 欄，電腦 4 欄) */
+        .hotel-photo-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            padding-top: 15px; 
+            padding-bottom: 10px;
+        }
+
+        /* 📸 一般網格照片 (4:3 長方形) */
         .media-item {
             width: 100%; 
-            aspect-ratio: 4 / 3; /* 從 1/1 改成 4/3 長方形 */
+            aspect-ratio: 4 / 3; 
             object-fit: cover; 
             border-radius: 12px; border: 2px solid var(--ink-dark); 
             box-shadow: 2px 2px 0px rgba(44,62,80,0.15);
@@ -66,25 +84,16 @@
         }
         
         /* === 📺 電子相簿輪播區塊 === */
-        .slideshow-wrapper {
-            grid-column: 1 / -1; 
-            width: 100%;
-        }
+        .slideshow-wrapper { width: 100%; }
         .slideshow-container {
-            width: 100%;
-            aspect-ratio: 4 / 3; 
-            background-color: #000;
-            border-radius: 12px;
-            border: 2px solid var(--ink-dark);
-            box-shadow: 2px 2px 0px rgba(44,62,80,0.15);
-            position: relative;
-            overflow: hidden;
-            cursor: pointer; 
+            width: 100%; aspect-ratio: 4 / 3; 
+            background-color: #000; border-radius: 12px;
+            border: 2px solid var(--ink-dark); box-shadow: 2px 2px 0px rgba(44,62,80,0.15);
+            position: relative; overflow: hidden; cursor: pointer; 
         }
 
         .slide-img {
-            width: 100%; height: 100%;
-            object-fit: cover; 
+            width: 100%; height: 100%; object-fit: cover; 
             position: absolute; top: 0; left: 0;
             opacity: 0; transition: opacity 0.8s ease-in-out; 
         }
@@ -105,14 +114,11 @@
         }
         .control-btn:active { transform: translate(1px,1px); box-shadow: none; }
 
-        /* 📱 破解 Apple iOS 手機專用「網頁版全螢幕」支援 */
+        /* 📱 破解 Apple iOS 手機專用全螢幕 */
         .slideshow-wrapper.fullscreen-mode {
-            position: fixed !important;
-            top: 0 !important; left: 0 !important;
-            width: 100vw !important; height: 100vh !important;
-            background-color: #000 !important;
-            z-index: 9999 !important;
-            display: flex; flex-direction: column; justify-content: center;
+            position: fixed !important; top: 0 !important; left: 0 !important;
+            width: 100vw !important; height: 100vh !important; background-color: #000 !important;
+            z-index: 9999 !important; display: flex; flex-direction: column; justify-content: center;
             margin: 0 !important;
         }
         .slideshow-wrapper.fullscreen-mode .slideshow-container {
@@ -127,9 +133,10 @@
         @media (min-width: 768px) {
             .container { padding: 30px 40px 60px 40px; }
             .page-title { font-size: 32px; }
-            .media-grid { grid-template-columns: repeat(4, 1fr); gap: 20px; }
+            .gallery-section-title { font-size: 24px; border-bottom-width: 3px; }
+            .hotel-photo-grid { grid-template-columns: repeat(4, 1fr); gap: 20px; }
             .slideshow-container { aspect-ratio: 16 / 9; border-radius: 16px; border-width: 3px; }
-            .media-item { border-width: 3px; border-radius: 16px; }
+            .media-item { border-width: 3px; border-radius: 16px; box-shadow: 4px 4px 0px rgba(44,62,80,0.15); }
             .media-item:hover { transform: scale(1.05); z-index: 10; position: relative; }
         }
     </style>
@@ -139,14 +146,13 @@
 <div class="container">
     
     <div class="top-nav">
-        <!-- 記得對應首頁檔名 -->
         <a href="home.html" class="back-btn">⬅ 返回首頁</a>
         <h1 class="page-title">📸 東泳記影音大廳</h1>
     </div>
 
     <div class="media-grid">
 
-        <!-- 📺 電子相簿輪播區塊 -->
+        <!-- 📺 電子相簿輪播區塊 (不折疊，一進來就看到) -->
         <div class="gallery-section-title"><span style="color:var(--pop-pink);">✨</span> 知本溫泉精選預覽</div>
         
         <div class="slideshow-wrapper">
@@ -164,46 +170,74 @@
             </div>
         </div>
 
-        <!-- 📸 東遊季溫泉渡假村 -->
-        <div class="gallery-section-title"><span style="color:var(--pop-pink);">♨️</span> 東遊季溫泉渡假村</div>
-        <img src="Images/tyg-1.jpg" class="media-item" alt="東遊季照片">
-        <img src="Images/tyg-2.jpg" class="media-item" alt="東遊季照片">
-        <img src="Images/tyg-3.jpg" class="media-item" alt="東遊季照片">
-        <img src="Images/tyg-4.jpg" class="media-item" alt="東遊季照片">
-        <img src="Images/tyg-5.jpg" class="media-item" alt="東遊季照片">
-        <img src="Images/tyg-6.jpg" class="media-item" alt="東遊季照片">
-        <img src="Images/tyg-7.jpg" class="media-item" alt="東遊季照片">
+        <!-- 📸 東遊季溫泉渡假村 (折疊設計) -->
+        <details class="hotel-details">
+            <summary class="gallery-section-title">
+                <span style="color:var(--pop-pink);">♨️</span> <span>東遊季溫泉渡假村</span>
+                <span style="margin-left: auto; font-size: 13px; color: #888; font-weight: normal;">▼ 點擊展開</span>
+            </summary>
+            <div class="hotel-photo-grid">
+                <img src="Images/tyg-1.jpg" class="media-item" alt="東遊季照片">
+                <img src="Images/tyg-2.jpg" class="media-item" alt="東遊季照片">
+                <img src="Images/tyg-3.jpg" class="media-item" alt="東遊季照片">
+                <img src="Images/tyg-4.jpg" class="media-item" alt="東遊季照片">
+                <img src="Images/tyg-5.jpg" class="media-item" alt="東遊季照片">
+                <img src="Images/tyg-6.jpg" class="media-item" alt="東遊季照片">
+                <img src="Images/tyg-7.jpg" class="media-item" alt="東遊季照片">
+            </div>
+        </details>
 
-        <!-- 📸 知本老爺酒店 -->
-        <div class="gallery-section-title"><span style="color:var(--pop-pink);">♨️</span> 知本老爺酒店</div>
-        <img src="Images/royal-1.jpg" class="media-item" alt="知本老爺照片">
-        <img src="Images/royal-2.jpg" class="media-item" alt="知本老爺照片">
-        <img src="Images/royal-3.jpg" class="media-item" alt="知本老爺照片">
-        <img src="Images/royal-4.jpg" class="media-item" alt="知本老爺照片">
-        <img src="Images/royal-5.jpg" class="media-item" alt="知本老爺照片">
-        <img src="Images/royal-6.jpg" class="media-item" alt="知本老爺照片">
-        <img src="Images/royal-7.jpg" class="media-item" alt="知本老爺照片">
-        <img src="Images/royal-8.jpg" class="media-item" alt="知本老爺照片">
-        <img src="Images/royal-9.jpg" class="media-item" alt="知本老爺照片">
+        <!-- 📸 知本老爺酒店 (折疊設計) -->
+        <details class="hotel-details">
+            <summary class="gallery-section-title">
+                <span style="color:var(--pop-pink);">♨️</span> <span>知本老爺酒店</span>
+                <span style="margin-left: auto; font-size: 13px; color: #888; font-weight: normal;">▼ 點擊展開</span>
+            </summary>
+            <div class="hotel-photo-grid">
+                <img src="Images/royal-1.jpg" class="media-item" alt="知本老爺照片">
+                <img src="Images/royal-2.jpg" class="media-item" alt="知本老爺照片">
+                <img src="Images/royal-3.jpg" class="media-item" alt="知本老爺照片">
+                <img src="Images/royal-4.jpg" class="media-item" alt="知本老爺照片">
+                <img src="Images/royal-5.jpg" class="media-item" alt="知本老爺照片">
+                <img src="Images/royal-6.jpg" class="media-item" alt="知本老爺照片">
+                <img src="Images/royal-7.jpg" class="media-item" alt="知本老爺照片">
+                <img src="Images/royal-8.jpg" class="media-item" alt="知本老爺照片">
+                <img src="Images/royal-9.jpg" class="media-item" alt="知本老爺照片">
+            </div>
+        </details>
 
-        <!-- 📸 ㄚㄧㄚ旺溫泉渡假村 -->
-        <div class="gallery-section-title"><span style="color:var(--pop-pink);">♨️</span> ㄚㄧㄚ旺溫泉渡假村</div>
-        <img src="Images/yy-1.jpg" class="media-item" alt="ㄚㄧㄚ旺照片">
-        <img src="Images/yy-2.jpg" class="media-item" alt="ㄚㄧㄚ旺照片">
-        <img src="Images/yy-3.jpg" class="media-item" alt="ㄚㄧㄚ旺照片">
-        <img src="Images/yy-4.jpg" class="media-item" alt="ㄚㄧㄚ旺照片">
+        <!-- 📸 ㄚㄧㄚ旺溫泉渡假村 (折疊設計) -->
+        <details class="hotel-details">
+            <summary class="gallery-section-title">
+                <span style="color:var(--pop-pink);">♨️</span> <span>ㄚㄧㄚ旺溫泉渡假村</span>
+                <span style="margin-left: auto; font-size: 13px; color: #888; font-weight: normal;">▼ 點擊展開</span>
+            </summary>
+            <div class="hotel-photo-grid">
+                <img src="Images/yy-1.jpg" class="media-item" alt="ㄚㄧㄚ旺照片">
+                <img src="Images/yy-2.jpg" class="media-item" alt="ㄚㄧㄚ旺照片">
+                <img src="Images/yy-3.jpg" class="media-item" alt="ㄚㄧㄚ旺照片">
+                <img src="Images/yy-4.jpg" class="media-item" alt="ㄚㄧㄚ旺照片">
+            </div>
+        </details>
 
-        <!-- 📸 東台溫泉飯店 -->
-        <div class="gallery-section-title"><span style="color:var(--pop-pink);">♨️</span> 東台溫泉飯店</div>
-        <img src="Images/dt-1.jpg" class="media-item" alt="東台溫泉照片">
-        <img src="Images/dt-2.jpg" class="media-item" alt="東台溫泉照片">
-        <img src="Images/dt-3.jpg" class="media-item" alt="東台溫泉照片">
-        <img src="Images/dt-4.jpg" class="media-item" alt="東台溫泉照片">
-        <img src="Images/dt-5.jpg" class="media-item" alt="東台溫泉照片">
-        <img src="Images/dt-6.jpg" class="media-item" alt="東台溫泉照片">
-        <img src="Images/dt-7.jpg" class="media-item" alt="東台溫泉照片">
-        <img src="Images/dt-8.jpg" class="media-item" alt="東台溫泉照片">
-        <img src="Images/dt-9.jpg" class="media-item" alt="東台溫泉照片">
+        <!-- 📸 東台溫泉飯店 (折疊設計) -->
+        <details class="hotel-details">
+            <summary class="gallery-section-title">
+                <span style="color:var(--pop-pink);">♨️</span> <span>東台溫泉飯店</span>
+                <span style="margin-left: auto; font-size: 13px; color: #888; font-weight: normal;">▼ 點擊展開</span>
+            </summary>
+            <div class="hotel-photo-grid">
+                <img src="Images/dt-1.jpg" class="media-item" alt="東台溫泉照片">
+                <img src="Images/dt-2.jpg" class="media-item" alt="東台溫泉照片">
+                <img src="Images/dt-3.jpg" class="media-item" alt="東台溫泉照片">
+                <img src="Images/dt-4.jpg" class="media-item" alt="東台溫泉照片">
+                <img src="Images/dt-5.jpg" class="media-item" alt="東台溫泉照片">
+                <img src="Images/dt-6.jpg" class="media-item" alt="東台溫泉照片">
+                <img src="Images/dt-7.jpg" class="media-item" alt="東台溫泉照片">
+                <img src="Images/dt-8.jpg" class="media-item" alt="東台溫泉照片">
+                <img src="Images/dt-9.jpg" class="media-item" alt="東台溫泉照片">
+            </div>
+        </details>
 
     </div>
 </div>
