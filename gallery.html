@@ -166,16 +166,32 @@
     <a href="tel:0910557998" class="btn-call">📞 0910-557-998</a>
 </div>
 
-<!-- === 底部 App 風格導覽列 === -->
+<!-- === 底部工具列 === -->
 <div class="font-floater">
-    <a href="home.html" title="返回首頁">🏠</a>
+    <button onclick="toggleMenu()" title="選單" style="color: var(--pop-pink); font-weight: 900; font-size: 20px;">☰</button>
     <a href="tel:0910557998" title="撥打電話">📞</a>
-    <a href="https://maps.app.goo.gl/YkHK24qn1kZsfBn38?g_st=ic" target="_blank" title="開啟導航">🚗</a>
+    <a href="https://maps.app.goo.gl/YkHK24qn1kZsfBn38?g_st=ic" target="_blank" title="導航">🚗</a>
     <button onclick="changeFont(-0.1)">A-</button>
     <button onclick="resetFont()">A</button>
     <button onclick="changeFont(0.1)">A+</button>
-    <button onclick="scrollToTop()" title="回到頂部">🔝</button>
+    <button onclick="scrollToTop()">🔝</button>
 </div>
+
+<!-- === 彈出式功能選單 === -->
+<div id="menu-overlay" class="menu-overlay" onclick="toggleMenu()"></div>
+<div id="popup-menu" class="popup-menu">
+    <div class="popup-header">
+        <div class="popup-title">✨快速導覽</div>
+        <button class="close-btn" onclick="toggleMenu()">✕</button>
+    </div>
+    <div class="popup-content">
+        <a href="home.html" class="menu-link-clean">🏠 首頁</a>
+        <a href="about.html" class="menu-link-clean">ℹ️ 關於我們</a>
+        <a href="spa.html" class="menu-link-clean">♨️ 關於知本溫泉</a>
+        <a href="2026.html" class="menu-link-clean">📅 臺東近期活動</a>
+    </div>
+</div>
+
 
 <div class="container">
     
@@ -307,6 +323,14 @@
 
 <!-- === ⚙️ 輪播與滿版展示控制指令碼 === -->
 <script>
+    function toggleMenu() {
+        const menu = document.getElementById('popup-menu');
+        const overlay = document.getElementById('menu-overlay');
+        menu.classList.toggle('active');
+        overlay.classList.toggle('active');
+    }
+
+
     let currentScale = parseFloat(localStorage.getItem('userFontScale')) || 1;
     function applyFontScale() {
         document.documentElement.style.setProperty('--text-scale', currentScale);
