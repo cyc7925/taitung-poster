@@ -55,8 +55,8 @@
             display: flex; flex-direction: column; gap: 4px;
         }
         
-        /* 內容區塊 (預留剛好的空間給浮動底端列，不再超級遠) */
-        .content-section { padding-bottom: 95px; } 
+        /* 內容區塊底部留白，確保滑到底時，標語不會被浮動按鈕擋住 */
+        .content-section { padding-bottom: 90px; } 
         
         .timeline { border-left: 4px dotted var(--pop-blue); margin-left: 20px; padding-left: 25px; padding-bottom: 5px; padding-top: 5px;}
         .event { position: relative; margin-bottom: 25px; }
@@ -88,11 +88,9 @@
         .tag-fee { background: var(--pop-purple); color: white; }     
         .tag-art { background: var(--pop-green); color: var(--ink-dark); }
 
-        /* 標題與內文 */
         .event-title { font-size: calc(16px * var(--text-scale)); font-weight: bold; line-height: 1.3;}
         .event-desc { font-size: calc(14px * var(--text-scale)); color: #555; line-height: 1.5; }
         
-        /* 地點按鈕 */
         .event-loc { 
             font-size: calc(13px * var(--text-scale)); font-weight: bold; color: var(--ink-dark); 
             background: #f0f4f8; padding: 6px 12px; border-radius: 8px; 
@@ -126,51 +124,24 @@
         }
         .home-btn:active { transform: translate(2px, 2px); box-shadow: 0px 0px 0px var(--ink-dark); }
 
-        /* =======================================================
-           🔥🔥🔥 統一合併的浮動底端列 (按鈕 + 標語完美結合版) 🔥🔥🔥
-           ======================================================= */
-        .bottom-bar-wrapper { 
-            position: fixed; bottom: 0; left: 0; width: 100%; 
-            background: rgba(255, 255, 255, 0.95); 
-            border-top: 1.5px solid rgba(44, 62, 80, 0.2); 
-            border-radius: 16px 16px 0 0; 
-            backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); 
-            z-index: 990; 
-            box-shadow: 0 -4px 15px rgba(0,0,0,0.05); 
-            display: flex; flex-direction: column; 
-        }
-        
-        .font-floater { 
-            display: flex; flex-direction: row; justify-content: space-around; 
-            padding: 10px 0 4px 0; /* 縮減底部留白，讓標語緊密接上 */
-        }
-        
-        .font-floater button, .font-floater a { 
-            background: transparent; border: none; outline: none; padding: 4px 0; 
-            font-size: 16px; font-weight: bold; font-family: inherit; color: #666; 
-            cursor: pointer; transition: 0.2s; text-decoration: none; text-align: center; flex: 1; 
-        }
-        
-        .font-floater button:not(:last-child), .font-floater a:not(:last-child) { 
-            border-right: 1px solid rgba(0,0,0,0.08); 
-        }
-        .font-floater button:active, .font-floater a:active { 
-            background: #F0F0F0; color: var(--pop-pink); 
-        }
-        
-        /* 標語完美融入在按鈕下方 */
+        /* === 靜態暖心標語 (跟著網頁自然滑動到底部) === */
         .slogan-footer { 
             text-align: center; 
-            padding: 4px 0 calc(10px + env(safe-area-inset-bottom)) 0; 
+            padding: 10px 0 20px 0; 
             display: flex; align-items: center; justify-content: center; 
         }
-        
         .slogan-text { 
-            font-size: calc(13px * var(--text-scale)); font-weight: bold; 
+            font-size: calc(14px * var(--text-scale)); font-weight: bold; 
             color: var(--ink-dark); letter-spacing: 1px; 
         }
+
+        /* === 底部工具列 (唯一浮動置底) === */
+        .font-floater { position: fixed; bottom: 0; left: 0; width: 100%; display: flex; flex-direction: row; justify-content: space-around; background: rgba(255, 255, 255, 0.95); border-top: 1.5px solid rgba(44, 62, 80, 0.2); border-radius: 16px 16px 0 0; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); z-index: 990; box-shadow: 0 -2px 10px rgba(0,0,0,0.05); padding: 8px 0 calc(8px + env(safe-area-inset-bottom)) 0; }
+        .font-floater button, .font-floater a { background: transparent; border: none; outline: none; padding: 8px 0; font-size: 16px; font-weight: bold; font-family: inherit; color: #666; cursor: pointer; transition: 0.2s; text-decoration: none; text-align: center; flex: 1; }
+        .font-floater button:not(:last-child), .font-floater a:not(:last-child) { border-right: 1px solid rgba(0,0,0,0.08); }
+        .font-floater button:active, .font-floater a:active { background: #F0F0F0; color: var(--pop-pink); }
         
-        /* === 彈出式功能選單樣式 === */
+        /* === 彈出式功能選單樣式 (極簡無框線版) === */
         .menu-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 995; opacity: 0; visibility: hidden; transition: 0.3s ease; }
         .menu-overlay.active { opacity: 1; visibility: visible; }
         .popup-menu { position: fixed; bottom: -100%; left: 0; width: 100%; background: white; border-radius: 20px 20px 0 0; z-index: 999; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1); box-shadow: 0 -5px 20px rgba(0,0,0,0.1); padding-bottom: env(safe-area-inset-bottom); }
@@ -362,7 +333,6 @@
                 </div>
             </div>
 
-            <!-- 南島咖啡節 (合併版) -->
             <div class="event" data-end="1025">
                 <div class="event-card">
                     <div class="card-header">
@@ -405,7 +375,6 @@
                     <a href="https://maps.google.com/?q=臺東新生公園" target="_blank" class="event-loc" style="margin-top: 4px;">📍臺東新生公園廣場</a>
                 </div>
             </div>
-
 
             <div class="event" data-end="1030">
                 <div class="event-card">
@@ -562,7 +531,6 @@
                 </div>
             </div>
             
-           
             <div class="event" data-end="1107">
                 <div class="event-card">
                     <div class="card-header">
@@ -972,30 +940,26 @@
         <div style="text-align: center; margin-top: 25px;">
             <a href="home.html" class="home-btn">回到活動首頁</a>
         </div>
+
+        <!-- === 靜態標語 (回到網頁內容最底端，不浮動) === -->
+        <div class="slogan-footer">
+            <div class="slogan-text">慢下來，感受台東山海與人情的溫度 ❤️</div>
+        </div>
+        
     </div>
 </div>
 
-<!-- =======================================================
-     🔥🔥🔥 統一合併的浮動底端列 (按鈕 + 標語完美結合版) 🔥🔥🔥
-     ======================================================= -->
-<div class="bottom-bar-wrapper">
-    <!-- 按鈕區 -->
-    <div class="font-floater">
-        <a href="tel:0910557998" title="撥打電話">📞</a>
-        <a href="https://maps.app.goo.gl/YkHK24qn1kZsfBn38?g_st=ic" target="_blank" title="導航">🚗</a>
-        <button onclick="scrollToTop()">🔝</button>
+<!-- === 底部工具列 (永遠固定置底) === -->
+<div class="font-floater">
+    <a href="tel:0910557998" title="撥打電話">📞</a>
+    <a href="https://maps.app.goo.gl/YkHK24qn1kZsfBn38?g_st=ic" target="_blank" title="導航">🚗</a>
+    <button onclick="scrollToTop()">🔝</button>
 
-        <button onclick="toggleMenu()" title="選單" style="color: var(--pop-pink); font-weight: 900; font-size: 22px;">☰</button>
-        
-        <button onclick="changeFont(-0.1)">A-</button>
-        <button onclick="resetFont()">A</button>
-        <button onclick="changeFont(0.1)">A+</button>
-    </div>
+    <button onclick="toggleMenu()" title="選單" style="color: var(--pop-pink); font-weight: 900; font-size: 22px;">☰</button>
     
-    <!-- 標語區 (完美包在浮動框裡面) -->
-    <div class="slogan-footer">
-        <div class="slogan-text">慢下來，感受台東山海與人情的溫度 ❤️</div>
-    </div>
+    <button onclick="changeFont(-0.1)">A-</button>
+    <button onclick="resetFont()">A</button>
+    <button onclick="changeFont(0.1)">A+</button>
 </div>
 
 <!-- === 彈出式功能選單 === -->
