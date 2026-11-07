@@ -1,16 +1,20 @@
-# ♨️ 台東知本溫泉與在地旅遊行動導覽 | Zhiben Spa & Travel Guide
+# ♨️ 台東知本溫泉導覽 (Taitung Chihpen Hot Spring Guide)
 
-> 一款專為**台東知本旅遊**與**在地泡湯客**打造的輕量級行動導覽網頁。結合流暢的 UI 設計與實用的在地資訊，讓旅客一機在手，輕鬆掌握知本溫泉飯店、景點與交通攻略！
+歡迎來到台東知本溫泉導覽網頁！這是一個帶你探索台東知本優質溫泉與在地景點的專案。
 
-🌐 **線上預覽 (Live Demo)**：[https://cyc7925.github.io/taitung-poster/home.html](https://cyc7925.github.io/taitung-poster/home.html)
+[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fcyc7925.github.io%2Ftaitung-poster%2Fhome.html&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=訪客人數+(今日不重複+/+總瀏覽)&edge_flat=false)](https://cyc7925.github.io/taitung-poster/home.html)
 
+## 🔗 網站連結
+- **🌐 完整導覽網頁**：[https://cyc7925.github.io/taitung-poster/home.html](https://cyc7925.github.io/taitung-poster/home.html)
+- **🚀 快速分享短網址**：[https://reurl.cc/xem3m5](https://reurl.cc/xem3m5)
 
+## 💡 專案簡介
+本網頁旨在提供直覺、便利的知本溫泉旅遊資訊，無論是安排家庭旅遊或是週末放鬆，都能在這裡找到適合的行程參考。
+
+## 📊 關於數據統計
+本專案已串接訪客計數器（見上方徽章），可即時查看：
+- 左側數字：**今日不重複訪客數** (Unique Visitors Today)
+- 右側數字：**歷史總瀏覽次數** (Total Pageviews)
 
 ---
-
-## ✨ 專案特色 (Features)
-
-*   📱 **極致手機體驗 (Mobile-First Optimization)**：採用響應式排版與輕量化設計，完美適應各種手機螢幕，隨時隨地即點即看。
-*   🖼️ **無干擾流暢相簿輪播 (Smooth CSS Carousel)**：運用純 CSS 關鍵字動畫（CSS Keyframes），打造無多餘遮擋、畫面乾淨大氣的飯店圖片自動循環輪播。
-*   📍 **精準在地距離標示**：詳細整合知本在地溫泉飯店（如東遊季、知本老爺、東台溫泉、ㄚㄧㄚ旺）與本店「東泳記」的相對距離與導航捷徑。
-*   🚗 **一鍵在地導航與交通指引**：整合 Google Maps 快速導航按鈕，並附上公車班次、YouBike 站點及停車資訊。
+*Created by [cyc7925](https://github.com/cyc7925)*
