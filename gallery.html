@@ -409,16 +409,22 @@
      安全區：把選單跟工具列移到網頁最底下，不會干擾版面
      ============================================== -->
 
-<!-- === 底部工具列 === -->
+<!-- === 底部工具列 (主選單置中，3+1+3 對稱排版) === -->
 <div class="font-floater">
-    <button onclick="toggleMenu()" title="選單" style="color: var(--pop-pink); font-weight: 900; font-size: 20px;">☰</button>
+    <!-- 左側：行動與位置 -->
     <a href="tel:0910557998" title="撥打電話">📞</a>
     <a href="https://maps.app.goo.gl/YkHK24qn1kZsfBn38?g_st=ic" target="_blank" title="導航">🚗</a>
+    <button onclick="scrollToTop()">🔝</button>
+
+    <!-- 正中間：功能選單 (字體稍微放大一點點，強調核心) -->
+    <button onclick="toggleMenu()" title="選單" style="color: var(--pop-pink); font-weight: 900; font-size: 22px;">☰</button>
+    
+    <!-- 右側：閱讀控制 -->
     <button onclick="changeFont(-0.1)">A-</button>
     <button onclick="resetFont()">A</button>
     <button onclick="changeFont(0.1)">A+</button>
-    <button onclick="scrollToTop()">🔝</button>
 </div>
+
 
 <!-- === 彈出式功能選單 === -->
 <div id="menu-overlay" class="menu-overlay" onclick="toggleMenu()"></div>
