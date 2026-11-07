@@ -46,7 +46,7 @@
         }
         .btn-call:active { transform: translate(2px,2px); box-shadow: 0px 0px 0px var(--ink-dark); }
 
-        /* 輪播區塊 (無外框設計) */
+        /* === 輪播區塊 === */
         .slideshow-wrapper {
             background: transparent; margin-bottom: 20px;
         }
@@ -72,7 +72,7 @@
         }
         .control-btn:active { transform: translate(1px, 1px); box-shadow: none; }
 
-        /* 🔥 100% 成功率的「滿版輪播展示模式 (全螢幕替代方案)」 */
+        /* === 滿版輪播展示模式 (全螢幕) === */
         #fullscreen-overlay {
             position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
             background: black; z-index: 99999; display: none;
@@ -93,7 +93,7 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.5);
         }
 
-        /* 飯店相簿折疊選單與雙欄大圖排版 */
+        /* === 飯店相簿折疊選單 === */
         details { margin-top: 10px; border: 2px solid var(--ink-dark); border-radius: 12px; padding: 10px; background: white; box-shadow: 2px 2px 0px rgba(44,62,80,0.1); }
         details summary { list-style: none; font-size: calc(15px * var(--text-scale)); font-weight: bold; color: var(--pop-pink); cursor: pointer; display: flex; align-items: center; justify-content: space-between; }
         details summary::-webkit-details-marker { display: none; }
@@ -109,7 +109,7 @@
         }
         .gallery-thumb:active { transform: scale(0.96); }
 
-        /* 一般單張放大燈箱 */
+        /* === 一般單張放大燈箱 === */
         #lightbox {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0, 0, 0, 0.9); z-index: 9999;
@@ -125,34 +125,144 @@
             cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
 
+        /* === 平板以上大螢幕排版 === */
         @media (min-width: 768px) {
             .container { max-width: 800px; padding: 30px 40px; }
             .nav-store { font-size: 26px; }
             .gallery-grid { grid-template-columns: repeat(3, 1fr); gap: 12px; }
         }
-        
-        /* ========================================================
-           這就是少掉的「第一包 (外觀CSS)」，已經幫你加回來了！ 
-           ======================================================== */
-        
-        /* === 底部工具列 (含電話按鈕的7鍵版) === */
-        .font-floater { position: fixed; bottom: 0; left: 0; width: 100%; display: flex; flex-direction: row; justify-content: space-around; background: rgba(255, 255, 255, 0.95); border-top: 1.5px solid rgba(44, 62, 80, 0.2); border-radius: 16px 16px 0 0; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); z-index: 999; box-shadow: 0 -2px 10px rgba(0,0,0,0.05); padding: 8px 0 calc(8px + env(safe-area-inset-bottom)) 0; }
-        .font-floater button, .font-floater a { background: transparent; border: none; outline: none; padding: 8px 0; font-size: 16px; font-weight: bold; font-family: inherit; color: #666; cursor: pointer; transition: 0.2s; text-decoration: none; text-align: center; flex: 1; }
-        .font-floater button:not(:last-child), .font-floater a:not(:last-child) { border-right: 1px solid rgba(0,0,0,0.08); }
-        .font-floater button:active, .font-floater a:active { background: #F0F0F0; color: var(--pop-pink); }
-        
-        /* === 彈出式功能選單樣式 (極簡無框線版) === */
-        .menu-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 995; opacity: 0; visibility: hidden; transition: 0.3s ease; }
-        .menu-overlay.active { opacity: 1; visibility: visible; }
-        .popup-menu { position: fixed; bottom: -100%; left: 0; width: 100%; background: white; border-radius: 20px 20px 0 0; z-index: 999; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1); box-shadow: 0 -5px 20px rgba(0,0,0,0.1); padding-bottom: env(safe-area-inset-bottom); }
-        .popup-menu.active { bottom: 0; }
-        .popup-header { display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; border-bottom: 1px solid #eee; }
-        .popup-title { font-size: calc(16px * var(--text-scale)); font-weight: bold; color: var(--ink-dark); }
-        .close-btn { background: #f0f0f0; border: none; width: 30px; height: 30px; border-radius: 15px; font-weight: bold; color: #555; cursor: pointer; }
-        .popup-content { padding: 5px 20px 25px 20px; display: flex; flex-direction: column; }
-        .menu-link-clean { display: block; padding: 16px 10px; border-bottom: 1px dashed #e0e0e0; text-decoration: none; color: var(--ink-dark); font-weight: bold; font-size: calc(15px * var(--text-scale)); transition: 0.2s; }
-        .menu-link-clean:last-child { border-bottom: none; }
-        .menu-link-clean:active { background: #FFF9E6; color: var(--pop-pink); padding-left: 15px; }
+
+        /* =========================================
+           以下是展開後的完整底部選單 CSS，保證讀取成功
+           ========================================= */
+
+        /* 底部工具列框架 */
+        .font-floater { 
+            position: fixed; 
+            bottom: 0; 
+            left: 0; 
+            width: 100%; 
+            display: flex; 
+            flex-direction: row; 
+            justify-content: space-around; 
+            background: rgba(255, 255, 255, 0.95); 
+            border-top: 1.5px solid rgba(44, 62, 80, 0.2); 
+            border-radius: 16px 16px 0 0; 
+            backdrop-filter: blur(8px); 
+            -webkit-backdrop-filter: blur(8px); 
+            z-index: 990; 
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.05); 
+            padding: 8px 0 calc(8px + env(safe-area-inset-bottom)) 0; 
+        }
+        /* 工具列內的按鈕 */
+        .font-floater button, .font-floater a { 
+            background: transparent; 
+            border: none; 
+            outline: none; 
+            padding: 8px 0; 
+            font-size: 16px; 
+            font-weight: bold; 
+            font-family: inherit; 
+            color: #666; 
+            cursor: pointer; 
+            transition: 0.2s; 
+            text-decoration: none; 
+            text-align: center; 
+            flex: 1; 
+        }
+        /* 按鈕分隔線 */
+        .font-floater button:not(:last-child), .font-floater a:not(:last-child) { 
+            border-right: 1px solid rgba(0,0,0,0.08); 
+        }
+        /* 按鈕點擊效果 */
+        .font-floater button:active, .font-floater a:active { 
+            background: #F0F0F0; 
+            color: var(--pop-pink); 
+        }
+
+        /* 彈出選單的黑色半透明遮罩 */
+        .menu-overlay { 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            background: rgba(0,0,0,0.5); 
+            z-index: 995; 
+            opacity: 0; 
+            visibility: hidden; 
+            transition: 0.3s ease; 
+        }
+        .menu-overlay.active { 
+            opacity: 1; 
+            visibility: visible; 
+        }
+
+        /* 彈出選單本體 */
+        .popup-menu { 
+            position: fixed; 
+            bottom: -100%; 
+            left: 0; 
+            width: 100%; 
+            background: white; 
+            border-radius: 20px 20px 0 0; 
+            z-index: 999; 
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1); 
+            box-shadow: 0 -5px 20px rgba(0,0,0,0.1); 
+            padding-bottom: env(safe-area-inset-bottom); 
+        }
+        .popup-menu.active { 
+            bottom: 0; 
+        }
+
+        /* 彈出選單頂部標題區 */
+        .popup-header { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 15px 20px; 
+            border-bottom: 1px solid #eee; 
+        }
+        .popup-title { 
+            font-size: calc(16px * var(--text-scale)); 
+            font-weight: bold; 
+            color: var(--ink-dark); 
+        }
+        .close-btn { 
+            background: #f0f0f0; 
+            border: none; 
+            width: 30px; 
+            height: 30px; 
+            border-radius: 15px; 
+            font-weight: bold; 
+            color: #555; 
+            cursor: pointer; 
+        }
+
+        /* 彈出選單按鈕區 */
+        .popup-content { 
+            padding: 5px 20px 25px 20px; 
+            display: flex; 
+            flex-direction: column; 
+        }
+        .menu-link-clean { 
+            display: block; 
+            padding: 16px 10px; 
+            border-bottom: 1px dashed #e0e0e0; 
+            text-decoration: none; 
+            color: var(--ink-dark); 
+            font-weight: bold; 
+            font-size: calc(15px * var(--text-scale)); 
+            transition: 0.2s; 
+        }
+        .menu-link-clean:last-child { 
+            border-bottom: none; 
+        }
+        .menu-link-clean:active { 
+            background: #FFF9E6; 
+            color: var(--pop-pink); 
+            padding-left: 15px; 
+        }
 
     </style>
 </head>
@@ -166,33 +276,6 @@
     </div>
     <a href="tel:0910557998" class="btn-call">📞 0910-557-998</a>
 </div>
-
-<!-- === 底部工具列 === -->
-<div class="font-floater">
-    <button onclick="toggleMenu()" title="選單" style="color: var(--pop-pink); font-weight: 900; font-size: 20px;">☰</button>
-    <a href="tel:0910557998" title="撥打電話">📞</a>
-    <a href="https://maps.app.goo.gl/YkHK24qn1kZsfBn38?g_st=ic" target="_blank" title="導航">🚗</a>
-    <button onclick="changeFont(-0.1)">A-</button>
-    <button onclick="resetFont()">A</button>
-    <button onclick="changeFont(0.1)">A+</button>
-    <button onclick="scrollToTop()">🔝</button>
-</div>
-
-<!-- === 彈出式功能選單 === -->
-<div id="menu-overlay" class="menu-overlay" onclick="toggleMenu()"></div>
-<div id="popup-menu" class="popup-menu">
-    <div class="popup-header">
-        <div class="popup-title">✨快速導覽</div>
-        <button class="close-btn" onclick="toggleMenu()">✕</button>
-    </div>
-    <div class="popup-content">
-        <a href="home.html" class="menu-link-clean">🏠 首頁</a>
-        <a href="about.html" class="menu-link-clean">ℹ️ 關於我們</a>
-        <a href="spa.html" class="menu-link-clean">♨️ 關於知本溫泉</a>
-        <a href="2026.html" class="menu-link-clean">📅 臺東近期活動</a>
-    </div>
-</div>
-
 
 <div class="container">
     
@@ -308,11 +391,11 @@
 
 </div>
 
-<!-- 🔥 100% 成功率的滿版輪播展示層 (全螢幕模式) -->
+<!-- 🔥 全螢幕輪播展示層 -->
 <div id="fullscreen-overlay">
     <button id="fs-close-btn" onclick="closeFullscreenMode()">✕</button>
     <div id="fullscreen-container">
-        <!-- 自動同步載入所有輪播照片 -->
+        <!-- 自動同步載入 -->
     </div>
 </div>
 
@@ -322,15 +405,45 @@
     <img id="lightbox-img" src="" alt="放大預覽">
 </div>
 
+<!-- ==============================================
+     安全區：把選單跟工具列移到網頁最底下，不會干擾版面
+     ============================================== -->
+
+<!-- === 底部工具列 === -->
+<div class="font-floater">
+    <button onclick="toggleMenu()" title="選單" style="color: var(--pop-pink); font-weight: 900; font-size: 20px;">☰</button>
+    <a href="tel:0910557998" title="撥打電話">📞</a>
+    <a href="https://maps.app.goo.gl/YkHK24qn1kZsfBn38?g_st=ic" target="_blank" title="導航">🚗</a>
+    <button onclick="changeFont(-0.1)">A-</button>
+    <button onclick="resetFont()">A</button>
+    <button onclick="changeFont(0.1)">A+</button>
+    <button onclick="scrollToTop()">🔝</button>
+</div>
+
+<!-- === 彈出式功能選單 === -->
+<div id="menu-overlay" class="menu-overlay" onclick="toggleMenu()"></div>
+<div id="popup-menu" class="popup-menu">
+    <div class="popup-header">
+        <div class="popup-title">✨快速導覽</div>
+        <button class="close-btn" onclick="toggleMenu()">✕</button>
+    </div>
+    <div class="popup-content">
+        <a href="home.html" class="menu-link-clean">🏠 首頁</a>
+        <a href="about.html" class="menu-link-clean">ℹ️ 關於我們</a>
+        <a href="spa.html" class="menu-link-clean">♨️ 關於知本溫泉</a>
+        <a href="2026.html" class="menu-link-clean">📅 臺東近期活動</a>
+    </div>
+</div>
+
 <!-- === ⚙️ 輪播與滿版展示控制指令碼 === -->
 <script>
+    /* 選單開關功能 */
     function toggleMenu() {
         const menu = document.getElementById('popup-menu');
         const overlay = document.getElementById('menu-overlay');
         menu.classList.toggle('active');
         overlay.classList.toggle('active');
     }
-
 
     let currentScale = parseFloat(localStorage.getItem('userFontScale')) || 1;
     function applyFontScale() {
@@ -363,7 +476,6 @@
         currentIndex = (currentIndex + 1) % slides.length;
         slides[currentIndex].classList.add('active');
         
-        // 如果滿版輪播模式開著，同步切換
         if (fsActive) {
             fsSlides[fsIndex].classList.remove('active');
             fsIndex = currentIndex;
@@ -391,19 +503,15 @@
 
     pauseBtn.addEventListener('click', togglePlay);
     playBtn.addEventListener('click', togglePlay);
-
     slideshowArea.addEventListener('click', function(e) {
-        if (e.target.tagName !== 'BUTTON') {
-            togglePlay();
-        }
+        if (e.target.tagName !== 'BUTTON') { togglePlay(); }
     });
 
-    // 🔥 滿版輪播模式 (全螢幕替代方案：保證100%可用、自動輪播繼續跑)
+    // 滿版輪播模式
     let fsActive = false;
     let fsIndex = 0;
     const fsContainer = document.getElementById('fullscreen-container');
     
-    // 初始化滿版相片
     slides.forEach((img, idx) => {
         const fsImg = document.createElement('img');
         fsImg.src = img.src;
@@ -424,16 +532,14 @@
     }
 
     function closeFullscreenMode() {
-        const overlay = document.getElementById('fullscreen-overlay');
-        overlay.style.display = 'none';
+        document.getElementById('fullscreen-overlay').style.display = 'none';
         fsActive = false;
     }
 
-    // 燈箱放大功能 (下方縮圖使用)
+    // 燈箱放大功能
     function openLightbox(imgSrc) {
         const lightbox = document.getElementById('lightbox');
-        const lightboxImg = document.getElementById('lightbox-img');
-        lightboxImg.src = imgSrc;
+        document.getElementById('lightbox-img').src = imgSrc;
         lightbox.style.display = 'flex';
     }
 
