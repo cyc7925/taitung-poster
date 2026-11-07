@@ -17,8 +17,8 @@
         }
 
         body {
-            /* 明顯的藍綠色漸層，往下融入溫暖的淡黃色 */
-            background: linear-gradient(180deg, #A8E6CF 0%, #FFF9E6 18%, #FFF9E6 100%);
+            /* 調整漸層範圍：藍綠色大幅延伸，漸變到淡藍，再融入淡黃色，讓立體感更明顯 */
+            background: linear-gradient(180deg, #A8E6CF 0%, #E0F7FA 30%, #FFF9E6 70%, #FFF9E6 100%);
             color: var(--ink-dark);
             font-family: 'jf-openhuninn-1.1', sans-serif;
             margin: 0; padding: 0; -webkit-text-size-adjust: 100%;
@@ -149,7 +149,7 @@
 
 <div class="container">
     
-    <!-- 第一個紅圈內容：動畫與熱賣商品 -->
+    <!-- 動畫與熱賣商品 -->
     <div class="emoji-cluster">
         <div class="emo-group">
             <span class="e-ring">🛟<span class="e-sparkle-left">✨</span></span>
@@ -195,7 +195,7 @@
 
     <div class="section-divider"></div>
 
-    <!-- 第二個紅圈內容：交通指引與評論 -->
+    <!-- 交通指引與評論 -->
     <div class="store-intro-clean">
         <div class="intro-title">📍本店位置與交通指引</div>
         <div style="letter-spacing: -0.2px; line-height: 1.45;">
@@ -228,7 +228,7 @@
     <button onclick="scrollToTop()">🔝</button>
 </div>
 
-<!-- === 彈出式功能選單 === -->
+<!-- === 彈出式功能選單 (已移除首頁連結) === -->
 <div id="menu-overlay" class="menu-overlay" onclick="toggleMenu()"></div>
 <div id="popup-menu" class="popup-menu">
     <div class="popup-header">
@@ -236,7 +236,7 @@
         <button class="close-btn" onclick="toggleMenu()">✕</button>
     </div>
     <div class="popup-content">
-        <a href="home.html" class="menu-link-clean">🏠 首頁</a>
+        <!-- 去除了多餘的首頁按鈕，直接顯示其他主題 -->
         <a href="about.html" class="menu-link-clean">ℹ️ 關於我們</a>
         <a href="home.html#spa-section" class="menu-link-clean">♨️ 知本溫泉 SPA</a>
         <a href="2026.html" class="menu-link-clean">📅 臺東近期活動</a>
