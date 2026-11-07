@@ -46,30 +46,6 @@
         }
         .btn-call:active { transform: translate(2px,2px); box-shadow: 0px 0px 0px var(--ink-dark); }
 
-        /* === 底部 App 風格導覽列 (改用穩定顯示的 🏠) === */
-        .font-floater {
-            position: fixed; 
-            bottom: 0; left: 0; width: 100%; 
-            display: flex; flex-direction: row; justify-content: space-around;
-            background: rgba(255, 255, 255, 0.95); 
-            border-top: 1.5px solid rgba(44, 62, 80, 0.2);
-            border-radius: 16px 16px 0 0; 
-            backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
-            z-index: 999; 
-            box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
-            padding: 8px 0 calc(8px + env(safe-area-inset-bottom)) 0; 
-        }
-        .font-floater button, .font-floater a {
-            background: transparent; border: none; outline: none;
-            padding: 6px 0; font-size: 15px; font-weight: bold; font-family: inherit;
-            color: #666; cursor: pointer; transition: 0.2s; 
-            text-decoration: none; text-align: center; flex: 1; 
-        }
-        .font-floater button:not(:last-child), .font-floater a:not(:last-child) { 
-            border-right: 1px solid rgba(0,0,0,0.08); 
-        }
-        .font-floater button:active, .font-floater a:active { background: #F0F0F0; color: var(--pop-pink); }
-
         /* === 標題與插畫 === */
         .hero-section { 
             display: flex; align-items: center; justify-content: center; gap: 15px; 
@@ -194,6 +170,25 @@
             font-size: calc(14px * var(--text-scale)); font-weight: bold; color: var(--ink-dark); letter-spacing: 1px;
             display: flex; align-items: center; gap: 4px;
         }
+
+        /* === 底部工具列 (主選單置中，3+1+3 對稱排版) === */
+        .font-floater { position: fixed; bottom: 60px; left: 0; width: 100%; display: flex; flex-direction: row; justify-content: space-around; background: rgba(255, 255, 255, 0.95); border-top: 1.5px solid rgba(44, 62, 80, 0.2); border-radius: 16px 16px 0 0; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); z-index: 990; box-shadow: 0 -2px 10px rgba(0,0,0,0.05); padding: 8px 0; }
+        .font-floater button, .font-floater a { background: transparent; border: none; outline: none; padding: 8px 0; font-size: 16px; font-weight: bold; font-family: inherit; color: #666; cursor: pointer; transition: 0.2s; text-decoration: none; text-align: center; flex: 1; }
+        .font-floater button:not(:last-child), .font-floater a:not(:last-child) { border-right: 1px solid rgba(0,0,0,0.08); }
+        .font-floater button:active, .font-floater a:active { background: #F0F0F0; color: var(--pop-pink); }
+        
+        /* === 彈出式功能選單樣式 (極簡無框線版) === */
+        .menu-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 995; opacity: 0; visibility: hidden; transition: 0.3s ease; }
+        .menu-overlay.active { opacity: 1; visibility: visible; }
+        .popup-menu { position: fixed; bottom: -100%; left: 0; width: 100%; background: white; border-radius: 20px 20px 0 0; z-index: 999; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1); box-shadow: 0 -5px 20px rgba(0,0,0,0.1); padding-bottom: env(safe-area-inset-bottom); }
+        .popup-menu.active { bottom: 0; }
+        .popup-header { display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; border-bottom: 1px solid #eee; }
+        .popup-title { font-size: calc(16px * var(--text-scale)); font-weight: bold; color: var(--ink-dark); }
+        .close-btn { background: #f0f0f0; border: none; width: 30px; height: 30px; border-radius: 15px; font-weight: bold; color: #555; cursor: pointer; }
+        .popup-content { padding: 5px 20px 25px 20px; display: flex; flex-direction: column; }
+        .menu-link-clean { display: block; padding: 16px 10px; border-bottom: 1px dashed #e0e0e0; text-decoration: none; color: var(--ink-dark); font-weight: bold; font-size: calc(15px * var(--text-scale)); transition: 0.2s; }
+        .menu-link-clean:last-child { border-bottom: none; }
+        .menu-link-clean:active { background: #FFF9E6; color: var(--pop-pink); padding-left: 15px; }
     </style>
 </head>
 <body>
@@ -204,17 +199,6 @@
         <a href="https://maps.google.com/?q=東泳記泳裝店" target="_blank" class="nav-loc">卑南鄉溫泉路370號🚗</a>
     </div>
     <a href="tel:0910557998" class="btn-call">📞 0910-557-998</a>
-</div>
-
-<!-- === 底部 App 風格導覽列 (使用穩定的 🏠) === -->
-<div class="font-floater">
-    <a href="home.html" title="返回首頁">🏠</a>
-    <a href="tel:0910557998" title="撥打電話">📞</a>
-    <a href="https://maps.app.goo.gl/YkHK24qn1kZsfBn38?g_st=ic" target="_blank" title="開啟導航">🚗</a>
-    <button onclick="changeFont(-0.1)">A-</button>
-    <button onclick="resetFont()">A</button>
-    <button onclick="changeFont(0.1)">A+</button>
-    <button onclick="scrollToTop()" title="回到頂部">🔝</button>
 </div>
 
 <div class="container">
@@ -1032,15 +1016,32 @@
     </div>
 </div>
 
-<!-- === 底部 App 風格導覽列 (使用穩定顯示的 🏠) === -->
+<!-- === 底部工具列 (主選單置中，3+1+3 對稱排版) === -->
 <div class="font-floater">
-    <a href="home.html" title="返回首頁">🏠</a>
     <a href="tel:0910557998" title="撥打電話">📞</a>
-    <a href="https://maps.app.goo.gl/YkHK24qn1kZsfBn38?g_st=ic" target="_blank" title="開啟導航">🚗</a>
+    <a href="https://maps.app.goo.gl/YkHK24qn1kZsfBn38?g_st=ic" target="_blank" title="導航">🚗</a>
+    <button onclick="scrollToTop()">🔝</button>
+
+    <button onclick="toggleMenu()" title="選單" style="color: var(--pop-pink); font-weight: 900; font-size: 22px;">☰</button>
+    
     <button onclick="changeFont(-0.1)">A-</button>
     <button onclick="resetFont()">A</button>
     <button onclick="changeFont(0.1)">A+</button>
-    <button onclick="scrollToTop()" title="回到頂部">🔝</button>
+</div>
+
+<!-- === 彈出式功能選單 === -->
+<div id="menu-overlay" class="menu-overlay" onclick="toggleMenu()"></div>
+<div id="popup-menu" class="popup-menu">
+    <div class="popup-header">
+        <div class="popup-title">✨快速導覽</div>
+        <button class="close-btn" onclick="toggleMenu()">✕</button>
+    </div>
+    <div class="popup-content">
+        <a href="home.html" class="menu-link-clean">🏠 首頁</a>
+        <a href="about.html" class="menu-link-clean">ℹ️ 關於我們</a>
+        <a href="spa.html" class="menu-link-clean">♨️ 關於知本溫泉</a>
+        <a href="2026.html" class="menu-link-clean">📅 臺東近期活動</a>
+    </div>
 </div>
 
 <div class="slogan-footer">
@@ -1053,6 +1054,14 @@
 </div>
 
 <script>
+    /* 選單開關功能 */
+    function toggleMenu() {
+        const menu = document.getElementById('popup-menu');
+        const overlay = document.getElementById('menu-overlay');
+        menu.classList.toggle('active');
+        overlay.classList.toggle('active');
+    }
+
     // 字體縮放記憶系統
     let currentScale = parseFloat(localStorage.getItem('userFontScale')) || 1;
     function applyFontScale() {
