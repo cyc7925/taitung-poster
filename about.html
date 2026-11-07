@@ -17,7 +17,7 @@
         }
 
         body {
-            /* 調整漸層範圍：藍綠色大幅延伸，漸變到淡藍，再融入淡黃色，讓立體感更明顯 */
+            /* 明顯的藍綠色漸層，往下融入溫暖的淡黃色 */
             background: linear-gradient(180deg, #A8E6CF 0%, #E0F7FA 30%, #FFF9E6 70%, #FFF9E6 100%);
             color: var(--ink-dark);
             font-family: 'jf-openhuninn-1.1', sans-serif;
@@ -61,33 +61,34 @@
         @keyframes float3 { 0%, 100% { transform: rotate(15deg) translate(5px, -10px); } 50% { transform: rotate(15deg) translate(5px, -15px); } }
         @keyframes float4 { 0%, 100% { transform: rotate(15deg) translate(25px, -15px); } 50% { transform: rotate(15deg) translate(25px, -20px); } }
 
-        /* === 內容區塊 === */
+        /* === 內容區塊 (字體放大版) === */
         .store-intro-clean {
-            padding: 0 10px; margin-top: 2px; margin-bottom: 15px;
-            font-size: calc(12.5px * var(--text-scale)); line-height: 1.6; color: #444; text-align: justify;
+            padding: 0 10px; margin-top: 2px; margin-bottom: 20px;
+            font-size: calc(15.5px * var(--text-scale)); /* 從12.5px放大到15.5px */
+            line-height: 1.6; color: #444; text-align: justify;
         }
-        .intro-title { font-size: calc(14px * var(--text-scale)); font-weight: bold; color: var(--pop-pink); margin-bottom: 6px; }
+        .intro-title { font-size: calc(17px * var(--text-scale)); font-weight: bold; color: var(--pop-pink); margin-bottom: 8px; }
         
         .section-title { 
-            font-size: calc(15px * var(--text-scale)); font-weight: bold; color: var(--ink-dark); 
-            margin: 0 0 10px 0; display: flex; align-items: center; gap: 6px; 
+            font-size: calc(17px * var(--text-scale)); font-weight: bold; color: var(--ink-dark); 
+            margin: 0 0 12px 0; display: flex; align-items: center; gap: 6px; 
         }
         
-        .product-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 5px; }
+        .product-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 5px; }
         .product-card { 
             background: white; border: 2.5px solid var(--pop-pink); border-radius: 12px; 
-            padding: 16px 5px; text-align: center; display: flex; flex-direction: column; 
+            padding: 18px 5px; text-align: center; display: flex; flex-direction: column; 
             align-items: center; justify-content: center;
             box-shadow: 2px 2px 0px rgba(255, 107, 107, 0.2); transition: 0.2s;
         }
-        .product-icon { font-size: calc(28px * var(--text-scale)); margin-bottom: 6px; line-height: 1; }
-        .product-name { font-size: calc(13.5px * var(--text-scale)); font-weight: bold; color: var(--ink-dark); }
+        .product-icon { font-size: calc(32px * var(--text-scale)); margin-bottom: 8px; line-height: 1; }
+        .product-name { font-size: calc(14.5px * var(--text-scale)); font-weight: bold; color: var(--ink-dark); }
 
-        .section-divider { border-top: 2px dashed rgba(176, 190, 197, 0.6); margin: 25px 5px 15px 5px; }
+        .section-divider { border-top: 2px dashed rgba(176, 190, 197, 0.6); margin: 30px 5px 20px 5px; }
 
         .slogan-area { text-align: center; margin-top: 25px; }
-        .slogan-sub { font-size: calc(12px * var(--text-scale)); font-weight: bold; color: #555; margin-bottom: 6px; }
-        .footer-text { font-size: calc(11.5px * var(--text-scale)); font-weight: bold; color: var(--ink-dark); }
+        .slogan-sub { font-size: calc(14px * var(--text-scale)); font-weight: bold; color: #555; margin-bottom: 6px; }
+        .footer-text { font-size: calc(13px * var(--text-scale)); font-weight: bold; color: var(--ink-dark); }
 
         @media (min-width: 768px) {
             .container { max-width: 800px; padding: 30px 40px; }
@@ -95,7 +96,7 @@
             .product-grid { grid-template-columns: repeat(6, 1fr); }
         }
 
-        /* === 恢復原版的底部工具列 === */
+        /* === 底部工具列 (精簡為6個按鈕，觸控空間更大) === */
         .font-floater {
             position: fixed; 
             bottom: 0; left: 0; width: 100%; 
@@ -110,7 +111,7 @@
         }
         .font-floater button, .font-floater a {
             background: transparent; border: none; outline: none;
-            padding: 6px 0; font-size: 16px; font-weight: bold; font-family: inherit;
+            padding: 8px 0; font-size: 16px; font-weight: bold; font-family: inherit;
             color: #666; cursor: pointer; transition: 0.2s; 
             text-decoration: none; text-align: center; flex: 1; 
         }
@@ -160,7 +161,7 @@
     </div>
 
     <div class="store-intro-clean">
-        <div style="letter-spacing: -0.2px; line-height: 1.45;">
+        <div style="letter-spacing: -0.2px;">
             店內提供精選平價泳裝、優惠溫泉券、泳具週邊與大中小各式泳圈，讓您不傷荷包，就能輕鬆拿捏時尚穿搭。<br>
         </div>
     </div>
@@ -198,7 +199,7 @@
     <!-- 交通指引與評論 -->
     <div class="store-intro-clean">
         <div class="intro-title">📍本店位置與交通指引</div>
-        <div style="letter-spacing: -0.2px; line-height: 1.45;">
+        <div style="letter-spacing: -0.2px;">
             本店位於溫泉路右側，不超過7-11東遊季門市。<br>
             自行開車行經溫泉路，留意右手邊即可看見。<br>
             若搭乘大眾交通工具，搭乘<b>公車<a href="https://www.taiwanbus.tw/eBUSPage/Query/QueryResult.aspx?rno=81290&rn=1747899072807&lan=C" target="_blank" style="color: var(--pop-pink); font-weight: bold;">[8129]</a></b>至<b>東遊季站</b>下車步行約170公尺即可抵達；距YouBike站點只有短短50公尺，交通非常便利。<br>
@@ -206,8 +207,8 @@
         </div>
     </div>
     
-    <div style="text-align: center; margin: 5px 15px 15px 15px; font-size: calc(15px * var(--text-scale)); color: #555; line-height: 1.4;">
-        如果您也喜歡這份用心，歡迎給我們留個<a href="https://maps.app.goo.gl/QXSfAW5gbzAmZQbD6?g_st=ic" target="_blank" style="color: #D9534F; font-weight: 900; text-decoration: none;">有省錢/五星級⭐⭐⭐⭐⭐評論鼓勵დ</a>
+    <div style="text-align: center; margin: 10px 15px 20px 15px; font-size: calc(16.5px * var(--text-scale)); color: #555; line-height: 1.5;">
+        如果您也喜歡這份用心，歡迎給我們留個<a href="https://maps.app.goo.gl/QXSfAW5gbzAmZQbD6?g_st=ic" target="_blank" style="color: #D9534F; font-weight: 900; text-decoration: none; display: block; margin-top: 5px;">有省錢/五星級⭐⭐⭐⭐⭐評論鼓勵დ</a>
     </div>
     
     <div class="slogan-area">
@@ -217,10 +218,9 @@
 
 </div>
 
-<!-- === 底部工具列 (包含 ☰ 選單) === -->
+<!-- === 底部工具列 (精簡為6個按鈕，觸控空間更大) === -->
 <div class="font-floater">
-    <a href="home.html" title="首頁">🏠</a>
-    <button onclick="toggleMenu()" title="選單" style="color: var(--pop-pink); font-weight: 900;">☰</button>
+    <button onclick="toggleMenu()" title="選單" style="color: var(--pop-pink); font-weight: 900; font-size: 20px;">☰</button>
     <a href="https://maps.app.goo.gl/YkHK24qn1kZsfBn38?g_st=ic" target="_blank" title="導航">🚗</a>
     <button onclick="changeFont(-0.1)">A-</button>
     <button onclick="resetFont()">A</button>
@@ -228,7 +228,7 @@
     <button onclick="scrollToTop()">🔝</button>
 </div>
 
-<!-- === 彈出式功能選單 (已移除首頁連結) === -->
+<!-- === 彈出式功能選單 === -->
 <div id="menu-overlay" class="menu-overlay" onclick="toggleMenu()"></div>
 <div id="popup-menu" class="popup-menu">
     <div class="popup-header">
@@ -236,9 +236,10 @@
         <button class="close-btn" onclick="toggleMenu()">✕</button>
     </div>
     <div class="popup-content">
-        <!-- 去除了多餘的首頁按鈕，直接顯示其他主題 -->
+        <!-- 將首頁按鈕收納至此 -->
+        <a href="home.html" class="menu-link-clean">🏠 首頁</a>
         <a href="about.html" class="menu-link-clean">ℹ️ 關於我們</a>
-        <a href="home.html#spa-section" class="menu-link-clean">♨️ 知本溫泉 SPA</a>
+        <a href="home.html#spa-section" class="menu-link-clean">♨️ 知本溫泉SPA</a>
         <a href="2026.html" class="menu-link-clean">📅 臺東近期活動</a>
     </div>
 </div>
