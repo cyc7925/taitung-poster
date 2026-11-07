@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>關於我們 - 東泳記泳裝店</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/justfont/open-huninn-font/font.css">
+    
+    <style>
+        :root {
+            --bg-yellow: #FFF9E6;    
+            --ink-dark: #2C3E50;     
+            --pop-blue: #4ECDC4;     
+            --pop-pink: #FF6B6B;     
+            --pop-yellow: #FFE66D;   
+            --text-scale: 1;   
+        }
+
+        body {
+            background: linear-gradient(180deg, #e0f7fa 0%, #fffde7 100%);
+            color: var(--ink-dark);
+            font-family: 'jf-openhuninn-1.1', sans-serif;
+            margin: 0; padding: 0; -webkit-text-size-adjust: 100%;
+            min-height: 100vh;
+        }
+
+        .container { max-width: 500px; margin: 0 auto; padding: 15px 15px 100px 15px; }
+
+        /* === 頂部導覽列 === */
+        .sticky-navbar {
+            position: sticky; top: 0; z-index: 100;
+            height: max(80px, calc(60px + env(safe-area-inset-top))); box-sizing: border-box; 
+            background: white; border-bottom: 3px solid var(--ink-dark);
+            padding: max(10px, env(safe-area-inset-top)) 15px 10px 15px; display: flex; align-items: center; justify-content: space-between;
+            box-shadow: 0 4px 0px rgba(0,0,0,0.05);
+        }
+        .nav-info { display: flex; flex-direction: column; gap: 2px; overflow: hidden; }
+        .nav-store { font-size: calc(22px * var(--text-scale)); font-weight: bold; color: var(--pop-pink); letter-spacing: 1px; line-height: 1.1; white-space: nowrap; }
+        .nav-loc { color: var(--ink-dark); text-decoration: none; font-size: calc(13px * var(--text-scale)); font-weight: bold; display: inline-block; white-space: nowrap; }
+
+        .btn-call {
+            background: var(--pop-yellow); border: 3px solid var(--ink-dark); border-radius: 12px; padding: 8px 10px; 
+            font-size: calc(13px * var(--text-scale)); font-weight: bold; color: var(--ink-dark); text-decoration: none; transition: 0.2s;
+            white-space: nowrap; flex-shrink: 0; box-shadow: 2px 2px 0px var(--ink-dark); display: flex; align-items: center; gap: 4px;
+        }
+        .btn-call:active { transform: translate(2px,2px); box-shadow: 0px 0px 0px var(--ink-dark); }
+
+        /* === 內容區塊樣式 === */
+        .page-title {
+            text-align: center; font-size: calc(20px * var(--text-scale)); font-weight: bold; color: var(--ink-dark);
+            margin: 15px 0 25px 0; border-bottom: 3px dashed var(--pop-pink); padding-bottom: 10px;
+        }
+        
+        .section-card {
+            background: white; border: 3px solid var(--ink-dark); border-radius: 16px;
+            padding: 20px 15px; margin-bottom: 20px; box-shadow: 4px 4px 0px rgba(44,62,80,0.15);
+        }
+
+        .section-title { 
+            font-size: calc(16px * var(--text-scale)); font-weight: bold; color: var(--ink-dark); 
+            margin: 0 0 12px 0; display: flex; align-items: center; gap: 6px; 
+        }
+
+        .intro-text {
+            font-size: calc(14px * var(--text-scale)); line-height: 1.6; color: #444; text-align: justify;
+            letter-spacing: -0.2px; margin-bottom: 0;
+        }
+
+        .info-link { color: var(--pop-pink); font-weight: bold; text-decoration: underline; }
+
+        .review-box {
+            text-align: center; margin: 25px 0; padding: 15px;
+            background: #FFFBF0; border: 2px dashed #FAD7A1; border-radius: 12px;
+        }
+        .review-box a {
+            font-size: calc(15px * var(--text-scale)); color: #D9534F; font-weight: 900; text-decoration: none; display: block;
+        }
+
+        /* === 新版底部導覽列 (包含選單) === */
+        .bottom-tab-bar {
+            position: fixed; bottom: 0; left: 0; width: 100%;
+            display: flex; justify-content: space-around; align-items: center;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+            border-top: 1.5px solid rgba(44, 62, 80, 0.15);
+            padding: 8px 0 calc(8px + env(safe-area-inset-bottom)) 0;
+            z-index: 990; box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+        }
+        .tab-item {
+            display: flex; flex-direction: column; align-items: center; gap: 3px;
+            text-decoration: none; color: #666; background: none; border: none; font-family: inherit;
+            font-size: calc(11px * var(--text-scale)); font-weight: bold; width: 25%; cursor: pointer; padding: 0;
+        }
+        .tab-icon { font-size: 22px; line-height: 1; margin-bottom: 2px; }
+        .tab-item:active { color: var(--pop-pink); }
+        
+        /* === 彈出式功能選單樣式 === */
+        .menu-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5); z-index: 995;
+            opacity: 0; visibility: hidden; transition: 0.3s ease;
+        }
+        .menu-overlay.active { opacity: 1; visibility: visible; }
+        
+        .popup-menu {
+            position: fixed; bottom: -100%; left: 0; width: 100%;
+            background: white; border-radius: 20px 20px 0 0;
+            z-index: 999; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+            box-shadow: 0 -5px 20px rgba(0,0,0,0.1);
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+        .popup-menu.active { bottom: 0; }
+        
+        .popup-header {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 15px 20px; border-bottom: 1px solid #eee;
+        }
+        .popup-title { font-size: calc(16px * var(--text-scale)); font-weight: bold; color: var(--ink-dark); }
+        .close-btn { 
+            background: #f0f0f0; border: none; width: 30px; height: 30px; 
+            border-radius: 15px; font-weight: bold; color: #555; cursor: pointer;
+        }
+        
+        .popup-content { padding: 15px 20px 20px 20px; display: flex; flex-direction: column; gap: 12px; }
+        
+        .menu-link {
+            display: block; padding: 12px 15px; background: var(--bg-yellow);
+            border: 2px solid var(--ink-dark); border-radius: 12px;
+            text-decoration: none; color: var(--ink-dark); font-weight: bold; font-size: calc(14px * var(--text-scale));
+            box-shadow: 2px 2px 0px rgba(44,62,80,0.15); transition: 0.2s;
+        }
+        .menu-link:active { transform: translate(2px,2px); box-shadow: 0 0 0 transparent; background: #FFF0F0; }
+        
+        .font-control-group { display: flex; gap: 10px; margin-top: 5px; }
+        .font-control-group button {
+            flex: 1; padding: 10px 0; background: white; border: 2px solid var(--ink-dark);
+            border-radius: 10px; font-weight: bold; color: var(--ink-dark); box-shadow: 2px 2px 0px rgba(44,62,80,0.1);
+            font-size: calc(13px * var(--text-scale)); cursor: pointer;
+        }
+        .font-control-group button:active { background: var(--pop-yellow); transform: translate(2px,2px); box-shadow: 0 0 0 transparent; }
+
+    </style>
+</head>
+<body>
+
+<!-- === 頂部導覽列 === -->
+<div class="sticky-navbar">
+    <div class="nav-info">
+        <div class="nav-store">東泳記泳裝店</div>
+        <a href="https://maps.app.goo.gl/YkHK24qn1kZsfBn38?g_st=ic" target="_blank" class="nav-loc">卑南鄉溫泉路370號🚗</a>
+    </div>
+    <a href="tel:0910557998" class="btn-call">📞 0910-557-998</a>
+</div>
+
+<div class="container">
+    
+    <div class="page-title">ℹ️ 關於東泳記</div>
+
+    <!-- 關於我們區塊 -->
+    <div class="section-card">
+        <div class="section-title"><span style="color:var(--pop-pink);">🏪</span> 我們的服務</div>
+        <div class="intro-text">
+            我們是在地經營的專業泳裝店，店內提供精選平價泳裝、優惠溫泉券、專業泳具週邊與大中小各式泳圈，讓您不傷荷包，就能輕鬆拿捏時尚穿搭。<br><br>
+            來到知本泡湯玩水，如果忘記帶裝備，來東泳記為您一次補齊！
+        </div>
+    </div>
+
+    <!-- 交通指引區塊 -->
+    <div class="section-card">
+        <div class="section-title"><span style="color:var(--pop-pink);">📍</span> 交通位置指引</div>
+        <div class="intro-text">
+            本店位於溫泉路右側，距離7-11東遊季門市不到30公尺。<br><br>
+            <b>🚗 自行開車：</b><br>
+            行經溫泉路，留意右手邊即可看見。<br><br>
+            <b>🚌 大眾運輸：</b><br>
+            搭乘公車 <a href="https://www.taiwanbus.tw/eBUSPage/Query/QueryResult.aspx?rno=81290&rn=1747899072807&lan=C" target="_blank" class="info-link">[8129]</a> 至<b>「東遊季站」</b>下車，步行約170公尺即可抵達。<br><br>
+            <b>🚲 綠色運輸：</b><br>
+            距離最近的 YouBike 站點（7-11旁）只有短短50公尺，交通非常便利！<br><br>
+            <i>※ 從本店前往「東遊季溫泉區」僅需步行約400公尺。</i>
+        </div>
+        <!-- 導航按鈕 -->
+        <a href="https://maps.app.goo.gl/YkHK24qn1kZsfBn38?g_st=ic" target="_blank" style="display: block; text-align: center; background: var(--pop-blue); color: white; padding: 12px; border-radius: 8px; font-weight: bold; text-decoration: none; margin-top: 15px; border: 2px solid var(--ink-dark); box-shadow: 2px 2px 0px var(--ink-dark);">
+            開啟 Google 地圖導航 ➔
+        </a>
+    </div>
+
+    <!-- 五星好評區塊 -->
+    <div class="review-box">
+        如果您也喜歡這份用心，歡迎給我們留個<br>
+        <a href="https://maps.app.goo.gl/QXSfAW5gbzAmZQbD6?g_st=ic" target="_blank" style="margin-top: 8px;">有省錢/五星級⭐⭐⭐⭐⭐評論鼓勵დ</a>
+    </div>
+
+</div>
+
+<!-- === 新版底部功能導覽列 === -->
+<div class="bottom-tab-bar">
+    <a href="home.html" class="tab-item">
+        <span class="tab-icon">🏠</span>
+        <span>首頁</span>
+    </a>
+    <a href="tel:0910557998" class="tab-item">
+        <span class="tab-icon">📞</span>
+        <span>電話</span>
+    </a>
+    <a href="https://maps.app.goo.gl/YkHK24qn1kZsfBn38?g_st=ic" target="_blank" class="tab-item">
+        <span class="tab-icon">🚗</span>
+        <span>導航</span>
+    </a>
+    <button onclick="toggleMenu()" class="tab-item">
+        <span class="tab-icon">☰</span>
+        <span>功能</span>
+    </button>
+</div>
+
+<!-- === 彈出式功能選單 === -->
+<div id="menu-overlay" class="menu-overlay" onclick="toggleMenu()"></div>
+<div id="popup-menu" class="popup-menu">
+    <div class="popup-header">
+        <div class="popup-title">✨ 探索東泳記</div>
+        <button class="close-btn" onclick="toggleMenu()">✕</button>
+    </div>
+    <div class="popup-content">
+        <!-- 跨頁連結 -->
+        <a href="home.html" class="menu-link">🏠 泳裝店首頁 (回首頁)</a>
+        <a href="about.html" class="menu-link">ℹ️ 關於我們與交通位置</a>
+        <!-- 你未來如果要獨立溫泉頁，可以改成 spa.html -->
+        <a href="home.html" class="menu-link">♨️ 知本溫泉 SPA 介紹</a>
+        <a href="2026.html" class="menu-link">📅 臺東近期活動總整理</a>
+        
+        <div class="popup-title" style="margin-top: 10px; font-size: calc(14px * var(--text-scale));">Aa 字體大小調整</div>
+        <div class="font-control-group">
+            <button onclick="changeFont(-0.1)">A- 縮小</button>
+            <button onclick="resetFont()">A 預設</button>
+            <button onclick="changeFont(0.1)">A+ 放大</button>
+        </div>
+    </div>
+</div>
+
+<!-- === 腳本功能 === -->
+<script>
+    // 控制彈出選單的開關
+    function toggleMenu() {
+        const menu = document.getElementById('popup-menu');
+        const overlay = document.getElementById('menu-overlay');
+        menu.classList.toggle('active');
+        overlay.classList.toggle('active');
+    }
+
+    // 字體縮放記憶系統
+    let currentScale = parseFloat(localStorage.getItem('userFontScale')) || 1;
+    
+    function applyFontScale() {
+        document.documentElement.style.setProperty('--text-scale', currentScale);
+        localStorage.setItem('userFontScale', currentScale);
+    }
+    
+    function changeFont(step) {
+        currentScale += step;
+        currentScale = Math.round(currentScale * 10) / 10;
+        if (currentScale < 0.8) currentScale = 0.8;
+        if (currentScale > 1.2) currentScale = 1.2;
+        applyFontScale();
+    }
+    
+    function resetFont() {
+        currentScale = 1;
+        applyFontScale();
+    }
+
+    applyFontScale();
+</script>
+
+</body>
+</html>
