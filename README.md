@@ -2,11 +2,13 @@
 
 歡迎來到台東知本溫泉導覽網頁！這是一個帶你探索台東知本優質溫泉與在地景點的專案。
 
+
+
 [![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fcyc7925.github.io%2Ftaitung-poster%2Fhome.html&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=訪客人數+(今日不重複+/+總瀏覽)&edge_flat=false)](https://cyc7925.github.io/taitung-poster/home.html)
 ### 📊 各網頁點擊統計 (今日不重複 / 總瀏覽)
 
 - **首頁 (home.html)**：
-[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fcyc7925.github.io%2Ftaitung-poster%2Fhome.html&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=home.html&edge_flat=false)](https://cyc7925.github.io/taitung-poster/home.html)
+[![Hits](https://hits.sh/cyc7925.github.io/taitung-poster/home.html.svg?label=home.html&color=79C83D)](https://hits.sh/cyc7925.github.io/taitung-poster/home.html/)
 
 - **主索引頁 (index.html)**：
 [![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fcyc7925.github.io%2Ftaitung-poster%2Findex.html&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=index.html&edge_flat=false)](https://cyc7925.github.io/taitung-poster/index.html)
