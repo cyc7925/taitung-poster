@@ -1,3 +1,4 @@
+是這樣嗎
 <!DOCTYPE html> 
 <html lang="zh-TW">
 <head>
@@ -8,13 +9,10 @@
     
     <style>
         :root {
-            /* 2027 全新太平洋藍主題色 */
-            --bg-theme: #F0F8FF;     /* 冰水藍背景 */
-            --ink-dark: #1A365D;     /* 深海藍文字 */
-            --pop-main: #3182CE;     /* 主題亮藍色 (時間軸線條) */
-            --pop-accent: #F6AD55;   /* 亮橘色 (圓點、按鈕點綴) */
-            
-            /* 保留原本的標籤顏色供替換使用 */
+            --bg-theme: #F0F8FF;     
+            --ink-dark: #1A365D;     
+            --pop-main: #3182CE;     
+            --pop-accent: #F6AD55;   
             --pop-pink: #FF6B6B;     
             --pop-yellow: #FFE66D;   
             --pop-green: #A8E6CF;    
@@ -61,7 +59,6 @@
         
         .content-section { padding-bottom: 90px; } 
         
-        /* 2027 時間軸換成藍色 */
         .timeline { border-left: 4px dotted var(--pop-main); margin-left: 20px; padding-left: 25px; padding-bottom: 5px; padding-top: 5px;}
         .event { position: relative; margin-bottom: 25px; }
         .event::before {
@@ -112,7 +109,6 @@
         }
         .event-loc:active { background: #dce4ec; transform: scale(0.97); }
 
-        /* === 溫馨提醒免責聲明 === */
         .disclaimer {
             font-size: calc(13px * var(--text-scale)); color: #888; font-weight: bold; line-height: 1.5;
             text-align: left; margin: 25px 15px; padding-top: 20px; border-top: 1px dashed #CCC;
@@ -125,7 +121,6 @@
         }
         .home-btn:active { transform: translate(2px, 2px); box-shadow: 0px 0px 0px var(--ink-dark); }
 
-        /* === 合併浮動底端列 === */
         .bottom-bar-wrapper { 
             position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(255, 255, 255, 0.95); 
             border-top: 1.5px solid rgba(26, 54, 93, 0.2); border-radius: 16px 16px 0 0; 
@@ -141,7 +136,6 @@
         .font-floater button:not(:last-child), .font-floater a:not(:last-child) { border-right: 1px solid rgba(0,0,0,0.08); }
         .font-floater button:active, .font-floater a:active { background: #F0F0F0; color: var(--pop-main); }
         
-        /* === 彈出式功能選單 === */
         .menu-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 995; opacity: 0; visibility: hidden; transition: 0.3s ease; }
         .menu-overlay.active { opacity: 1; visibility: visible; }
         .popup-menu { position: fixed; bottom: -100%; left: 0; width: 100%; background: white; border-radius: 20px 20px 0 0; z-index: 999; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1); box-shadow: 0 -5px 20px rgba(0,0,0,0.1); padding-bottom: env(safe-area-inset-bottom); }
@@ -173,7 +167,48 @@
 <div class="container">
     <div class="content-section">
         
-        <!-- 5月活動標題 (2027版換成了水藍色系) -->
+                <!-- 1月活動標題 -->
+        <div class="month-header">
+            <div style="font-size: calc(15px * var(--text-scale)); color: var(--pop-main); font-weight: bold; margin-bottom: -2px; line-height: 1; letter-spacing: 1px;">臺東縣近期活動資訊</div>
+            <div style="display: flex; align-items: flex-end;">
+                <div style="font-size: calc(20px * var(--text-scale)); font-weight: 900; color: #333; letter-spacing: 0.5px; white-space: nowrap; line-height: 1;">1月 January</div>
+                <div style="flex-grow: 1; border-bottom: 3px solid #90CDF4; margin-left: 12px; position: relative; height: 28px;">
+                    <div style="position: absolute; right: 15px; bottom: -2px; font-size: calc(32px * var(--text-scale)); font-weight: 900; color: var(--pop-main); font-style: italic; line-height: 1;">2027</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="timeline">
+            <!-- 跨年迎曙光/跨日活動 -->
+            <div class="event" data-end="0101">
+                <div class="event-card">
+                    <div class="card-header">
+                        <span class="event-date">12/31 - 1/1</span>
+                        <span class="tag tag-music">跨年晚會</span>
+                        <span class="tag tag-free">免費入場</span>
+                    </div>
+                    <div class="event-title">🎆 2027 台東跨年晚會－東漂去旅行 (跨年倒數迎新年)</div>
+                    
+                    <a href="https://tour.taitung.gov.tw/zh-tw/event-calendar/details/6294" target="_blank" style="display: block; margin: -4px -15px !important; border-radius: 0; overflow: hidden;">
+                        <img src="https://tour.taitung.gov.tw/image/57158/1024x768" alt="2027台東跨年晚會" style="width: 100%; display: block; border-radius: 0; margin: 0 !important; padding: 0 !important;">
+                    </a>
+                    
+                    <div class="event-desc">
+                        <div style="margin-bottom: 6px;">時間：12/31 17:30 起，一路嗨到 1/1 凌晨！</div>
+                        首波超強卡司：徐佳瑩、蔡健雅、彭佳慧、韋禮安。一起在太平洋海風下倒數迎接 2027！
+                    </div>
+                    
+                    <div style="display: flex; gap: 8px; margin-top: 10px;">
+                        <a href="https://maps.google.com/?q=台東市國際地標" target="_blank" class="event-loc" style="margin-top: 0; flex: 1; text-align: center;">📍 台東市國際地標</a>
+                        <a href="https://tour.taitung.gov.tw/zh-tw/event-calendar/details/6294" target="_blank" class="event-loc" style="margin-top: 0; background: #FFF9E6; border-color: #FAD7A1; color: #D35400; flex: 1; text-align: center;">🔗 官方活動詳情</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+<!-- 5月活動標題 -->
         <div class="month-header">
             <div style="font-size: calc(15px * var(--text-scale)); color: var(--pop-main); font-weight: bold; margin-bottom: -2px; line-height: 1; letter-spacing: 1px;">臺東縣近期活動資訊</div>
             <div style="display: flex; align-items: flex-end;">
@@ -218,11 +253,11 @@
             </div>
         </div>
 
-        <!-- 6月~9月 長期活動標題 -->
+        <!-- 6月活動標題 -->
         <div class="month-header">
             <div style="font-size: calc(15px * var(--text-scale)); color: var(--pop-main); font-weight: bold; margin-bottom: -2px; line-height: 1; letter-spacing: 1px;">臺東縣近期活動資訊</div>
             <div style="display: flex; align-items: flex-end;">
-                <div style="font-size: calc(20px * var(--text-scale)); font-weight: 900; color: #333; letter-spacing: 0.5px; white-space: nowrap; line-height: 1;">6月-9月 夏季音樂季</div>
+                <div style="font-size: calc(20px * var(--text-scale)); font-weight: 900; color: #333; letter-spacing: 0.5px; white-space: nowrap; line-height: 1;">6月 June</div>
                 <div style="flex-grow: 1; border-bottom: 3px solid #90CDF4; margin-left: 12px; position: relative; height: 28px;">
                     <div style="position: absolute; right: 15px; bottom: -2px; font-size: calc(32px * var(--text-scale)); font-weight: 900; color: var(--pop-main); font-style: italic; line-height: 1;">2027</div>
                 </div>
@@ -230,48 +265,142 @@
         </div>
         
         <div class="timeline">
-            <!-- 月光·海音樂會 (設定為 ongoing，避免影響日後自動導航) -->
-            <div class="event ongoing" data-end="0919">
+            <div class="event" data-end="0622">
                 <div class="event-card">
                     <div class="card-header">
-                        <span class="event-date">6/21 - 9/19</span>
+                        <span class="event-date">6/21 - 6/22</span>
                         <span class="tag tag-music">音樂會</span>
                         <span class="tag tag-art" style="background:#A8E6CF; color:#2C3E50;">市集</span>
                     </div>
-                    <div class="event-title">🌕 2027 月光·海音樂會</div>
+                    <div class="event-title">🌕 2027 月光·海音樂會 (6月場)</div>
                     
-                    <!-- 圖片區 -->
                     <a href="https://www.eastcoast-nsa.gov.tw/image/92567/1024x768" target="_blank" style="display: block; margin: -4px -15px !important; border-radius: 0; overflow: hidden;">
                         <img src="https://www.eastcoast-nsa.gov.tw/image/92567/1024x768" alt="2027月光海音樂會" style="width: 100%; display: block; border-radius: 0; margin: 0 !important; padding: 0 !important;">
                     </a>
                     
-                    <!-- 資訊區 -->
                     <div class="event-desc">
-                        <div style="margin-bottom: 10px; text-align: justify;">
-                            以太平洋為天然背景、自然月相為天然光影。2027年將配合滿月及月升時序，於6月至9月期間規劃4個月份、共計8場次演出！
-                        </div>
-                        <div style="font-weight: bold; color: var(--ink-dark); margin-bottom: 2px;">【演出檔期一覽】</div>
-                        <div style="display: flex; align-items: flex-start; margin-bottom: 2px;">
-                            <span style="flex-shrink: 0; font-weight: bold; color: var(--pop-main);">■ 6月份：</span>
-                            <div>6/21 (一) 、 6/22 (二)</div>
-                        </div>
-                        <div style="display: flex; align-items: flex-start; margin-bottom: 2px;">
-                            <span style="flex-shrink: 0; font-weight: bold; color: var(--pop-main);">■ 7月份：</span>
-                            <div>7/19 (一) 、 7/20 (二)</div>
-                        </div>
-                        <div style="display: flex; align-items: flex-start; margin-bottom: 2px;">
-                            <span style="flex-shrink: 0; font-weight: bold; color: var(--pop-main);">■ 8月份：</span>
-                            <div>8/18 (三) 、 8/19 (四)</div>
-                        </div>
-                        <div style="display: flex; align-items: flex-start; margin-bottom: 8px;">
-                            <span style="flex-shrink: 0; font-weight: bold; color: var(--pop-main);">■ 9月份：</span>
-                            <div>9/18 (六) 、 9/19 (日)</div>
-                        </div>
-                        
-                        <div style="font-size: 12px; color: #888; margin-bottom: 4px;">※ 活動詳情與卡司將於後續階段陸續發布。</div>
+                        <div style="margin-bottom: 6px;">以太平洋為天然背景、自然月相為天然光影。配合滿月及月升時序的經典夏日饗宴！</div>
+                        <div style="font-weight: bold; color: var(--ink-dark); margin-bottom: 2px;">【6月演出日期】</div>
+                        <div>■ 6/21 (一)[span_0](start_span)[span_0](end_span)<br>■ 6/22 (二)[span_1](start_span)[span_1](end_span)</div>
                     </div>
                     
-                    <!-- 雙按鈕模組 -->
+                    <div style="display: flex; gap: 8px; margin-top: 10px;">
+                        <a href="https://maps.google.com/?q=都歷遊客中心" target="_blank" class="event-loc" style="margin-top: 0; flex: 1; text-align: center;">📍 都歷遊客中心</a>
+                        <a href="https://www.teclandart.tw/" target="_blank" class="event-loc" style="margin-top: 0; background: #FFF9E6; border-color: #FAD7A1; color: #D35400; flex: 1; text-align: center;">🔗 官方網站資訊</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 7月活動標題 -->
+        <div class="month-header">
+            <div style="font-size: calc(15px * var(--text-scale)); color: var(--pop-main); font-weight: bold; margin-bottom: -2px; line-height: 1; letter-spacing: 1px;">臺東縣近期活動資訊</div>
+            <div style="display: flex; align-items: flex-end;">
+                <div style="font-size: calc(20px * var(--text-scale)); font-weight: 900; color: #333; letter-spacing: 0.5px; white-space: nowrap; line-height: 1;">7月 July</div>
+                <div style="flex-grow: 1; border-bottom: 3px solid #90CDF4; margin-left: 12px; position: relative; height: 28px;">
+                    <div style="position: absolute; right: 15px; bottom: -2px; font-size: calc(32px * var(--text-scale)); font-weight: 900; color: var(--pop-main); font-style: italic; line-height: 1;">2027</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="timeline">
+            <div class="event" data-end="0720">
+                <div class="event-card">
+                    <div class="card-header">
+                        <span class="event-date">7/19 - 7/20</span>
+                        <span class="tag tag-music">音樂會</span>
+                        <span class="tag tag-art" style="background:#A8E6CF; color:#2C3E50;">市集</span>
+                    </div>
+                    <div class="event-title">🌕 2027 月光·海音樂會 (7月場)</div>
+                    
+                    <a href="https://www.eastcoast-nsa.gov.tw/image/92567/1024x768" target="_blank" style="display: block; margin: -4px -15px !important; border-radius: 0; overflow: hidden;">
+                        <img src="https://www.eastcoast-nsa.gov.tw/image/92567/1024x768" alt="2027月光海音樂會" style="width: 100%; display: block; border-radius: 0; margin: 0 !important; padding: 0 !important;">
+                    </a>
+                    
+                    <div class="event-desc">
+                        <div style="margin-bottom: 6px;">仲夏夜的東海岸，結合在地人文與音樂創作的獨特場域氛圍。</div>
+                        <div style="font-weight: bold; color: var(--ink-dark); margin-bottom: 2px;">【7月演出日期】</div>
+                        <div>■ 7/19 (一)[span_2](start_span)[span_2](end_span)<br>■ 7/20 (二)[span_3](start_span)[span_3](end_span)</div>
+                    </div>
+                    
+                    <div style="display: flex; gap: 8px; margin-top: 10px;">
+                        <a href="https://maps.google.com/?q=都歷遊客中心" target="_blank" class="event-loc" style="margin-top: 0; flex: 1; text-align: center;">📍 都歷遊客中心</a>
+                        <a href="https://www.teclandart.tw/" target="_blank" class="event-loc" style="margin-top: 0; background: #FFF9E6; border-color: #FAD7A1; color: #D35400; flex: 1; text-align: center;">🔗 官方網站資訊</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 8月活動標題 -->
+        <div class="month-header">
+            <div style="font-size: calc(15px * var(--text-scale)); color: var(--pop-main); font-weight: bold; margin-bottom: -2px; line-height: 1; letter-spacing: 1px;">臺東縣近期活動資訊</div>
+            <div style="display: flex; align-items: flex-end;">
+                <div style="font-size: calc(20px * var(--text-scale)); font-weight: 900; color: #333; letter-spacing: 0.5px; white-space: nowrap; line-height: 1;">8月 August</div>
+                <div style="flex-grow: 1; border-bottom: 3px solid #90CDF4; margin-left: 12px; position: relative; height: 28px;">
+                    <div style="position: absolute; right: 15px; bottom: -2px; font-size: calc(32px * var(--text-scale)); font-weight: 900; color: var(--pop-main); font-style: italic; line-height: 1;">2027</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="timeline">
+            <div class="event" data-end="0819">
+                <div class="event-card">
+                    <div class="card-header">
+                        <span class="event-date">8/18 - 8/19</span>
+                        <span class="tag tag-music">音樂會</span>
+                        <span class="tag tag-art" style="background:#A8E6CF; color:#2C3E50;">市集</span>
+                    </div>
+                    <div class="event-title">🌕 2027 月光·海音樂會 (8月場)</div>
+                    
+                    <a href="https://www.eastcoast-nsa.gov.tw/image/92567/1024x768" target="_blank" style="display: block; margin: -4px -15px !important; border-radius: 0; overflow: hidden;">
+                        <img src="https://www.eastcoast-nsa.gov.tw/image/92567/1024x768" alt="2027月光海音樂會" style="width: 100%; display: block; border-radius: 0; margin: 0 !important; padding: 0 !important;">
+                    </a>
+                    
+                    <div class="event-desc">
+                        <div style="margin-bottom: 6px;">涼爽海風與皎潔月光下，沈浸於山海、星空與旋律交織的浪漫夜。</div>
+                        <div style="font-weight: bold; color: var(--ink-dark); margin-bottom: 2px;">【8月演出日期】</div>
+                        <div>■ 8/18 (三)[span_4](start_span)[span_4](end_span)<br>■ 8/19 (四)[span_5](start_span)[span_5](end_span)</div>
+                    </div>
+                    
+                    <div style="display: flex; gap: 8px; margin-top: 10px;">
+                        <a href="https://maps.google.com/?q=都歷遊客中心" target="_blank" class="event-loc" style="margin-top: 0; flex: 1; text-align: center;">📍 都歷遊客中心</a>
+                        <a href="https://www.teclandart.tw/" target="_blank" class="event-loc" style="margin-top: 0; background: #FFF9E6; border-color: #FAD7A1; color: #D35400; flex: 1; text-align: center;">🔗 官方網站資訊</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 9月活動標題 -->
+        <div class="month-header">
+            <div style="font-size: calc(15px * var(--text-scale)); color: var(--pop-main); font-weight: bold; margin-bottom: -2px; line-height: 1; letter-spacing: 1px;">臺東縣近期活動資訊</div>
+            <div style="display: flex; align-items: flex-end;">
+                <div style="font-size: calc(20px * var(--text-scale)); font-weight: 900; color: #333; letter-spacing: 0.5px; white-space: nowrap; line-height: 1;">9月 September</div>
+                <div style="flex-grow: 1; border-bottom: 3px solid #90CDF4; margin-left: 12px; position: relative; height: 28px;">
+                    <div style="position: absolute; right: 15px; bottom: -2px; font-size: calc(32px * var(--text-scale)); font-weight: 900; color: var(--pop-main); font-style: italic; line-height: 1;">2027</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="timeline">
+            <div class="event" data-end="0919">
+                <div class="event-card">
+                    <div class="card-header">
+                        <span class="event-date">9/18 - 9/19</span>
+                        <span class="tag tag-music">音樂會</span>
+                        <span class="tag tag-art" style="background:#A8E6CF; color:#2C3E50;">市集</span>
+                    </div>
+                    <div class="event-title">🌕 2027 月光·海音樂會 (9月場·壓軸)</div>
+                    
+                    <a href="https://www.eastcoast-nsa.gov.tw/image/92567/1024x768" target="_blank" style="display: block; margin: -4px -15px !important; border-radius: 0; overflow: hidden;">
+                        <img src="https://www.eastcoast-nsa.gov.tw/image/92567/1024x768" alt="2027月光海音樂會" style="width: 100%; display: block; border-radius: 0; margin: 0 !important; padding: 0 !important;">
+                    </a>
+                    
+                    <div class="event-desc">
+                        <div style="margin-bottom: 6px;">年度壓軸場次，把握夏季尾聲，重返東海岸感受最終場的感動。</div>
+                        <div style="font-weight: bold; color: var(--ink-dark); margin-bottom: 2px;">【9月演出日期】</div>
+                        <div>■ 9/18 (六)[span_6](start_span)[span_6](end_span)<br>■ 9/19 (日)[span_7](start_span)[span_7](end_span)</div>
+                    </div>
+                    
                     <div style="display: flex; gap: 8px; margin-top: 10px;">
                         <a href="https://maps.google.com/?q=都歷遊客中心" target="_blank" class="event-loc" style="margin-top: 0; flex: 1; text-align: center;">📍 都歷遊客中心</a>
                         <a href="https://www.teclandart.tw/" target="_blank" class="event-loc" style="margin-top: 0; background: #FFF9E6; border-color: #FAD7A1; color: #D35400; flex: 1; text-align: center;">🔗 官方網站資訊</a>
@@ -285,7 +414,6 @@
         </div>
 
         <div style="text-align: center; margin-top: 25px;">
-            <!-- 確保返回鍵導向正確的首頁 -->
             <a href="index.html" class="home-btn">回到活動首頁</a>
         </div>
     </div>
@@ -347,10 +475,7 @@
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
     applyFontScale();
-
-    // 2027 年頁面因為都是未來活動，自動滾動定位先拿掉，避免誤動作，
-    // 讓客人一進來可以從最上面慢慢看下來。
 </script>
 
 </body>
-</html> 
+</html>
