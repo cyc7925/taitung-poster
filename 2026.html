@@ -116,10 +116,7 @@
             background: #f0f4f8; padding: 6px 12px; border-radius: 8px; 
             display: inline-block; text-decoration: none; border: 1px solid #d1d9e6;
             transition: 0.2s; margin-top: 4px;
-            /* 只限制最大寬度防止爆框，不強迫拉滿 100% */
-            max-width: 100%; 
-            box-sizing: border-box; 
-            white-space: normal; 
+            white-space: nowrap; /* 確保文字絕對不斷行 */
         }
         .event-loc:active { background: #dce4ec; transform: scale(0.97); }
 
@@ -892,9 +889,9 @@
                     </div> 
 
                     <!-- 並排按鈕專用模組 -->
-                    <div style="display: flex; gap: 8px; margin-top: 15px;">
-                        <a href="https://maps.google.com/?q=成功鎮海濱公園" target="_blank" class="event-loc" style="margin-top: 0; flex: 1; text-align: center;">📍成功鎮海濱公園</a>
-                        <a href="https://www.facebook.com/share/1HL5FkktyW/?mibextid=wwXIfr" target="_blank" class="event-loc" style="margin-top: 0; background: #FFF9E6; border-color: #FAD7A1; color: #D35400; flex: 1; text-align: center;">🔗 官方詳細資訊</a>
+                    <div style="display: flex; gap: 8px; margin-top: 15px; flex-wrap: wrap;">
+                        <a href="https://maps.google.com/?q=成功鎮海濱公園" target="_blank" class="event-loc" style="margin-top: 0;">📍成功鎮海濱公園</a>
+                        <a href="https://www.facebook.com/share/1HL5FkktyW/?mibextid=wwXIfr" target="_blank" class="event-loc" style="margin-top: 0; background: #FFF9E6; border-color: #FAD7A1; color: #D35400;">🔗 官方詳細資訊</a>
                     </div>
                 </div> 
             </div>
