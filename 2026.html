@@ -114,10 +114,11 @@
             background: #f0f4f8; padding: 6px 12px; border-radius: 8px; 
             display: inline-block; text-decoration: none; border: 1px solid #d1d9e6;
             transition: 0.2s; margin-top: 4px;
-            /* 新增下面三行確保按鈕不會突出卡片 */
-            max-width: 100%; 
-            box-sizing: border-box; 
-            white-space: normal; 
+            /* 以下修改：讓按鈕自動填滿寬度，並置中文字 */
+            width: 100%;
+            text-align: center;
+            box-sizing: border-box;
+            white-space: normal;
         }
         .event-loc:active { background: #dce4ec; transform: scale(0.97); }
 
