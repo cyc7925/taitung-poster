@@ -65,12 +65,16 @@
             background: var(--pop-yellow); border: 4px solid var(--ink-dark); border-radius: 50%;
         }
         
-        /* === 活動卡片樣式 === */
-        .event-card { 
-            background: white; border: 3px solid var(--ink-dark); border-radius: 16px; 
-            padding: 15px; box-shadow: 4px 4px 0px rgba(44, 62, 80, 0.15); transition: 0.4s ease-out;
-            display: flex; flex-direction: column; align-items: flex-start; 
-            gap: 8px; 
+        /* === 活動卡片樣式 === *//* 強制卡片內的活動大圖寬度 100% 對齊邊緣 */
+        .event-card > a > img, 
+        .event-card > img {
+            width: 100% !important;
+            max-width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 0;
+            margin: 0 !important;
+            padding: 0 !important;
         }
         
         .card-header { margin-bottom: 2px; line-height: 1.8; }
@@ -676,7 +680,7 @@
                     <a href="https://maps.google.com/?q=臺東金樽漁港" target="_blank" class="event-loc" style="margin-top: 4px;">📍臺東金樽漁港</a>
                 </div>
             </div>
-            <div class="event" data-end="1122">
+            <div class="event" data-end="1108">
                 <div class="event-card">
                     <div class="card-header">
                         <span class="event-date">11/6-11/8、11/14-11/22</span>
@@ -707,7 +711,7 @@
                 </div>
             </div>
 
-            <div class="event" data-end="1122">
+            <div class="event" data-end="1108">
                 <div class="event-card">
                     <div class="card-header">
                         <span class="event-date">11/6-11/8、11/14-11/22</span>
