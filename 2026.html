@@ -65,7 +65,32 @@
             background: var(--pop-yellow); border: 4px solid var(--ink-dark); border-radius: 50%;
         }
         
-        /* === 活動卡片樣式 === *//* 強制卡片內的活動大圖寬度 100% 對齊邊緣 */
+        /* === 活動卡片樣式 === */
+        .event-card { 
+            background: white; border: 3px solid var(--ink-dark); border-radius: 16px; 
+            padding: 15px; box-shadow: 4px 4px 0px rgba(44, 62, 80, 0.15); transition: 0.4s ease-out;
+            display: flex; flex-direction: column; align-items: flex-start; 
+            gap: 8px; overflow: hidden;
+        }
+
+        /* 強制卡片內的活動大圖寬度 100% 對齊左右邊緣 */
+        .event-card > a > img, 
+        .event-card > img {
+            width: 100% !important;
+            max-width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 0;
+            margin: 0 -15px !important;
+            padding: 0 !important;
+            width: calc(100% + 30px) !important;
+        }
+        .event-card > a {
+            display: block;
+            width: calc(100% + 30px);
+            margin: -4px -15px 4px -15px !important;
+        }
+        
         .card-header { margin-bottom: 2px; line-height: 1.8; }
         .event-date { font-weight: bold; font-size: calc(16px * var(--text-scale)); color: var(--ink-dark); margin-right: 6px; }
         
@@ -118,22 +143,46 @@
         .home-btn:active { transform: translate(2px, 2px); box-shadow: 0px 0px 0px var(--ink-dark); }
 
         /* === 靜態暖心標語 (跟著網頁自然滑動到底部) === */
+        /* === 合併浮動底端列 (標語在上面，按鈕在下面) === */
+        .bottom-bar-wrapper { 
+            position: fixed; bottom: 0; left: 0; width: 100%; 
+            background: rgba(255, 255, 255, 0.95); 
+            border-top: 1.5px solid rgba(44, 62, 80, 0.2); 
+            border-radius: 16px 16px 0 0; 
+            backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); 
+            z-index: 990; 
+            box-shadow: 0 -4px 15px rgba(0,0,0,0.05); 
+            display: flex; flex-direction: column; 
+        }
+        
         .slogan-footer { 
             text-align: center; 
-            padding: 10px 0 20px 0; 
+            padding: 8px 0 2px 0; 
             display: flex; align-items: center; justify-content: center; 
         }
         .slogan-text { 
-            font-size: calc(14px * var(--text-scale)); font-weight: bold; 
+            font-size: calc(13px * var(--text-scale)); font-weight: bold; 
             color: var(--ink-dark); letter-spacing: 1px; 
         }
 
-        /* === 底部工具列 (唯一浮動置底) === */
-        .font-floater { position: fixed; bottom: 0; left: 0; width: 100%; display: flex; flex-direction: row; justify-content: space-around; background: rgba(255, 255, 255, 0.95); border-top: 1.5px solid rgba(44, 62, 80, 0.2); border-radius: 16px 16px 0 0; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); z-index: 990; box-shadow: 0 -2px 10px rgba(0,0,0,0.05); padding: 8px 0 calc(8px + env(safe-area-inset-bottom)) 0; }
-        .font-floater button, .font-floater a { background: transparent; border: none; outline: none; padding: 8px 0; font-size: 16px; font-weight: bold; font-family: inherit; color: #666; cursor: pointer; transition: 0.2s; text-decoration: none; text-align: center; flex: 1; }
-        .font-floater button:not(:last-child), .font-floater a:not(:last-child) { border-right: 1px solid rgba(0,0,0,0.08); }
-        .font-floater button:active, .font-floater a:active { background: #F0F0F0; color: var(--pop-pink); }
+        .font-floater { 
+            display: flex; flex-direction: row; justify-content: space-around; 
+            padding: 6px 0 calc(8px + env(safe-area-inset-bottom)) 0; 
+            border-top: 1px solid rgba(0,0,0,0.05);
+        }
         
+        .font-floater button, .font-floater a { 
+            background: transparent; border: none; outline: none; padding: 4px 0; 
+            font-size: 16px; font-weight: bold; font-family: inherit; color: #666; 
+            cursor: pointer; transition: 0.2s; text-decoration: none; text-align: center; flex: 1; 
+        }
+        
+        .font-floater button:not(:last-child), .font-floater a:not(:last-child) { 
+            border-right: 1px solid rgba(0,0,0,0.08); 
+        }
+        .font-floater button:active, .font-floater a:active { 
+            background: #F0F0F0; color: var(--pop-pink); 
+        }        
         /* === 彈出式功能選單樣式 (極簡無框線版) === */
         .menu-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 995; opacity: 0; visibility: hidden; transition: 0.3s ease; }
         .menu-overlay.active { opacity: 1; visibility: visible; }
@@ -1017,25 +1066,26 @@
             <a href="home.html" class="home-btn">回到活動首頁</a>
         </div>
 
-        <!-- === 靜態標語 (回到網頁內容最底端，不浮動) === -->
-        <div class="slogan-footer">
-            <div class="slogan-text">慢下來，感受台東山海與人情的溫度 ❤️</div>
         </div>
-        
-    </div>
 </div>
 
-<!-- === 底部工具列 (永遠固定置底) === -->
-<div class="font-floater">
-    <a href="tel:0910557998" title="撥打電話">📞</a>
-    <a href="https://maps.app.goo.gl/YkHK24qn1kZsfBn38?g_st=ic" target="_blank" title="導航">🚗</a>
-    <button onclick="scrollToTop()">🔝</button>
-
-    <button onclick="toggleMenu()" title="選單" style="color: var(--pop-pink); font-weight: 900; font-size: 22px;">☰</button>
+<!-- === 合併浮動底端列 (標語在上面，按鈕在下面) === -->
+<div class="bottom-bar-wrapper">
+    <div class="slogan-footer">
+        <div class="slogan-text">慢下來，感受台東山海與人情的溫度 ❤️</div>
+    </div>
     
-    <button onclick="changeFont(-0.1)">A-</button>
-    <button onclick="resetFont()">A</button>
-    <button onclick="changeFont(0.1)">A+</button>
+    <div class="font-floater">
+        <a href="tel:0910557998" title="撥打電話">📞</a>
+        <a href="https://maps.app.goo.gl/YkHK24qn1kZsfBn38?g_st=ic" target="_blank" title="導航">🚗</a>
+        <button onclick="scrollToTop()">🔝</button>
+
+        <button onclick="toggleMenu()" title="選單" style="color: var(--pop-pink); font-weight: 900; font-size: 22px;">☰</button>
+        
+        <button onclick="changeFont(-0.1)">A-</button>
+        <button onclick="resetFont()">A</button>
+        <button onclick="changeFont(0.1)">A+</button>
+    </div>
 </div>
 
 <!-- === 彈出式功能選單 === -->
