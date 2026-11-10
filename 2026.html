@@ -728,7 +728,7 @@
             </div>
             <!-- 衝浪第一階段結束 -->
 
-            <div class="event" data-end="1127">
+            <div class="event ongoing " data-end="1127">
                 <div class="event-card">
                     <div class="card-header">
                         <span class="event-date">11/6 - 11/27</span>
@@ -1035,6 +1035,45 @@
                 </div>
             </div>
         </div>
+        
+            <div class="event" data-end="1205">
+                <div class="event-card">
+                    <div class="card-header">
+                        <span class="event-date">12/5</span>
+                        <span class="tag tag-market">市集</span>
+                        <span class="tag tag-sport" style="background:#4ECDC4; color:white;">小旅行</span>
+                    </div>
+                    <div class="event-title">🚴‍♂️2026 馬到成功 達人帶路</div>
+                    
+                    <!-- 圖片區 -->
+                    <a href="https://www.eastcoast-nsa.gov.tw/image/92472/1024x768" target="_blank" style="display: block; margin: -4px -15px !important; border-radius: 0; overflow: hidden;">
+                        <img src="https://www.eastcoast-nsa.gov.tw/image/92472/1024x768" alt="2026 馬到成功 達人帶路" style="width: 100%; display: block; border-radius: 0; margin: 0 !important; padding: 0 !important;">
+                    </a>
+                    
+                    <!-- 資訊區 -->
+                    <div class="event-desc">
+                        <div style="font-weight: bold; color: var(--ink-dark); margin-bottom: 4px;">時間：09:00~17:00</div>
+                        <div style="display: flex; align-items: flex-start; margin-bottom: 2px;">
+                            <span style="flex-shrink: 0; font-weight: bold;">🎶 達人市集與音樂：</span>
+                            <div>11:00~17:00 (免費入場)</div>
+                        </div>
+                        <div style="display: flex; align-items: flex-start; margin-bottom: 2px;">
+                            <span style="flex-shrink: 0; font-weight: bold;">🎨 手作體驗：</span>
+                            <div>魚皮畫(14:00) / 石頭彩繪(16:00)<br><span style="font-size: 12px; color: #666;">(免費，須事先報名)</span></div>
+                        </div>
+                        <div style="display: flex; align-items: flex-start;">
+                            <span style="flex-shrink: 0; font-weight: bold;">🚲 電輔車小旅行：</span>
+                            <div>跟著達人走讀 (報名費 $990)</div>
+                        </div>
+                    </div>
+                    
+                    <!-- 雙按鈕模組 -->
+                    <div style="display: flex; gap: 8px; margin-top: 15px;">
+                        <a href="https://maps.google.com/?q=成功鎮海濱公園" target="_blank" class="event-loc" style="margin-top: 0; flex: 1; text-align: center;">📍成功鎮海濱公園</a>
+                        <a href="https://www.accupass.com/event/2608070837426425732540" target="_blank" class="event-loc" style="margin-top: 0; background: #FFF9E6; border-color: #FAD7A1; color: #D35400; flex: 1; text-align: center;">🔗 點此報名</a>
+                    </div>
+                </div>
+            </div>
 
         <div class="timeline">
             <div class="event" data-end="1231">
@@ -1147,12 +1186,15 @@
             const eventEnd = parseInt(events[i].getAttribute('data-end'));
             const isPostponed = events[i].querySelector('.postponed') !== null;
             const isCancelled = events[i].querySelector('.cancelled') !== null;
+            const isOngoing = events[i].classList.contains('ongoing'); // 👈 新增這行：判斷是否為長期活動
             
-            if (eventEnd >= currentMonthDay && !isPostponed && !isCancelled) {
+            // 👈 下面這行條件加上 !isOngoing，讓它略過長期活動
+            if (eventEnd >= currentMonthDay && !isPostponed && !isCancelled && !isOngoing) {
                 targetEndDate = eventEnd;
                 break;
             }
         }
+
         
         if (targetEndDate !== null) {
             for (let i = 0; i < events.length; i++) {
