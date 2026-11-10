@@ -85,7 +85,8 @@
             padding: 0 !important;
             width: calc(100% + 30px) !important;
         }
-        .event-card > a {
+        /* 避免誤傷地圖按鈕，只針對圖片連結放大滿版 */
+        .event-card > a:not(.event-loc) {
             display: block;
             width: calc(100% + 30px);
             margin: -4px -15px 4px -15px !important;
