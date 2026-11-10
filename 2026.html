@@ -37,7 +37,7 @@
         .nav-info { display: flex; flex-direction: column; gap: 4px; }
         
         .nav-store { font-size: calc(24px * var(--text-scale)); font-weight: bold; color: var(--pop-pink); letter-spacing: 1px; line-height: 1.1; }
-        .nav-loc { color: var(--ink-dark); text-decoration: none; font-size: calc(13px * var(--text-scale)); font-weight: bold; display: inline-block; padding-bottom: 1px;}
+        .nav-loc { color: var(--ink-dark); text-decoration: none;  * var(--text-scale)); font-weight: bold; display: inline-block; padding-bottom: 1px;}
         
         .btn-call {
             background: var(--pop-yellow); border: 3px solid var(--ink-dark); border-radius: 12px; padding: 8px 10px; 
@@ -114,11 +114,10 @@
             background: #f0f4f8; padding: 6px 12px; border-radius: 8px; 
             display: inline-block; text-decoration: none; border: 1px solid #d1d9e6;
             transition: 0.2s; margin-top: 4px;
-            /* 以下修改：讓按鈕自動填滿寬度，並置中文字 */
-            width: 100%;
-            text-align: center;
-            box-sizing: border-box;
-            white-space: normal;
+            /* 保留原本合身大小，只加這三行防止未來有超長字爆框 */
+            max-width: 100%; 
+            box-sizing: border-box; 
+            white-space: normal; 
         }
         .event-loc:active { background: #dce4ec; transform: scale(0.97); }
 
