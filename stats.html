@@ -10,8 +10,11 @@
         h2 { text-align: center; color: #2c3e50; border-bottom: 2px solid #eee; padding-bottom: 15px; margin-top: 0; }
         .row { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px dashed #eee; }
         .row:last-child { border-bottom: none; }
-        .page-name { font-weight: bold; font-size: 15px; }
+        .page-name { font-weight: bold; font-size: 15px; text-decoration: none; color: #0056b3; transition: 0.2s; }
+        .page-name:hover { color: #d9534f; text-decoration: underline; }
         .warning { background: #fff3cd; color: #856404; padding: 10px; border-radius: 8px; font-size: 13px; margin-bottom: 20px; text-align: justify; }
+        .retired { background-color: #f8f9fa; }
+        .retired .page-name { color: #6c757d; }
     </style>
 </head>
 <body>
@@ -21,38 +24,49 @@
     
     <div class="warning">
         💡 <b>站長小提醒：</b><br>
-        1. 只要不把這個網頁加到選單裡，客人就找不到這裡。<br>
-        2. 因為這裡顯示了所有頁面的計數器徽章，所以<b>你每次打開這個網頁，所有頁面的數字都會跟著 +1</b> 喔！（就跟打開 README 是一樣的道理）。
+        1. 點擊左側的網頁名稱，可直接連過去檢查該網頁。<br>
+        2. 只要不把這個網頁加到選單裡，客人就找不到這裡。<br>
+        3. 因為這裡顯示了所有頁面的計數器徽章，所以<b>你每次打開這個網頁，所有頁面的數字都會跟著 +1</b> 喔！
     </div>
 
     <div class="row">
-        <span class="page-name">🏠 首頁 (index.html)</span>
+        <a href="index.html" class="page-name" target="_blank">🏠 首頁 (index.html)</a>
         <img src="https://hits.sh/cyc7925.github.io/taitung-poster/index.html.svg?label=index.html&color=79C83D" alt="Hits">
     </div>
     
     <div class="row">
-        <span class="page-name">ℹ️ 關於我們 (about.html)</span>
+        <a href="about.html" class="page-name" target="_blank">ℹ️ 關於我們 (about.html)</a>
         <img src="https://hits.sh/cyc7925.github.io/taitung-poster/about.html.svg?label=about.html&color=79C83D" alt="Hits">
     </div>
 
     <div class="row">
-        <span class="page-name">♨️ 溫泉介紹 (spa.html)</span>
+        <a href="spa.html" class="page-name" target="_blank">♨️ 溫泉介紹 (spa.html)</a>
         <img src="https://hits.sh/cyc7925.github.io/taitung-poster/spa.html.svg?label=spa.html&color=79C83D" alt="Hits">
     </div>
 
     <div class="row">
-        <span class="page-name">📸 相簿畫廊 (gallery.html)</span>
+        <a href="gallery.html" class="page-name" target="_blank">📸 相簿畫廊 (gallery.html)</a>
         <img src="https://hits.sh/cyc7925.github.io/taitung-poster/gallery.html.svg?label=gallery.html&color=79C83D" alt="Hits">
     </div>
 
     <div class="row">
-        <span class="page-name">📅 2026 頁面 (2026.html)</span>
+        <a href="2026.html" class="page-name" target="_blank">📅 2026 頁面 (2026.html)</a>
         <img src="https://hits.sh/cyc7925.github.io/taitung-poster/2026.html.svg?label=2026.html&color=79C83D" alt="Hits">
     </div>
 
     <div class="row">
-        <span class="page-name">🚀 2027 預告 (2027.html)</span>
+        <a href="2027.html" class="page-name" target="_blank">🚀 2027 預告 (2027.html)</a>
         <img src="https://hits.sh/cyc7925.github.io/taitung-poster/2027.html.svg?label=2027.html&color=79C83D" alt="Hits">
+    </div>
+
+    <div class="row">
+        <a href="A4.html" class="page-name" target="_blank">📄 A4 頁面 (A4.html)</a>
+        <img src="https://hits.sh/cyc7925.github.io/taitung-poster/A4.html.svg?label=A4.html&color=79C83D" alt="Hits">
+    </div>
+
+    <div class="row retired">
+        <a href="home.html" class="page-name" target="_blank">⚠️ 舊首頁備份 (home.html)</a>
+        <img src="https://hits.sh/cyc7925.github.io/taitung-poster/home.html.svg?label=home.html&color=b0b0b0" alt="Hits">
     </div>
 </div>
 
