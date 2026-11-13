@@ -1,9 +1,531 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="0; url=home.html">
-    <title>載入中...</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>東泳記泳裝店 - 旅遊導覽首頁</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/justfont/open-huninn-font/font.css">
+    
+    <meta name="description" content="東泳記泳裝店位於台東知本，提供高CP值泳裝、優惠溫泉券、專業泳具與各式泳圈。為您整理知本溫泉SPA推薦與台東近期活動總整理，來台東泡湯玩水必備導覽！">
+    <meta name="keywords" content="東泳記泳裝店, 台東泳裝, 知本溫泉, 溫泉券, 泳具, 泳圈, 台東活動, 旅遊導覽, ㄚㄧㄚ旺, 東遊季, 知本老爺, 東台溫泉">
+    <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-ML95KLKB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
+    <style>
+        :root {
+            --bg-yellow: #FFF9E6;    
+            --ink-dark: #2C3E50;     
+            --pop-blue: #4ECDC4;     
+            --pop-pink: #FF6B6B;     
+            --pop-yellow: #FFE66D;   
+            --text-scale: 1;   
+        }
+
+        body {
+            /* 換上明顯的藍綠色漸層，往下融入溫暖的淡黃色 */
+            background: linear-gradient(180deg, #A8E6CF 0%, #E0F7FA 30%, #FFF9E6 70%, #FFF9E6 100%);
+            color: var(--ink-dark);
+            font-family: 'jf-openhuninn-1.1', sans-serif;
+            margin: 0; padding: 0; -webkit-text-size-adjust: 100%;
+            min-height: 100vh;
+        }
+
+        .container { max-width: 500px; margin: 0 auto; padding: 10px 15px 90px 15px; }
+
+        /* === 統一的頂部導覽列 === */
+        .sticky-navbar {
+            position: sticky; top: 0; z-index: 100;
+            height: max(80px, calc(60px + env(safe-area-inset-top))); box-sizing: border-box; 
+            background: white; border-bottom: 3px solid var(--ink-dark);
+            padding: max(10px, env(safe-area-inset-top)) 15px 10px 15px; display: flex; align-items: center; justify-content: space-between;
+            box-shadow: 0 4px 0px rgba(0,0,0,0.05);
+        }
+        .nav-info { display: flex; flex-direction: column; gap: 2px; overflow: hidden; }
+        .nav-store { font-size: calc(22px * var(--text-scale)); font-weight: bold; color: var(--pop-pink); letter-spacing: 1px; line-height: 1.1; white-space: nowrap; }
+        .nav-loc { color: var(--ink-dark); text-decoration: none; font-size: calc(13px * var(--text-scale)); font-weight: bold; display: inline-block; white-space: nowrap; }
+
+        .btn-call {
+            background: var(--pop-yellow); border: 3px solid var(--ink-dark); border-radius: 12px; padding: 8px 10px; 
+            font-size: calc(13px * var(--text-scale)); font-weight: bold; color: var(--ink-dark); text-decoration: none; transition: 0.2s;
+            white-space: nowrap; flex-shrink: 0; box-shadow: 2px 2px 0px var(--ink-dark); display: flex; align-items: center; gap: 4px;
+        }
+        .btn-call:active { transform: translate(2px,2px); box-shadow: 0px 0px 0px var(--ink-dark); }
+
+        /* === 1. 漂浮 Emoji 區塊 === */
+        .emoji-cluster { text-align: center; margin-top: 5px; margin-bottom: 10px; user-select: none; }
+        .emo-group { display: inline-block; position: relative; }
+        .e-ring { display: inline-block; font-size: 32px; transform: rotate(-15deg) translate(-5px, -5px); animation: float1 3s ease-in-out infinite; position: relative; }
+        .e-bikini { display: inline-block; font-size: 42px; position: relative; z-index: 2; animation: float2 3s ease-in-out infinite 0.5s; }
+        .e-goggles { display: inline-block; font-size: 30px; transform: rotate(15deg) translate(5px, -10px); position: relative; animation: float3 3s ease-in-out infinite 1s; }
+        .e-sparkle { position: absolute; top: -10px; right: -15px; font-size: 20px; transform: rotate(10deg); color: #FFD700; text-shadow: 0 0 5px rgba(255,215,0,0.8); }
+        .e-sparkle-left { position: absolute; top: -5px; left: -15px; font-size: 20px; transform: rotate(-20deg); color: #FFD700; text-shadow: 0 0 5px rgba(255,215,0,0.8); }
+        .e-onepiece { display: block; font-size: 30px; transform: rotate(15deg) translate(25px, -15px); margin-top: -15px; animation: float4 3s ease-in-out infinite 1.5s; }
+
+        @keyframes float1 { 0%, 100% { transform: rotate(-15deg) translate(-5px, -5px); } 50% { transform: rotate(-15deg) translate(-5px, -10px); } }
+        @keyframes float2 { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+        @keyframes float3 { 0%, 100% { transform: rotate(15deg) translate(5px, -10px); } 50% { transform: rotate(15deg) translate(5px, -15px); } }
+        @keyframes float4 { 0%, 100% { transform: rotate(15deg) translate(25px, -15px); } 50% { transform: rotate(15deg) translate(25px, -20px); } }
+
+        /* === 修復輪播動畫 Keyframes === */
+        @keyframes slideTYG {
+            0%, 10% { transform: translateX(0); }
+            14.28%, 24.28% { transform: translateX(-14.28%); }
+            28.57%, 38.57% { transform: translateX(-28.57%); }
+            42.85%, 52.85% { transform: translateX(-42.85%); }
+            57.14%, 67.14% { transform: translateX(-57.14%); }
+            71.42%, 81.42% { transform: translateX(-71.42%); }
+            85.71%, 95.71% { transform: translateX(-85.71%); }
+            100% { transform: translateX(0); }
+        }
+
+        @keyframes fastAutoSlide {
+            0%, 8% { transform: translateX(0); }
+            11.11%, 19.11% { transform: translateX(-11.11%); }
+            22.22%, 30.22% { transform: translateX(-22.22%); }
+            33.33%, 41.33% { transform: translateX(-33.33%); }
+            44.44%, 52.44% { transform: translateX(-44.44%); }
+            55.55%, 63.55% { transform: translateX(-55.55%); }
+            66.66%, 74.66% { transform: translateX(-66.66%); }
+            77.77%, 85.77% { transform: translateX(-77.77%); }
+            88.88%, 96.88% { transform: translateX(-88.88%); }
+            100% { transform: translateX(0); }
+        }
+
+        @keyframes slideYY {
+            0%, 20% { transform: translateX(0); }
+            25%, 45% { transform: translateX(-25%); }
+            50%, 70% { transform: translateX(-50%); }
+            75%, 95% { transform: translateX(-75%); }
+            100% { transform: translateX(0); }
+        }
+
+        /* === 區塊與內文樣式 === */
+        .section-divider { border-top: 2px dashed rgba(176, 190, 197, 0.6); margin: 25px 5px 15px 5px; }
+
+        .store-intro-clean {
+            padding: 0 10px; margin-top: 2px; margin-bottom: 15px;
+            font-size: calc(12.5px * var(--text-scale)); line-height: 1.6; color: #444; text-align: justify;
+        }
+        .intro-title { font-size: calc(14px * var(--text-scale)); font-weight: bold; color: var(--pop-pink); margin-bottom: 6px; }
+        .intro-text { margin-bottom: 6px; }
+        
+        .section-title { 
+            font-size: calc(15px * var(--text-scale)); font-weight: bold; color: var(--ink-dark); 
+            margin: 0 0 10px 0; display: flex; align-items: center; gap: 6px; 
+        }
+        
+        .product-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 5px; }
+        .product-card { 
+            background: white; border: 2.5px solid var(--pop-pink); border-radius: 12px; 
+            padding: 16px 5px; text-align: center; display: flex; flex-direction: column; 
+            align-items: center; justify-content: center;
+            box-shadow: 2px 2px 0px rgba(255, 107, 107, 0.2); transition: 0.2s;
+        }
+        .product-icon { font-size: calc(28px * var(--text-scale)); margin-bottom: 6px; line-height: 1; }
+        .product-name { font-size: calc(13.5px * var(--text-scale)); font-weight: bold; color: var(--ink-dark); }
+
+        .spa-card { background: white; border: 2.5px solid var(--ink-dark); border-radius: 12px; padding: 10px; margin-bottom: 8px; box-shadow: 2px 2px 0px rgba(44,62,80,0.1); } 
+        .spa-top { display: flex; justify-content: space-between; align-items: center; }
+        .spa-name { font-size: calc(14px * var(--text-scale)); font-weight: bold; color: var(--ink-dark); line-height: 1.1; margin-bottom: 3px; } 
+        .spa-short { font-size: calc(11px * var(--text-scale)); color: #666; margin-top: 0; line-height: 1.3; } 
+        
+        .spa-nav-btn { background: var(--pop-yellow); color: var(--ink-dark); text-decoration: none; padding: 4px 8px; border-radius: 8px; font-size: calc(11px * var(--text-scale)); font-weight: bold; border: 2px solid var(--ink-dark); white-space: nowrap; box-shadow: 2px 2px 0px var(--ink-dark); transition: 0.2s; display: flex; align-items: center; gap: 4px; }
+        .spa-nav-btn:active { transform: translate(1px,1px); box-shadow: none; }
+        
+        details { margin-top: 6px; border-top: 1px dashed #CCC; padding-top: 6px; }
+        details summary { list-style: none; }
+        details summary::-webkit-details-marker { display: none; }
+        summary { font-size: calc(12px * var(--text-scale)); font-weight: bold; color: var(--pop-pink); cursor: pointer; outline: none; margin-bottom: 4px; display: flex; align-items: center; gap: 4px; }
+        
+        .info-list { list-style: none; padding: 0; margin: 0; font-size: calc(11.5px * var(--text-scale)); line-height: 1.4; color: #444; } 
+        .info-list li { margin-bottom: 4px; display: flex; }
+        .info-label { font-weight: bold; color: var(--ink-dark); width: 65px; flex-shrink: 0; }
+
+        .gallery-link-btn {
+            display: flex; justify-content: center; align-items: center; gap: 8px;
+            padding: 12px 0; margin: 15px 5px 5px 5px; 
+            font-size: calc(15px * var(--text-scale)); font-weight: bold; color: var(--pop-pink); text-decoration: none;
+            border-top: 1px dashed #CCC; border-bottom: 1px dashed #CCC; 
+            background-color: rgba(255, 107, 107, 0.05); transition: 0.2s;
+        }
+        .gallery-link-btn:active { background-color: rgba(255, 107, 107, 0.12); }
+
+        .spot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 5px; }
+        .spot-card { background: white; border: 2.5px solid var(--pop-blue); border-radius: 12px; padding: 10px; text-align: center; text-decoration: none; display: block; transition: 0.2s; box-shadow: 2px 2px 0px rgba(78, 205, 196, 0.2); }
+        .spot-card:active { transform: scale(0.96); background: #f0fbf9; box-shadow: none; }
+        .spot-icon { font-size: calc(20px * var(--text-scale)); margin-bottom: 3px; }
+        .spot-name { font-size: calc(13px * var(--text-scale)); font-weight: bold; color: var(--ink-dark); margin-bottom: 2px; }
+        .spot-desc { font-size: calc(10px * var(--text-scale)); color: #666; }
+
+        .event-btn { 
+            display: block; width: 100%; box-sizing: border-box; text-align: center;
+            padding: 12px; border-radius: 12px; font-size: calc(15px * var(--text-scale)); font-weight: bold;
+            border: 2.5px solid var(--ink-dark); margin-bottom: 10px; text-decoration: none;
+        }
+        .yellow-btn { background: var(--pop-yellow); color: var(--ink-dark); box-shadow: 3px 3px 0px var(--ink-dark); transition: 0.2s; }
+        .yellow-btn:active { transform: translate(2px,2px); box-shadow: 0px 0px 0px transparent; }
+        /* 替 2027 按鈕換上專屬的亮黃色 */
+        .yellow-highlight { background: #FFD700; color: var(--ink-dark); box-shadow: 3px 3px 0px var(--ink-dark); transition: 0.2s; border-color: #D35400; }
+        .yellow-highlight:active { transform: translate(2px,2px); box-shadow: 0px 0px 0px transparent; }
+
+        .slogan-area { text-align: center; margin-top: 25px; }
+        .slogan-sub { font-size: calc(12px * var(--text-scale)); font-weight: bold; color: #555; margin-bottom: 6px; }
+        .footer-text { font-size: calc(11.5px * var(--text-scale)); font-weight: bold; color: var(--ink-dark); }
+
+        @media (min-width: 768px) {
+            .container { max-width: 800px; padding: 30px 40px; }
+            .nav-store { font-size: 26px; }
+            .product-grid { grid-template-columns: repeat(6, 1fr); }
+            .spot-grid { grid-template-columns: repeat(4, 1fr); }
+            .spa-card { padding: 15px 20px; }
+        }
+
+        /* === 底部工具列 (主選單置中，3+1+3 對稱排版) === */
+        .font-floater { position: fixed; bottom: 0; left: 0; width: 100%; display: flex; flex-direction: row; justify-content: space-around; background: rgba(255, 255, 255, 0.95); border-top: 1.5px solid rgba(44, 62, 80, 0.2); border-radius: 16px 16px 0 0; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); z-index: 990; box-shadow: 0 -2px 10px rgba(0,0,0,0.05); padding: 8px 0 calc(8px + env(safe-area-inset-bottom)) 0; }
+        .font-floater button, .font-floater a { background: transparent; border: none; outline: none; padding: 8px 0; font-size: 16px; font-weight: bold; font-family: inherit; color: #666; cursor: pointer; transition: 0.2s; text-decoration: none; text-align: center; flex: 1; }
+        .font-floater button:not(:last-child), .font-floater a:not(:last-child) { border-right: 1px solid rgba(0,0,0,0.08); }
+        .font-floater button:active, .font-floater a:active { background: #F0F0F0; color: var(--pop-pink); }
+        
+        /* === 彈出式功能選單樣式 (極簡無框線版) === */
+        .menu-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 995; opacity: 0; visibility: hidden; transition: 0.3s ease; }
+        .menu-overlay.active { opacity: 1; visibility: visible; }
+        .popup-menu { position: fixed; bottom: -100%; left: 0; width: 100%; background: white; border-radius: 20px 20px 0 0; z-index: 999; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1); box-shadow: 0 -5px 20px rgba(0,0,0,0.1); padding-bottom: env(safe-area-inset-bottom); }
+        .popup-menu.active { bottom: 0; }
+        .popup-header { display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; border-bottom: 1px solid #eee; }
+        .popup-title { font-size: calc(16px * var(--text-scale)); font-weight: bold; color: var(--ink-dark); }
+        .close-btn { background: #f0f0f0; border: none; width: 30px; height: 30px; border-radius: 15px; font-weight: bold; color: #555; cursor: pointer; }
+        .popup-content { padding: 5px 20px 25px 20px; display: flex; flex-direction: column; }
+        .menu-link-clean { display: block; padding: 16px 10px; border-bottom: 1px dashed #e0e0e0; text-decoration: none; color: var(--ink-dark); font-weight: bold; font-size: calc(15px * var(--text-scale)); transition: 0.2s; }
+        .menu-link-clean:last-child { border-bottom: none; }
+        .menu-link-clean:active { background: #FFF9E6; color: var(--pop-pink); padding-left: 15px; }
+    </style>
 </head>
-<body></body>
+<body>
+
+<!-- === 統一的頂部導覽列 === -->
+<div class="sticky-navbar">
+    <div class="nav-info">
+        <div class="nav-store">東泳記泳裝店</div>
+        <a href="https://maps.app.goo.gl/YkHK24qn1kZsfBn38?g_st=ic" target="_blank" class="nav-loc">卑南鄉溫泉路370號🚗</a>
+    </div>
+    <a href="tel:0910557998" class="btn-call">📞 0910-557-998</a>
+</div>
+
+<div class="container">
+    
+    <!-- 1. 漂浮圖案 -->
+    <div class="emoji-cluster">
+        <div class="emo-group">
+            <span class="e-ring">🛟<span class="e-sparkle-left">✨</span></span>
+            <span class="e-bikini">👙</span>
+            <span class="e-goggles">🥽<span class="e-sparkle">✨</span></span>
+            <span class="e-onepiece">🩱</span>
+        </div>
+    </div>
+
+    <!-- 👑 店面簡介 -->
+    <div class="store-intro-clean">
+        <div class="intro-text" style="letter-spacing: -0.2px; line-height: 1.45;">
+            店內提供精選平價泳裝、優惠溫泉券、泳具週邊與大中小各式泳圈，讓您不傷荷包，就能輕鬆拿捏時尚穿搭。<br>
+        </div>
+    </div>
+
+    <!-- 4. 本店熱賣商品 -->
+    <div class="section-title"><span style="color:var(--pop-pink);">🛍️</span> 本店熱賣商品</div>
+    <div class="product-grid">
+        <div class="product-card">
+            <div class="product-icon">🎟️</div>
+            <div class="product-name">優惠溫泉券</div>
+        </div>
+        <div class="product-card">
+            <div class="product-icon">👙</div>
+            <div class="product-name">精選泳裝</div>
+        </div>
+        <div class="product-card">
+            <div class="product-icon">🥽</div>
+            <div class="product-name">泳具與配件</div>
+        </div>
+        <div class="product-card">
+            <div class="product-icon">🛟</div>
+            <div class="product-name">各式泳圈</div>
+        </div>
+        <div class="product-card">
+            <div class="product-icon">👶</div>
+            <div class="product-name">嬰幼兒童</div>
+        </div>
+        <div class="product-card">
+            <div class="product-icon">🏖️</div>
+            <div class="product-name">玩水周邊</div>
+        </div>
+    </div>
+
+    <!-- 5. 泡湯 SPA 精選 -->
+    <div class="section-divider"></div>
+    <div id="spa-section" class="section-title"><span style="color:var(--pop-pink);">♨️</span> 知本在地SPA溫泉精選</div>
+    
+    <!-- 東遊季溫泉渡假村 -->
+    <div class="spa-card">
+        <div class="spa-top" style="display: flex; justify-content: space-between; align-items: center; width: 100%; margin-bottom: 8px;">
+            <div class="spa-name" style="margin: 0; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                <a href="https://maps.google.com/?q=東遊季溫泉渡假村" target="_blank" class="spa-nav-btn">🚗導航</a>
+                <span>東遊季溫泉渡假村</span>
+                <span style="font-size: calc(12px * var(--text-scale)); font-weight: normal; color: #666;">(距離本店約400公尺)</span>
+            </div>
+        </div>
+        <div class="spa-short" style="text-align: justify; margin-bottom: 10px;">
+            由台東縣農會經營，養生溫泉區占地3000坪，規劃有溫泉水療區、露天溫泉區、冷水池、兒童戲水區等，知本最大戶外溫泉SPA，腹地廣大親子首選。泉質屬於變質岩的弱鹼碳酸泉。
+        </div>
+        <div style="height: 180px; overflow: hidden; position: relative; border-radius: 8px; margin-bottom: 8px;">
+            <div style="display: flex; width: 700%; height: 100%; animation: slideTYG 10.5s infinite ease-in-out;">
+                <div style="width: 14.28%; height: 100%;"><img src="Images/tyg-1.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="東遊季照片 1"></div>
+                <div style="width: 14.28%; height: 100%;"><img src="Images/tyg-2.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="東遊季照片 2"></div>
+                <div style="width: 14.28%; height: 100%;"><img src="Images/tyg-3.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="東遊季照片 3"></div>
+                <div style="width: 14.28%; height: 100%;"><img src="Images/tyg-4.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="東遊季照片 4"></div>
+                <div style="width: 14.28%; height: 100%;"><img src="Images/tyg-5.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="東遊季照片 5"></div>
+                <div style="width: 14.28%; height: 100%;"><img src="Images/tyg-6.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="東遊季照片 6"></div>
+                <div style="width: 14.28%; height: 100%;"><img src="Images/tyg-7.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="東遊季照片 7"></div>
+            </div>
+        </div>
+        <details>
+            <summary>▼ 交通與詳細資訊</summary>
+            <ul class="info-list">
+                <li><span class="info-label">路線指引：</span><span>度假村坐落於溫泉路指標路段右側，可由本店與7-11之間小路進入。</span></li>
+                <li><span class="info-label">大眾運輸：</span><span>搭乘公車［8129］可於「東遊季」站下車；7-11門市外設有YouBike站點。</span></li>
+                <li><span class="info-label">停車資訊：</span><span>園區內備有免費露天停車場。</span></li>
+            </ul>
+        </details>
+    </div>
+
+    <!-- 知本老爺酒店 -->
+    <div class="spa-card">
+        <div class="spa-top" style="display: flex; justify-content: space-between; align-items: center; width: 100%; margin-bottom: 8px;">
+            <div class="spa-name" style="margin: 0; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                <a href="https://maps.google.com/?q=知本老爺酒店" target="_blank" class="spa-nav-btn">🚗導航</a>
+                <span>知本老爺酒店</span>
+                <span style="font-size: calc(12px * var(--text-scale)); font-weight: normal; color: #666;">(距離本店約3.3公里)</span>
+            </div>
+        </div>
+        <div class="spa-short" style="text-align: justify; margin-bottom: 10px;">
+            五星級天幕風呂緊鄰戶外游泳池畔，豐富泡湯設備；戶外游泳池依季節更替水溫，設施精緻頂級享受。
+        </div>
+        <div style="height: 180px; overflow: hidden; position: relative; border-radius: 8px; margin-bottom: 8px;">
+            <div style="display: flex; width: 900%; height: 100%; animation: fastAutoSlide 13.5s infinite ease-in-out;">
+                <div style="width: 11.11%; height: 100%;"><img src="Images/royal-1.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="老爺 1"></div>
+                <div style="width: 11.11%; height: 100%;"><img src="Images/royal-2.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="老爺 2"></div>
+                <div style="width: 11.11%; height: 100%;"><img src="Images/royal-3.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="老爺 3"></div>
+                <div style="width: 11.11%; height: 100%;"><img src="Images/royal-4.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="老爺 4"></div>
+                <div style="width: 11.11%; height: 100%;"><img src="Images/royal-5.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="老爺 5"></div>
+                <div style="width: 11.11%; height: 100%;"><img src="Images/royal-6.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="老爺 6"></div>
+                <div style="width: 11.11%; height: 100%;"><img src="Images/royal-7.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="老爺 7"></div>
+                <div style="width: 11.11%; height: 100%;"><img src="Images/royal-8.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="老爺 8"></div>
+                <div style="width: 11.11%; height: 100%;"><img src="Images/royal-9.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="老爺 9"></div>
+            </div>
+        </div>
+        <details>
+            <summary>▼ 交通與詳細資訊</summary>
+            <ul class="info-list">
+                <li><span class="info-label">路線指引：</span><span>沿著溫泉路轉龍泉路循指標即可輕鬆抵達。</span></li>
+                <li><span class="info-label">大眾運輸：</span><span>搭乘公車［8129］於「清覺寺」站下車後步行約11分鐘。</span></li>
+                <li><span class="info-label">停車資訊：</span><span>館內設有免費停車場。</span></li>
+            </ul>
+        </details>
+    </div>
+
+    <!-- Y—Y旺溫泉渡假村 -->
+    <div class="spa-card">
+        <div class="spa-top" style="display: flex; justify-content: space-between; align-items: center; width: 100%; margin-bottom: 8px;">
+            <div class="spa-name" style="margin: 0; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                <a href="https://maps.google.com/?q=ㄚㄧㄚ旺溫泉渡假村" target="_blank" class="spa-nav-btn">🚗導航</a>
+                <span>Y—Y旺溫泉渡假村</span>
+                <span style="font-size: calc(12px * var(--text-scale)); font-weight: normal; color: #666;">(距離本店約3.2公里)</span>
+            </div>
+        </div>
+        <div class="spa-short" style="text-align: justify; margin-bottom: 10px;">
+            原民風紅磚建築，群山環繞的純湯秘境，享受自然放鬆的泡湯時光。
+        </div>
+        <div style="height: 180px; overflow: hidden; position: relative; border-radius: 8px; margin-bottom: 8px;">
+            <div style="display: flex; width: 400%; height: 100%; animation: slideYY 6s infinite ease-in-out;">
+                <div style="width: 25%; height: 100%;"><img src="Images/yy-1.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="ㄚㄧㄚ旺 1"></div>
+                <div style="width: 25%; height: 100%;"><img src="Images/yy-2.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="ㄚㄧㄚ旺 2"></div>
+                <div style="width: 25%; height: 100%;"><img src="Images/yy-3.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="ㄚㄧㄚ旺 3"></div>
+                <div style="width: 25%; height: 100%;"><img src="Images/yy-4.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="ㄚㄧㄚ旺 4"></div>
+            </div>
+        </div>
+        <details>
+            <summary>▼ 交通與詳細資訊</summary>
+            <ul class="info-list">
+                <li><span class="info-label">大眾運輸：</span><span>搭乘公車［8129］可於「泓泉飯店」站下車後步行前往。</span></li>
+                <li><span class="info-label">停車資訊：</span><span>園區備有免費專屬停車場。</span></li>
+            </ul>
+        </details>
+    </div>
+
+    <!-- 東台溫泉飯店 -->
+    <div class="spa-card">
+        <div class="spa-top" style="display: flex; justify-content: space-between; align-items: center; width: 100%; margin-bottom: 8px;">
+            <div class="spa-name" style="margin: 0; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                <a href="https://maps.google.com/?q=東台溫泉飯店" target="_blank" class="spa-nav-btn">🚗導航</a>
+                <span>東台溫泉飯店</span>
+                <span style="font-size: calc(12px * var(--text-scale)); font-weight: normal; color: #666;">(距離本店約3.8公里)</span>
+            </div>
+        </div>
+        <div class="spa-short" style="text-align: justify; margin-bottom: 10px;">
+            溫泉養生承襲德日模式規劃，在開闊溪谷景觀視野中享受多功能水療沖擊、美人原湯與檜木烤箱。
+        </div>
+        <div style="height: 180px; overflow: hidden; position: relative; border-radius: 8px; margin-bottom: 8px;">
+            <div style="display: flex; width: 900%; height: 100%; animation: fastAutoSlide 13.5s infinite ease-in-out;">
+                <div style="width: 11.11%; height: 100%;"><img src="Images/dt-1.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="東台 1"></div>
+                <div style="width: 11.11%; height: 100%;"><img src="Images/dt-2.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="東台 2"></div>
+                <div style="width: 11.11%; height: 100%;"><img src="Images/dt-3.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="東台 3"></div>
+                <div style="width: 11.11%; height: 100%;"><img src="Images/dt-4.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="東台 4"></div>
+                <div style="width: 11.11%; height: 100%;"><img src="Images/dt-5.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="東台 5"></div>
+                <div style="width: 11.11%; height: 100%;"><img src="Images/dt-6.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="東台 6"></div>
+                <div style="width: 11.11%; height: 100%;"><img src="Images/dt-7.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="東台 7"></div>
+                <div style="width: 11.11%; height: 100%;"><img src="Images/dt-8.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="東台 8"></div>
+                <div style="width: 11.11%; height: 100%;"><img src="Images/dt-9.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="東台 9"></div>
+            </div>
+        </div>
+        <details>
+            <summary>▼ 交通與詳細資訊</summary>
+            <ul class="info-list">
+                <li><span class="info-label">大眾運輸：</span><span>搭乘公車［8129］可至知本溫泉區鄰近站點下車。</span></li>
+                 <li><span class="info-label">停車資訊：</span><span>館區設有專屬停車場。</span></li>
+            </ul>
+        </details>
+    </div>
+
+    <!-- 📸 影音大廳超連結 -->
+    <a href="gallery.html" class="gallery-link-btn">
+        📸觀看更多知本溫泉精選相簿 ➔
+    </a>
+
+    <!-- 6. 附近順遊景點 -->
+    <div class="section-divider"></div>
+    <div class="section-title"><span style="color:var(--pop-pink);">🌲</span> 附近順遊景點推薦</div>
+    <div class="spot-grid">
+        <a href="https://maps.google.com/?q=知本國家森林遊樂區" target="_blank" class="spot-card">
+            <div class="spot-icon">🌳</div>
+            <div class="spot-name">知本森林遊樂區</div>
+            <div class="spot-desc">漫步林間吸收芬多精</div>
+        </a>
+        <a href="https://maps.google.com/?q=白玉瀑布" target="_blank" class="spot-card">
+            <div class="spot-icon">💦</div>
+            <div class="spot-name">白玉瀑布</div>
+            <div class="spot-desc">輕鬆好走的秘境瀑布</div>
+        </a>
+        <a href="https://maps.google.com/?q=勇男橋" target="_blank" class="spot-card">
+            <div class="spot-icon">🌉</div>
+            <div class="spot-name">知本勇男橋</div>
+            <div class="spot-desc">壯觀斜張橋打卡地標</div>
+        </a>
+        <a href="https://maps.google.com/?q=清覺寺" target="_blank" class="spot-card">
+            <div class="spot-icon">⛩️</div>
+            <div class="spot-name">清覺寺</div>
+            <div class="spot-desc">半山腰上的幽靜聖地</div>
+        </a>
+    </div>
+
+    <!-- 7. 臺東近期活動 (正式啟用 2027) -->
+    <div class="section-divider"></div>
+    <div class="section-title"><span style="color:var(--pop-pink);">📅</span> 臺東近期活動總整理</div>
+    
+    <!-- 修改此處：兩顆按鈕都啟用，且 2027 加上醒目的黃色類別 -->
+    <a href="2026.html" class="event-btn yellow-btn">⏪ 2026 年末活動倒數</a>
+    <a href="2027.html" class="event-btn yellow-highlight">🚀 搶先看 2027 活動預告</a>
+
+    <!-- 交通指引 -->
+    <div class="section-divider"></div>
+    <div class="store-intro-clean">
+        <div class="intro-title">📍本店位置與交通指引</div>
+        <div class="intro-text" style="letter-spacing: -0.2px; line-height: 1.45;">
+            本店位於溫泉路右側，不超過7-11東遊季門市。<br>
+            自行開車行經溫泉路，留意右手邊即可看見。<br>
+            若搭乘大眾交通工具，搭乘<b>公車<a href="https://www.taiwanbus.tw/eBUSPage/Query/QueryResult.aspx?rno=81290&rn=1747899072807&lan=C" target="_blank" class="info-link">[8129]</b></a>至<b>東遊季站</b>下車步行約170公尺即可抵達；距YouBike站點只有短短50公尺，交通非常便利。<br>
+            從本店前往<b>東遊季溫泉區</b>約400公尺的距離。
+        </div>
+    </div>
+    
+    <!-- 五星好評 -->
+    <div style="text-align: center; margin: 5px 15px 15px 15px; font-size: calc(15px * var(--text-scale)); color: #555; line-height: 1.4;">
+        如果您也喜歡這份用心，歡迎給我們留個<a href="https://maps.app.goo.gl/QXSfAW5gbzAmZQbD6?g_st=ic" target="_blank" style="color: #D9534F; font-weight: 900; text-decoration: none;">有省錢/五星級⭐⭐⭐⭐⭐評論鼓勵დ</a>
+    </div>
+    
+    <!-- 底部標語 -->
+    <div class="slogan-area">
+        <div class="slogan-sub"><span style="color:var(--pop-pink);">♨️</span> 泡暖湯・穿泳裝・玩台東</div>
+        <div class="footer-text">慢下來，感受台東山海與人情的溫度 ❤️</div>
+    </div>
+</div>
+
+<!-- === 底部工具列 (主選單置中，3+1+3 對稱排版) === -->
+<div class="font-floater">
+    <a href="tel:0910557998" title="撥打電話">📞</a>
+    <a href="https://maps.app.goo.gl/YkHK24qn1kZsfBn38?g_st=ic" target="_blank" title="導航">🚗</a>
+    <button onclick="scrollToTop()">🔝</button>
+
+    <button onclick="toggleMenu()" title="選單" style="color: var(--pop-pink); font-weight: 900; font-size: 22px;">☰</button>
+    
+    <button onclick="changeFont(-0.1)">A-</button>
+    <button onclick="resetFont()">A</button>
+    <button onclick="changeFont(0.1)">A+</button>
+</div>
+
+<!-- === 彈出式功能選單 (已將所有首頁連結更新為 index.html) === -->
+<div id="menu-overlay" class="menu-overlay" onclick="toggleMenu()"></div>
+<div id="popup-menu" class="popup-menu">
+    <div class="popup-header">
+        <div class="popup-title">✨快速導覽</div>
+        <button class="close-btn" onclick="toggleMenu()">✕</button>
+    </div>
+    <div class="popup-content">
+        <!-- 這裡改回 index.html -->
+        <a href="index.html" class="menu-link-clean">🏠 首頁</a>
+        <a href="about.html" class="menu-link-clean">ℹ️ 關於我們</a>
+        <a href="spa.html" class="menu-link-clean">♨️ 關於知本溫泉</a>
+        <a href="2026.html" class="menu-link-clean">📅 2026 年底活動</a>
+        <!-- 選單內也新增 2027 年的連結 -->
+        <a href="2027.html" class="menu-link-clean" style="color: var(--pop-blue);">📅 2027 預告活動</a>
+    </div>
+</div>
+
+<!-- === ⚙️ 字體縮放記憶系統 & 腳本功能 === -->
+<script>
+    function toggleMenu() {
+        const menu = document.getElementById('popup-menu');
+        const overlay = document.getElementById('menu-overlay');
+        menu.classList.toggle('active');
+        overlay.classList.toggle('active');
+    }
+
+    let currentScale = parseFloat(localStorage.getItem('userFontScale')) || 1;
+    
+    function applyFontScale() {
+        document.documentElement.style.setProperty('--text-scale', currentScale);
+        localStorage.setItem('userFontScale', currentScale);
+    }
+    
+    function changeFont(step) {
+        currentScale += step;
+        currentScale = Math.round(currentScale * 10) / 10;
+        if (currentScale < 0.8) currentScale = 0.8;
+        if (currentScale > 1.2) currentScale = 1.2;
+        applyFontScale();
+    }
+    
+    function resetFont() {
+        currentScale = 1;
+        applyFontScale();
+    }
+    
+    function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    applyFontScale();
+</script>
+
+</body>
 </html>
