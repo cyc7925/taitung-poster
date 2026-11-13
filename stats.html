@@ -12,9 +12,17 @@
         .row:last-child { border-bottom: none; }
         .page-name { font-weight: bold; font-size: 15px; text-decoration: none; color: #0056b3; transition: 0.2s; }
         .page-name:hover { color: #d9534f; text-decoration: underline; }
-        .warning { background: #fff3cd; color: #856404; padding: 10px; border-radius: 8px; font-size: 13px; margin-bottom: 20px; text-align: justify; }
+        
+        /* 升級版的站長提醒區塊 */
+        .warning { background: #fff3cd; color: #856404; padding: 15px; border-radius: 8px; font-size: 13.5px; margin-bottom: 20px; text-align: justify; line-height: 1.5; border: 1px solid #ffeeba; }
+        .count-highlight { color: #d9534f; font-size: 18px; font-weight: 900; background: white; padding: 2px 8px; border-radius: 4px; border: 1px solid #d9534f; margin: 0 4px; }
+        
         .retired { background-color: #f8f9fa; }
         .retired .page-name { color: #6c757d; }
+        
+        /* 歸零按鈕 */
+        .reset-btn { background: #6c757d; color: white; border: none; padding: 4px 10px; border-radius: 4px; font-size: 12px; cursor: pointer; float: right; margin-top: 2px; }
+        .reset-btn:active { background: #5a6268; }
     </style>
 </head>
 <body>
@@ -23,10 +31,12 @@
     <h2>📊 網站流量儀表板</h2>
     
     <div class="warning">
-        💡 <b>站長小提醒：</b><br>
-        1. 點擊左側的網頁名稱，可直接連過去檢查該網頁。<br>
-        2. 只要不把這個網頁加到選單裡，客人就找不到這裡。<br>
-        3. 因為這裡顯示了所有頁面的計數器徽章，所以<b>你每次打開這個網頁，所有頁面的數字都會跟著 +1</b> 喔！
+        <button class="reset-btn" onclick="resetAdminCount()">重新計算</button>
+        💡 <b>站長自己看過幾次：<span id="admin-view-count" class="count-highlight">0</span> 次</b><br><br>
+        <b>🎯 如何算出真實點擊？</b><br>
+        只要把下方各網頁的數字，<b>減掉上面這個紅色的次數</b>，就是最真實的客人點擊量！<br><br>
+        <b>⚠️ 為什麼要減？</b><br>
+        因為這個儀表板一次呼叫了所有的計數器圖片，所以每次你「打開」或「重新整理」這頁，所有網頁的數字都會被迫 +1。建議當作收盤報表，偶爾點開看就好喔！
     </div>
 
     <div class="row">
@@ -69,6 +79,33 @@
         <img src="https://hits.sh/cyc7925.github.io/taitung-poster/home.html.svg?label=home.html&color=b0b0b0" alt="Hits">
     </div>
 </div>
+
+<script>
+    // 讀取手機/電腦瀏覽器裡記錄的「站長觀看次數」
+    let adminViews = localStorage.getItem('adminViewCount');
+    
+    // 如果是第一次打開，設定為 0
+    if (!adminViews) {
+        adminViews = 0;
+    }
+    
+    // 每次打開頁面，次數就 +1
+    adminViews++;
+    
+    // 把新的次數存回手機/電腦裡
+    localStorage.setItem('adminViewCount', adminViews);
+    
+    // 顯示在畫面上
+    document.getElementById('admin-view-count').innerText = adminViews;
+
+    // 歸零按鈕的功能
+    function resetAdminCount() {
+        if (confirm('確定要將站長觀看次數歸零嗎？')) {
+            localStorage.setItem('adminViewCount', 1); // 歸零後因為已經在畫面上，所以算 1 次
+            document.getElementById('admin-view-count').innerText = 1;
+        }
+    }
+</script>
 
 </body>
 </html>
