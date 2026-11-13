@@ -2,36 +2,37 @@
 
 歡迎來到台東知本溫泉導覽網頁！這是一個帶你探索台東知本優質溫泉與在地景點的專案。
 
-[![Hits](https://hits.sh/cyc7925.github.io/taitung-poster/home.html.svg?label=總訪客人數&color=79C83D)](https://hits.sh/cyc7925.github.io/taitung-poster/home.html/)
+[![Hits](https://hits.sh/cyc7925.github.io/taitung-poster/index.html.svg?label=總訪客人數&color=79C83D)](https://hits.sh/cyc7925.github.io/taitung-poster/index.html)
+
 
 ### 📊 各網頁點擊統計 (總瀏覽次數)
 
-- **首頁 (home.html)**：
-[![Hits](https://hits.sh/cyc7925.github.io/taitung-poster/home.html.svg?label=home.html&color=79C83D)](https://hits.sh/cyc7925.github.io/taitung-poster/home.html/)
+- **主首頁 (index.html)**：
+[![Hits](https://hits.sh/cyc7925.github.io/taitung-poster/index.html.svg?label=index.html&color=79C83D)](https://hits.sh/cyc7925.github.io/taitung-poster/index.html)
 
-- **主索引頁 (index.html)**：
-[![Hits](https://hits.sh/cyc7925.github.io/taitung-poster/index.html.svg?label=index.html&color=79C83D)](https://hits.sh/cyc7925.github.io/taitung-poster/index.html/)
+- **舊版首頁備份 (home.html) ⚠️已停用**：
+[![Hits](https://hits.sh/cyc7925.github.io/taitung-poster/home.html.svg?label=home.html&color=b0b0b0)](https://hits.sh/cyc7925.github.io/taitung-poster/home.html)
 
 - **關於我們 (about.html)**：
-[![Hits](https://hits.sh/cyc7925.github.io/taitung-poster/about.html.svg?label=about.html&color=79C83D)](https://hits.sh/cyc7925.github.io/taitung-poster/about.html/)
+[![Hits](https://hits.sh/cyc7925.github.io/taitung-poster/about.html.svg?label=about.html&color=79C83D)](https://hits.sh/cyc7925.github.io/taitung-poster/about.html)
 
 - **相簿/畫廊 (gallery.html)**：
-[![Hits](https://hits.sh/cyc7925.github.io/taitung-poster/gallery.html.svg?label=gallery.html&color=79C83D)](https://hits.sh/cyc7925.github.io/taitung-poster/gallery.html/)
+[![Hits](https://hits.sh/cyc7925.github.io/taitung-poster/gallery.html.svg?label=gallery.html&color=79C83D)](https://hits.sh/cyc7925.github.io/taitung-poster/gallery.html)
 
 - **溫泉介紹 (spa.html)**：
-[![Hits](https://hits.sh/cyc7925.github.io/taitung-poster/spa.html.svg?label=spa.html&color=79C83D)](https://hits.sh/cyc7925.github.io/taitung-poster/spa.html/)
+[![Hits](https://hits.sh/cyc7925.github.io/taitung-poster/spa.html.svg?label=spa.html&color=79C83D)](https://hits.sh/cyc7925.github.io/taitung-poster/spa.html)
 
-- **2026 頁面 (2026.html)**：
-[![Hits](https://hits.sh/cyc7925.github.io/taitung-poster/2026.html.svg?label=2026.html&color=79C83D)](https://hits.sh/cyc7925.github.io/taitung-poster/2026.html/)
+- **2026 活動頁面 (2026.html)**：
+[![Hits](https://hits.sh/cyc7925.github.io/taitung-poster/2026.html.svg?label=2026.html&color=79C83D)](https://hits.sh/cyc7925.github.io/taitung-poster/2026.html)
 
-- **2027 頁面 (2027.html)**：
-[![Hits](https://hits.sh/cyc7925.github.io/taitung-poster/2027.html.svg?label=2027.html&color=79C83D)](https://hits.sh/cyc7925.github.io/taitung-poster/2027.html/)
+- **2027 預告頁面 (2027.html)**：
+[![Hits](https://hits.sh/cyc7925.github.io/taitung-poster/2027.html.svg?label=2027.html&color=79C83D)](https://hits.sh/cyc7925.github.io/taitung-poster/2027.html)
 
 - **A4 頁面 (A4.html)**：
-[![Hits](https://hits.sh/cyc7925.github.io/taitung-poster/A4.html.svg?label=A4.html&color=79C83D)](https://hits.sh/cyc7925.github.io/taitung-poster/A4.html/)
+[![Hits](https://hits.sh/cyc7925.github.io/taitung-poster/A4.html.svg?label=A4.html&color=79C83D)](https://hits.sh/cyc7925.github.io/taitung-poster/A4.html)
 
 ## 🔗 網站連結
-- **🌐 完整導覽網頁**：[https://cyc7925.github.io/taitung-poster/home.html](https://cyc7925.github.io/taitung-poster/home.html)
+- **🌐 完整導覽網頁**：[https://cyc7925.github.io/taitung-poster/index.html](https://cyc7925.github.io/taitung-poster/index.html)
 - **🚀 快速分享短網址**：[https://reurl.cc/xem3m5](https://reurl.cc/xem3m5)
 
 ## 💡 專案簡介
